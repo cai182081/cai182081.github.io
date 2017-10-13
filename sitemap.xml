@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/10/13/MySQL_explain/</loc>
+    
+    <lastmod>2017-10-13T01:55:57.711Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/12/MySQL_design_specifications/</loc>
     
     <lastmod>2017-10-13T01:00:41.096Z</lastmod>
