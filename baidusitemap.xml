@@ -4,6 +4,21 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/10/13/MySQL_explain/</loc>
+    <lastmod>2017-10-13T03:44:36.824Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 执行计划详细解读</title>
+        <pubTime>2017-10-13T01:06:56.886Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/10/12/MySQL_design_specifications/</loc>
     <lastmod>2017-10-13T03:07:59.809Z</lastmod>
     <data>
@@ -25,21 +40,6 @@
         <display>
         <title>MySQL 体系结构</title>
         <pubTime>2017-10-13T02:12:35.552Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL_explain/</loc>
-    <lastmod>2017-10-13T01:55:57.711Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL 执行计划详细解读</title>
-        <pubTime>2017-10-13T01:06:56.886Z</pubTime>
         
          
            
