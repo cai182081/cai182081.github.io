@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/10/13/MySQL_explain/</loc>
+    <lastmod>2017-10-13T09:51:32.411Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 执行计划详细解读</title>
+        <pubTime>2017-10-13T01:06:56.886Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>数据库</tag>
+         
+        <tag>数据库优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/10/13/MySQL_%20architecture/</loc>
     <lastmod>2017-10-13T04:28:24.163Z</lastmod>
     <data>
@@ -32,30 +56,6 @@
         <display>
         <title>MySQL 数据库开发与设计规范</title>
         <pubTime>2017-10-12T12:52:02.436Z</pubTime>
-        
-        <tag>MySQL</tag>
-         
-        <tag>数据库</tag>
-         
-        <tag>数据库优化</tag>
-         
-         
-           
-             
-              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL_explain/</loc>
-    <lastmod>2017-10-13T04:27:59.937Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL 执行计划详细解读</title>
-        <pubTime>2017-10-13T01:06:56.886Z</pubTime>
         
         <tag>MySQL</tag>
          
