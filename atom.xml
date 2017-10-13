@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-13T01:55:57.711Z</updated>
+  <updated>2017-10-13T02:59:16.910Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL 体系结构</title>
+    <link href="http://yoursite.com/2017/10/13/MySQL_%20architecture/"/>
+    <id>http://yoursite.com/2017/10/13/MySQL_ architecture/</id>
+    <published>2017-10-13T02:12:35.552Z</published>
+    <updated>2017-10-13T02:59:16.910Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="MySQL-体系结构概述"><a href="#MySQL-体系结构概述" class="headerlink" title="MySQL 体系结构概述"></a>MySQL 体系结构概述</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MySQL 由数据库和数据库实例组成，是单进程多线程架构。</div><div class="line">数据库实例：由数据库后台进程/线程以及一个共享内存区组成，共享内存可以被运行的后台进程/线程所共享。</div><div class="line">数据库：物理操作系统文件或者其它文件的集合，在 MySQL 中，数据库文件可以是frm、myd、myi、ibd等结尾的文件，当使用ndb存储引擎时候，不是os文件，是存放于内存中的文件。</div></pre></td></tr></table></figure><h2 id="MySQL-体系结构组成"><a href="#MySQL-体系结构组成" class="headerlink" title="MySQL 体系结构组成"></a>MySQL 体系结构组成</h2><p><img src="/images/MySQL_ architecture.png" alt="MySQL 体系结构图"></p><h3 id="Connectors：外部语言与SQL交互的入口"><a href="#Connectors：外部语言与SQL交互的入口" class="headerlink" title="Connectors：外部语言与SQL交互的入口"></a>Connectors：外部语言与SQL交互的入口</h3><h3 id="Management-Serveices-amp-Utilities：系统管理和控制工具"><a href="#Management-Serveices-amp-Utilities：系统管理和控制工具" class="headerlink" title="Management Serveices &amp; Utilities：系统管理和控制工具"></a>Management Serveices &amp; Utilities：系统管理和控制工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">日常的 MySQL 管理工具。包括备份恢复、MySQL复制、集群等。</div></pre></td></tr></table></figure><h3 id="Connection-Pool：连接池"><a href="#Connection-Pool：连接池" class="headerlink" title="Connection Pool：连接池"></a>Connection Pool：连接池</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">管理缓冲用户连接、用户名、密码、权限校验,线程处理等需要缓存的需求。</div><div class="line">生成线程，验证用户是否正确，保持连接会话队列。</div></pre></td></tr></table></figure><h3 id="SQL-Interface：SQL-接口"><a href="#SQL-Interface：SQL-接口" class="headerlink" title="SQL Interface：SQL 接口"></a>SQL Interface：SQL 接口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">接受处理SQL语句接口。返回查询或执行结果。</div></pre></td></tr></table></figure><h3 id="Parser：解析器"><a href="#Parser：解析器" class="headerlink" title="Parser：解析器"></a>Parser：解析器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">将 SQL 进行验证和解析以便MySQL优化器可以识别的数据结构或返回 SQL 语句的错误。</div></pre></td></tr></table></figure><h3 id="Optimizer：查询优化器"><a href="#Optimizer：查询优化器" class="headerlink" title="Optimizer：查询优化器"></a>Optimizer：查询优化器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">使用查询优化器对查询进行优化，同时会验证用户是否有权限进行查询，缓存中是否有可用的最新数据。使用的是“选取-投影- 联接”策略进行查询。</div><div class="line">选取：根据Where条件选定特定的行。</div><div class="line">投影：提取Select查询的列。</div><div class="line">连接：多表连接策略。根据Where筛选数据，然后取出列，最后组合。</div></pre></td></tr></table></figure><h3 id="Cache-和-Buffer：查询缓存"><a href="#Cache-和-Buffer：查询缓存" class="headerlink" title="Cache 和 Buffer：查询缓存"></a>Cache 和 Buffer：查询缓存</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">高速缓冲区。(Innodb buffer pool_size)。缓存数据、索引、数据字典、自适应HASH等数据。如果查询缓存有命中的查询结果,查询语句就可以直接去查询缓存中取数据。通过 LRU算法将数据的冷端溢出,未来得及刷新到磁盘的数据页,叫脏页。</div></pre></td></tr></table></figure><h3 id="Pluggable-Storage-Engine：插件式存储引擎"><a href="#Pluggable-Storage-Engine：插件式存储引擎" class="headerlink" title="Pluggable Storage Engine：插件式存储引擎"></a>Pluggable Storage Engine：插件式存储引擎</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MySQL 是数据库环境框架，其引擎采用插件方式实现。引擎是与文件打交道的子系统,它负责将数据是以某 种数据结构放到磁盘,某种算法来提取数据等(包括MVCC、锁实现,crash recovery等)。</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;MySQL-体系结构概述&quot;&gt;&lt;a href=&quot;#MySQL-体系结构概述&quot; class=&quot;headerlink&quot; title=&quot;MySQL 体系结构概述&quot;&gt;&lt;/a&gt;MySQL 体系结构概述&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;t
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>MySQL 执行计划详细解读</title>
