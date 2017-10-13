@@ -3,15 +3,13 @@
 
 
     
-    
-    
   <url>
-    <loc>http://yoursite.com/2017/10/11/hello-world/</loc>
-    <lastmod>2017-10-10T16:15:40.638Z</lastmod>
+    <loc>http://yoursite.com/2017/10/12/MySQL_design_specifications/</loc>
+    <lastmod>2017-10-13T01:00:41.096Z</lastmod>
     <data>
         <display>
-        <title>Hello World</title>
-        <pubTime>2017-10-10T16:15:40.638Z</pubTime>
+        <title>MySQL 数据库开发与设计规范</title>
+        <pubTime>2017-10-12T12:52:02.436Z</pubTime>
         
          
            
@@ -19,4 +17,6 @@
     </data>
     </url>
 
+    
+    
 </urlset>
