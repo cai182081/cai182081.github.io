@@ -4,16 +4,60 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL_explain/</loc>
-    <lastmod>2017-10-13T09:51:32.411Z</lastmod>
+    <loc>http://yoursite.com/2017/10/15/MySQL/MySQL_my.conf/</loc>
+    <lastmod>2017-10-15T03:14:36.662Z</lastmod>
     <data>
         <display>
-        <title>MySQL 执行计划详细解读</title>
-        <pubTime>2017-10-13T01:06:56.886Z</pubTime>
+        <title>MySQL my.conf参数文件配置详解</title>
+        <pubTime>2017-10-15T02:18:17.846Z</pubTime>
         
+        <tag>数据库</tag>
+         
         <tag>MySQL</tag>
          
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/</loc>
+    <lastmod>2017-10-15T02:35:43.555Z</lastmod>
+    <data>
+        <display>
+        <title>MongoDB mongod.conf 参数文件配置详解</title>
+        <pubTime>2017-10-15T02:29:15.769Z</pubTime>
+        
+        <tag>MongoDB</tag>
+         
         <tag>数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="MongoDB" url="http://yoursite.com/categories/MongoDB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/14/MySQL/MySQL_index/</loc>
+    <lastmod>2017-10-15T01:25:31.237Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 索引原理详解</title>
+        <pubTime>2017-10-14T03:58:28.055Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
          
         <tag>数据库优化</tag>
          
@@ -28,16 +72,18 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL_%20architecture/</loc>
-    <lastmod>2017-10-13T04:28:24.163Z</lastmod>
+    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_explain/</loc>
+    <lastmod>2017-10-14T04:56:37.555Z</lastmod>
     <data>
         <display>
-        <title>MySQL 体系结构详解</title>
-        <pubTime>2017-10-13T02:12:35.552Z</pubTime>
+        <title>MySQL 执行计划详细解读</title>
+        <pubTime>2017-10-13T01:06:56.886Z</pubTime>
         
+        <tag>数据库</tag>
+         
         <tag>MySQL</tag>
          
-        <tag>数据库</tag>
+        <tag>数据库优化</tag>
          
          
            
@@ -50,16 +96,38 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/10/12/MySQL_design_specifications/</loc>
+    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_%20architecture/</loc>
+    <lastmod>2017-10-14T04:35:01.344Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 体系结构详解</title>
+        <pubTime>2017-10-13T02:12:35.552Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/12/MySQL/MySQL_design_specifications/</loc>
     <lastmod>2017-10-13T04:28:11.809Z</lastmod>
     <data>
         <display>
         <title>MySQL 数据库开发与设计规范</title>
         <pubTime>2017-10-12T12:52:02.436Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
          
         <tag>数据库优化</tag>
          

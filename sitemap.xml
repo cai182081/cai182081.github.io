@@ -2,21 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL_explain/</loc>
+    <loc>http://yoursite.com/2017/10/15/MySQL/MySQL_my.conf/</loc>
     
-    <lastmod>2017-10-13T09:51:32.411Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL_%20architecture/</loc>
-    
-    <lastmod>2017-10-13T04:28:24.163Z</lastmod>
+    <lastmod>2017-10-15T03:14:36.662Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/12/MySQL_design_specifications/</loc>
+    <loc>http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/</loc>
+    
+    <lastmod>2017-10-15T02:35:43.555Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/14/MySQL/MySQL_index/</loc>
+    
+    <lastmod>2017-10-15T01:25:31.237Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_explain/</loc>
+    
+    <lastmod>2017-10-14T04:56:37.555Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_%20architecture/</loc>
+    
+    <lastmod>2017-10-14T04:35:01.344Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/12/MySQL/MySQL_design_specifications/</loc>
     
     <lastmod>2017-10-13T04:28:11.809Z</lastmod>
     
