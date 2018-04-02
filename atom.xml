@@ -37,9 +37,9 @@
       <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
     
     
-      <category term="MongoDB" scheme="http://yoursite.com/tags/MongoDB/"/>
-    
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="MongoDB" scheme="http://yoursite.com/tags/MongoDB/"/>
     
       <category term="Percona" scheme="http://yoursite.com/tags/Percona/"/>
     
@@ -149,9 +149,9 @@
       <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
     
     
-      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="MySQL 集群" scheme="http://yoursite.com/tags/MySQL-%E9%9B%86%E7%BE%A4/"/>
     
@@ -178,9 +178,9 @@
       <category term="MongoDB" scheme="http://yoursite.com/categories/MongoDB/"/>
     
     
-      <category term="MongoDB" scheme="http://yoursite.com/tags/MongoDB/"/>
-    
       <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MongoDB" scheme="http://yoursite.com/tags/MongoDB/"/>
     
   </entry>
   
@@ -205,9 +205,9 @@
       <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
     
     
-      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -232,9 +232,9 @@
       <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
     
     
-      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="数据库优化" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/"/>
     
@@ -261,9 +261,9 @@
       <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
     
     
-      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -288,9 +288,9 @@
       <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
     
     
-      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="数据库优化" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/"/>
     
@@ -317,9 +317,9 @@
       <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
     
     
-      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="数据库优化" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/"/>
     
