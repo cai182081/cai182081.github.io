@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="MongoDB,数据库," />
+  <meta name="keywords" content="MongoDB,MySQL,Percona,数据库监控," />
 
 
 
@@ -125,18 +125,20 @@
 
 
 
-<meta name="description" content="MongoDB 参数文件配置12 MongoDB 核心参数选择及说明12">
-<meta name="keywords" content="MongoDB,数据库">
+<meta name="description" content="PMM 架构组成及实现原理 PMM Server 端安装过程及注意事项安装 Docker在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以 安装较高版本Docker。安装Docker后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认路径12rpm -qa|grep docker | xargs rpm -e --n">
+<meta name="keywords" content="MongoDB,MySQL,Percona,数据库监控">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB mongod.conf 参数文件配置详解">
-<meta property="og:url" content="http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/index.html">
+<meta property="og:title" content="全面解析 MySQL、MongoDB 数据库监控工具 PMM">
+<meta property="og:url" content="http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/index.html">
 <meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="MongoDB 参数文件配置12 MongoDB 核心参数选择及说明12">
+<meta property="og:description" content="PMM 架构组成及实现原理 PMM Server 端安装过程及注意事项安装 Docker在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以 安装较高版本Docker。安装Docker后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认路径12rpm -qa|grep docker | xargs rpm -e --n">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-15T02:35:43.555Z">
+<meta property="og:image" content="http://yoursite.com/images/PMM_architecture.png">
+<meta property="og:updated_time" content="2018-04-02T14:05:31.572Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MongoDB mongod.conf 参数文件配置详解">
-<meta name="twitter:description" content="MongoDB 参数文件配置12 MongoDB 核心参数选择及说明12">
+<meta name="twitter:title" content="全面解析 MySQL、MongoDB 数据库监控工具 PMM">
+<meta name="twitter:description" content="PMM 架构组成及实现原理 PMM Server 端安装过程及注意事项安装 Docker在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以 安装较高版本Docker。安装Docker后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认路径12rpm -qa|grep docker | xargs rpm -e --n">
+<meta name="twitter:image" content="http://yoursite.com/images/PMM_architecture.png">
 
 
 
@@ -166,13 +168,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/"/>
 
 
 
 
 
-  <title>MongoDB mongod.conf 参数文件配置详解 | Cailiang's Blog</title>
+  <title>全面解析 MySQL、MongoDB 数据库监控工具 PMM | Cailiang's Blog</title>
   
 
 
@@ -299,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cai182081">
@@ -316,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MongoDB mongod.conf 参数文件配置详解</h1>
+          <h1 class="post-title" itemprop="name headline">全面解析 MySQL、MongoDB 数据库监控工具 PMM</h1>
         
 
         <div class="post-meta">
@@ -328,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T10:29:15+08:00">
-                2017-10-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T03:19:32+08:00">
+                2017-11-12
               </time>
             
 
@@ -351,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MongoDB/" itemprop="url" rel="index">
-                    <span itemprop="name">MongoDB</span>
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
                   </a>
                 </span>
 
@@ -369,8 +371,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/15/MongoDB/MongDB_mongod.conf/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/10/15/MongoDB/MongDB_mongod.conf/" itemprop="commentsCount"></span>
+                <a href="/2017/11/12/MySQL/MySQL_PMM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/11/12/MySQL/MySQL_PMM/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -398,8 +400,16 @@
       
 
       
-        <h2 id="MongoDB-参数文件配置"><a href="#MongoDB-参数文件配置" class="headerlink" title="MongoDB 参数文件配置"></a>MongoDB 参数文件配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<h2 id="MongoDB-核心参数选择及说明"><a href="#MongoDB-核心参数选择及说明" class="headerlink" title="MongoDB 核心参数选择及说明"></a>MongoDB 核心参数选择及说明</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+        <h2 id="PMM-架构组成及实现原理"><a href="#PMM-架构组成及实现原理" class="headerlink" title="PMM 架构组成及实现原理"></a>PMM 架构组成及实现原理</h2><p><img src="/images/PMM_architecture.png" alt="PMM 体系架构"></p>
+<h2 id="PMM-Server-端安装过程及注意事项"><a href="#PMM-Server-端安装过程及注意事项" class="headerlink" title="PMM Server 端安装过程及注意事项"></a>PMM Server 端安装过程及注意事项</h2><h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h3><p>在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以 安装较高版本Docker。安装Docker后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -qa|grep docker | xargs rpm -e --nodeps</div><div class="line">curl -sSL https://get.docker.com/ | sh</div></pre></td></tr></table></figure></p>
+<p>设置云镜像库加速与修改默认存储路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir -p /data/docker</div><div class="line">mkdir -p /etc/docker/</div><div class="line">cat &gt;&gt; /etc/docker/daemon.json &lt;&lt;EOF                        </div><div class="line">&#123;<span class="string">"registry-mirrors"</span>: [<span class="string">"http://396e823a.m.daocloud.io"</span>], <span class="string">"graph"</span>: <span class="string">"/data/docker"</span>&#125;</div><div class="line">EOF</div></pre></td></tr></table></figure></p>
+<h3 id="拉取-PMM-镜像安装Server端"><a href="#拉取-PMM-镜像安装Server端" class="headerlink" title="拉取 PMM 镜像安装Server端"></a>拉取 PMM 镜像安装Server端</h3><p>拉取PMM最新容器镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull percona/pmm-server:latest</div></pre></td></tr></table></figure></p>
+<p>建立数据PMM-Server卷容器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">docker create \</div><div class="line">   -v /opt/prometheus/data \</div><div class="line">   -v /opt/consul-data \</div><div class="line">   -v /var/lib/mysql \</div><div class="line">   -v /var/lib/grafana \</div><div class="line">   --name pmm-data \</div><div class="line">   percona/pmm-server:latest /bin/<span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<p>运行PMM Server（同时设置登录用户名(SERVER_USER)和密码(SERVER_PASSWORD), 根据需要进行修改.如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM 镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">docker run -d -p 8082:80 \</div><div class="line">  --volumes-from pmm-data \</div><div class="line">  --name pmm-server \</div><div class="line">  -e SERVER_USER=pmm \</div><div class="line">  -e SERVER_PASSWORD=pmmpasswd \</div><div class="line">  -e ORCHESTRATOR_ENABLED=<span class="literal">true</span> \</div><div class="line">  --restart always \</div><div class="line">  percona/pmm-server:latest</div></pre></td></tr></table></figure></p>
+<p>更改面板数据sqlite3库存储类型为MYSQL(容器自带)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">docker <span class="built_in">exec</span> -i -t pmm-server /bin/bash</div><div class="line"></div><div class="line">sed -i <span class="string">'s/;type = sqlite3/type=mysql/g'</span> /etc/grafana/grafana.ini</div><div class="line">sed -i <span class="string">'s/;host = 127.0.0.1:3306/host = 127.0.0.1:3306/g'</span> /etc/grafana/grafana.ini</div><div class="line">sed -i <span class="string">'s/;name = grafana/name = grafana/g'</span> /etc/grafana/grafana.ini</div><div class="line">sed -i <span class="string">'s/;user = root/user = root/g'</span> /etc/grafana/grafana.ini</div><div class="line">sed -i <span class="string">'s/;password =/password =/g'</span> /etc/grafana/grafana.ini</div><div class="line"></div><div class="line">mysql -e <span class="string">"create database grafana;"</span></div></pre></td></tr></table></figure></p>
+<p>退出Docker容器，重启PMM Server<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker restart pmm-server</div></pre></td></tr></table></figure></p>
+<p>到官网下载安装最新版本PMM Client客户端，并开通各PMM Client到PMM Serevr 42000和42002端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y https://www.percona.com/downloads/pmm/1.4.1/binary/redhat/7/x86_64/pmm-client-1.4.1-1.x86_64.rpm</div></pre></td></tr></table></figure></p>
+<h2 id="PMM-Client-端搭建过程及监控注意事项"><a href="#PMM-Client-端搭建过程及监控注意事项" class="headerlink" title="PMM Client 端搭建过程及监控注意事项"></a>PMM Client 端搭建过程及监控注意事项</h2><p>到官网下载安装最新版本PMM Client客户端，并开通各PMM Client到PMM Serevr 42000和42002端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y https://www.percona.com/downloads/pmm/1.4.1/binary/redhat/7/x86_64/pmm-client-1.4.1-1.x86_64.rpm</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -419,7 +429,11 @@
           
             <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
           
-            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/Percona/" rel="tag"># Percona</a>
+          
+            <a href="/tags/数据库监控/" rel="tag"># 数据库监控</a>
           
         </div>
       
@@ -432,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/15/MySQL/MySQL_my.conf/" rel="next" title="MySQL my.conf参数文件配置详解">
-                <i class="fa fa-chevron-left"></i> MySQL my.conf参数文件配置详解
+              <a href="/2017/11/11/SQL/MySQL_SQL/" rel="next" title="MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化">
+                <i class="fa fa-chevron-left"></i> MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化
               </a>
             
           </div>
@@ -441,10 +455,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/19/MySQL/MySQL_MHA/" rel="prev" title="MySQL MHA 集群原理及搭建">
-                MySQL MHA 集群原理及搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -592,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-参数文件配置"><span class="nav-number">1.</span> <span class="nav-text">MongoDB 参数文件配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-核心参数选择及说明"><span class="nav-number">2.</span> <span class="nav-text">MongoDB 核心参数选择及说明</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-架构组成及实现原理"><span class="nav-number">1.</span> <span class="nav-text">PMM 架构组成及实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-Server-端安装过程及注意事项"><span class="nav-number">2.</span> <span class="nav-text">PMM Server 端安装过程及注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Docker"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取-PMM-镜像安装Server端"><span class="nav-number">2.2.</span> <span class="nav-text">拉取 PMM 镜像安装Server端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-Client-端搭建过程及监控注意事项"><span class="nav-number">3.</span> <span class="nav-text">PMM Client 端搭建过程及监控注意事项</span></a></li></ol></div>
             
 
           </div>

@@ -2,9 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/</loc>
+    
+    <lastmod>2018-04-02T14:05:31.572Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/15/MySQL/MySQL_my.conf/</loc>
     
-    <lastmod>2017-10-15T03:14:36.662Z</lastmod>
+    <lastmod>2017-11-11T19:17:08.114Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
+    
+    <lastmod>2017-11-11T14:55:24.910Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/11/11/MySQL/MySQL_PXB/</loc>
+    
+    <lastmod>2017-11-11T14:29:42.382Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_explain/</loc>
+    
+    <lastmod>2017-10-31T12:25:27.548Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_Replication_delay/</loc>
+    
+    <lastmod>2017-10-19T15:07:47.278Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_MHA/</loc>
+    
+    <lastmod>2017-10-19T13:41:13.706Z</lastmod>
     
   </url>
   
@@ -19,13 +61,6 @@
     <loc>http://yoursite.com/2017/10/14/MySQL/MySQL_index/</loc>
     
     <lastmod>2017-10-15T01:25:31.237Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_explain/</loc>
-    
-    <lastmod>2017-10-14T04:56:37.555Z</lastmod>
     
   </url>
   

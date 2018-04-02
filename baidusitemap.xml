@@ -4,8 +4,34 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/</loc>
+    <lastmod>2018-04-02T14:05:31.572Z</lastmod>
+    <data>
+        <display>
+        <title>全面解析 MySQL、MongoDB 数据库监控工具 PMM</title>
+        <pubTime>2017-11-11T19:19:32.344Z</pubTime>
+        
+        <tag>MongoDB</tag>
+         
+        <tag>MySQL</tag>
+         
+        <tag>Percona</tag>
+         
+        <tag>数据库监控</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/10/15/MySQL/MySQL_my.conf/</loc>
-    <lastmod>2017-10-15T03:14:36.662Z</lastmod>
+    <lastmod>2017-11-11T19:17:08.114Z</lastmod>
     <data>
         <display>
         <title>MySQL my.conf参数文件配置详解</title>
@@ -14,6 +40,120 @@
         <tag>数据库</tag>
          
         <tag>MySQL</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
+    <lastmod>2017-11-11T14:55:24.910Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化</title>
+        <pubTime>2017-11-11T14:30:31.518Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>SQL 优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="SQL" url="http://yoursite.com/categories/SQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/11/MySQL/MySQL_PXB/</loc>
+    <lastmod>2017-11-11T14:29:42.382Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL Percona Xtrabackup 物理备份详解</title>
+        <pubTime>2017-11-11T14:22:30.123Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>MySQL 备份</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_explain/</loc>
+    <lastmod>2017-10-31T12:25:27.548Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 执行计划详细解读</title>
+        <pubTime>2017-10-13T01:06:56.886Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
+         
+        <tag>数据库优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_Replication_delay/</loc>
+    <lastmod>2017-10-19T15:07:47.278Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 主从复制延时原理、诊断与解决方案</title>
+        <pubTime>2017-10-19T13:41:26.094Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>故障诊断</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_MHA/</loc>
+    <lastmod>2017-10-19T13:41:13.706Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL MHA 集群原理及搭建</title>
+        <pubTime>2017-10-19T13:37:37.596Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
+         
+        <tag>MySQL 集群</tag>
          
          
            
@@ -54,30 +194,6 @@
         <display>
         <title>MySQL 索引原理详解</title>
         <pubTime>2017-10-14T03:58:28.055Z</pubTime>
-        
-        <tag>数据库</tag>
-         
-        <tag>MySQL</tag>
-         
-        <tag>数据库优化</tag>
-         
-         
-           
-             
-              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_explain/</loc>
-    <lastmod>2017-10-14T04:56:37.555Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL 执行计划详细解读</title>
-        <pubTime>2017-10-13T01:06:56.886Z</pubTime>
         
         <tag>数据库</tag>
          
