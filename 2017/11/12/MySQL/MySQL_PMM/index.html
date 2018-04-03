@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="MySQL,MongoDB,Percona,数据库监控," />
+  <meta name="keywords" content="MySQL,Percona,MongoDB,数据库监控," />
 
 
 
@@ -126,7 +126,7 @@
 
 
 <meta name="description" content="PMM 架构组成及实现原理 PMM Server 端安装过程及注意事项安装 Docker在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以 安装较高版本Docker。安装Docker后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认路径12rpm -qa|grep docker | xargs rpm -e --n">
-<meta name="keywords" content="MySQL,MongoDB,Percona,数据库监控">
+<meta name="keywords" content="MySQL,Percona,MongoDB,数据库监控">
 <meta property="og:type" content="article">
 <meta property="og:title" content="全面解析 MySQL、MongoDB 数据库监控工具 PMM">
 <meta property="og:url" content="http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/index.html">
@@ -134,7 +134,7 @@
 <meta property="og:description" content="PMM 架构组成及实现原理 PMM Server 端安装过程及注意事项安装 Docker在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以 安装较高版本Docker。安装Docker后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认路径12rpm -qa|grep docker | xargs rpm -e --n">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/PMM_architecture.png">
-<meta property="og:updated_time" content="2018-04-02T14:05:31.572Z">
+<meta property="og:updated_time" content="2018-04-03T13:02:18.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全面解析 MySQL、MongoDB 数据库监控工具 PMM">
 <meta name="twitter:description" content="PMM 架构组成及实现原理 PMM Server 端安装过程及注意事项安装 Docker在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以 安装较高版本Docker。安装Docker后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认路径12rpm -qa|grep docker | xargs rpm -e --n">
@@ -408,8 +408,12 @@
 <p>运行PMM Server（同时设置登录用户名(SERVER_USER)和密码(SERVER_PASSWORD), 根据需要进行修改.如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM 镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">docker run -d -p 8082:80 \</div><div class="line">  --volumes-from pmm-data \</div><div class="line">  --name pmm-server \</div><div class="line">  -e SERVER_USER=pmm \</div><div class="line">  -e SERVER_PASSWORD=pmmpasswd \</div><div class="line">  -e ORCHESTRATOR_ENABLED=<span class="literal">true</span> \</div><div class="line">  --restart always \</div><div class="line">  percona/pmm-server:latest</div></pre></td></tr></table></figure></p>
 <p>更改面板数据sqlite3库存储类型为MYSQL(容器自带)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">docker <span class="built_in">exec</span> -i -t pmm-server /bin/bash</div><div class="line"></div><div class="line">sed -i <span class="string">'s/;type = sqlite3/type=mysql/g'</span> /etc/grafana/grafana.ini</div><div class="line">sed -i <span class="string">'s/;host = 127.0.0.1:3306/host = 127.0.0.1:3306/g'</span> /etc/grafana/grafana.ini</div><div class="line">sed -i <span class="string">'s/;name = grafana/name = grafana/g'</span> /etc/grafana/grafana.ini</div><div class="line">sed -i <span class="string">'s/;user = root/user = root/g'</span> /etc/grafana/grafana.ini</div><div class="line">sed -i <span class="string">'s/;password =/password =/g'</span> /etc/grafana/grafana.ini</div><div class="line"></div><div class="line">mysql -e <span class="string">"create database grafana;"</span></div></pre></td></tr></table></figure></p>
 <p>退出Docker容器，重启PMM Server<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker restart pmm-server</div></pre></td></tr></table></figure></p>
-<p>到官网下载安装最新版本PMM Client客户端，并开通各PMM Client到PMM Serevr 42000和42002端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y https://www.percona.com/downloads/pmm/1.4.1/binary/redhat/7/x86_64/pmm-client-1.4.1-1.x86_64.rpm</div></pre></td></tr></table></figure></p>
-<h2 id="PMM-Client-端搭建过程及监控注意事项"><a href="#PMM-Client-端搭建过程及监控注意事项" class="headerlink" title="PMM Client 端搭建过程及监控注意事项"></a>PMM Client 端搭建过程及监控注意事项</h2><p>到官网下载安装最新版本PMM Client客户端，并开通各PMM Client到PMM Serevr 42000和42002端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y https://www.percona.com/downloads/pmm/1.4.1/binary/redhat/7/x86_64/pmm-client-1.4.1-1.x86_64.rpm</div></pre></td></tr></table></figure></p>
+<h2 id="PMM-Client-端搭建过程及监控注意事项"><a href="#PMM-Client-端搭建过程及监控注意事项" class="headerlink" title="PMM Client 端搭建过程及监控注意事项"></a>PMM Client 端搭建过程及监控注意事项</h2><p>到官网下载安装最新版本PMM Client客户端以及pt-toolkit，并开通各PMM Client到PMM Serevr 42000和42002端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install -y https://www.percona.com/downloads/pmm/1.8.1/binary/redhat/7/x86_64/pmm-client-1.8.1-1.x86_64.rpm</div><div class="line">yum install -y https://www.percona.com/downloads/percona-toolkit/3.0.8/binary/redhat/7/x86_64/percona-toolkit-3.0.8-1.el7.x86_64.rpm</div></pre></td></tr></table></figure></p>
+<p>被监控的MySQL创建相关权限监控账号<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">'pmm_monitor'</span>@<span class="string">'192.168.1.3'</span> IDENTIFIED BY <span class="string">'pmmpawd'</span>;</div><div class="line">FLUSH PRIVILEGES;</div></pre></td></tr></table></figure></p>
+<p>配置服务端连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pmm-admin config --server 192.168.1.2:8082 --server-user pmm --server-password pmmpasswd --client-address 192.168.1.3 --client-name master_192.168.1.3</div></pre></td></tr></table></figure></p>
+<p>采集MySQL监控数据<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pmm-admin add mysql --query-source perfschema --user pmm_monitor --password pmmpawd --host 192.168.1.3--port 3306</div></pre></td></tr></table></figure></p>
+<p>检查PMM连接、监控（如果不能获取数据需要打开端口42002、42000）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pmm-admin add mysql --query-source perfschema --user pmm_monitor --password pmmpasswd --host 192.168.1.3--port 3306</div></pre></td></tr></table></figure></p>
+<h2 id="PMM-Client-端搭建过程及监控注意事项-1"><a href="#PMM-Client-端搭建过程及监控注意事项-1" class="headerlink" title="PMM Client 端搭建过程及监控注意事项"></a>PMM Client 端搭建过程及监控注意事项</h2><p>到官网下载安装最新版本PMM Client客户端，并开通各PMM Client到PMM Serevr 42000和42002端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y https://www.percona.com/downloads/pmm/1.4.1/binary/redhat/7/x86_64/pmm-client-1.4.1-1.x86_64.rpm</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -429,9 +433,9 @@
           
             <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
-            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
-          
             <a href="/tags/Percona/" rel="tag"># Percona</a>
+          
+            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
           
             <a href="/tags/数据库监控/" rel="tag"># 数据库监控</a>
           
@@ -455,6 +459,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/02/SQL/DB_SQL/" rel="prev" title="MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化">
+                MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -538,7 +546,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -602,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-架构组成及实现原理"><span class="nav-number">1.</span> <span class="nav-text">PMM 架构组成及实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-Server-端安装过程及注意事项"><span class="nav-number">2.</span> <span class="nav-text">PMM Server 端安装过程及注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Docker"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取-PMM-镜像安装Server端"><span class="nav-number">2.2.</span> <span class="nav-text">拉取 PMM 镜像安装Server端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-Client-端搭建过程及监控注意事项"><span class="nav-number">3.</span> <span class="nav-text">PMM Client 端搭建过程及监控注意事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-架构组成及实现原理"><span class="nav-number">1.</span> <span class="nav-text">PMM 架构组成及实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-Server-端安装过程及注意事项"><span class="nav-number">2.</span> <span class="nav-text">PMM Server 端安装过程及注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Docker"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取-PMM-镜像安装Server端"><span class="nav-number">2.2.</span> <span class="nav-text">拉取 PMM 镜像安装Server端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-Client-端搭建过程及监控注意事项"><span class="nav-number">3.</span> <span class="nav-text">PMM Client 端搭建过程及监控注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-Client-端搭建过程及监控注意事项-1"><span class="nav-number">4.</span> <span class="nav-text">PMM Client 端搭建过程及监控注意事项</span></a></li></ol></div>
             
 
           </div>

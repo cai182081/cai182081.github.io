@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="MySQL,数据库,MySQL 集群," />
+  <meta name="keywords" content="MySQL,SQL 优化," />
 
 
 
@@ -125,18 +125,18 @@
 
 
 
-<meta name="description" content="MySQL 索引实现B+ 树索引12">
-<meta name="keywords" content="MySQL,数据库,MySQL 集群">
+<meta name="description" content="MySQL 执行计划问题SQL及执行计划1234567891011121314151617181920SELECT COUNT(*) AS count  FROM user.user u INNER JOIN user.token t    ON u.id = t.user_id INNER JOIN order.user_history h    ON u.id = h.user_id INNE">
+<meta name="keywords" content="MySQL,SQL 优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL MHA 集群原理及搭建">
-<meta property="og:url" content="http://yoursite.com/2017/10/19/MySQL/MySQL_MHA/index.html">
+<meta property="og:title" content="MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化">
+<meta property="og:url" content="http://yoursite.com/2018/04/02/SQL/DB_SQL/index.html">
 <meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="MySQL 索引实现B+ 树索引12">
+<meta property="og:description" content="MySQL 执行计划问题SQL及执行计划1234567891011121314151617181920SELECT COUNT(*) AS count  FROM user.user u INNER JOIN user.token t    ON u.id = t.user_id INNER JOIN order.user_history h    ON u.id = h.user_id INNE">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T13:41:13.706Z">
+<meta property="og:updated_time" content="2017-11-11T14:55:24.910Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL MHA 集群原理及搭建">
-<meta name="twitter:description" content="MySQL 索引实现B+ 树索引12">
+<meta name="twitter:title" content="MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化">
+<meta name="twitter:description" content="MySQL 执行计划问题SQL及执行计划1234567891011121314151617181920SELECT COUNT(*) AS count  FROM user.user u INNER JOIN user.token t    ON u.id = t.user_id INNER JOIN order.user_history h    ON u.id = h.user_id INNE">
 
 
 
@@ -166,13 +166,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/19/MySQL/MySQL_MHA/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/02/SQL/DB_SQL/"/>
 
 
 
 
 
-  <title>MySQL MHA 集群原理及搭建 | Cailiang's Blog</title>
+  <title>MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化 | Cailiang's Blog</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/19/MySQL/MySQL_MHA/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/SQL/DB_SQL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cai182081">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL MHA 集群原理及搭建</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T21:37:37+08:00">
-                2017-10-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-02T23:55:23+08:00">
+                2018-04-02
               </time>
             
 
@@ -351,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
                   </a>
                 </span>
 
@@ -369,8 +369,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/19/MySQL/MySQL_MHA/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/10/19/MySQL/MySQL_MHA/" itemprop="commentsCount"></span>
+                <a href="/2018/04/02/SQL/DB_SQL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/02/SQL/DB_SQL/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -398,7 +398,9 @@
       
 
       
-        <h2 id="MySQL-索引实现"><a href="#MySQL-索引实现" class="headerlink" title="MySQL 索引实现"></a>MySQL 索引实现</h2><h3 id="B-树索引"><a href="#B-树索引" class="headerlink" title="B+ 树索引"></a>B+ 树索引</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+        <h2 id="MySQL-执行计划"><a href="#MySQL-执行计划" class="headerlink" title="MySQL 执行计划"></a>MySQL 执行计划</h2><p>问题SQL及执行计划<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(*) AS count</div><div class="line">  FROM user.user u</div><div class="line"> INNER JOIN user.token t</div><div class="line">    ON u.id = t.user_id</div><div class="line"> INNER JOIN order.user_history h</div><div class="line">    ON u.id = h.user_id</div><div class="line"> INNER JOIN order.loan_record r</div><div class="line">    ON r.history_id = h.id</div><div class="line"> INNER JOIN admin_domain.ACT_HI_PROCINST act</div><div class="line">    on act.BUSINESS_KEY_ = r.loan_record_id</div><div class="line"> WHERE r.approval_result != 0</div><div class="line">   AND u.id NOT IN (SELECT n3.id</div><div class="line">                      FROM order.loan_record n1</div><div class="line">                     INNER JOIN order.user_history n2</div><div class="line">                        on n1.history_id = n2.id</div><div class="line">                     INNER JOIN user.user n3</div><div class="line">                        ON n3.id = n2.user_id</div><div class="line">                     WHERE n1.approval_result = 31)</div><div class="line">   AND r.apply_time LIKE CONCAT(<span class="string">'2017-11-07'</span>, <span class="string">'%'</span>)</div><div class="line">   AND t.channel IN (<span class="string">'201707sudt'</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="SQL性能定位及分析"><a href="#SQL性能定位及分析" class="headerlink" title="SQL性能定位及分析"></a>SQL性能定位及分析</h2><p>看到此SQL 初步定到 r.apply_time LIKE CONCAT(‘2017-11-07’, ‘%’) 日期类型和字符串类型隐式转换，NOT IN子查询语句无法走索引，用NOT EXISTS改写，改写SQL优化后，得到执行计划：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(*) AS count</div><div class="line">  FROM user.user u</div><div class="line"> INNER JOIN user.token t</div><div class="line">    ON u.id = t.user_id</div><div class="line"> INNER JOIN order.user_history h</div><div class="line">    ON u.id = h.user_id</div><div class="line"> INNER JOIN order.loan_record r</div><div class="line">    ON r.history_id = h.id</div><div class="line"> INNER JOIN admin_domain.ACT_HI_PROCINST act</div><div class="line">    on act.BUSINESS_KEY_ = r.loan_record_id</div><div class="line"> WHERE r.approval_result != 0</div><div class="line">   AND NOT EXISTS (SELECT n3.id</div><div class="line">          FROM order.loan_record n1</div><div class="line">         INNER JOIN order.user_history n2</div><div class="line">            on n1.history_id = n2.id</div><div class="line">         INNER JOIN user.user n3</div><div class="line">            ON n3.id = n2.user_id</div><div class="line">         WHERE n1.approval_result = 31</div><div class="line">           AND u.id = n3.id)</div><div class="line">   AND r.apply_time &gt;= <span class="string">'2017-11-07 00:00:00'</span></div><div class="line">   AND r.apply_time &lt; <span class="string">'2017-11-08 00:00:00'</span></div><div class="line">   AND t.channel IN (<span class="string">' 201707sudt '</span>);</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(*) AS count</div><div class="line">  FROM user.user u</div><div class="line"> INNER JOIN user.token t</div><div class="line">    ON u.id = t.user_id</div><div class="line"> INNER JOIN order.user_history h</div><div class="line">    ON u.id = h.user_id</div><div class="line"> INNER JOIN (SELECT history_id, loan_record_id</div><div class="line">               FROM order.loan_record</div><div class="line">              WHERE approval_result != 0</div><div class="line">                AND apply_time &gt;= <span class="string">'2017-11-07 00:00:00'</span></div><div class="line">                AND apply_time &lt; <span class="string">'2017-11-08 00:00:00'</span>) r</div><div class="line">    ON r.history_id = h.id</div><div class="line"> INNER JOIN admin_domain.ACT_HI_PROCINST act</div><div class="line">    on act.BUSINESS_KEY_ = r.loan_record_id</div><div class="line"> WHERE NOT EXISTS (SELECT n3.id</div><div class="line">          FROM order.loan_record n1</div><div class="line">         INNER JOIN order.user_history n2</div><div class="line">            on n1.history_id = n2.id</div><div class="line">         INNER JOIN user.user n3</div><div class="line">            ON n3.id = n2.user_id</div><div class="line">         WHERE n1.approval_result = 31</div><div class="line">           AND u.id = n3.id)</div><div class="line">   AND t.channel IN (<span class="string">' 201707sudt '</span>);</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -418,9 +420,7 @@
           
             <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
-            <a href="/tags/数据库/" rel="tag"># 数据库</a>
-          
-            <a href="/tags/MySQL-集群/" rel="tag"># MySQL 集群</a>
+            <a href="/tags/SQL-优化/" rel="tag"># SQL 优化</a>
           
         </div>
       
@@ -433,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/15/MongoDB/MongDB_mongod.conf/" rel="next" title="MongoDB mongod.conf 参数文件配置详解">
-                <i class="fa fa-chevron-left"></i> MongoDB mongod.conf 参数文件配置详解
+              <a href="/2017/11/12/MySQL/MySQL_PMM/" rel="next" title="全面解析 MySQL、MongoDB 数据库监控工具 PMM">
+                <i class="fa fa-chevron-left"></i> 全面解析 MySQL、MongoDB 数据库监控工具 PMM
               </a>
             
           </div>
@@ -443,8 +443,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/19/MySQL/MySQL_Replication_delay/" rel="prev" title="MySQL 主从复制延时原理、诊断与解决方案">
-                MySQL 主从复制延时原理、诊断与解决方案 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/03/MySQL/MySQL_Backup/" rel="prev" title="MySQL mysqldump 和 innobackupex 物理备份脚本">
+                MySQL mysqldump 和 innobackupex 物理备份脚本 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -593,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-索引实现"><span class="nav-number">1.</span> <span class="nav-text">MySQL 索引实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-树索引"><span class="nav-number">1.1.</span> <span class="nav-text">B+ 树索引</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-执行计划"><span class="nav-number">1.</span> <span class="nav-text">MySQL 执行计划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL性能定位及分析"><span class="nav-number">2.</span> <span class="nav-text">SQL性能定位及分析</span></a></li></ol></div>
             
 
           </div>

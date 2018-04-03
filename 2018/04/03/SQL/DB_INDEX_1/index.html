@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SQL 优化," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cailiang's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
+<meta name="keywords" content="SQL 优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="索引设计原则及使用场景">
+<meta property="og:url" content="http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/index.html">
+<meta property="og:site_name" content="Cailiang&#39;s Blog">
+<meta property="og:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-03T15:00:21.371Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="索引设计原则及使用场景">
+<meta name="twitter:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/"/>
+
+
+
+
+
+  <title>索引设计原则及使用场景 | Cailiang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cailiang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">飞翔的菜鸟</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cai182081">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cailiang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">索引设计原则及使用场景</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T21:28:41+08:00">
+                2018-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/03/SQL/DB_INDEX_1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/03/SQL/DB_INDEX_1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询的速度。</p>
+<h2 id="索引优点与缺点"><a href="#索引优点与缺点" class="headerlink" title="索引优点与缺点"></a>索引优点与缺点</h2><p>使用索引的优点<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1、加速表和表之间的关接，特别是在实现数据的参考完整性方面特别有意义。</div><div class="line">2、可以大大加快数据的检索速度，这也是创建索引的最主要的原因。</div><div class="line">3、通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。</div><div class="line">4、在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。</div><div class="line">5、通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</div></pre></td></tr></table></figure></p>
+<p>索引存在的缺陷<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1、数据内容的变更（增、删、改）都需要修订索引，索引存在而外的维护成本</div><div class="line">2、创建、维护索引要耗费时间和系统资源，维护时间随着数据量的增加而增加。</div><div class="line">3、查找翻阅索引系统需要消耗时间，索引存在而外的访问成本</div><div class="line">4、索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。</div><div class="line">5、数据的备份和恢复时间，会因为过多的索引消耗系统更多的维护时间</div></pre></td></tr></table></figure></p>
+<h2 id="如何建立理想的索引"><a href="#如何建立理想的索引" class="headerlink" title="如何建立理想的索引"></a>如何建立理想的索引</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SQL查询频率</div><div class="line">过滤谓词选择性（cardinality/selectivity）</div><div class="line">索引长度</div><div class="line">覆盖字段</div><div class="line">索引排序</div></pre></td></tr></table></figure>
+<h2 id="索引设计和使用原则"><a href="#索引设计和使用原则" class="headerlink" title="索引设计和使用原则"></a>索引设计和使用原则</h2><p>在进行索引设计和索引优化时，请参考如下的索引使用原则：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1、通过创建唯一性索引，保证数据库表中数据的唯一性。</div><div class="line">2、对任何将要用于连接表的谓词连接列(on)创建索引</div><div class="line">3、对预计会频繁运行的SQL中WHERE子句引用的谓词过滤列创建索引</div><div class="line">4、对用于分组、分组等操作（进行group by或order by操作）的谓词分组、排序列创建索引</div><div class="line">5、过滤效果（选择性要高）要好（索引列的基数要大），不宜对status、sex等低基数列，使用单列索引检索数据，而尽可能与其他过滤条件建立复合索引，增加数据选择性</div><div class="line">6、对于那些在查询中很少使用或频繁更新的列，不宜使用索引</div><div class="line">7、字段顺序要佳，字段顺序对复合索引的效率有至关重要的作用，选择性高的的字段需要更靠前</div><div class="line">8、索引长度尽量小，对于定义为text，blob数据类型的大字段列不宜创建索引，而尽可能考虑前缀索引</div><div class="line">9、不宜过度索引，建立多个SQL能同时使用的高效复合索引，而不是多个索引</div></pre></td></tr></table></figure></p>
+<h2 id="索引失效场景"><a href="#索引失效场景" class="headerlink" title="索引失效场景"></a>索引失效场景</h2><p>以a,b 两列复合索引idx_a_b(a,b)为例说明</p>
+<h3 id="索引全失效场景"><a href="#索引全失效场景" class="headerlink" title="索引全失效场景"></a>索引全失效场景</h3><p>idx_a_b(a,b) 索引完全不被SQL使用</p>
+<p>####谓词列或关联谓词列使用了普通或函数运算<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">... <span class="built_in">where</span> date_formart(a,<span class="string">'%Y%m%d'</span>)=<span class="string">'...'</span>;</div><div class="line">... <span class="built_in">where</span> a + 2 = 10;</div></pre></td></tr></table></figure></p>
+<h4 id="谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）"><a href="#谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）" class="headerlink" title="谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）"></a>谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a、字符类型转换（int/varchar、varchar/datetime、varchar/varbinary等数据类型的转换）</div><div class="line">b、字符集转换（utf8与utf8mb4字符集等）</div><div class="line">c、同字符集排序规则不同（utf8_general_ci与utf8_bin等）</div></pre></td></tr></table></figure>
+<h4 id="谓词上使用了负向查询（not-not-in-not-like-lt-gt-gt-lt-）不会使用索引"><a href="#谓词上使用了负向查询（not-not-in-not-like-lt-gt-gt-lt-）不会使用索引" class="headerlink" title="谓词上使用了负向查询（not, not in, not like, &lt;&gt;, != , !&gt;, !&lt; ）不会使用索引"></a>谓词上使用了负向查询（not, not in, not like, &lt;&gt;, != , !&gt;, !&lt; ）不会使用索引</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">... <span class="built_in">where</span> a != ...;</div><div class="line">... <span class="built_in">where</span> a not <span class="keyword">in</span> (...);</div></pre></td></tr></table></figure>
+<h4 id="以-开头的like查询或者正则匹配的regexp模糊查询"><a href="#以-开头的like查询或者正则匹配的regexp模糊查询" class="headerlink" title="以%开头的like查询或者正则匹配的regexp模糊查询"></a>以%开头的like查询或者正则匹配的regexp模糊查询</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">... <span class="built_in">where</span> a like <span class="string">'%..'</span>;</div><div class="line">... <span class="built_in">where</span> a regexp <span class="string">'...'</span>;</div></pre></td></tr></table></figure>
+<h4 id="谓词上的索引列上对null运算（is-null-is-not-null）"><a href="#谓词上的索引列上对null运算（is-null-is-not-null）" class="headerlink" title="谓词上的索引列上对null运算（is null,is not null）"></a>谓词上的索引列上对null运算（is null,is not null）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">... <span class="built_in">where</span> a is null;</div><div class="line">... <span class="built_in">where</span> a is not null;</div></pre></td></tr></table></figure>
+<h4 id="子查询使用了not-in导致关联谓词列索引失效"><a href="#子查询使用了not-in导致关联谓词列索引失效" class="headerlink" title="子查询使用了not in导致关联谓词列索引失效"></a>子查询使用了not in导致关联谓词列索引失效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">... <span class="built_in">where</span> a.id not <span class="keyword">in</span> (select b.id from b);</div></pre></td></tr></table></figure>
+<h4 id="高水位、表空间碎片过多、统计信息错误及优化器缺陷，导致索引不可用或低效"><a href="#高水位、表空间碎片过多、统计信息错误及优化器缺陷，导致索引不可用或低效" class="headerlink" title="高水位、表空间碎片过多、统计信息错误及优化器缺陷，导致索引不可用或低效"></a>高水位、表空间碎片过多、统计信息错误及优化器缺陷，导致索引不可用或低效</h4><h4 id="低基数的查询过滤列（基于CBO的优化器）数据检索"><a href="#低基数的查询过滤列（基于CBO的优化器）数据检索" class="headerlink" title="低基数的查询过滤列（基于CBO的优化器）数据检索"></a>低基数的查询过滤列（基于CBO的优化器）数据检索</h4><h3 id="索引部分失效场景"><a href="#索引部分失效场景" class="headerlink" title="索引部分失效场景"></a>索引部分失效场景</h3><p>复合索引idx_a_b b字段索引失效的情况</p>
+<h4 id="复合索引中，以（-gt-、-lt-、-lt-）的范围查询导致索引低效（不含in-、between-and-、-gt-lt-、-gt-lt-）"><a href="#复合索引中，以（-gt-、-lt-、-lt-）的范围查询导致索引低效（不含in-、between-and-、-gt-lt-、-gt-lt-）" class="headerlink" title="复合索引中，以（&gt; 、&lt;、&lt;=）的范围查询导致索引低效（不含in 、between and 、&gt;= &lt;= 、&gt;= &lt;）"></a>复合索引中，以（&gt; 、&lt;、&lt;=）的范围查询导致索引低效（不含in 、between and 、&gt;= &lt;= 、&gt;= &lt;）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">... <span class="built_in">where</span> a &gt; ... and b &gt;= ...;</div><div class="line">... <span class="built_in">where</span> a &lt;= ... and b &gt;= ...;</div></pre></td></tr></table></figure>
+<h4 id="复合索引中，范围检索导致之后的分组、排序-group-by-order-by-列索引失效"><a href="#复合索引中，范围检索导致之后的分组、排序-group-by-order-by-列索引失效" class="headerlink" title="复合索引中，范围检索导致之后的分组、排序 group by/order by 列索引失效"></a>复合索引中，范围检索导致之后的分组、排序 group by/order by 列索引失效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">... <span class="built_in">where</span> a &gt;= ... group by b;</div><div class="line">... <span class="built_in">where</span> a &gt;= ... order by b;</div></pre></td></tr></table></figure>
+<h4 id="在非连续的索引键部分上做-group-by-order-by-分组或排序，无法利用索引来实现group-by-order-by的优化"><a href="#在非连续的索引键部分上做-group-by-order-by-分组或排序，无法利用索引来实现group-by-order-by的优化" class="headerlink" title="在非连续的索引键部分上做 group by/order by 分组或排序，无法利用索引来实现group by/order by的优化"></a>在非连续的索引键部分上做 group by/order by 分组或排序，无法利用索引来实现group by/order by的优化</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">... <span class="built_in">where</span> a <span class="keyword">in</span> (...) group by b;</div><div class="line">... <span class="built_in">where</span> a <span class="keyword">in</span> (...) order by b;</div></pre></td></tr></table></figure>
+<h4 id="如果在-where-和-order-by-的栏位上应用表达式-函数-时，则无法利用索引来实现group-by-order-by的优化"><a href="#如果在-where-和-order-by-的栏位上应用表达式-函数-时，则无法利用索引来实现group-by-order-by的优化" class="headerlink" title="如果在 where 和 order by 的栏位上应用表达式(函数)时，则无法利用索引来实现group by/order by的优化"></a>如果在 where 和 order by 的栏位上应用表达式(函数)时，则无法利用索引来实现group by/order by的优化</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">... <span class="built_in">where</span> a <span class="keyword">in</span> (...) group by date_format(b,<span class="string">'%Y%m%d'</span>);</div></pre></td></tr></table></figure>
+<h4 id="分组后，对不同字段排序，导致排序字段索引不可用"><a href="#分组后，对不同字段排序，导致排序字段索引不可用" class="headerlink" title="分组后，对不同字段排序，导致排序字段索引不可用"></a>分组后，对不同字段排序，导致排序字段索引不可用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">... group by a order by b;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SQL-优化/" rel="tag"># SQL 优化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/03/MySQL/MySQL_Backup/" rel="next" title="MySQL mysqldump 和 innobackupex 物理备份脚本">
+                <i class="fa fa-chevron-left"></i> MySQL mysqldump 和 innobackupex 物理备份脚本
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+  
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">cai182081</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#索引优点与缺点"><span class="nav-number">1.</span> <span class="nav-text">索引优点与缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何建立理想的索引"><span class="nav-number">2.</span> <span class="nav-text">如何建立理想的索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引设计和使用原则"><span class="nav-number">3.</span> <span class="nav-text">索引设计和使用原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引失效场景"><span class="nav-number">4.</span> <span class="nav-text">索引失效场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引全失效场景"><span class="nav-number">4.1.</span> <span class="nav-text">索引全失效场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）"><span class="nav-number">4.1.1.</span> <span class="nav-text">谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#谓词上使用了负向查询（not-not-in-not-like-lt-gt-gt-lt-）不会使用索引"><span class="nav-number">4.1.2.</span> <span class="nav-text">谓词上使用了负向查询（not, not in, not like, <>, != , !>, !< ）不会使用索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以-开头的like查询或者正则匹配的regexp模糊查询"><span class="nav-number">4.1.3.</span> <span class="nav-text">以%开头的like查询或者正则匹配的regexp模糊查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#谓词上的索引列上对null运算（is-null-is-not-null）"><span class="nav-number">4.1.4.</span> <span class="nav-text">谓词上的索引列上对null运算（is null,is not null）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子查询使用了not-in导致关联谓词列索引失效"><span class="nav-number">4.1.5.</span> <span class="nav-text">子查询使用了not in导致关联谓词列索引失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高水位、表空间碎片过多、统计信息错误及优化器缺陷，导致索引不可用或低效"><span class="nav-number">4.1.6.</span> <span class="nav-text">高水位、表空间碎片过多、统计信息错误及优化器缺陷，导致索引不可用或低效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#低基数的查询过滤列（基于CBO的优化器）数据检索"><span class="nav-number">4.1.7.</span> <span class="nav-text">低基数的查询过滤列（基于CBO的优化器）数据检索</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引部分失效场景"><span class="nav-number">4.2.</span> <span class="nav-text">索引部分失效场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复合索引中，以（-gt-、-lt-、-lt-）的范围查询导致索引低效（不含in-、between-and-、-gt-lt-、-gt-lt-）"><span class="nav-number">4.2.1.</span> <span class="nav-text">复合索引中，以（> 、<、<=）的范围查询导致索引低效（不含in 、between and 、>= <= 、>= <）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复合索引中，范围检索导致之后的分组、排序-group-by-order-by-列索引失效"><span class="nav-number">4.2.2.</span> <span class="nav-text">复合索引中，范围检索导致之后的分组、排序 group by/order by 列索引失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在非连续的索引键部分上做-group-by-order-by-分组或排序，无法利用索引来实现group-by-order-by的优化"><span class="nav-number">4.2.3.</span> <span class="nav-text">在非连续的索引键部分上做 group by/order by 分组或排序，无法利用索引来实现group by/order by的优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果在-where-和-order-by-的栏位上应用表达式-函数-时，则无法利用索引来实现group-by-order-by的优化"><span class="nav-number">4.2.4.</span> <span class="nav-text">如果在 where 和 order by 的栏位上应用表达式(函数)时，则无法利用索引来实现group by/order by的优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组后，对不同字段排序，导致排序字段索引不可用"><span class="nav-number">4.2.5.</span> <span class="nav-text">分组后，对不同字段排序，导致排序字段索引不可用</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cai182081</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: document.location.href, 
+            owner: 'cai182081',
+            repo: 'cai182081.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '843030b4a3d8746e2debd7448a168be4115e713d',
+            
+                client_id: 'd7af101417fa775e9a0d'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
