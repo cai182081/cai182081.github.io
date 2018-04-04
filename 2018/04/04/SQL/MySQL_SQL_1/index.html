@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MySQL,数据库优化," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cailiang's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="线上MySQL为5.1版本，频繁引发了update语句与select语句的死锁，死锁引发的原因，暂且不论，主要来分析如何优化SQL减轻死锁的发生概率。SQL执行时间13s,SQL文本如下：12345678910111213141516171819202122232425262728293031323334353637SELECT ....  FROM weituoanjian WA  LEFT J">
+<meta name="keywords" content="MySQL,数据库优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思">
+<meta property="og:url" content="http://yoursite.com/2018/04/04/SQL/MySQL_SQL_1/index.html">
+<meta property="og:site_name" content="Cailiang&#39;s Blog">
+<meta property="og:description" content="线上MySQL为5.1版本，频繁引发了update语句与select语句的死锁，死锁引发的原因，暂且不论，主要来分析如何优化SQL减轻死锁的发生概率。SQL执行时间13s,SQL文本如下：12345678910111213141516171819202122232425262728293031323334353637SELECT ....  FROM weituoanjian WA  LEFT J">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/SQL/MySQL_SQL_3_1.png">
+<meta property="og:image" content="http://yoursite.com/images/SQL/MySQL_SQL_3_2.png">
+<meta property="og:image" content="http://yoursite.com/images/SQL/MySQL_SQL_3_3.png">
+<meta property="og:image" content="http://yoursite.com/images/SQL/MySQL_SQL_3_4.png">
+<meta property="og:image" content="http://yoursite.com/images/SQL/MySQL_SQL_3_5.png">
+<meta property="og:updated_time" content="2018-04-04T15:13:02.432Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思">
+<meta name="twitter:description" content="线上MySQL为5.1版本，频繁引发了update语句与select语句的死锁，死锁引发的原因，暂且不论，主要来分析如何优化SQL减轻死锁的发生概率。SQL执行时间13s,SQL文本如下：12345678910111213141516171819202122232425262728293031323334353637SELECT ....  FROM weituoanjian WA  LEFT J">
+<meta name="twitter:image" content="http://yoursite.com/images/SQL/MySQL_SQL_3_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/04/SQL/MySQL_SQL_1/"/>
+
+
+
+
+
+  <title>由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思 | Cailiang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cailiang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">飞翔的菜鸟</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/04/SQL/MySQL_SQL_1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cai182081">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cailiang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T22:26:55+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/04/SQL/MySQL_SQL_1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/04/SQL/MySQL_SQL_1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/images/SQL/MySQL_SQL_3_1.png" alt="MySQL 死锁"><br>线上MySQL为5.1版本，频繁引发了update语句与select语句的死锁，死锁引发的原因，暂且不论，主要来分析如何优化SQL减轻死锁的发生概率。SQL执行时间13s,SQL文本如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">SELECT ....</div><div class="line">  FROM weituoanjian WA</div><div class="line">  LEFT JOIN phoneinfo p</div><div class="line">    ON wa.daoruId = p.drId</div><div class="line">   AND wa.subId = p.subId</div><div class="line">  LEFT JOIN employee e</div><div class="line">    ON employeeId = beifenpeizhe</div><div class="line">  LEFT JOIN mst_tuianleibie</div><div class="line">    ON WA.TuiAnCode = mst_tuianleibie.TuiAnCode</div><div class="line">  LEFT JOIN kehutel</div><div class="line">    ON WA.keHuCode = kehutel.keHuId</div><div class="line">  LEFT JOIN mst_anjianstatus</div><div class="line">    ON WA.AnJianStatusCode = mst_anjianstatus.AnJianStatusCode</div><div class="line">  LEFT OUTER JOIN mst_anjianstatus2</div><div class="line">    ON WA.taCode = mst_anjianstatus2.TAStatusCode</div><div class="line">  LEFT JOIN anjianpici</div><div class="line">    ON anjianpicicode = wa.pcCode</div><div class="line"> WHERE IFNULL(historyFlag, 0) &lt;&gt; 1</div><div class="line">   AND (REPLACE(ChiKaRenXingMing, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        ckrpinyin LIKE <span class="string">'%13335192949%'</span> OR ckrszm LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        ZhengJianHaoMa LIKE <span class="string">'%13335192949%'</span> OR KaHao LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        ZhangHao LIKE <span class="string">'%13335192949%'</span> OR email3 LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        email2 LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        REPLACE(bqContent, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        REPLACE(BeiZhu1, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        REPLACE(BeiZhu2, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        REPLACE(DanWeiMingCheng, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        pNo LIKE <span class="string">'%13335192949%'</span> OR pName LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        (wa.daoruId, wa.subId) IN</div><div class="line">        (SELECT DISTINCT drId, subId</div><div class="line">           FROM bgbinfo</div><div class="line">          WHERE bgInfo LIKE <span class="string">'%13335192949%'</span>) OR</div><div class="line">        ZhengJianHaoMa IN</div><div class="line">        (SELECT DISTINCT ShenFenZhengID</div><div class="line">           FROM inputlog</div><div class="line">          WHERE REPLACE(inputText, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span>))</div><div class="line"> ORDER BY ZhengJianHaoMa, daoruId, subId LIMIT 0, 40;</div></pre></td></tr></table></figure></p>
+<p>一眼看来，此SQL并没有很好的过滤条件字段，无法通过where 谓词的索引来优化此SQL，只希望表连接还有优化的余地，来解决这次死锁的故障问题，查看SQL执行计划如下，表之间的关联都用上了索引，也无法提升，看来在无法通过索引优化来解决问题。执行计划如下：<br><img src="/images/SQL/MySQL_SQL_3_2.png" alt="MySQL 执行计划"></p>
+<p>对SQL分解拆分分析，第一步：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">... WHERE IFNULL(historyFlag, 0) &lt;&gt; 1</div><div class="line">   AND (REPLACE(ChiKaRenXingMing, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        ckrpinyin LIKE <span class="string">'%13335192949%'</span> OR ckrszm LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        ZhengJianHaoMa LIKE <span class="string">'%13335192949%'</span> OR KaHao LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        ZhangHao LIKE <span class="string">'%13335192949%'</span> OR email3 LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        email2 LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        REPLACE(bqContent, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        REPLACE(BeiZhu1, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        REPLACE(BeiZhu2, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        REPLACE(DanWeiMingCheng, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">        pNo LIKE <span class="string">'%13335192949%'</span> OR pName LIKE <span class="string">'%13335192949%'</span>)</div></pre></td></tr></table></figure></p>
+<p>执行这一段，发现SQL在0.5s之内就能返回结果，执行计划也无明显的可优化点，并且在不改动业务实现的情况下，继续优化的代价太高，所以不在继续深入优化。</p>
+<p>第二步：分析子查询对于SQL执行计划的影响，并改写<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">... (wa.daoruId, wa.subId) IN</div><div class="line">        (SELECT DISTINCT drId, subId</div><div class="line">           FROM bgbinfo</div><div class="line">          WHERE bgInfo LIKE <span class="string">'%13335192949%'</span>) ...</div><div class="line"></div><div class="line">... ZhengJianHaoMa IN</div><div class="line">        (SELECT DISTINCT ShenFenZhengID</div><div class="line">           FROM inputlog</div><div class="line">          WHERE REPLACE(inputText, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span>) ...</div></pre></td></tr></table></figure></p>
+<p>改写为内连接查询<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">...  INNER JOIN (SELECT drId, subId</div><div class="line">                      FROM bgbinfo</div><div class="line">                     WHERE bgInfo LIKE <span class="string">'%13335192949%'</span></div><div class="line">                     GROUP BY drId, subId) m</div><div class="line">            ON m.drId = wa.daoruId</div><div class="line">           AND m.subId = wa.subId ...</div><div class="line"></div><div class="line">... INNER JOIN (SELECT ShenFenZhengID</div><div class="line">                      FROM inputlog</div><div class="line">                     WHERE REPLACE(inputText, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span></div><div class="line">                     GROUP BY ShenFenZhengID) n</div><div class="line">            ON wa.ZhengJianHaoMa = n.ShenFenZhengID ...</div></pre></td></tr></table></figure></p>
+<p>第一段0.6s，第二段6s，执行计划分别如下：<br><img src="/images/SQL/MySQL_SQL_3_3.png" alt="MySQL 执行计划"><br><img src="/images/SQL/MySQL_SQL_3_4.png" alt="MySQL 执行计划"><br>对wa表ZhengJianHaoMa字段加索引后，第二段更新执行计划如下：<br><img src="/images/SQL/MySQL_SQL_3_5.png" alt="MySQL 执行计划"></p>
+<p>整句SQL改写和索引优化基本完成，SQL执行时间由原来的13s提升到7s，执行时间明显减短；剩下的性能瓶颈主要是来inputlog整张表ShenFenZhengID的去重，表数据量150W。SQL无法优化再优化下去，只能通过改变业务的实现方式来优化，由于表inputText是不更新的，所以通过凌晨定时任务来优化对整个表的数据统计。再和当天的数据做合并，这样就大大减轻了频繁调用此SQL全表扫描排序对服务器负载、执行时间和加锁时间，同时也解决了随着数据量的增加对系统的负载影响，后端程序代码也不需做大改动。<br>定时任务统计当天之前的数据，并写入表中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">INERT INTO bgbinfo_day </div><div class="line">SELECT drId, subId</div><div class="line">  FROM bgbinfo</div><div class="line"> WHERE REPLACE(inputText, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span></div><div class="line">   AND InputDate &lt; DATE_FORMAT(CURRENT_DATE, <span class="string">'%Y-%m-%d 00:00:00'</span>)</div><div class="line"> GROUP BY drId, subId;</div><div class="line"></div><div class="line">INERT INTO inputlog_day </div><div class="line">SELECT ShenFenZhengID</div><div class="line">  FROM inputlog</div><div class="line"> WHERE bgInfo LIKE <span class="string">'%13335192949%'</span></div><div class="line">   AND InputDate &lt; DATE_FORMAT(CURRENT_DATE, <span class="string">'%Y-%m-%d 00:00:00'</span>)</div><div class="line"> GROUP BY ShenFenZhengID;</div></pre></td></tr></table></figure></p>
+<p>线上并发调用时再将统计数结果与当天的数据合并<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">SELECT drId, subId from bgbinfo_day</div><div class="line">UNION</div><div class="line">SELECT drId, subId</div><div class="line">  FROM bgbinfo</div><div class="line"> WHERE REPLACE(inputText, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span></div><div class="line">   AND InputDate &gt;= DATE_FORMAT(CURRENT_DATE, <span class="string">'%Y-%m-%d 00:00:00'</span>)</div><div class="line"> GROUP BY drId, subId;</div><div class="line"></div><div class="line">SELECT ShenFenZhengID from inputlog_day</div><div class="line">UNION</div><div class="line">SELECT ShenFenZhengID</div><div class="line">  FROM inputlog</div><div class="line"> WHERE REPLACE(inputText, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span></div><div class="line">   AND InputDate &gt;= DATE_FORMAT(CURRENT_DATE, <span class="string">'%Y-%m-%d 00:00:00'</span>)</div><div class="line"> GROUP BY ShenFenZhengID;</div></pre></td></tr></table></figure></p>
+<p>最终改写后的SQL为0.8s，性能提升18倍，死锁的问题得意解决，改写也不业务的实现影响，只是在数据库里增加了两个临时表。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">SELECT *</div><div class="line">  FROM (SELECT ...</div><div class="line">          FROM weituoanjian WA</div><div class="line">          LEFT JOIN phoneinfo p</div><div class="line">            ON wa.daoruId = p.drId</div><div class="line">           AND wa.subId = p.subId</div><div class="line">          LEFT JOIN employee e</div><div class="line">            ON employeeId = beifenpeizhe</div><div class="line">          LEFT JOIN mst_tuianleibie</div><div class="line">            ON WA.TuiAnCode = mst_tuianleibie.TuiAnCode</div><div class="line">          LEFT JOIN kehutel</div><div class="line">            ON WA.keHuCode = kehutel.keHuId</div><div class="line">          LEFT JOIN mst_anjianstatus</div><div class="line">            ON WA.AnJianStatusCode = mst_anjianstatus.AnJianStatusCode</div><div class="line">          LEFT OUTER JOIN mst_anjianstatus2</div><div class="line">            ON WA.taCode = mst_anjianstatus2.TAStatusCode</div><div class="line">          LEFT JOIN anjianpici</div><div class="line">            ON anjianpicicode = wa.pcCode</div><div class="line">         WHERE (historyFlag &gt; 1 or historyFlag &lt; 1 or historyFlag is null)</div><div class="line">           AND (REPLACE(ChiKaRenXingMing, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">               ckrpinyin LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">               ckrszm LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">               ZhengJianHaoMa LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">               KaHao LIKE <span class="string">'%13335192949%'</span> OR ZhangHao LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">               email3 LIKE <span class="string">'%13335192949%'</span> OR email2 LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">               REPLACE(bqContent, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">               REPLACE(BeiZhu1, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">               REPLACE(BeiZhu2, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">               REPLACE(DanWeiMingCheng, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span> OR</div><div class="line">               pNo LIKE <span class="string">'%13335192949%'</span> OR pName LIKE <span class="string">'%13335192949%'</span>)</div><div class="line">        UNION</div><div class="line">        SELECT ...</div><div class="line">          FROM weituoanjian WA</div><div class="line">          LEFT JOIN phoneinfo p</div><div class="line">            ON wa.daoruId = p.drId</div><div class="line">           AND wa.subId = p.subId</div><div class="line">          LEFT JOIN employee e</div><div class="line">            ON employeeId = beifenpeizhe</div><div class="line">          LEFT JOIN mst_tuianleibie</div><div class="line">            ON WA.TuiAnCode = mst_tuianleibie.TuiAnCode</div><div class="line">          LEFT JOIN kehutel</div><div class="line">            ON WA.keHuCode = kehutel.keHuId</div><div class="line">          LEFT JOIN mst_anjianstatus</div><div class="line">            ON WA.AnJianStatusCode = mst_anjianstatus.AnJianStatusCode</div><div class="line">          LEFT OUTER JOIN mst_anjianstatus2</div><div class="line">            ON WA.taCode = mst_anjianstatus2.TAStatusCode</div><div class="line">          LEFT JOIN anjianpici</div><div class="line">            ON anjianpicicode = wa.pcCode</div><div class="line">         INNER JOIN (SELECT drId, subId</div><div class="line">                      from bgbinfo_day</div><div class="line">                    UNION</div><div class="line">                    SELECT drId, subId</div><div class="line">                      FROM bgbinfo</div><div class="line">                     WHERE REPLACE(inputText, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span></div><div class="line">                       AND InputDate &gt;=</div><div class="line">                           DATE_FORMAT(CURRENT_DATE, <span class="string">'%Y-%m-%d 00:00:00'</span>)</div><div class="line">                     GROUP BY drId, subId) m</div><div class="line">            ON m.drId = wa.daoruId</div><div class="line">           AND m.subId = wa.subId</div><div class="line">         WHERE (historyFlag &gt; 1 or historyFlag &lt; 1 or historyFlag is null)</div><div class="line">        UNION</div><div class="line">        SELECT ...</div><div class="line">          FROM weituoanjian WA</div><div class="line">          LEFT JOIN phoneinfo p</div><div class="line">            ON wa.daoruId = p.drId</div><div class="line">           AND wa.subId = p.subId</div><div class="line">          LEFT JOIN employee e</div><div class="line">            ON employeeId = beifenpeizhe</div><div class="line">          LEFT JOIN mst_tuianleibie</div><div class="line">            ON WA.TuiAnCode = mst_tuianleibie.TuiAnCode</div><div class="line">          LEFT JOIN kehutel</div><div class="line">            ON WA.keHuCode = kehutel.keHuId</div><div class="line">          LEFT JOIN mst_anjianstatus</div><div class="line">            ON WA.AnJianStatusCode = mst_anjianstatus.AnJianStatusCode</div><div class="line">          LEFT OUTER JOIN mst_anjianstatus2</div><div class="line">            ON WA.taCode = mst_anjianstatus2.TAStatusCode</div><div class="line">          LEFT JOIN anjianpici</div><div class="line">            ON anjianpicicode = wa.pcCode</div><div class="line">         INNER JOIN (SELECT ShenFenZhengID</div><div class="line">                      from inputlog_day</div><div class="line">                    UNION</div><div class="line">                    SELECT ShenFenZhengID</div><div class="line">                      FROM inputlog</div><div class="line">                     WHERE REPLACE(inputText, <span class="string">' '</span>, <span class="string">''</span>) LIKE <span class="string">'%13335192949%'</span></div><div class="line">                       AND InputDate &gt;=</div><div class="line">                           DATE_FORMAT(CURRENT_DATE, <span class="string">'%Y-%m-%d 00:00:00'</span>)</div><div class="line">                     GROUP BY ShenFenZhengID) n</div><div class="line">            ON wa.ZhengJianHaoMa = n.ShenFenZhengID</div><div class="line">         WHERE (historyFlag &gt; 1 or historyFlag &lt; 1 or historyFlag is null)) t</div><div class="line"> ORDER BY t.ZhengJianHaoMa, t.daoruId, t.subId LIMIT 0, 40;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/数据库优化/" rel="tag"># 数据库优化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/03/SQL/DB_INDEX_1/" rel="next" title="索引设计原则及使用场景">
+                <i class="fa fa-chevron-left"></i> 索引设计原则及使用场景
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/04/SQL/MySQL_SQL_2/" rel="prev" title="MySQL 常用SQL诊断脚本">
+                MySQL 常用SQL诊断脚本 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+  
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">cai182081</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cai182081</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: document.location.href, 
+            owner: 'cai182081',
+            repo: 'cai182081.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '843030b4a3d8746e2debd7448a168be4115e713d',
+            
+                client_id: 'd7af101417fa775e9a0d'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

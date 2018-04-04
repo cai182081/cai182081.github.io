@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/04/04/SQL/MySQL_SQL_1/</loc>
+    
+    <lastmod>2018-04-04T15:13:02.432Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_%20architecture/</loc>
+    
+    <lastmod>2018-04-04T14:31:18.237Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/04/SQL/MySQL_SQL_2/</loc>
+    
+    <lastmod>2018-04-04T02:02:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</loc>
     
-    <lastmod>2018-04-03T15:00:21.371Z</lastmod>
+    <lastmod>2018-04-03T18:31:41.490Z</lastmod>
     
   </url>
   
@@ -82,13 +103,6 @@
     <loc>http://yoursite.com/2017/10/14/MySQL/MySQL_index/</loc>
     
     <lastmod>2017-10-15T01:25:31.237Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_%20architecture/</loc>
-    
-    <lastmod>2017-10-14T04:35:01.344Z</lastmod>
     
   </url>
   

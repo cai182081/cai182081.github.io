@@ -4,8 +4,76 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/04/04/SQL/MySQL_SQL_1/</loc>
+    <lastmod>2018-04-04T15:13:02.432Z</lastmod>
+    <data>
+        <display>
+        <title>由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思</title>
+        <pubTime>2018-04-04T14:26:55.089Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>数据库优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_%20architecture/</loc>
+    <lastmod>2018-04-04T14:31:18.237Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 体系结构详解</title>
+        <pubTime>2017-10-13T02:12:35.552Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/04/SQL/MySQL_SQL_2/</loc>
+    <lastmod>2018-04-04T02:02:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 常用SQL诊断脚本</title>
+        <pubTime>2018-04-04T15:15:11.791Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
+         
+        <tag>数据库优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</loc>
-    <lastmod>2018-04-03T15:00:21.371Z</lastmod>
+    <lastmod>2018-04-03T18:31:41.490Z</lastmod>
     <data>
         <display>
         <title>索引设计原则及使用场景</title>
@@ -31,11 +99,11 @@
         <title>全面解析 MySQL、MongoDB 数据库监控工具 PMM</title>
         <pubTime>2017-11-11T19:19:32.344Z</pubTime>
         
+        <tag>MongoDB</tag>
+         
         <tag>MySQL</tag>
          
         <tag>Percona</tag>
-         
-        <tag>MongoDB</tag>
          
         <tag>数据库监控</tag>
          
@@ -79,9 +147,9 @@
         <title>MySQL my.conf参数文件配置详解</title>
         <pubTime>2017-10-15T02:18:17.846Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
          
          
            
@@ -167,9 +235,9 @@
         <title>MySQL 执行计划详细解读</title>
         <pubTime>2017-10-13T01:06:56.886Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
          
         <tag>数据库优化</tag>
          
@@ -213,9 +281,9 @@
         <title>MySQL MHA 集群原理及搭建</title>
         <pubTime>2017-10-19T13:37:37.596Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
          
         <tag>MySQL 集群</tag>
          
@@ -237,9 +305,9 @@
         <title>MongoDB mongod.conf 参数文件配置详解</title>
         <pubTime>2017-10-15T02:29:15.769Z</pubTime>
         
-        <tag>数据库</tag>
-         
         <tag>MongoDB</tag>
+         
+        <tag>数据库</tag>
          
          
            
@@ -259,33 +327,11 @@
         <title>MySQL 索引原理详解</title>
         <pubTime>2017-10-14T03:58:28.055Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
          
         <tag>数据库优化</tag>
-         
-         
-           
-             
-              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_%20architecture/</loc>
-    <lastmod>2017-10-14T04:35:01.344Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL 体系结构详解</title>
-        <pubTime>2017-10-13T02:12:35.552Z</pubTime>
-        
-        <tag>MySQL</tag>
-         
-        <tag>数据库</tag>
          
          
            
@@ -305,9 +351,9 @@
         <title>MySQL 数据库开发与设计规范</title>
         <pubTime>2017-10-12T12:52:02.436Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
          
         <tag>数据库优化</tag>
          

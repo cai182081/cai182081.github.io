@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="MySQL,数据库," />
+  <meta name="keywords" content="数据库,MySQL," />
 
 
 
@@ -126,19 +126,19 @@
 
 
 <meta name="description" content="MySQL 体系结构概述MySQL 由数据库和数据库实例组成，是单进程多线程架构。数据库实例：由数据库后台进程/线程以及一个共享内存区组成，共享内存可以被运行的后台进程/线程所共享。数据库：物理操作系统文件或者其它文件的集合，在 MySQL 中，数据库文件可以是frm、myd、myi、ibd等结尾的文件，当使用ndb存储引擎时候，不是os文件，是存放于内存中的文件。 MySQL 体系结构组成 Co">
-<meta name="keywords" content="MySQL,数据库">
+<meta name="keywords" content="数据库,MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 体系结构详解">
 <meta property="og:url" content="http://yoursite.com/2017/10/13/MySQL/MySQL_ architecture/index.html">
 <meta property="og:site_name" content="Cailiang&#39;s Blog">
 <meta property="og:description" content="MySQL 体系结构概述MySQL 由数据库和数据库实例组成，是单进程多线程架构。数据库实例：由数据库后台进程/线程以及一个共享内存区组成，共享内存可以被运行的后台进程/线程所共享。数据库：物理操作系统文件或者其它文件的集合，在 MySQL 中，数据库文件可以是frm、myd、myi、ibd等结尾的文件，当使用ndb存储引擎时候，不是os文件，是存放于内存中的文件。 MySQL 体系结构组成 Co">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/MySQL_%20architecture.png">
-<meta property="og:updated_time" content="2017-10-14T04:35:01.344Z">
+<meta property="og:image" content="http://yoursite.com/images/MySQL/MySQL_%20architecture.png">
+<meta property="og:updated_time" content="2018-04-04T14:31:18.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 体系结构详解">
 <meta name="twitter:description" content="MySQL 体系结构概述MySQL 由数据库和数据库实例组成，是单进程多线程架构。数据库实例：由数据库后台进程/线程以及一个共享内存区组成，共享内存可以被运行的后台进程/线程所共享。数据库：物理操作系统文件或者其它文件的集合，在 MySQL 中，数据库文件可以是frm、myd、myi、ibd等结尾的文件，当使用ndb存储引擎时候，不是os文件，是存放于内存中的文件。 MySQL 体系结构组成 Co">
-<meta name="twitter:image" content="http://yoursite.com/images/MySQL_%20architecture.png">
+<meta name="twitter:image" content="http://yoursite.com/images/MySQL/MySQL_%20architecture.png">
 
 
 
@@ -401,7 +401,7 @@
 
       
         <h2 id="MySQL-体系结构概述"><a href="#MySQL-体系结构概述" class="headerlink" title="MySQL 体系结构概述"></a>MySQL 体系结构概述</h2><p>MySQL 由数据库和数据库实例组成，是单进程多线程架构。<br>数据库实例：由数据库后台进程/线程以及一个共享内存区组成，共享内存可以被运行的后台进程/线程所共享。<br>数据库：物理操作系统文件或者其它文件的集合，在 MySQL 中，数据库文件可以是frm、myd、myi、ibd等结尾的文件，当使用ndb存储引擎时候，不是os文件，是存放于内存中的文件。</p>
-<h2 id="MySQL-体系结构组成"><a href="#MySQL-体系结构组成" class="headerlink" title="MySQL 体系结构组成"></a>MySQL 体系结构组成</h2><p><img src="/images/MySQL_ architecture.png" alt="MySQL 体系结构图"></p>
+<h2 id="MySQL-体系结构组成"><a href="#MySQL-体系结构组成" class="headerlink" title="MySQL 体系结构组成"></a>MySQL 体系结构组成</h2><p><img src="/images/MySQL/MySQL_ architecture.png" alt="MySQL 体系结构图"></p>
 <h3 id="Connectors：外部语言与SQL交互的入口"><a href="#Connectors：外部语言与SQL交互的入口" class="headerlink" title="Connectors：外部语言与SQL交互的入口"></a>Connectors：外部语言与SQL交互的入口</h3><h3 id="Management-Serveices-amp-Utilities：系统管理和控制工具"><a href="#Management-Serveices-amp-Utilities：系统管理和控制工具" class="headerlink" title="Management Serveices &amp; Utilities：系统管理和控制工具"></a>Management Serveices &amp; Utilities：系统管理和控制工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">日常的 MySQL 管理工具。包括备份恢复、MySQL复制、集群等。</div></pre></td></tr></table></figure>
 <h3 id="Connection-Pool：连接池"><a href="#Connection-Pool：连接池" class="headerlink" title="Connection Pool：连接池"></a>Connection Pool：连接池</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">管理缓冲用户连接、用户名、密码、权限校验,线程处理等需要缓存的需求。</div><div class="line">生成线程，验证用户是否正确，保持连接会话队列。</div></pre></td></tr></table></figure>
 <h3 id="SQL-Interface：SQL-接口"><a href="#SQL-Interface：SQL-接口" class="headerlink" title="SQL Interface：SQL 接口"></a>SQL Interface：SQL 接口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">接受处理SQL语句接口。返回查询或执行结果。</div></pre></td></tr></table></figure>
@@ -426,9 +426,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
-          
             <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
         </div>
       
@@ -537,7 +537,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
