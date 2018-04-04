@@ -133,10 +133,12 @@
 <meta property="og:site_name" content="Cailiang&#39;s Blog">
 <meta property="og:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-03T18:31:41.490Z">
+<meta property="og:image" content="http://yoursite.com/images/SQL/INDEX_invalid.png">
+<meta property="og:updated_time" content="2018-04-04T15:23:01.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="索引设计原则及使用场景">
 <meta name="twitter:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
+<meta name="twitter:image" content="http://yoursite.com/images/SQL/INDEX_invalid.png">
 
 
 
@@ -418,6 +420,7 @@
 <h4 id="在非连续的索引键部分上做-group-by-order-by-分组或排序，无法利用索引来实现group-by-order-by的优化"><a href="#在非连续的索引键部分上做-group-by-order-by-分组或排序，无法利用索引来实现group-by-order-by的优化" class="headerlink" title="在非连续的索引键部分上做 group by/order by 分组或排序，无法利用索引来实现group by/order by的优化"></a>在非连续的索引键部分上做 group by/order by 分组或排序，无法利用索引来实现group by/order by的优化</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">... <span class="built_in">where</span> a <span class="keyword">in</span> (...) group by b;</div><div class="line">... <span class="built_in">where</span> a <span class="keyword">in</span> (...) order by b;</div></pre></td></tr></table></figure>
 <h4 id="如果在-where-和-order-by-的栏位上应用表达式-函数-时，则无法利用索引来实现group-by-order-by的优化"><a href="#如果在-where-和-order-by-的栏位上应用表达式-函数-时，则无法利用索引来实现group-by-order-by的优化" class="headerlink" title="如果在 where 和 order by 的栏位上应用表达式(函数)时，则无法利用索引来实现group by/order by的优化"></a>如果在 where 和 order by 的栏位上应用表达式(函数)时，则无法利用索引来实现group by/order by的优化</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">... <span class="built_in">where</span> a <span class="keyword">in</span> (...) group by date_format(b,<span class="string">'%Y%m%d'</span>);</div></pre></td></tr></table></figure>
 <h4 id="分组后，对不同字段排序，导致排序字段索引不可用"><a href="#分组后，对不同字段排序，导致排序字段索引不可用" class="headerlink" title="分组后，对不同字段排序，导致排序字段索引不可用"></a>分组后，对不同字段排序，导致排序字段索引不可用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">... group by a order by b;</div></pre></td></tr></table></figure>
+<p><img src="/images/SQL/INDEX_invalid.png" alt="索引失效"></p>
 
       
     </div>

@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</loc>
+    <lastmod>2018-04-04T15:23:01.030Z</lastmod>
+    <data>
+        <display>
+        <title>索引设计原则及使用场景</title>
+        <pubTime>2018-04-03T13:28:41.985Z</pubTime>
+        
+        <tag>SQL 优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="SQL" url="http://yoursite.com/categories/SQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/04/04/SQL/MySQL_SQL_1/</loc>
     <lastmod>2018-04-04T15:13:02.432Z</lastmod>
     <data>
@@ -65,26 +85,6 @@
            
              
               <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</loc>
-    <lastmod>2018-04-03T18:31:41.490Z</lastmod>
-    <data>
-        <display>
-        <title>索引设计原则及使用场景</title>
-        <pubTime>2018-04-03T13:28:41.985Z</pubTime>
-        
-        <tag>SQL 优化</tag>
-         
-         
-           
-             
-              <breadCrumb title="SQL" url="http://yoursite.com/categories/SQL/"/>
           
         </display>
     </data>

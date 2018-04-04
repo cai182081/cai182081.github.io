@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</loc>
+    
+    <lastmod>2018-04-04T15:23:01.030Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/04/04/SQL/MySQL_SQL_1/</loc>
     
     <lastmod>2018-04-04T15:13:02.432Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://yoursite.com/2018/04/04/SQL/MySQL_SQL_2/</loc>
     
     <lastmod>2018-04-04T02:02:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</loc>
-    
-    <lastmod>2018-04-03T18:31:41.490Z</lastmod>
     
   </url>
   
