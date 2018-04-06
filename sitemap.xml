@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/04/06/Hadoop/Hadoop_Cluster/</loc>
+    
+    <lastmod>2018-04-06T08:05:38.794Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</loc>
     
-    <lastmod>2018-04-04T15:23:01.030Z</lastmod>
+    <lastmod>2018-04-04T16:17:49.298Z</lastmod>
     
   </url>
   
@@ -51,14 +58,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
+    <loc>http://yoursite.com/2018/04/02/SQL/DB_SQL/</loc>
     
     <lastmod>2017-11-11T14:55:24.910Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/04/02/SQL/DB_SQL/</loc>
+    <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
     
     <lastmod>2017-11-11T14:55:24.910Z</lastmod>
     
