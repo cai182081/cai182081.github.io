@@ -4,14 +4,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Tuning/</loc>
-    <lastmod>2018-04-10T13:30:53.797Z</lastmod>
+    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Install/</loc>
+    <lastmod>2018-04-10T13:33:09.804Z</lastmod>
     <data>
         <display>
-        <title>全面解析 MySQL 数据库性能调优</title>
-        <pubTime>2018-04-10T12:17:58.024Z</pubTime>
+        <title>生产环境中 MySQL(v5.7.21) for Linux 下二进制安装配置详解</title>
+        <pubTime>2018-04-10T12:18:13.634Z</pubTime>
         
-        <tag>MySQL 优化</tag>
+        <tag>MySQL</tag>
          
          
            
@@ -24,14 +24,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Install/</loc>
-    <lastmod>2018-04-10T13:25:12.067Z</lastmod>
+    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Tuning/</loc>
+    <lastmod>2018-04-10T13:30:53.797Z</lastmod>
     <data>
         <display>
-        <title>生产环境中 MySQL(v5.7.21) for Linux 下二进制安装配置详解</title>
-        <pubTime>2018-04-10T12:18:13.634Z</pubTime>
+        <title>全面解析 MySQL 数据库性能调优</title>
+        <pubTime>2018-04-10T12:17:58.024Z</pubTime>
         
-        <tag>MySQL</tag>
+        <tag>MySQL 优化</tag>
          
          
            
