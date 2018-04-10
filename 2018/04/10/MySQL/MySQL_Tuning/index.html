@@ -133,7 +133,7 @@
 <meta property="og:site_name" content="Cailiang&#39;s Blog">
 <meta property="og:description" content="MySQL 数据库调优对于每个公司、DBA或者部分开者来讲都是特别关注的，一旦项目数据库的性能出现问题，导致的项目更容易故障、影响顾客体验，这些对公司来说是致命打击。但是优化并不是一蹴而就，这需要综合考虑项目开发过程中的进度，以及硬件成本。DBA 受限成本、项目进度，我们更多只能在有限的条件下，做最好的优化需求。下面我就MySQL 优化技术由浅深入讨论MySQL 调优： 操作系统及硬件优化CPU优">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T13:30:53.797Z">
+<meta property="og:updated_time" content="2018-04-10T13:45:21.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全面解析 MySQL 数据库性能调优">
 <meta name="twitter:description" content="MySQL 数据库调优对于每个公司、DBA或者部分开者来讲都是特别关注的，一旦项目数据库的性能出现问题，导致的项目更容易故障、影响顾客体验，这些对公司来说是致命打击。但是优化并不是一蹴而就，这需要综合考虑项目开发过程中的进度，以及硬件成本。DBA 受限成本、项目进度，我们更多只能在有限的条件下，做最好的优化需求。下面我就MySQL 优化技术由浅深入讨论MySQL 调优： 操作系统及硬件优化CPU优">
@@ -430,7 +430,7 @@
 <p>query_cache_size<br>查询缓存，对于查询的性能提高有很大帮助，但不宜开得过大，查询缓存的过期可能很频繁，过大查询缓存反而降低性能，增加服务器开销 </p>
 <p>更多MySQL 参数优化请参考</p>
 <h2 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h2><p>尽量避免在索引过的字符数据中，使用非打头字母搜索。这也使得引擎无法利用索引</p>
-<p>更多MySQL 索引优化请参考</p>
+<p>更多MySQL 索引优化请参考 <a href="https://cai182081.github.io/2018/04/03/SQL/DB_INDEX_1/" target="_blank" rel="external">https://cai182081.github.io/2018/04/03/SQL/DB_INDEX_1/</a></p>
 <h2 id="SQL优化"><a href="#SQL优化" class="headerlink" title="SQL优化"></a>SQL优化</h2><p>影响结果集是SQL优化的核心。影响结果集不是查询返回的记录数，而是查询所扫描的结果数。通过Explain或Desc分析SQL，rows列的值即为影响结果集（还可以通过慢查询日志的Rows_examined后面的数字得到）。</p>
 <p>避免 select <em>，减少输出的数据量，提高传输速度<br>避免 in/exsits 子查询，尽可能 join 替换<br>避免对索引字段进行计算操作<br>避免在索引字段上使用函数<br>避免建立索引的列中使用空值<br>避免使用 or， 尽可能使用 union all 或者 union 代替<br>避免在索引字段上使用not，&lt;&gt;，!=<br>避免在索引列上使用IS NULL和IS NOT NULL<br>避免在索引列和连接列上出现数据类型/字符集的转换<br>避免 union，在可以允许数据重复的条件下使用union all代替<br>避免查询的无前缀模糊匹配 like ‘%**</em>‘<br>避免not in，尽可能使用not exists和left join代替<br>合理分页<br>合理使用索引和复合索引，建立更高效的复合索引替换单列索引</p>
 <p>更多MySQL 参数优化请参考 SQL 调优技巧篇章 <a href="https://cai182081.github.io/2018/04/10/SQL/DB_SQL_1/#more" target="_blank" rel="external">https://cai182081.github.io/2018/04/10/SQL/DB_SQL_1/#more</a></p>
