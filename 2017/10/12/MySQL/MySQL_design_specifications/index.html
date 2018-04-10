@@ -133,7 +133,7 @@
 <meta property="og:site_name" content="Cailiang&#39;s Blog">
 <meta property="og:description" content="命名规范库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割1234MySQL 配置参数 lower_case_table_names=1，即库表名以小写存储，大小写不敏感。如果是0，则库表名以实际情况存储，大小写敏感；如果是2，以实际情况存储，但以小写比较；如果大小写混合使用，可能存在abc，Abc，ABC等多个表共存，容易导致混乱；字段名显示区分大小写，但实际使⽤时不">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-13T04:28:11.809Z">
+<meta property="og:updated_time" content="2018-04-10T09:23:01.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 数据库开发与设计规范">
 <meta name="twitter:description" content="命名规范库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割1234MySQL 配置参数 lower_case_table_names=1，即库表名以小写存储，大小写不敏感。如果是0，则库表名以实际情况存储，大小写敏感；如果是2，以实际情况存储，但以小写比较；如果大小写混合使用，可能存在abc，Abc，ABC等多个表共存，容易导致混乱；字段名显示区分大小写，但实际使⽤时不">
@@ -439,7 +439,7 @@
 <h3 id="使用-UNION-替换-OR-适用于索引列"><a href="#使用-UNION-替换-OR-适用于索引列" class="headerlink" title="使用 UNION 替换 OR(适用于索引列)"></a>使用 UNION 替换 OR(适用于索引列)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">低效：SELECT loc_id, loc_desc, region</div><div class="line">          FROM location</div><div class="line">         WHERE loc_id = 10 OR region = <span class="string">'MELBOURNE'</span>;</div><div class="line">高效：SELECT loc_id, loc_desc, region  </div><div class="line">          FROM location</div><div class="line">         WHERE loc_id = 10</div><div class="line">       UNION</div><div class="line">       SELECT loc_id, loc_desc, region</div><div class="line">          FROM location</div><div class="line">         WHERE region = <span class="string">'MELBOURNE'</span>;</div></pre></td></tr></table></figure>
 <h3 id="在明显不会有重复值时使用UNION-ALL-代替UNION"><a href="#在明显不会有重复值时使用UNION-ALL-代替UNION" class="headerlink" title="在明显不会有重复值时使用UNION ALL 代替UNION"></a>在明显不会有重复值时使用UNION ALL 代替UNION</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">低效：SELECT ACCT_NUM, BALANCE_AMT</div><div class="line">          FROM DEBIT_TRANSACTIONS</div><div class="line">        WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span></div><div class="line">       UNION</div><div class="line">       SELECT ACCT_NUM, BALANCE_AMT</div><div class="line">          FROM DEBIT_TRANSACTIONS</div><div class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span>;</div><div class="line">高效：SELECT ACCT_NUM, BALANCE_AMT</div><div class="line">          FROM DEBIT_TRANSACTIONS</div><div class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span></div><div class="line">       UNION ALL</div><div class="line">       SELECT ACCT_NUM, BALANCE_AMT</div><div class="line">          FROM DEBIT_TRANSACTIONS</div><div class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span>;</div></pre></td></tr></table></figure>
 <h3 id="禁止在MySQL中对列进行数学运算"><a href="#禁止在MySQL中对列进行数学运算" class="headerlink" title="禁止在MySQL中对列进行数学运算"></a>禁止在MySQL中对列进行数学运算</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">低效：SELECT e.ename FROM emp e WHERE e.sal*1.1 &gt; 900;</div><div class="line">高效：SELECT e.ename FROM emp e WHERE e.sal &gt; 900/1.1;</div></pre></td></tr></table></figure>
-<h3 id="禁止在MySQL中对列进行函数运算"><a href="#禁止在MySQL中对列进行函数运算" class="headerlink" title="禁止在MySQL中对列进行函数运算"></a>禁止在MySQL中对列进行函数运算</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">低效：SELECT e.ename</div><div class="line">          FROM emp e</div><div class="line">         WHERE DATE_FORMAT(e.date, ’%Y%m%d’) = <span class="string">'20160516'</span>;</div><div class="line">高效：SELECT e.ename</div><div class="line">          FROM emp e</div><div class="line">         WHERE e.date &gt; = STR_TO_DATE(<span class="string">'2016-05-16 00:00:01'</span>, <span class="string">'%Y-%m-%d %H:%i:%s'</span>)</div><div class="line">         AND e.date &lt; STR_TO_DATE(<span class="string">'2016-05-17 00:00:00'</span>, <span class="string">'%Y-%m-%d %H:%i:%s'</span>);</div></pre></td></tr></table></figure>
+<h3 id="禁止在MySQL中对列进行函数运算"><a href="#禁止在MySQL中对列进行函数运算" class="headerlink" title="禁止在MySQL中对列进行函数运算"></a>禁止在MySQL中对列进行函数运算</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">低效：SELECT e.ename</div><div class="line">          FROM emp e</div><div class="line">         WHERE DATE_FORMAT(e.date, ’%Y%m%d’) = <span class="string">'20160516'</span>;</div><div class="line">高效：SELECT e.ename</div><div class="line">          FROM emp e</div><div class="line">         WHERE e.date &gt; = <span class="string">'2016-05-16 00:00:01'</span></div><div class="line">         AND e.date &lt; <span class="string">'2016-05-17 00:00:00'</span>;</div></pre></td></tr></table></figure>
 <h3 id="建议使用合理的分页方式以提高分页效率"><a href="#建议使用合理的分页方式以提高分页效率" class="headerlink" title="建议使用合理的分页方式以提高分页效率"></a>建议使用合理的分页方式以提高分页效率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">低效：SELECT e.ename FROM emp e <span class="built_in">limit</span> 10000,10;</div><div class="line">高效：SELECT e.ename FROM emp e  WHERE e.id &gt;=10000 <span class="built_in">limit</span> 10;</div></pre></td></tr></table></figure>
 <h3 id="用EXISTS替换DISTINCT"><a href="#用EXISTS替换DISTINCT" class="headerlink" title="用EXISTS替换DISTINCT"></a>用EXISTS替换DISTINCT</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">低效: SELECT DISTINCT DEPT_NO,DEPT_NAME FROM DEPT D , EMP E</div><div class="line">         WHERE D.DEPT_NO = E.DEPT_NO</div><div class="line">高效: SELECT DEPT_NO,DEPT_NAME FROM DEPT D</div><div class="line">         WHERE  EXISTS</div><div class="line">           ( SELECT ‘X’ FROM EMP E WHERE E.DEPT_NO = D.DEPT_NO);</div></pre></td></tr></table></figure>
 <h3 id="避免在索引列上使用-IS-NULL和-IS-NOT-NULL"><a href="#避免在索引列上使用-IS-NULL和-IS-NOT-NULL" class="headerlink" title="避免在索引列上使用 IS NULL和 IS NOT NULL"></a>避免在索引列上使用 IS NULL和 IS NOT NULL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">低效: SELECT … FROM  DEPARTMENT  WHERE  DEPT_CODE IS NOT NULL;</div><div class="line">高效: SELECT … FROM  DEPARTMENT  WHERE  DEPT_CODE &gt;=0;</div></pre></td></tr></table></figure>
@@ -570,7 +570,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -581,7 +581,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -592,7 +592,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
