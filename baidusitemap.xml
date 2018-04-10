@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/04/10/SQL/DB_SQL_1/</loc>
+    <lastmod>2018-04-10T13:35:48.746Z</lastmod>
+    <data>
+        <display>
+        <title>SQL 调优技巧</title>
+        <pubTime>2018-04-10T12:11:04.110Z</pubTime>
+        
+        <tag>数据库优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Install/</loc>
     <lastmod>2018-04-10T13:33:09.804Z</lastmod>
     <data>
@@ -71,9 +91,9 @@
         <title>MySQL 执行计划详细解读</title>
         <pubTime>2017-10-13T01:06:56.886Z</pubTime>
         
-        <tag>数据库</tag>
-         
         <tag>MySQL</tag>
+         
+        <tag>数据库</tag>
          
         <tag>数据库优化</tag>
          
@@ -95,9 +115,9 @@
         <title>MySQL 数据库开发与设计规范</title>
         <pubTime>2017-10-12T12:52:02.436Z</pubTime>
         
-        <tag>数据库</tag>
-         
         <tag>MySQL</tag>
+         
+        <tag>数据库</tag>
          
         <tag>数据库优化</tag>
          
@@ -112,26 +132,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/10/SQL/DB_SQL_1/</loc>
-    <lastmod>2018-04-10T09:08:43.461Z</lastmod>
-    <data>
-        <display>
-        <title>SQL 调优技巧</title>
-        <pubTime>2018-04-10T12:11:04.110Z</pubTime>
-        
-        <tag>数据库优化</tag>
-         
-         
-           
-             
-              <breadCrumb title="数据库" url="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2018/04/10/DevOps/MySQL_inception_archer/</loc>
     <lastmod>2018-04-09T01:54:15.135Z</lastmod>
     <data>
@@ -139,9 +139,9 @@
         <title>MySQL 自动化审核工具 Inception、Archer 的安装配置详解</title>
         <pubTime>2018-04-10T12:21:51.084Z</pubTime>
         
-        <tag>数据库</tag>
-         
         <tag>MySQL</tag>
+         
+        <tag>数据库</tag>
          
         <tag>自动化运维</tag>
          
@@ -207,9 +207,9 @@
         <title>MySQL 体系结构详解</title>
         <pubTime>2017-10-13T02:12:35.552Z</pubTime>
         
-        <tag>数据库</tag>
-         
         <tag>MySQL</tag>
+         
+        <tag>数据库</tag>
          
          
            
@@ -229,9 +229,9 @@
         <title>MySQL 常用SQL诊断脚本</title>
         <pubTime>2018-04-04T15:15:11.791Z</pubTime>
         
-        <tag>数据库</tag>
-         
         <tag>MySQL</tag>
+         
+        <tag>数据库</tag>
          
         <tag>数据库优化</tag>
          
@@ -253,11 +253,11 @@
         <title>全面解析 MySQL、MongoDB 数据库监控工具 PMM</title>
         <pubTime>2017-11-11T19:19:32.344Z</pubTime>
         
-        <tag>MongoDB</tag>
-         
         <tag>MySQL</tag>
          
         <tag>Percona</tag>
+         
+        <tag>MongoDB</tag>
          
         <tag>数据库监控</tag>
          
@@ -301,9 +301,9 @@
         <title>MySQL my.conf参数文件配置详解</title>
         <pubTime>2017-10-15T02:18:17.846Z</pubTime>
         
-        <tag>数据库</tag>
-         
         <tag>MySQL</tag>
+         
+        <tag>数据库</tag>
          
          
            
@@ -411,9 +411,9 @@
         <title>MySQL MHA 集群原理及搭建</title>
         <pubTime>2017-10-19T13:37:37.596Z</pubTime>
         
-        <tag>数据库</tag>
-         
         <tag>MySQL</tag>
+         
+        <tag>数据库</tag>
          
         <tag>MySQL 集群</tag>
          
@@ -435,9 +435,9 @@
         <title>MongoDB mongod.conf 参数文件配置详解</title>
         <pubTime>2017-10-15T02:29:15.769Z</pubTime>
         
-        <tag>MongoDB</tag>
-         
         <tag>数据库</tag>
+         
+        <tag>MongoDB</tag>
          
          
            
@@ -457,9 +457,9 @@
         <title>MySQL 索引原理详解</title>
         <pubTime>2017-10-14T03:58:28.055Z</pubTime>
         
-        <tag>数据库</tag>
-         
         <tag>MySQL</tag>
+         
+        <tag>数据库</tag>
          
         <tag>数据库优化</tag>
          
