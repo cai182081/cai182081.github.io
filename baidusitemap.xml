@@ -255,9 +255,9 @@
         
         <tag>MySQL</tag>
          
-        <tag>MongoDB</tag>
-         
         <tag>Percona</tag>
+         
+        <tag>MongoDB</tag>
          
         <tag>数据库监控</tag>
          
@@ -316,12 +316,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/02/SQL/DB_SQL/</loc>
+    <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
     <lastmod>2017-11-11T14:55:24.910Z</lastmod>
     <data>
         <display>
         <title>MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化</title>
-        <pubTime>2018-04-02T15:55:23.109Z</pubTime>
+        <pubTime>2017-11-11T14:30:31.518Z</pubTime>
         
         <tag>MySQL</tag>
          
@@ -338,12 +338,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
+    <loc>http://yoursite.com/2018/04/02/SQL/DB_SQL/</loc>
     <lastmod>2017-11-11T14:55:24.910Z</lastmod>
     <data>
         <display>
         <title>MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化</title>
-        <pubTime>2017-11-11T14:30:31.518Z</pubTime>
+        <pubTime>2018-04-02T15:55:23.109Z</pubTime>
         
         <tag>MySQL</tag>
          
