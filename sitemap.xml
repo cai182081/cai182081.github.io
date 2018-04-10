@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Install/</loc>
+    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Tuning/</loc>
     
-    <lastmod>2018-04-10T13:25:12.067Z</lastmod>
+    <lastmod>2018-04-10T13:30:53.797Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Tuning/</loc>
+    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Install/</loc>
     
-    <lastmod>2018-04-10T10:34:48.301Z</lastmod>
+    <lastmod>2018-04-10T13:25:12.067Z</lastmod>
     
   </url>
   
@@ -100,14 +100,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/04/02/SQL/DB_SQL/</loc>
+    <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
     
     <lastmod>2017-11-11T14:55:24.910Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
+    <loc>http://yoursite.com/2018/04/02/SQL/DB_SQL/</loc>
     
     <lastmod>2017-11-11T14:55:24.910Z</lastmod>
     
