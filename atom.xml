@@ -305,9 +305,9 @@
     
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
     
-      <category term="Percona" scheme="http://yoursite.com/tags/Percona/"/>
-    
       <category term="MongoDB" scheme="http://yoursite.com/tags/MongoDB/"/>
+    
+      <category term="Percona" scheme="http://yoursite.com/tags/Percona/"/>
     
       <category term="数据库监控" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%91%E6%8E%A7/"/>
     
