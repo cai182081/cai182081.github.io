@@ -134,7 +134,7 @@
 <meta property="og:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/SQL/INDEX_invalid.png">
-<meta property="og:updated_time" content="2018-04-10T13:42:23.830Z">
+<meta property="og:updated_time" content="2018-04-10T14:34:57.660Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="索引设计原则、使用场景及失效场景">
 <meta name="twitter:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
@@ -402,7 +402,7 @@
       
         <p>索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询的速度。</p>
 <h2 id="索引优点与缺点"><a href="#索引优点与缺点" class="headerlink" title="索引优点与缺点"></a>索引优点与缺点</h2><p>使用索引的优点<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1、加速表和表之间的关接，特别是在实现数据的参考完整性方面特别有意义。</div><div class="line">2、可以大大加快数据的检索速度，这也是创建索引的最主要的原因。</div><div class="line">3、通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。</div><div class="line">4、在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。</div><div class="line">5、通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</div></pre></td></tr></table></figure></p>
-<p>索引存在的缺陷<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1、数据内容的变更（增、删、改）都需要修订索引，索引存在而外的维护成本</div><div class="line">2、创建、维护索引要耗费时间和系统资源，维护时间随着数据量的增加而增加。</div><div class="line">3、查找翻阅索引系统需要消耗时间，索引存在而外的访问成本</div><div class="line">4、索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。</div><div class="line">5、数据的备份和恢复时间，会因为过多的索引消耗系统更多的维护时间</div></pre></td></tr></table></figure></p>
+<p>索引存在的缺陷<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1、数据内容的变更（增、删、改）都需要修订索引，索引存在而外的维护成本</div><div class="line">2、创建、维护索引要耗费时间和系统资源，维护时间随着数据量的增加而增加。</div><div class="line">3、查找翻阅索引系统需要消耗时间，索引存在而外的访问成本。</div><div class="line">4、索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。</div><div class="line">5、数据的备份和恢复时间，会因为过多的索引消耗系统更多的维护时间。</div></pre></td></tr></table></figure></p>
 <h2 id="如何建立理想的索引"><a href="#如何建立理想的索引" class="headerlink" title="如何建立理想的索引"></a>如何建立理想的索引</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SQL查询频率</div><div class="line">过滤谓词选择性（cardinality/selectivity）</div><div class="line">索引长度</div><div class="line">覆盖字段</div><div class="line">索引排序</div></pre></td></tr></table></figure>
 <h2 id="索引设计和使用原则"><a href="#索引设计和使用原则" class="headerlink" title="索引设计和使用原则"></a>索引设计和使用原则</h2><p>在进行索引设计和索引优化时，请参考如下的索引使用原则：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1、通过创建唯一性索引，保证数据库表中数据的唯一性。</div><div class="line">2、对任何将要用于连接表的谓词连接列(on)创建索引</div><div class="line">3、对预计会频繁运行的SQL中WHERE子句引用的谓词过滤列创建索引</div><div class="line">4、对用于分组、分组等操作（进行GROUP BY或ORDER BY操作）的谓词分组、排序列创建索引</div><div class="line">5、过滤效果（选择性要高）要好（索引列的基数要大），不宜对status、sex等低基数列，使用单列索引检索数据，而尽可能与其他过滤条件建立复合索引，增加数据选择性</div><div class="line">6、对于那些在查询中很少使用或频繁更新的列，不宜使用索引</div><div class="line">7、字段顺序要佳，字段顺序对复合索引的效率有至关重要的作用，选择性高的的字段需要更靠前</div><div class="line">8、索引长度尽量小，对于定义为text，blob数据类型的大字段列不宜创建索引，而尽可能考虑前缀索引</div><div class="line">9、不宜过度索引，建立多个SQL能同时使用的高效复合索引，而不是多个索引</div></pre></td></tr></table></figure></p>
 <h2 id="索引失效场景"><a href="#索引失效场景" class="headerlink" title="索引失效场景"></a>索引失效场景</h2><p>以a,b 两列复合索引idx_a_b(a,b)为例说明</p>
@@ -547,7 +547,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

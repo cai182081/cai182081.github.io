@@ -2,6 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/04/02/SQL/DB_SQL/</loc>
+    
+    <lastmod>2018-04-11T15:13:41.117Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
+    
+    <lastmod>2018-04-11T14:20:19.811Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/11/SQL/MySQL_SQL%20_3/</loc>
+    
+    <lastmod>2018-04-11T04:11:41.150Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/</loc>
+    
+    <lastmod>2018-04-11T03:04:01.533Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/10/DevOps/MySQL_inception_archer/</loc>
+    
+    <lastmod>2018-04-11T03:03:56.507Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</loc>
+    
+    <lastmod>2018-04-10T14:34:57.660Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Install/</loc>
     
     <lastmod>2018-04-10T14:20:45.000Z</lastmod>
@@ -12,13 +54,6 @@
     <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Tuning/</loc>
     
     <lastmod>2018-04-10T13:45:21.343Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</loc>
-    
-    <lastmod>2018-04-10T13:42:23.830Z</lastmod>
     
   </url>
   
@@ -40,13 +75,6 @@
     <loc>http://yoursite.com/2017/10/12/MySQL/MySQL_design_specifications/</loc>
     
     <lastmod>2018-04-10T09:23:01.905Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/10/DevOps/MySQL_inception_archer/</loc>
-    
-    <lastmod>2018-04-09T01:54:15.135Z</lastmod>
     
   </url>
   
@@ -79,13 +107,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/</loc>
-    
-    <lastmod>2018-04-03T13:02:18.852Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2018/04/03/MySQL/MySQL_Backup/</loc>
     
     <lastmod>2018-04-03T13:00:29.249Z</lastmod>
@@ -96,20 +117,6 @@
     <loc>http://yoursite.com/2017/10/15/MySQL/MySQL_my.conf/</loc>
     
     <lastmod>2017-11-11T19:17:08.114Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
-    
-    <lastmod>2017-11-11T14:55:24.910Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/02/SQL/DB_SQL/</loc>
-    
-    <lastmod>2017-11-11T14:55:24.910Z</lastmod>
     
   </url>
   

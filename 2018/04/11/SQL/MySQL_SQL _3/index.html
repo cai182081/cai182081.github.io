@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="MongoDB,数据库," />
+  <meta name="keywords" content="MySQL,SQL 优化," />
 
 
 
@@ -125,18 +125,18 @@
 
 
 
-<meta name="description" content="MongoDB 参数文件配置12 MongoDB 核心参数选择及说明12">
-<meta name="keywords" content="MongoDB,数据库">
+<meta name="description" content="问题SQL及执行计划SQL 文本如下：12345678SELECT id, user_id, vote_num  FROM vote_record_memory WHERE id &amp;gt; 725152   AND group_id = 0   AND STATUS = 1   AND create_time &amp;lt; &apos;2018-04-11 23:59:59&apos;   AND MOD(id, &apos;12">
+<meta name="keywords" content="MySQL,SQL 优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB mongod.conf 参数文件配置详解">
-<meta property="og:url" content="http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/index.html">
+<meta property="og:title" content="MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化">
+<meta property="og:url" content="http://yoursite.com/2018/04/11/SQL/MySQL_SQL _3/index.html">
 <meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="MongoDB 参数文件配置12 MongoDB 核心参数选择及说明12">
+<meta property="og:description" content="问题SQL及执行计划SQL 文本如下：12345678SELECT id, user_id, vote_num  FROM vote_record_memory WHERE id &amp;gt; 725152   AND group_id = 0   AND STATUS = 1   AND create_time &amp;lt; &apos;2018-04-11 23:59:59&apos;   AND MOD(id, &apos;12">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-15T02:35:43.555Z">
+<meta property="og:updated_time" content="2018-04-11T04:11:41.150Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MongoDB mongod.conf 参数文件配置详解">
-<meta name="twitter:description" content="MongoDB 参数文件配置12 MongoDB 核心参数选择及说明12">
+<meta name="twitter:title" content="MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化">
+<meta name="twitter:description" content="问题SQL及执行计划SQL 文本如下：12345678SELECT id, user_id, vote_num  FROM vote_record_memory WHERE id &amp;gt; 725152   AND group_id = 0   AND STATUS = 1   AND create_time &amp;lt; &apos;2018-04-11 23:59:59&apos;   AND MOD(id, &apos;12">
 
 
 
@@ -166,13 +166,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/11/SQL/MySQL_SQL _3/"/>
 
 
 
 
 
-  <title>MongoDB mongod.conf 参数文件配置详解 | Cailiang's Blog</title>
+  <title>MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化 | Cailiang's Blog</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/11/SQL/MySQL_SQL _3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cai182081">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MongoDB mongod.conf 参数文件配置详解</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T10:29:15+08:00">
-                2017-10-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T11:04:38+08:00">
+                2018-04-11
               </time>
             
 
@@ -351,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MongoDB/" itemprop="url" rel="index">
-                    <span itemprop="name">MongoDB</span>
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
                   </a>
                 </span>
 
@@ -369,8 +369,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/15/MongoDB/MongDB_mongod.conf/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/10/15/MongoDB/MongDB_mongod.conf/" itemprop="commentsCount"></span>
+                <a href="/2018/04/11/SQL/MySQL_SQL _3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/11/SQL/MySQL_SQL _3/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -398,8 +398,10 @@
       
 
       
-        <h2 id="MongoDB-参数文件配置"><a href="#MongoDB-参数文件配置" class="headerlink" title="MongoDB 参数文件配置"></a>MongoDB 参数文件配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<h2 id="MongoDB-核心参数选择及说明"><a href="#MongoDB-核心参数选择及说明" class="headerlink" title="MongoDB 核心参数选择及说明"></a>MongoDB 核心参数选择及说明</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+        <h2 id="问题SQL及执行计划"><a href="#问题SQL及执行计划" class="headerlink" title="问题SQL及执行计划"></a>问题SQL及执行计划</h2><p>SQL 文本如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">SELECT id, user_id, vote_num</div><div class="line">  FROM vote_record_memory</div><div class="line"> WHERE id &gt; 725152</div><div class="line">   AND group_id = 0</div><div class="line">   AND STATUS = 1</div><div class="line">   AND create_time &lt; <span class="string">'2018-04-11 23:59:59'</span></div><div class="line">   AND MOD(id, <span class="string">'12'</span>) = <span class="string">'5'</span></div><div class="line"> ORDER BY id ASC LIMIT 5000;</div></pre></td></tr></table></figure></p>
+<p>执行计划如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">*************************** 1. row ***************************</div><div class="line">           id: 1</div><div class="line">  select_type: SIMPLE</div><div class="line">        table: vote_record_memory</div><div class="line">   partitions: NULL</div><div class="line">         <span class="built_in">type</span>: index_merge</div><div class="line">possible_keys: PRIMARY,idx_status,idx_group_id,idx_create_time,idx_mod_id</div><div class="line">          key: idx_group_id,idx_status</div><div class="line">      key_len: 86,83</div><div class="line">          ref: NULL</div><div class="line">         rows: 13846</div><div class="line">     filtered: 5.00</div><div class="line">        Extra: Using intersect(idx_group_id,idx_status); Using <span class="built_in">where</span>; Using filesort</div><div class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span>, 1 warning (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h2 id="SQL性能定位及分析"><a href="#SQL性能定位及分析" class="headerlink" title="SQL性能定位及分析"></a>SQL性能定位及分析</h2><p>根据<br>看到此SQL 初步定到 r.apply_time LIKE CONCAT(‘2017-11-07’, ‘%’) 日期类型和字符串类型隐式转换，NOT IN子查询语句无法走索引，用NOT EXISTS改写，改写SQL优化后，得到执行计划：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(*) AS count</div><div class="line">  FROM user.user u</div><div class="line"> INNER JOIN user.token t</div><div class="line">    ON u.id = t.user_id</div><div class="line"> INNER JOIN order.user_history h</div><div class="line">    ON u.id = h.user_id</div><div class="line"> INNER JOIN order.loan_record r</div><div class="line">    ON r.history_id = h.id</div><div class="line"> INNER JOIN admin_domain.ACT_HI_PROCINST act</div><div class="line">    on act.BUSINESS_KEY_ = r.loan_record_id</div><div class="line"> WHERE r.approval_result != 0</div><div class="line">   AND NOT EXISTS (SELECT n3.id</div><div class="line">          FROM order.loan_record n1</div><div class="line">         INNER JOIN order.user_history n2</div><div class="line">            on n1.history_id = n2.id</div><div class="line">         INNER JOIN user.user n3</div><div class="line">            ON n3.id = n2.user_id</div><div class="line">         WHERE n1.approval_result = 31</div><div class="line">           AND u.id = n3.id)</div><div class="line">   AND r.apply_time &gt;= <span class="string">'2017-11-07 00:00:00'</span></div><div class="line">   AND r.apply_time &lt; <span class="string">'2017-11-08 00:00:00'</span></div><div class="line">   AND t.channel IN (<span class="string">' 201707sudt '</span>);</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(*) AS count</div><div class="line">  FROM user.user u</div><div class="line"> INNER JOIN user.token t</div><div class="line">    ON u.id = t.user_id</div><div class="line"> INNER JOIN order.user_history h</div><div class="line">    ON u.id = h.user_id</div><div class="line"> INNER JOIN (SELECT history_id, loan_record_id</div><div class="line">               FROM order.loan_record</div><div class="line">              WHERE approval_result != 0</div><div class="line">                AND apply_time &gt;= <span class="string">'2017-11-07 00:00:00'</span></div><div class="line">                AND apply_time &lt; <span class="string">'2017-11-08 00:00:00'</span>) r</div><div class="line">    ON r.history_id = h.id</div><div class="line"> INNER JOIN admin_domain.ACT_HI_PROCINST act</div><div class="line">    on act.BUSINESS_KEY_ = r.loan_record_id</div><div class="line"> WHERE NOT EXISTS (SELECT n3.id</div><div class="line">          FROM order.loan_record n1</div><div class="line">         INNER JOIN order.user_history n2</div><div class="line">            on n1.history_id = n2.id</div><div class="line">         INNER JOIN user.user n3</div><div class="line">            ON n3.id = n2.user_id</div><div class="line">         WHERE n1.approval_result = 31</div><div class="line">           AND u.id = n3.id)</div><div class="line">   AND t.channel IN (<span class="string">' 201707sudt '</span>);</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -417,9 +419,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
-            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+            <a href="/tags/SQL-优化/" rel="tag"># SQL 优化</a>
           
         </div>
       
@@ -432,8 +434,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/15/MySQL/MySQL_my.conf/" rel="next" title="MySQL my.conf参数文件配置详解">
-                <i class="fa fa-chevron-left"></i> MySQL my.conf参数文件配置详解
+              <a href="/2018/04/10/DevOps/MySQL_inception_archer/" rel="next" title="MySQL 自动化审核工具 Inception、Archer 的安装配置详解">
+                <i class="fa fa-chevron-left"></i> MySQL 自动化审核工具 Inception、Archer 的安装配置详解
               </a>
             
           </div>
@@ -441,10 +443,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/19/MySQL/MySQL_MHA/" rel="prev" title="MySQL MHA 集群原理及搭建">
-                MySQL MHA 集群原理及搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -592,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-参数文件配置"><span class="nav-number">1.</span> <span class="nav-text">MongoDB 参数文件配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-核心参数选择及说明"><span class="nav-number">2.</span> <span class="nav-text">MongoDB 核心参数选择及说明</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题SQL及执行计划"><span class="nav-number">1.</span> <span class="nav-text">问题SQL及执行计划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL性能定位及分析"><span class="nav-number">2.</span> <span class="nav-text">SQL性能定位及分析</span></a></li></ol></div>
             
 
           </div>
