@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据库,MongoDB," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cailiang's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="下载 MongoDB 安装软件123[root@node1 ~]# yum install -y psmisc* numactl* wget net-snmp*[root@node1 ~]# wget https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-rhel70-3.6.3.tgz -P /dba/tools[">
+<meta name="keywords" content="数据库,MongoDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB 3.6.3 （生产环境下）二进制安装与安全认证配置">
+<meta property="og:url" content="http://yoursite.com/2018/04/12/MongoDB/MongDB_Install/index.html">
+<meta property="og:site_name" content="Cailiang&#39;s Blog">
+<meta property="og:description" content="下载 MongoDB 安装软件123[root@node1 ~]# yum install -y psmisc* numactl* wget net-snmp*[root@node1 ~]# wget https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-rhel70-3.6.3.tgz -P /dba/tools[">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-12T14:40:38.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB 3.6.3 （生产环境下）二进制安装与安全认证配置">
+<meta name="twitter:description" content="下载 MongoDB 安装软件123[root@node1 ~]# yum install -y psmisc* numactl* wget net-snmp*[root@node1 ~]# wget https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-rhel70-3.6.3.tgz -P /dba/tools[">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/12/MongoDB/MongDB_Install/"/>
+
+
+
+
+
+  <title>MongoDB 3.6.3 （生产环境下）二进制安装与安全认证配置 | Cailiang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cailiang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">飞翔的菜鸟</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/12/MongoDB/MongDB_Install/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cai182081">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cailiang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MongoDB 3.6.3 （生产环境下）二进制安装与安全认证配置</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T09:27:45+08:00">
+                2018-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MongoDB/" itemprop="url" rel="index">
+                    <span itemprop="name">MongoDB</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/12/MongoDB/MongDB_Install/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/12/MongoDB/MongDB_Install/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="下载-MongoDB-安装软件"><a href="#下载-MongoDB-安装软件" class="headerlink" title="下载 MongoDB 安装软件"></a>下载 MongoDB 安装软件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@node1 ~]<span class="comment"># yum install -y psmisc* numactl* wget net-snmp*</span></div><div class="line">[root@node1 ~]<span class="comment"># wget https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-rhel70-3.6.3.tgz -P /dba/tools</span></div><div class="line">[root@node1 ~]<span class="comment"># wget https://www.percona.com/downloads/percona-server-mongodb-LATEST/percona-server-mongodb-3.4.13-2.11/binary/tarball/percona-server-mongodb-3.4.13-2.11-centos6-x86_64.tar.gz -P /dba/tools</span></div></pre></td></tr></table></figure>
+<h1 id="创建MongoDB组、用户和目录，并赋权限"><a href="#创建MongoDB组、用户和目录，并赋权限" class="headerlink" title="创建MongoDB组、用户和目录，并赋权限"></a>创建MongoDB组、用户和目录，并赋权限</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@node1 ~]<span class="comment"># groupadd mongod </span></div><div class="line">[root@node1 ~]<span class="comment"># useradd -g mongod mongod</span></div><div class="line">[root@node1 ~]<span class="comment"># mkdir -pv /data/mongodb/data</span></div><div class="line">[root@node1 ~]<span class="comment"># chown -R mongod:mongod /data/mongodb</span></div><div class="line">[root@node1 ~]<span class="comment"># chmod -R 775 /data/mongodb</span></div></pre></td></tr></table></figure>
+<h1 id="安装，并配置环境变量"><a href="#安装，并配置环境变量" class="headerlink" title="安装，并配置环境变量"></a>安装，并配置环境变量</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@node1 ~]<span class="comment"># tar -zxf mongodb-linux-x86_64-enterprise-rhel70-3.6.3.tgz -C /usr/local/</span></div><div class="line">[root@node1 ~]<span class="comment"># ln -sv /usr/local/mongodb-linux-x86_64-enterprise-rhel70-3.6.3 /usr/local/mongodb</span></div><div class="line">[root@node1 ~]<span class="comment"># chown -R mongod:mongod /usr/local/mongodb/*</span></div><div class="line">[root@node1 ~]<span class="comment"># echo "export PATH=/usr/local/mongodb/bin:\$PATH" &gt;&gt; /etc/profile</span></div><div class="line">[root@node1 ~]<span class="comment"># source /etc/profile</span></div></pre></td></tr></table></figure>
+<h1 id="优化操作系统参数"><a href="#优化操作系统参数" class="headerlink" title="优化操作系统参数"></a>优化操作系统参数</h1><h2 id="关闭透明大页"><a href="#关闭透明大页" class="headerlink" title="关闭透明大页"></a>关闭透明大页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@node1 ~]<span class="comment"># echo never &gt;&gt;  /sys/kernel/mm/transparent_hugepage/enabled</span></div><div class="line">[root@node1 ~]<span class="comment"># echo never &gt;&gt;  /sys/kernel/mm/transparent_hugepage/defrag</span></div></pre></td></tr></table></figure>
+<h2 id="修改磁盘io调度策略"><a href="#修改磁盘io调度策略" class="headerlink" title="修改磁盘io调度策略"></a>修改磁盘io调度策略</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@node1 ~]<span class="comment"># echo deadline &gt; /sys/block/sda/queue/scheduler</span></div></pre></td></tr></table></figure>
+<h2 id="修改文件数限制"><a href="#修改文件数限制" class="headerlink" title="修改文件数限制"></a>修改文件数限制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@node1 ~]<span class="comment"># ulimit -f unlimited</span></div><div class="line">[root@node1 ~]<span class="comment"># ulimit -t unlimited</span></div><div class="line">[root@node1 ~]<span class="comment"># ulimit -v unlimited</span></div><div class="line">[root@node1 ~]<span class="comment"># ulimit -n 65535</span></div><div class="line">[root@node1 ~]<span class="comment"># ulimit -m unlimited</span></div><div class="line">[root@node1 ~]<span class="comment"># ulimit -u 65535</span></div></pre></td></tr></table></figure>
+<h2 id="修改内存分配策略"><a href="#修改内存分配策略" class="headerlink" title="修改内存分配策略"></a>修改内存分配策略</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@node1 ~]<span class="comment"># echo 0 &gt; /proc/sys/vm/zone_reclaim_mode</span></div><div class="line">[root@node1 ~]<span class="comment"># sysctl -w vm.zone_reclaim_mode=0</span></div><div class="line">[root@node1 ~]<span class="comment"># sysctl vm.overcommit_memory=1</span></div></pre></td></tr></table></figure>
+<h1 id="配置-MongoDB-参数文件"><a href="#配置-MongoDB-参数文件" class="headerlink" title="配置 MongoDB 参数文件"></a>配置 MongoDB 参数文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">[root@node1 ~]<span class="comment"># su - mongod</span></div><div class="line">[mongod@node1 ~]$ cat &gt;&gt; /home/mongod/mongod.conf &lt;&lt;EOF</div><div class="line">systemLog:</div><div class="line">    quiet: <span class="literal">false</span></div><div class="line">    path: <span class="string">"/usr/local/mongodb/mongod.log"</span></div><div class="line">    logAppend: <span class="literal">true</span>   </div><div class="line">    destination: file</div><div class="line">    timeStampFormat: iso8601-local</div><div class="line">processManagement:</div><div class="line">    fork: <span class="literal">true</span></div><div class="line">    pidFilePath: <span class="string">"/usr/local/mongodb/mongod.pid"</span></div><div class="line">storage:</div><div class="line">    dbPath: <span class="string">"/data/mongodb/data"</span></div><div class="line">    indexBuildRetry: <span class="literal">true</span></div><div class="line">    journal:</div><div class="line">        enabled: <span class="literal">true</span></div><div class="line">    directoryPerDB: <span class="literal">true</span></div><div class="line">    syncPeriodSecs: 60</div><div class="line">    engine: wiredTiger</div><div class="line">    wiredTiger:</div><div class="line">        engineConfig:</div><div class="line">            cacheSizeGB: 12</div><div class="line">            statisticsLogDelaySecs: 0</div><div class="line">            journalCompressor: snappy</div><div class="line">            directoryForIndexes: <span class="literal">true</span></div><div class="line">        collectionConfig:</div><div class="line">            blockCompressor: snappy</div><div class="line">        indexConfig:</div><div class="line">            prefixCompression: <span class="literal">true</span></div><div class="line">net:  </div><div class="line">    bindIp: 192.168.1.110,127.0.0.1</div><div class="line">    port: 47017</div><div class="line">    maxIncomingConnections: 52528</div><div class="line">    wireObjectCheck: <span class="literal">true</span></div><div class="line">    ipv6: <span class="literal">false</span></div><div class="line">    unixDomainSocket:</div><div class="line">        enabled: <span class="literal">false</span></div><div class="line">operationProfiling:</div><div class="line">    slowOpThresholdMs: 200</div><div class="line">    mode: slowOp</div><div class="line">security:</div><div class="line">    authorization: disabled</div><div class="line">    <span class="comment">#clusterAuthMode: keyFile</span></div><div class="line">    <span class="comment">#keyFile: "/home/mongod/keyfile"</span></div><div class="line">setParameter:</div><div class="line">    enableLocalhostAuthBypass: <span class="literal">true</span></div><div class="line">    authenticationMechanisms: SCRAM-SHA-1</div><div class="line"><span class="comment">#sharding:</span></div><div class="line">    <span class="comment">#clusterRole: configsvr</span></div><div class="line">    <span class="comment">#archiveMovedChunks: true</span></div><div class="line"><span class="comment">#replication:</span></div><div class="line">    <span class="comment">#oplogSizeMB: 5120</span></div><div class="line">    <span class="comment">#replSetName: configRS</span></div><div class="line">    <span class="comment">#secondaryIndexPrefetch: all</span></div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h1 id="MongoDB-初始化"><a href="#MongoDB-初始化" class="headerlink" title="MongoDB 初始化"></a>MongoDB 初始化</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@node1 ~]<span class="comment"># mongod -f /home/mongod/mongod.conf --dbpath=/data/mongodb/data --logpath=/usr/local/mongodb/mongod.log --logappend --fork</span></div></pre></td></tr></table></figure>
+<h1 id="配置-mongorc-js"><a href="#配置-mongorc-js" class="headerlink" title="配置 .mongorc.js"></a>配置 .mongorc.js</h1><p>在mongod用户家目创建录.mongorc.js 文件，更完整的配置文件下载 <a href="https://pan.lanzou.com/i0tvfqb" target="_blank" rel="external">https://pan.lanzou.com/i0tvfqb</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[root@node1 ~]<span class="comment"># su - mongod</span></div><div class="line">[mongod@node1 ~]$ cat &gt;&gt; /home/mongod/.mongorc.js &lt;&lt;EOF</div><div class="line">prompt = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="keyword">if</span> (typeof db == <span class="string">'undefined'</span>) &#123;</div><div class="line">        <span class="built_in">return</span> <span class="string">'(nodb)&gt; '</span>;</div><div class="line">&#125;</div><div class="line">    try &#123;</div><div class="line">        db.runCommand(&#123;getLastError:1&#125;);</div><div class="line">    &#125;</div><div class="line">    catch (e) &#123;</div><div class="line">        <span class="built_in">print</span>(e); </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">return</span> db+<span class="string">" &gt;"</span>;</div><div class="line">&#125;;</div><div class="line">EOF</div></pre></td></tr></table></figure></p>
+<h1 id="登录数据库并添加管理员账号，开启用户验证参数"><a href="#登录数据库并添加管理员账号，开启用户验证参数" class="headerlink" title="登录数据库并添加管理员账号，开启用户验证参数"></a>登录数据库并添加管理员账号，开启用户验证参数</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[mongod@node1 ~]$ mongo 192.168.0.210:47017/admin</div><div class="line"></div><div class="line">192.168.1.110:47017/admin&gt; db.createUser(&#123;user:<span class="string">'admin'</span>,<span class="built_in">pwd</span>:<span class="string">'oRcl_123'</span>, roles:[&#123;role:<span class="string">'userAdminAnyDatabase'</span>, db:<span class="string">'admin'</span>&#125;]&#125;)</div><div class="line">192.168.1.110:47017/admin&gt; db.auth(<span class="string">"admin"</span>,<span class="string">"oRcl_123"</span>)</div><div class="line"></div><div class="line">[mongod@node1 ~]$ sed -i <span class="string">'s/authorization: disabled/authorization: enabled/g'</span> /home/mongod/mongod.conf </div><div class="line">[root@node1 ~]<span class="comment"># ps aux|grep mongod</span></div><div class="line">[root@node1 ~]<span class="comment"># killall mongod</span></div><div class="line">[root@node1 ~]<span class="comment"># chown -R mongod:mongod /data/mongodb/</span></div><div class="line">[root@node1 ~]<span class="comment"># chown -R mongod:mongod /usr/local/mongodb/*</span></div></pre></td></tr></table></figure>
+<h1 id="重启-MongoDB-数据库，并验证安全验证登录"><a href="#重启-MongoDB-数据库，并验证安全验证登录" class="headerlink" title="重启 MongoDB 数据库，并验证安全验证登录"></a>重启 MongoDB 数据库，并验证安全验证登录</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[mongod@node1 ~] numactl --interleave=all mongod -f /home/mongod/mongod.conf </div><div class="line">[mongod@node1 ~] mongo -u admin -poRcl_123 192.168.1.110:47017/admin</div><div class="line">192.168.0.210:47017/admin&gt; show dbs;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/11/SQL/MySQL_SQL _3/" rel="next" title="MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化">
+                <i class="fa fa-chevron-left"></i> MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+  
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">cai182081</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载-MongoDB-安装软件"><span class="nav-number">1.</span> <span class="nav-text">下载 MongoDB 安装软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建MongoDB组、用户和目录，并赋权限"><span class="nav-number">2.</span> <span class="nav-text">创建MongoDB组、用户和目录，并赋权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装，并配置环境变量"><span class="nav-number">3.</span> <span class="nav-text">安装，并配置环境变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化操作系统参数"><span class="nav-number">4.</span> <span class="nav-text">优化操作系统参数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭透明大页"><span class="nav-number">4.1.</span> <span class="nav-text">关闭透明大页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改磁盘io调度策略"><span class="nav-number">4.2.</span> <span class="nav-text">修改磁盘io调度策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文件数限制"><span class="nav-number">4.3.</span> <span class="nav-text">修改文件数限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改内存分配策略"><span class="nav-number">4.4.</span> <span class="nav-text">修改内存分配策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置-MongoDB-参数文件"><span class="nav-number">5.</span> <span class="nav-text">配置 MongoDB 参数文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MongoDB-初始化"><span class="nav-number">6.</span> <span class="nav-text">MongoDB 初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置-mongorc-js"><span class="nav-number">7.</span> <span class="nav-text">配置 .mongorc.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#登录数据库并添加管理员账号，开启用户验证参数"><span class="nav-number">8.</span> <span class="nav-text">登录数据库并添加管理员账号，开启用户验证参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重启-MongoDB-数据库，并验证安全验证登录"><span class="nav-number">9.</span> <span class="nav-text">重启 MongoDB 数据库，并验证安全验证登录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cai182081</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: document.location.href, 
+            owner: 'cai182081',
+            repo: 'cai182081.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '843030b4a3d8746e2debd7448a168be4115e713d',
+            
+                client_id: 'd7af101417fa775e9a0d'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

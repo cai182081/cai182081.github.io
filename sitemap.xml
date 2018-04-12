@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/</loc>
+    
+    <lastmod>2018-04-12T14:45:15.098Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/12/MongoDB/MongDB_Install/</loc>
+    
+    <lastmod>2018-04-12T14:40:38.722Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/04/02/SQL/DB_SQL/</loc>
     
     <lastmod>2018-04-11T15:13:41.117Z</lastmod>
@@ -138,13 +152,6 @@
     <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_MHA/</loc>
     
     <lastmod>2017-10-19T13:41:13.706Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/</loc>
-    
-    <lastmod>2017-10-15T02:35:43.555Z</lastmod>
     
   </url>
   

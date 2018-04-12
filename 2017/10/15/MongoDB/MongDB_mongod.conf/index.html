@@ -125,18 +125,18 @@
 
 
 
-<meta name="description" content="MongoDB 参数文件配置12 MongoDB 核心参数选择及说明12">
+<meta name="description" content="MongoDB 核心参数文件配置及说明 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556systemLog:      destination: file	//指定是一个文件    path: &quot;/usr/local/mongodb/mong">
 <meta name="keywords" content="数据库,MongoDB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB mongod.conf 参数文件配置详解">
+<meta property="og:title" content="MongoDB 3.x 生产环境下参数文件优化配置及核心参数说明详解">
 <meta property="og:url" content="http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/index.html">
 <meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="MongoDB 参数文件配置12 MongoDB 核心参数选择及说明12">
+<meta property="og:description" content="MongoDB 核心参数文件配置及说明 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556systemLog:      destination: file	//指定是一个文件    path: &quot;/usr/local/mongodb/mong">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-15T02:35:43.555Z">
+<meta property="og:updated_time" content="2018-04-12T14:45:15.098Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MongoDB mongod.conf 参数文件配置详解">
-<meta name="twitter:description" content="MongoDB 参数文件配置12 MongoDB 核心参数选择及说明12">
+<meta name="twitter:title" content="MongoDB 3.x 生产环境下参数文件优化配置及核心参数说明详解">
+<meta name="twitter:description" content="MongoDB 核心参数文件配置及说明 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556systemLog:      destination: file	//指定是一个文件    path: &quot;/usr/local/mongodb/mong">
 
 
 
@@ -172,7 +172,7 @@
 
 
 
-  <title>MongoDB mongod.conf 参数文件配置详解 | Cailiang's Blog</title>
+  <title>MongoDB 3.x 生产环境下参数文件优化配置及核心参数说明详解 | Cailiang's Blog</title>
   
 
 
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MongoDB mongod.conf 参数文件配置详解</h1>
+          <h1 class="post-title" itemprop="name headline">MongoDB 3.x 生产环境下参数文件优化配置及核心参数说明详解</h1>
         
 
         <div class="post-meta">
@@ -398,9 +398,8 @@
       
 
       
-        <h2 id="MongoDB-参数文件配置"><a href="#MongoDB-参数文件配置" class="headerlink" title="MongoDB 参数文件配置"></a>MongoDB 参数文件配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<h2 id="MongoDB-核心参数选择及说明"><a href="#MongoDB-核心参数选择及说明" class="headerlink" title="MongoDB 核心参数选择及说明"></a>MongoDB 核心参数选择及说明</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-
+        <p>MongoDB 核心参数文件配置及说明</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">systemLog:  </div><div class="line">    destination: file	//指定是一个文件</div><div class="line">    path: <span class="string">"/usr/local/mongodb/mongod.log"</span>	//日志存放位置</div><div class="line">    logAppend: <span class="literal">true</span>   //产生日志内容追加到文件</div><div class="line">	quiet: <span class="literal">false</span>	//在quite模式下会限制输出信息</div><div class="line">    timeStampFormat: iso8601-utc	//默认是iso8601-local，日志信息中还有其他时间戳格式：ctime,iso8601-utc,iso8601-local</div><div class="line">storage:</div><div class="line">    dbPath: <span class="string">"/data/mongodb/data"</span>	//数据文件存放路径</div><div class="line">    indexBuildRetry: <span class="literal">true</span>	//当构建索引时mongod意外关闭，那么再次启动是否重新构建索引；索引构建失败，mongod重启后将会删除尚未完成的索引，但是否重建由此参数决定。</div><div class="line">    journal:	</div><div class="line">        enabled: <span class="literal">true</span>	//开启journal日志持久存储，防止数据丢失</div><div class="line">    directoryPerDB: <span class="literal">true</span>	//指定存储每个数据库文件到单独的数据目录。如果在一个已存在的系统使用该选项，需要事先把存在的数据文件移动到目录。</div><div class="line">    syncPeriodSecs: 60	//mongod调用fsync操作将数据flush到磁盘的时间间隔，默认值为60</div><div class="line">    wiredTiger:</div><div class="line">        engineConfig:</div><div class="line">            cacheSizeGB: 12	//wiredTiger缓存工作集（working <span class="built_in">set</span>）数据的内存大小</div><div class="line">            statisticsLogDelaySecs: 0	//</div><div class="line">            journalCompressor: snappy	//journal日志的压缩算法，可选值为“none”、“snappy”、“zlib”</div><div class="line">            directoryForIndexes: <span class="literal">true</span>	//将索引和collections数据分别存储在单独的目录中</div><div class="line">        collectionConfig:</div><div class="line">            blockCompressor: snappy	//collection数据压缩算法，可选值“none”、“snappy”、“zlib”</div><div class="line">        indexConfig:</div><div class="line">            prefixCompression: <span class="literal">true</span>	//对索引数据使用前缀压缩算法，对那些经过排序的值存储，有很大帮助，可以有效的减少索引数据的内存使用量</div><div class="line">processManagement:</div><div class="line">    fork: <span class="literal">true</span>	//以守护进程的方式运行MongoDB，创建服务器进程</div><div class="line">    pidFilePath: <span class="string">"/usr/local/mongodb/mongod.pid"</span>	//pid文件路径</div><div class="line">net:  </div><div class="line">    bindIp: 192.168.1.110,127.0.0.1	//mongod/monogs进程绑定的IP，application通过此IP、port建立链接。</div><div class="line">    port: 47017	//mongod/mongos侦听端口，默认为27017</div><div class="line">    maxIncomingConnections: 65536	//mongod/mongos进程允许的最大连接数，如果此值超过操作系统配置的连接数阀值，将不会生效(<span class="built_in">ulimit</span>)；默认值为65536。</div><div class="line">    wireObjectCheck: <span class="literal">true</span>	//当客户端写入数据时，mongos/mongod是否检测数据的有效性(BSON)，如果数据格式不良，此insert、update操作将会被拒绝</div><div class="line">    ipv6: <span class="literal">false</span>	//是否支持mongos/mongod多个实例之间使用IPV6网络，默认值为<span class="literal">false</span>。此值需要在整个cluster中保持一致。</div><div class="line">    http:</div><div class="line">        enabled: <span class="literal">true</span></div><div class="line">    unixDomainSocket:</div><div class="line">        enabled: <span class="literal">false</span>	//停止UNIX domain socket监听</div><div class="line">operationProfiling:</div><div class="line">    slowOpThresholdMs: 200	//指定慢查询时间，单位毫秒，如果打开功能，则向system.profile集合写入数据</div><div class="line">    mode: <span class="string">"slowOp"</span>	//off、slowOp、all，分别对应关闭，仅打开慢查询，记录所有操作。</div><div class="line">security:</div><div class="line">    authorization: enabled	//访问数据库和进行操作的用户角色认证</div><div class="line">    clusterAuthMode: keyFile	//集群认证模式，默认是keyFile</div><div class="line">    keyFile: <span class="string">"/home/mongod/keyfile"</span>	//指定分片集或副本集成员之间身份验证的key文件存储位置</div><div class="line">replication:</div><div class="line">    oplogSizeMB: 5120	//默认为磁盘的5%,指定oplog的最大尺寸。对于已经建立过oplog.rs的数据库，指定无效</div><div class="line">    replSetName: configRS	//指定副本集的名称</div><div class="line">    secondaryIndexPrefetch: all	//指定副本集成员在接受oplog之前是否加载索引到内存。默认会加载所有的索引到内存。none不加载;all加载所有;_id_only仅加载_id</div><div class="line">sharding:</div><div class="line">    clusterRole: configsvr	//在sharding集群中，此mongod实例的角色，可选值：configsvr，shardsvr</div><div class="line">    archiveMovedChunks: <span class="literal">true</span>	//当chunks因“负载平衡”而迁移到其他节点时，mongod将这些chunks归档，并保存在dbPath下“moveChunk”目录下，mongod不会删除moveChunk下的文件。</div><div class="line">setParameter:</div><div class="line">    enableLocalhostAuthBypass: <span class="literal">true</span>	//对mongod/mongos有效；表示是否开启“localhost exception”，对于sharding cluster而言，我们倾向于在mongos上开启，在shard节点的mongod上关闭。</div><div class="line">    authenticationMechanisms: SCRAM-SHA-1	//认证机制，可选值为“SCRAM-SHA-1”、“MONGODB-CR”、“PLAN”等，建议为“SCRAM-SHA-1”，对mongod/mongos有效；一旦选定了认证机制，客户端访问databases时需要与其匹配才能有效。</div><div class="line">	connPoolMaxShardedConnsPerHost: 200	//对mongod/mongos有效；表示当前mongos或者shard与集群中其他shards链接的链接池的最大容量</div><div class="line">	connPoolMaxConnsPerHost: 200	//表示mongos或者mongod与其他mongod实例之间的连接池的容量</div><div class="line">	notablescan: 0</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -503,17 +502,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -528,7 +518,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -582,22 +572,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-参数文件配置"><span class="nav-number">1.</span> <span class="nav-text">MongoDB 参数文件配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-核心参数选择及说明"><span class="nav-number">2.</span> <span class="nav-text">MongoDB 核心参数选择及说明</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
