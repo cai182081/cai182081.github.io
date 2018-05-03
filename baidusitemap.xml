@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/04/14/Hadoop/Hadoop_CDH/</loc>
+    <lastmod>2018-04-27T15:01:16.000Z</lastmod>
+    <data>
+        <display>
+        <title>CDH 5.14.2 集群离线搭建</title>
+        <pubTime>2018-04-14T13:37:32.651Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+        <tag>大数据</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hadoop" url="http://yoursite.com/categories/Hadoop/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/</loc>
-    <lastmod>2018-04-22T10:29:22.000Z</lastmod>
+    <lastmod>2018-04-27T13:10:58.000Z</lastmod>
     <data>
         <display>
         <title>全面解析 MySQL、MongoDB 数据库监控工具 PMM</title>
@@ -560,28 +582,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/14/Hadoop/Hadoop_CDH/</loc>
-    <lastmod>2018-04-04T10:38:02.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hadoop 3.0.1 完全分布式集群搭建</title>
-        <pubTime>2018-04-14T13:37:32.651Z</pubTime>
-        
-        <tag>Hadoop</tag>
-         
-        <tag>大数据</tag>
-         
-         
-           
-             
-              <breadCrumb title="Hadoop" url="http://yoursite.com/categories/Hadoop/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2018/04/04/SQL/MySQL_SQL_2/</loc>
     <lastmod>2018-04-04T02:02:30.000Z</lastmod>
     <data>
@@ -660,6 +660,30 @@
         <tag>MySQL</tag>
          
         <tag>故障诊断</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/05/03/MySQL/MySQL_Lock/</loc>
+    <lastmod>2017-10-15T01:25:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 索引原理详解</title>
+        <pubTime>2018-05-03T05:58:32.431Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>数据库</tag>
+         
+        <tag>数据库优化</tag>
          
          
            

@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/04/14/Hadoop/Hadoop_CDH/</loc>
+    
+    <lastmod>2018-04-27T15:01:16.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/</loc>
     
-    <lastmod>2018-04-22T10:29:22.000Z</lastmod>
+    <lastmod>2018-04-27T13:10:58.000Z</lastmod>
     
   </url>
   
@@ -177,13 +184,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/04/14/Hadoop/Hadoop_CDH/</loc>
-    
-    <lastmod>2018-04-04T10:38:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2018/04/04/SQL/MySQL_SQL_2/</loc>
     
     <lastmod>2018-04-04T02:02:30.000Z</lastmod>
@@ -208,6 +208,13 @@
     <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_Replication_Delay/</loc>
     
     <lastmod>2017-10-19T15:07:48.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/05/03/MySQL/MySQL_Lock/</loc>
+    
+    <lastmod>2017-10-15T01:25:32.000Z</lastmod>
     
   </url>
   
