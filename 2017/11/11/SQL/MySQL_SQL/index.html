@@ -2,15 +2,21 @@
 
 
 
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -38,54 +44,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -94,52 +52,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="MySQL,SQL 优化," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Cailiang's Blog" type="application/atom+xml" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
 
 
 
 
 
 
-<meta name="description" content="MySQL 执行计划问题 SQL 文本如下：1234567891011121314151617181920SELECT COUNT(*) AS count  FROM user u INNER JOIN token t    ON u.user_id = t.user_id INNER JOIN user_history h    ON u.user_id = h.user_id INNER JO">
-<meta name="keywords" content="MySQL,SQL 优化">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MySQL SQL优化技巧——对隐式转换、not in子查询诊断和改写">
-<meta property="og:url" content="http://yoursite.com/2017/11/11/SQL/MySQL_SQL/index.html">
-<meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="MySQL 执行计划问题 SQL 文本如下：1234567891011121314151617181920SELECT COUNT(*) AS count  FROM user u INNER JOIN token t    ON u.user_id = t.user_id INNER JOIN user_history h    ON u.user_id = h.user_id INNER JO">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/SQL/MySQL_SQL_7.png">
-<meta property="og:image" content="http://yoursite.com/images/SQL/MySQL_SQL_8.png">
-<meta property="og:updated_time" content="2018-04-11T14:20:19.811Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL SQL优化技巧——对隐式转换、not in子查询诊断和改写">
-<meta name="twitter:description" content="MySQL 执行计划问题 SQL 文本如下：1234567891011121314151617181920SELECT COUNT(*) AS count  FROM user u INNER JOIN token t    ON u.user_id = t.user_id INNER JOIN user_history h    ON u.user_id = h.user_id INNER JO">
-<meta name="twitter:image" content="http://yoursite.com/images/SQL/MySQL_SQL_7.png">
 
 
 
@@ -148,15 +79,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '5.1.3',
+    version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -168,14 +97,43 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/2017/11/11/SQL/MySQL_SQL/"/>
-
+  
 
 
 
 
-  <title>MySQL SQL优化技巧——对隐式转换、not in子查询诊断和改写 | Cailiang's Blog</title>
+  <meta name="description" content="MySQL 执行计划问题 SQL 文本如下：1234567891011121314151617181920SELECT COUNT(*) AS count  FROM user u INNER JOIN token t    ON u.user_id = t.user_id INNER JOIN user_history h    ON u.user_id = h.user_id INNER JO">
+<meta name="keywords" content="MySQL,SQL 优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL优化之美：对隐式转换、not in子查询诊断和改写">
+<meta property="og:url" content="http://yoursite.com/2017/11/11/SQL/MySQL_SQL/index.html">
+<meta property="og:site_name" content="Cailiang&#39;s Blog">
+<meta property="og:description" content="MySQL 执行计划问题 SQL 文本如下：1234567891011121314151617181920SELECT COUNT(*) AS count  FROM user u INNER JOIN token t    ON u.user_id = t.user_id INNER JOIN user_history h    ON u.user_id = h.user_id INNER JO">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/SQL/MySQL_SQL_7.png">
+<meta property="og:image" content="http://yoursite.com/images/SQL/MySQL_SQL_8.png">
+<meta property="og:updated_time" content="2018-04-20T20:00:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL优化之美：对隐式转换、not in子查询诊断和改写">
+<meta name="twitter:description" content="MySQL 执行计划问题 SQL 文本如下：1234567891011121314151617181920SELECT COUNT(*) AS count  FROM user u INNER JOIN token t    ON u.user_id = t.user_id INNER JOIN user_history h    ON u.user_id = h.user_id INNER JO">
+<meta name="twitter:image" content="http://yoursite.com/images/SQL/MySQL_SQL_7.png">
+
+
+
+  <link rel="alternate" href="/atom2.xml" title="Cailiang's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>SQL优化之美：对隐式转换、not in子查询诊断和改写 | Cailiang's Blog</title>
   
 
 
@@ -185,9 +143,37 @@
 
 
 
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -196,26 +182,26 @@
 
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-
+	<a href="https://github.com/cai182081"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Cailiang's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">飞翔的菜鸟</p>
+        <h1 class="site-subtitle" itemprop="description">飞翔的菜鸟</h1>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -223,68 +209,106 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -295,6 +319,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -319,11 +345,19 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL SQL优化技巧——对隐式转换、not in子查询诊断和改写</h1>
+          <h2 class="post-title" itemprop="name headline">SQL优化之美：对隐式转换、not in子查询诊断和改写
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -331,13 +365,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T22:30:31+08:00">
-                2017-11-11
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-11 22:30:31" itemprop="dateCreated datePublished" datetime="2017-11-11T22:30:31+08:00">2017-11-11</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-21 04:00:46" itemprop="dateModified" datetime="2018-04-21T04:00:46+08:00">2018-04-21</time>
+              
             
           </span>
 
@@ -353,11 +404,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SQL/" itemprop="url" rel="index">
-                    <span itemprop="name">SQL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a></span>
 
                 
                 
@@ -373,13 +420,24 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/11/11/SQL/MySQL_SQL/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/11/11/SQL/MySQL_SQL/" itemprop="commentsCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2017/11/11/SQL/MySQL_SQL/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
           
 
           
+          
+             <span id="/2017/11/11/SQL/MySQL_SQL/" class="leancloud_visitors" data-flag-title="SQL优化之美：对隐式转换、not in子查询诊断和改写">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -401,7 +459,7 @@
       
 
       
-        <h2 id="MySQL-执行计划"><a href="#MySQL-执行计划" class="headerlink" title="MySQL 执行计划"></a>MySQL 执行计划</h2><p>问题 SQL 文本如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(*) AS count</div><div class="line">  FROM user u</div><div class="line"> INNER JOIN token t</div><div class="line">    ON u.user_id = t.user_id</div><div class="line"> INNER JOIN user_history h</div><div class="line">    ON u.user_id = h.user_id</div><div class="line"> INNER JOIN loan_record r</div><div class="line">    ON r.history_id = h.user_id</div><div class="line"> INNER JOIN ACT_HI_PROCINST AHP</div><div class="line">    on AHP.BUSINESS_KEY_ = r.loan_record_id</div><div class="line"> WHERE r.approval_result != 0</div><div class="line">   AND u.id NOT IN (SELECT n3.id</div><div class="line">                      FROM loan_record n1</div><div class="line">                     INNER JOIN user_history n2</div><div class="line">                        on n1.history_id = n2.user_id</div><div class="line">                     INNER JOIN user n3</div><div class="line">                        ON n3.user_id = n2.user_id</div><div class="line">                     WHERE n1.approval_result = 1)</div><div class="line">   AND r.apply_time LIKE CONCAT(<span class="string">'2017-11-07'</span>, <span class="string">'%'</span>)</div><div class="line">   AND t.channel IN (2，3);</div></pre></td></tr></table></figure></p>
+        <h2 id="MySQL-执行计划"><a href="#MySQL-执行计划" class="headerlink" title="MySQL 执行计划"></a>MySQL 执行计划</h2><p>问题 SQL 文本如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">SELECT COUNT(*) AS count</span><br><span class="line">  FROM user u</span><br><span class="line"> INNER JOIN token t</span><br><span class="line">    ON u.user_id = t.user_id</span><br><span class="line"> INNER JOIN user_history h</span><br><span class="line">    ON u.user_id = h.user_id</span><br><span class="line"> INNER JOIN loan_record r</span><br><span class="line">    ON r.history_id = h.user_id</span><br><span class="line"> INNER JOIN ACT_HI_PROCINST AHP</span><br><span class="line">    on AHP.BUSINESS_KEY_ = r.loan_record_id</span><br><span class="line"> WHERE r.approval_result != 0</span><br><span class="line">   AND u.id NOT IN (SELECT n3.id</span><br><span class="line">                      FROM loan_record n1</span><br><span class="line">                     INNER JOIN user_history n2</span><br><span class="line">                        on n1.history_id = n2.user_id</span><br><span class="line">                     INNER JOIN user n3</span><br><span class="line">                        ON n3.user_id = n2.user_id</span><br><span class="line">                     WHERE n1.approval_result = 1)</span><br><span class="line">   AND r.apply_time LIKE CONCAT(<span class="string">'2017-11-07'</span>, <span class="string">'%'</span>)</span><br><span class="line">   AND t.channel IN (2，3);</span><br></pre></td></tr></table></figure></p>
 <p>执行计划如下：<br><img src="/images/SQL/MySQL_SQL_7.png" alt="MySQL 执行计划"></p>
 <p>执行时间2.1s，结果集0条。</p>
 <h2 id="SQL性能定位及分析"><a href="#SQL性能定位及分析" class="headerlink" title="SQL性能定位及分析"></a>SQL性能定位及分析</h2><p>对于此执行计划相信很多SQL开发人员和部分DBA会说，r 表已经创建了 apply_time 字段索引，其他表都是通过索引来检索数据的，已经无法从很难从SQL及索引层面着手优化，然而这都只是表象。SQL 虽然用到了索引，然而并没有将索引用到最优，表之间连接也并不优，下面我将对此SQL的优化展开详细的讨论：</p>
@@ -409,32 +467,58 @@
 <p>2、not in 对于子查询来说是最差的选择，是无法走任何索引的，不要仅仅只看执行计划，在此执行计划中n3表走idx_user_id索引，但表也不是通过表关联嵌套驱动，对其改写为not exists或者left join连接查询</p>
 <p>3、对于 r 表来说按时间 apply_time LIKE CONCAT(‘2017-11-06’, ‘%’) 字段过滤，apply_time 字段建有索引，本应该相当高效的，然而 SQL 并没有走时间字段索引，而是通过全表扫描来检索数据，此时对索引字段也没有进行函数、计算运算，猜测其中可能发生了时间与字符串类型的隐式转换，导致SQL不能通过索引扫描数据。</p>
 <p>4、字符集的隐式转换，具体分析请根据下例分析</p>
-<p>此时MySQL 优化器对其SQL的改写为如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">/* select<span class="comment">#1 */</span></div><div class="line">select count(0) AS <span class="string">"count"</span></div><div class="line">  from <span class="string">"test"</span>.<span class="string">"user"</span> <span class="string">"u"</span></div><div class="line">  join <span class="string">"test"</span>.<span class="string">"token"</span> <span class="string">"t"</span></div><div class="line">  join <span class="string">"test"</span>.<span class="string">"user_history"</span> <span class="string">"h"</span></div><div class="line">  join <span class="string">"test"</span>.<span class="string">"loan_record"</span> <span class="string">"r"</span></div><div class="line">  join <span class="string">"test"</span>.<span class="string">"ACT_HI_PROCINST"</span> <span class="string">"AHP"</span></div><div class="line"> <span class="built_in">where</span> ((<span class="string">"test"</span>.<span class="string">"h"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"r"</span>.<span class="string">"history_id"</span>) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"u"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"r"</span>.<span class="string">"history_id"</span>) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"t"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"r"</span>.<span class="string">"history_id"</span>) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"r"</span>.<span class="string">"approval_result"</span> &lt;&gt; 0) and</div><div class="line">       (not</div><div class="line">        (&lt; in_optimizer &gt;</div><div class="line">         (<span class="string">"test"</span>.<span class="string">"u"</span>.<span class="string">"user_id"</span>, &lt; exists &gt;</div><div class="line">         ( /* select<span class="comment">#2 */</span></div><div class="line">             select 1</div><div class="line">               from <span class="string">"test"</span>.<span class="string">"loan_record"</span> <span class="string">"n1"</span></div><div class="line">               join <span class="string">"test"</span>.<span class="string">"user_history"</span> <span class="string">"n2"</span></div><div class="line">               join <span class="string">"test"</span>.<span class="string">"user"</span> <span class="string">"n3"</span></div><div class="line">              <span class="built_in">where</span> ((<span class="string">"test"</span>.<span class="string">"n3"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"n2"</span>.<span class="string">"user_id"</span>) and</div><div class="line">                    (<span class="string">"test"</span>.<span class="string">"n1"</span>.<span class="string">"history_id"</span> = <span class="string">"test"</span>.<span class="string">"n2"</span>.<span class="string">"user_id"</span>) and</div><div class="line">                    (<span class="string">"test"</span>.<span class="string">"n1"</span>.<span class="string">"approval_result"</span> = 1) and</div><div class="line">                    (&lt; cache &gt; (<span class="string">"test"</span>.<span class="string">"u"</span>.<span class="string">"user_id"</span>) = <span class="string">"test"</span>.<span class="string">"n2"</span>.<span class="string">"user_id"</span>)))))) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"r"</span>.<span class="string">"apply_time"</span> like &lt; cache &gt; (concat(<span class="string">'2017-11-07'</span>, <span class="string">'%'</span>))) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"t"</span>.<span class="string">"channel"</span> <span class="keyword">in</span> (2, 3)) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"AHP"</span>.<span class="string">"BUSINESS_KEY_"</span> =</div><div class="line">       convert(<span class="string">"test"</span>.<span class="string">"r"</span>.<span class="string">"loan_record_id"</span> using utf8mb4)))</div></pre></td></tr></table></figure></p>
-<p>从这里可以看出MySQL 优化器将 not in 子查询自动优化为了not exists 子查询，对 not in做了优化，而时间字段无法确认是否做了隐式转换，这个需实验验证，还可以看出 AHP 表 BUSINESS<em>KEY</em> 与 r 表 loan_record_id 字段之间存在不同字符集的隐式转换。</p>
-<p>对此我最终 SQL 改写，并为 r 表添加了approval_result，apply_time复合索引，将AHP表的 BUSINESS<em>KEY</em> 字段字符集改为utf8，最终SQL执行执行时间优化为0.26s返回数据。</p>
-<p>最终 SQL 文本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(*) AS count</div><div class="line">  FROM user u</div><div class="line"> INNER JOIN token t</div><div class="line">    ON u.user_id = t.user_id</div><div class="line"> INNER JOIN user_history h</div><div class="line">    ON u.user_id = h.user_id</div><div class="line"> INNER JOIN (SELECT history_id, loan_record_id</div><div class="line">               FROM loan_record</div><div class="line">              WHERE approval_result IN (1,2,3)</div><div class="line">                AND apply_time </div><div class="line">               BETWEEN <span class="string">'2017-11-07 00:00:00'</span> AND <span class="string">'2017-11-07 23:59:59'</span>) r</div><div class="line">    ON r.history_id = h.user_id</div><div class="line">   AND t.channel IN (2, 3)</div><div class="line"> INNER JOIN ACT_HI_PROCINST AHP</div><div class="line">    on AHP.BUSINESS_KEY_ = r.loan_record_id</div><div class="line">  LEFT JOIN (SELECT n3.user_id</div><div class="line">               FROM loan_record n1</div><div class="line">              INNER JOIN user_history n2</div><div class="line">                 on n1.history_id = n2.user_id</div><div class="line">              INNER JOIN user n3</div><div class="line">                 ON n3.user_id = n2.user_id</div><div class="line">              WHERE n1.approval_result = 1) a</div><div class="line">    ON u.user_id = a.user_id</div><div class="line">     WHERE a.user_id IS NULL;</div></pre></td></tr></table></figure></p>
+<p>此时MySQL 优化器对其SQL的改写为如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/* select<span class="comment">#1 */</span></span><br><span class="line">select count(0) AS <span class="string">"count"</span></span><br><span class="line">  from <span class="string">"test"</span>.<span class="string">"user"</span> <span class="string">"u"</span></span><br><span class="line">  join <span class="string">"test"</span>.<span class="string">"token"</span> <span class="string">"t"</span></span><br><span class="line">  join <span class="string">"test"</span>.<span class="string">"user_history"</span> <span class="string">"h"</span></span><br><span class="line">  join <span class="string">"test"</span>.<span class="string">"loan_record"</span> <span class="string">"r"</span></span><br><span class="line">  join <span class="string">"test"</span>.<span class="string">"ACT_HI_PROCINST"</span> <span class="string">"AHP"</span></span><br><span class="line"> <span class="built_in">where</span> ((<span class="string">"test"</span>.<span class="string">"h"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"r"</span>.<span class="string">"history_id"</span>) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"u"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"r"</span>.<span class="string">"history_id"</span>) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"t"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"r"</span>.<span class="string">"history_id"</span>) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"r"</span>.<span class="string">"approval_result"</span> &lt;&gt; 0) and</span><br><span class="line">       (not</span><br><span class="line">        (&lt; in_optimizer &gt;</span><br><span class="line">         (<span class="string">"test"</span>.<span class="string">"u"</span>.<span class="string">"user_id"</span>, &lt; exists &gt;</span><br><span class="line">         ( /* select<span class="comment">#2 */</span></span><br><span class="line">             select 1</span><br><span class="line">               from <span class="string">"test"</span>.<span class="string">"loan_record"</span> <span class="string">"n1"</span></span><br><span class="line">               join <span class="string">"test"</span>.<span class="string">"user_history"</span> <span class="string">"n2"</span></span><br><span class="line">               join <span class="string">"test"</span>.<span class="string">"user"</span> <span class="string">"n3"</span></span><br><span class="line">              <span class="built_in">where</span> ((<span class="string">"test"</span>.<span class="string">"n3"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"n2"</span>.<span class="string">"user_id"</span>) and</span><br><span class="line">                    (<span class="string">"test"</span>.<span class="string">"n1"</span>.<span class="string">"history_id"</span> = <span class="string">"test"</span>.<span class="string">"n2"</span>.<span class="string">"user_id"</span>) and</span><br><span class="line">                    (<span class="string">"test"</span>.<span class="string">"n1"</span>.<span class="string">"approval_result"</span> = 1) and</span><br><span class="line">                    (&lt; cache &gt; (<span class="string">"test"</span>.<span class="string">"u"</span>.<span class="string">"user_id"</span>) = <span class="string">"test"</span>.<span class="string">"n2"</span>.<span class="string">"user_id"</span>)))))) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"r"</span>.<span class="string">"apply_time"</span> like &lt; cache &gt; (concat(<span class="string">'2017-11-07'</span>, <span class="string">'%'</span>))) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"t"</span>.<span class="string">"channel"</span> <span class="keyword">in</span> (2, 3)) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"AHP"</span>.<span class="string">"BUSINESS_KEY_"</span> =</span><br><span class="line">       convert(<span class="string">"test"</span>.<span class="string">"r"</span>.<span class="string">"loan_record_id"</span> using utf8mb4)))</span><br></pre></td></tr></table></figure></p>
+<p>从这里可以看出MySQL 优化器将 not in 子查询自动优化为了not exists 子查询，对 not in做了优化，而时间字段无法确认是否做了隐式转换，这个需实验验证，还可以看出 AHP 表 BUSINESS_KEY_ 与 r 表 loan_record_id 字段之间存在不同字符集的隐式转换。</p>
+<p>对此我最终 SQL 改写，并为 r 表添加了approval_result，apply_time复合索引，将AHP表的 BUSINESS_KEY_ 字段字符集改为utf8，最终SQL执行执行时间优化为0.26s返回数据。</p>
+<p>最终 SQL 文本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">SELECT COUNT(*) AS count</span><br><span class="line">  FROM user u</span><br><span class="line"> INNER JOIN token t</span><br><span class="line">    ON u.user_id = t.user_id</span><br><span class="line"> INNER JOIN user_history h</span><br><span class="line">    ON u.user_id = h.user_id</span><br><span class="line"> INNER JOIN (SELECT history_id, loan_record_id</span><br><span class="line">               FROM loan_record</span><br><span class="line">              WHERE approval_result IN (1,2,3)</span><br><span class="line">                AND apply_time </span><br><span class="line">               BETWEEN <span class="string">'2017-11-07 00:00:00'</span> AND <span class="string">'2017-11-07 23:59:59'</span>) r</span><br><span class="line">    ON r.history_id = h.user_id</span><br><span class="line">   AND t.channel IN (2, 3)</span><br><span class="line"> INNER JOIN ACT_HI_PROCINST AHP</span><br><span class="line">    on AHP.BUSINESS_KEY_ = r.loan_record_id</span><br><span class="line">  LEFT JOIN (SELECT n3.user_id</span><br><span class="line">               FROM loan_record n1</span><br><span class="line">              INNER JOIN user_history n2</span><br><span class="line">                 on n1.history_id = n2.user_id</span><br><span class="line">              INNER JOIN user n3</span><br><span class="line">                 ON n3.user_id = n2.user_id</span><br><span class="line">              WHERE n1.approval_result = 1) a</span><br><span class="line">    ON u.user_id = a.user_id</span><br><span class="line">     WHERE a.user_id IS NULL;</span><br></pre></td></tr></table></figure></p>
 <p>最终执行计划为：<br><img src="/images/SQL/MySQL_SQL_8.png" alt="MySQL 优化后执行计划"></p>
-<p>MySQL 优化器对起的改写 SQL 优化解析为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/* select<span class="comment">#1 */</span></div><div class="line">select count(0) AS <span class="string">"count"</span></div><div class="line">  from <span class="string">"test"</span>.<span class="string">"user"</span> <span class="string">"u"</span></div><div class="line">  join <span class="string">"test"</span>.<span class="string">"token"</span> <span class="string">"t"</span></div><div class="line">  join <span class="string">"test"</span>.<span class="string">"user_history"</span> <span class="string">"h"</span></div><div class="line">  join <span class="string">"test"</span>.<span class="string">"loan_record"</span></div><div class="line">  join <span class="string">"test"</span>.<span class="string">"ACT_HI_PROCINST"</span> <span class="string">"AHP"</span></div><div class="line">  left join(<span class="string">"test"</span>.<span class="string">"loan_record"</span> <span class="string">"n1"</span></div><div class="line">  join <span class="string">"test"</span>.<span class="string">"user_history"</span> <span class="string">"n2"</span></div><div class="line">  join <span class="string">"test"</span>.<span class="string">"user"</span> <span class="string">"n3"</span>)</div><div class="line">    on (((<span class="string">"test"</span>.<span class="string">"n1"</span>.<span class="string">"approval_result"</span> = 1) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"n2"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"history_id"</span>) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"n3"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"history_id"</span>) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"n1"</span>.<span class="string">"history_id"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"history_id"</span>)))</div><div class="line"> <span class="built_in">where</span> ((<span class="string">"test"</span>.<span class="string">"h"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"history_id"</span>) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"u"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"history_id"</span>) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"t"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"history_id"</span>) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"AHP"</span>.<span class="string">"BUSINESS_KEY_"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"loan_record_id"</span>) and</div><div class="line">       isnull(<span class="string">"test"</span>.<span class="string">"n3"</span>.<span class="string">"user_id"</span>) and (<span class="string">"test"</span>.<span class="string">"t"</span>.<span class="string">"channel"</span> <span class="keyword">in</span> (2, 3)) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"approval_result"</span> <span class="keyword">in</span> (1, 2, 3)) and</div><div class="line">       (<span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"apply_time"</span> between <span class="string">'2017-11-07 00:00:00'</span> and <span class="string">'2017-11-07 23:59:59'</span>))</div></pre></td></tr></table></figure></p>
+<p>MySQL 优化器对起的改写 SQL 优化解析为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/* select<span class="comment">#1 */</span></span><br><span class="line">select count(0) AS <span class="string">"count"</span></span><br><span class="line">  from <span class="string">"test"</span>.<span class="string">"user"</span> <span class="string">"u"</span></span><br><span class="line">  join <span class="string">"test"</span>.<span class="string">"token"</span> <span class="string">"t"</span></span><br><span class="line">  join <span class="string">"test"</span>.<span class="string">"user_history"</span> <span class="string">"h"</span></span><br><span class="line">  join <span class="string">"test"</span>.<span class="string">"loan_record"</span></span><br><span class="line">  join <span class="string">"test"</span>.<span class="string">"ACT_HI_PROCINST"</span> <span class="string">"AHP"</span></span><br><span class="line">  left join(<span class="string">"test"</span>.<span class="string">"loan_record"</span> <span class="string">"n1"</span></span><br><span class="line">  join <span class="string">"test"</span>.<span class="string">"user_history"</span> <span class="string">"n2"</span></span><br><span class="line">  join <span class="string">"test"</span>.<span class="string">"user"</span> <span class="string">"n3"</span>)</span><br><span class="line">    on (((<span class="string">"test"</span>.<span class="string">"n1"</span>.<span class="string">"approval_result"</span> = 1) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"n2"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"history_id"</span>) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"n3"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"history_id"</span>) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"n1"</span>.<span class="string">"history_id"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"history_id"</span>)))</span><br><span class="line"> <span class="built_in">where</span> ((<span class="string">"test"</span>.<span class="string">"h"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"history_id"</span>) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"u"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"history_id"</span>) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"t"</span>.<span class="string">"user_id"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"history_id"</span>) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"AHP"</span>.<span class="string">"BUSINESS_KEY_"</span> = <span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"loan_record_id"</span>) and</span><br><span class="line">       isnull(<span class="string">"test"</span>.<span class="string">"n3"</span>.<span class="string">"user_id"</span>) and (<span class="string">"test"</span>.<span class="string">"t"</span>.<span class="string">"channel"</span> <span class="keyword">in</span> (2, 3)) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"approval_result"</span> <span class="keyword">in</span> (1, 2, 3)) and</span><br><span class="line">       (<span class="string">"test"</span>.<span class="string">"loan_record"</span>.<span class="string">"apply_time"</span> between <span class="string">'2017-11-07 00:00:00'</span> and <span class="string">'2017-11-07 23:59:59'</span>))</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
+
+    
+
     
     
+    
+     <div>
+		
+		<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+		
+      </div>
+	
     
 
     
 
     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>cai182081</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2017/11/11/SQL/MySQL_SQL/" title="SQL优化之美：对隐式转换、not in子查询诊断和改写">http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
 
+      </div>
     
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            <a href="/tags/MySQL/" rel="tag"> <i class="fa fa-tag"></i> MySQL</a>
           
-            <a href="/tags/SQL-优化/" rel="tag"># SQL 优化</a>
+            <a href="/tags/SQL-优化/" rel="tag"> <i class="fa fa-tag"></i> SQL 优化</a>
           
         </div>
       
@@ -485,9 +569,6 @@
           </div>
           
 
-
-          
-
   
     <div class="comments" id="comments">
       
@@ -497,7 +578,7 @@
 
   
 
-  
+
 
         </div>
         
@@ -536,62 +617,113 @@
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">23</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
+              <a href="/atom2.xml" rel="alternate">
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
             </div>
           
 
-          <div class="links-of-author motion-element">
+          
+
+          
+          
+
+          
+          
+
+          
             
-          </div>
-
           
-          
-
-          
-          
-
           
 
         </div>
@@ -628,16 +760,22 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cai182081</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -645,12 +783,13 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
 
         
+
 
 
 
@@ -689,12 +828,6 @@
 
 
 
-  
-
-
-
-
-
 
 
 
@@ -703,61 +836,77 @@
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+  
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
 
 
 
   
-
-
-  
-
 
 
 
@@ -780,7 +929,6 @@
 
 
 
-
 <!-- LOCAL: You can save these files to your site and update links -->
     
         
@@ -795,7 +943,7 @@
       <script type="text/javascript">
       function renderGitment(){
         var gitment = new Gitmint({
-            id: document.location.href, 
+            id: window.location.pathname,
             owner: 'cai182081',
             repo: 'cai182081.github.io',
             
@@ -822,10 +970,427 @@
 
 
 
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
 
   
 
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("LYl7tK129GkXmPxHi8ILtiuQ-gzGzoHsz", "fNvr4KMQd9tuE6hVX1hFBzlU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
 
 
 
@@ -834,11 +1399,15 @@
   
 
   
-  
 
   
   
 
+  
+
+  
+
+  
 
   
 

@@ -2,15 +2,21 @@
 
 
 
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -38,54 +44,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -94,49 +52,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="MySQL,数据库,数据库优化," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Cailiang's Blog" type="application/atom+xml" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
 
 
 
 
 
 
-<meta name="description" content="查看MySQL数据库中无显示主键的表12345678910SELECT t.TABLE_SCHEMA, t.TABLE_NAME  FROM information_schema.TABLES t  LEFT JOIN information_schema.TABLE_CONSTRAINTS tc    ON tc.TABLE_SCHEMA = t.TABLE_SCHEMA   AND tc.TA">
-<meta name="keywords" content="MySQL,数据库,数据库优化">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MySQL 常用SQL诊断脚本">
-<meta property="og:url" content="http://yoursite.com/2018/04/04/SQL/MySQL_SQL_2/index.html">
-<meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="查看MySQL数据库中无显示主键的表12345678910SELECT t.TABLE_SCHEMA, t.TABLE_NAME  FROM information_schema.TABLES t  LEFT JOIN information_schema.TABLE_CONSTRAINTS tc    ON tc.TABLE_SCHEMA = t.TABLE_SCHEMA   AND tc.TA">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-04T02:02:30.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL 常用SQL诊断脚本">
-<meta name="twitter:description" content="查看MySQL数据库中无显示主键的表12345678910SELECT t.TABLE_SCHEMA, t.TABLE_NAME  FROM information_schema.TABLES t  LEFT JOIN information_schema.TABLE_CONSTRAINTS tc    ON tc.TABLE_SCHEMA = t.TABLE_SCHEMA   AND tc.TA">
 
 
 
@@ -145,15 +79,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '5.1.3',
+    version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -165,12 +97,38 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/2018/04/04/SQL/MySQL_SQL_2/"/>
-
+  
 
 
 
+
+  <meta name="description" content="查看MySQL数据库中无显示主键的表12345678910SELECT t.TABLE_SCHEMA, t.TABLE_NAME  FROM information_schema.TABLES t  LEFT JOIN information_schema.TABLE_CONSTRAINTS tc    ON tc.TABLE_SCHEMA = t.TABLE_SCHEMA   AND tc.TA">
+<meta name="keywords" content="MySQL,数据库,数据库优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 常用SQL诊断脚本">
+<meta property="og:url" content="http://yoursite.com/2018/04/04/SQL/MySQL_SQL_2/index.html">
+<meta property="og:site_name" content="Cailiang&#39;s Blog">
+<meta property="og:description" content="查看MySQL数据库中无显示主键的表12345678910SELECT t.TABLE_SCHEMA, t.TABLE_NAME  FROM information_schema.TABLES t  LEFT JOIN information_schema.TABLE_CONSTRAINTS tc    ON tc.TABLE_SCHEMA = t.TABLE_SCHEMA   AND tc.TA">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-04T02:02:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL 常用SQL诊断脚本">
+<meta name="twitter:description" content="查看MySQL数据库中无显示主键的表12345678910SELECT t.TABLE_SCHEMA, t.TABLE_NAME  FROM information_schema.TABLES t  LEFT JOIN information_schema.TABLE_CONSTRAINTS tc    ON tc.TABLE_SCHEMA = t.TABLE_SCHEMA   AND tc.TA">
+
+
+
+  <link rel="alternate" href="/atom2.xml" title="Cailiang's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>MySQL 常用SQL诊断脚本 | Cailiang's Blog</title>
   
@@ -182,9 +140,37 @@
 
 
 
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -193,26 +179,26 @@
 
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-
+	<a href="https://github.com/cai182081"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Cailiang's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">飞翔的菜鸟</p>
+        <h1 class="site-subtitle" itemprop="description">飞翔的菜鸟</h1>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -220,68 +206,106 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -292,6 +316,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -316,11 +342,19 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL 常用SQL诊断脚本</h1>
+          <h2 class="post-title" itemprop="name headline">MySQL 常用SQL诊断脚本
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -328,13 +362,18 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T23:15:11+08:00">
-                2018-04-04
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-04 23:15:11 / 修改时间：10:02:30" itemprop="dateCreated datePublished" datetime="2018-04-04T23:15:11+08:00">2018-04-04</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -350,11 +389,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
 
                 
                 
@@ -370,13 +405,24 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/04/04/SQL/MySQL_SQL_2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/04/SQL/MySQL_SQL_2/" itemprop="commentsCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/04/SQL/MySQL_SQL_2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
           
 
           
+          
+             <span id="/2018/04/04/SQL/MySQL_SQL_2/" class="leancloud_visitors" data-flag-title="MySQL 常用SQL诊断脚本">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -398,36 +444,62 @@
       
 
       
-        <h2 id="查看MySQL数据库中无显示主键的表"><a href="#查看MySQL数据库中无显示主键的表" class="headerlink" title="查看MySQL数据库中无显示主键的表"></a>查看MySQL数据库中无显示主键的表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">SELECT t.TABLE_SCHEMA, t.TABLE_NAME</div><div class="line">  FROM information_schema.TABLES t</div><div class="line">  LEFT JOIN information_schema.TABLE_CONSTRAINTS tc</div><div class="line">    ON tc.TABLE_SCHEMA = t.TABLE_SCHEMA</div><div class="line">   AND tc.TABLE_NAME = t.TABLE_NAME</div><div class="line">   AND tc.CONSTRAINT_TYPE = <span class="string">'PRIMARY KEY'</span></div><div class="line"> WHERE t.TABLE_TYPE = <span class="string">'BASE TABLE'</span></div><div class="line">   AND tc.CONSTRAINT_TYPE IS NULL</div><div class="line">   AND t.TABLE_SCHEMA NOT IN</div><div class="line">       (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>);</div></pre></td></tr></table></figure>
-<h2 id="查看MySQL数据库中没有被使用的索引"><a href="#查看MySQL数据库中没有被使用的索引" class="headerlink" title="查看MySQL数据库中没有被使用的索引"></a>查看MySQL数据库中没有被使用的索引</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">SELECT OBJECT_SCHEMA, OBJECT_NAME, INDEX_NAME</div><div class="line">  FROM performance_schema.TABLE_IO_WAITS_SUMMARY_BY_INDEX_USAGE</div><div class="line"> WHERE INDEX_NAME IS NOT NULL</div><div class="line">   AND INDEX_NAME != <span class="string">'PRIMARY'</span></div><div class="line">   AND COUNT_FETCH = 0</div><div class="line">   AND COUNT_READ = 0</div><div class="line">   AND OBJECT_SCHEMA NOT IN (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</div><div class="line"> ORDER BY OBJECT_SCHEMA, OBJECT_NAME;</div></pre></td></tr></table></figure>
-<h2 id="查看MySQL数据库中存在外键约束的表"><a href="#查看MySQL数据库中存在外键约束的表" class="headerlink" title="查看MySQL数据库中存在外键约束的表"></a>查看MySQL数据库中存在外键约束的表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">SELECT c.TABLE_SCHEMA,</div><div class="line">       c.REFERENCED_TABLE_NAME,</div><div class="line">       c.REFERENCED_COLUMN_NAME,</div><div class="line">       c.TABLE_NAME,</div><div class="line">       c.COLUMN_NAME,</div><div class="line">       c.CONSTRAINT_NAME,</div><div class="line">       t.TABLE_COMMENT,</div><div class="line">       r.UPDATE_RULE,</div><div class="line">       r.DELETE_RULE</div><div class="line">  FROM information_schema.KEY_COLUMN_USAGE c</div><div class="line">  JOIN information_schema.TABLES t</div><div class="line">    ON t.TABLE_NAME = c.TABLE_NAME</div><div class="line">  JOIN information_schema.REFERENTIAL_CONSTRAINTS r</div><div class="line">    ON r.TABLE_NAME = c.TABLE_NAME</div><div class="line">   AND r.CONSTRAINT_NAME = c.CONSTRAINT_NAME</div><div class="line">   AND r.REFERENCED_TABLE_NAME = c.REFERENCED_TABLE_NAME</div><div class="line"> WHERE c.REFERENCED_TABLE_NAME IS NOT NULL;</div></pre></td></tr></table></figure>
-<h2 id="查看MySQL数据库中引擎不是InnoDB的表"><a href="#查看MySQL数据库中引擎不是InnoDB的表" class="headerlink" title="查看MySQL数据库中引擎不是InnoDB的表"></a>查看MySQL数据库中引擎不是InnoDB的表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SELECT CONCAT(<span class="string">'ALTER TABLE '</span>, TABLE_SCHEMA, <span class="string">'.'</span>, TABLE_NAME, <span class="string">' ENGINE = InnoDB;'</span>)</div><div class="line">  FROM information_schema.TABLES</div><div class="line"> WHERE TABLE_SCHEMA NOT IN</div><div class="line">      (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</div><div class="line">  AND ENGINE != <span class="string">'InnoDB'</span>;</div></pre></td></tr></table></figure>
-<h2 id="查看MySQL数据库中主键是复合主键的表"><a href="#查看MySQL数据库中主键是复合主键的表" class="headerlink" title="查看MySQL数据库中主键是复合主键的表"></a>查看MySQL数据库中主键是复合主键的表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">SELECT TABLE_SCHEMA, TABLE_NAME,</div><div class="line">      GROUP_CONCAT(COLUMN_NAME ORDER BY SEQ_IN_INDEX SEPARATOR <span class="string">','</span>) cols,</div><div class="line">      MAX(SEQ_IN_INDEX) len</div><div class="line">  FROM information_schema.STATISTICS</div><div class="line"> WHERE INDEX_NAME = <span class="string">'PRIMARY'</span></div><div class="line">   AND TABLE_SCHEMA NOT IN</div><div class="line">      (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</div><div class="line"> GROUP BY TABLE_SCHEMA, TABLE_NAME</div><div class="line">HAVING len &gt; 1;</div></pre></td></tr></table></figure>
-<h2 id="查找MySQL数据库中重复索引前缀的索引"><a href="#查找MySQL数据库中重复索引前缀的索引" class="headerlink" title="查找MySQL数据库中重复索引前缀的索引"></a>查找MySQL数据库中重复索引前缀的索引</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">SELECT a.TABLE_SCHEMA, a.TABLE_NAME, a.INDEX_NAME, a.cols, b.INDEX_NAME, b.cols</div><div class="line">  FROM (SELECT TABLE_SCHEMA, TABLE_NAME, INDEX_NAME,</div><div class="line">              CONCAT(<span class="string">'| '</span>, GROUP_CONCAT(COLUMN_NAME ORDER BY SEQ_IN_INDEX SEPARATOR <span class="string">' | '</span>), <span class="string">' |'</span>) AS cols</div><div class="line">          FROM information_schema.STATISTICS</div><div class="line">         WHERE TABLE_SCHEMA NOT IN  (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</div><div class="line">           AND INDEX_NAME != <span class="string">'PRIMARY'</span></div><div class="line">         GROUP BY TABLE_SCHEMA, TABLE_NAME, INDEX_NAME) a</div><div class="line"> INNER JOIN (SELECT TABLE_SCHEMA, TABLE_NAME, INDEX_NAME,</div><div class="line">                    CONCAT(<span class="string">'| '</span>, GROUP_CONCAT(COLUMN_NAME ORDER BY SEQ_IN_INDEX SEPARATOR <span class="string">' | '</span>), <span class="string">' |'</span>) AS cols</div><div class="line">               FROM information_schema.STATISTICS</div><div class="line">              WHERE TABLE_SCHEMA NOT IN  (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</div><div class="line">                AND INDEX_NAME != <span class="string">'PRIMARY'</span></div><div class="line">              GROUP BY TABLE_SCHEMA, TABLE_NAME, INDEX_NAME) b</div><div class="line">    ON a.TABLE_NAME = b.TABLE_NAME</div><div class="line">   AND a.TABLE_SCHEMA = b.TABLE_SCHEMA</div><div class="line">   AND a.cols LIKE CONCAT(b.cols, <span class="string">'%'</span>)</div><div class="line">   AND a.INDEX_NAME != b.INDEX_NAME;</div></pre></td></tr></table></figure>
-<h2 id="查找MySQL数据库中低区分度索引（区分度小于0-1）"><a href="#查找MySQL数据库中低区分度索引（区分度小于0-1）" class="headerlink" title="查找MySQL数据库中低区分度索引（区分度小于0.1）"></a>查找MySQL数据库中低区分度索引（区分度小于0.1）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">SELECT p.TABLE_SCHEMA, p.TABLE_NAME, c.INDEX_NAME, c.car, p.car total</div><div class="line">  FROM (SELECT TABLE_SCHEMA, TABLE_NAME, INDEX_NAME, MAX(CARDINALITY) car</div><div class="line">          FROM information_schema.STATISTICS</div><div class="line">         WHERE INDEX_NAME != <span class="string">'PRIMARY'</span></div><div class="line">           AND TABLE_SCHEMA NOT IN  (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</div><div class="line">         GROUP BY TABLE_SCHEMA, TABLE_NAME, INDEX_NAME) c</div><div class="line"> INNER JOIN (SELECT TABLE_SCHEMA, TABLE_NAME, MAX(CARDINALITY) car</div><div class="line">               from information_schema.STATISTICS</div><div class="line">              WHERE INDEX_NAME = <span class="string">'PRIMARY'</span></div><div class="line">                AND TABLE_SCHEMA NOT IN  (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</div><div class="line">              GROUP BY TABLE_SCHEMA, TABLE_NAME) p</div><div class="line">    ON c.TABLE_NAME = p.TABLE_NAME</div><div class="line">   AND c.TABLE_SCHEMA = p.TABLE_SCHEMA</div><div class="line"> WHERE p.car &gt; 0</div><div class="line">   AND c.car / p.car &lt; 0.1</div><div class="line"> ORDER BY c.car / p.car;</div></pre></td></tr></table></figure>
-<h2 id="查找MySQL数据库主键不为自增主键的表"><a href="#查找MySQL数据库主键不为自增主键的表" class="headerlink" title="查找MySQL数据库主键不为自增主键的表"></a>查找MySQL数据库主键不为自增主键的表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">SELECT TABLE_SCHEMA, TABLE_NAME</div><div class="line">  FROM information_schema.TABLES</div><div class="line"> WHERE TABLE_SCHEMA NOT IN (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</div><div class="line">   AND (TABLE_SCHEMA,TABLE_NAME) NOT IN </div><div class="line">       (SELECT TABLE_SCHEMA, TABLE_NAME</div><div class="line">          FROM information_schema.COLUMNS</div><div class="line">         WHERE TABLE_SCHEMA NOT IN (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</div><div class="line">           AND IS_NULLABLE = <span class="string">'NO'</span></div><div class="line">           AND COLUMN_TYPE LIKE <span class="string">'%int%'</span></div><div class="line">           AND COLUMN_KEY = <span class="string">'PRI'</span></div><div class="line">           AND EXTRA = <span class="string">'auto_increment'</span>);</div></pre></td></tr></table></figure>
-<h2 id="查看数据库中的锁请求"><a href="#查看数据库中的锁请求" class="headerlink" title="查看数据库中的锁请求"></a>查看数据库中的锁请求</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">SELECT r.TRX_ISOLATION_LEVEL,</div><div class="line">       r.TRX_ID                              WAITING_TRX_ID,</div><div class="line">       r.TRX_MYSQL_THREAD_ID  WAITING_TRX_THREAD,</div><div class="line">       r.TRX_STATE                       WAITING_TRX_STATE,</div><div class="line">       lr.LOCK_MODE                    WAITING_TRX_LOCK_MODE,</div><div class="line">       lr.LOCK_TYPE                     WAITING_TRX_LOCK_TYPE,</div><div class="line">       lr.LOCK_TABLE                   WAITING_TRX_LOCK_TABLE,</div><div class="line">       lr.LOCK_INDEX                    WAITING_TRX_LOCK_INDEX,</div><div class="line">       r.TRX_QUERY                      WAITING_TRX_QUERY,</div><div class="line">       b.TRX_ID                              BLOCKING_TRX_ID,</div><div class="line">       b.TRX_MYSQL_THREAD_ID  BLOCKING_TRX_THREAD,</div><div class="line">       b.TRX_STATE                       BLOCKING_TRX_STATE,</div><div class="line">       lb.LOCK_MODE                    BLOCKING_TRX_LOCK_MODE,</div><div class="line">       lb.LOCK_TYPE                     BLOCKING_TRX_LOCK_TYPE,</div><div class="line">       lb.LOCK_TABLE                   BLOCKING_TRX_LOCK_TABLE,</div><div class="line">       lb.LOCK_INDEX                    BLOCKING_TRX_LOCK_INDEX,</div><div class="line">       b.TRX_QUERY                     BLOCKING_QUERY</div><div class="line">  FROM information_schema.INNODB_LOCK_WAITS w</div><div class="line"> INNER JOIN INFORMATION_SCHEMA.INNODB_TRX b</div><div class="line">    ON b.TRX_ID = W.BLOCKING_TRX_ID</div><div class="line"> INNER JOIN information_schema.INNODB_TRX R</div><div class="line">    ON r.TRX_ID = W.REQUESTING_TRX_ID</div><div class="line"> INNER JOIN information_schema.INNODB_LOCKS lb</div><div class="line">    ON lb.LOCK_TRX_ID = W.BLOCKING_TRX_ID</div><div class="line"> INNER JOIN information_schema.INNODB_LOCKS lr</div><div class="line">    ON lr.LOCK_TRX_ID = W.REQUESTING_TRX_ID;</div></pre></td></tr></table></figure>
+        <h2 id="查看MySQL数据库中无显示主键的表"><a href="#查看MySQL数据库中无显示主键的表" class="headerlink" title="查看MySQL数据库中无显示主键的表"></a>查看MySQL数据库中无显示主键的表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SELECT t.TABLE_SCHEMA, t.TABLE_NAME</span><br><span class="line">  FROM information_schema.TABLES t</span><br><span class="line">  LEFT JOIN information_schema.TABLE_CONSTRAINTS tc</span><br><span class="line">    ON tc.TABLE_SCHEMA = t.TABLE_SCHEMA</span><br><span class="line">   AND tc.TABLE_NAME = t.TABLE_NAME</span><br><span class="line">   AND tc.CONSTRAINT_TYPE = <span class="string">'PRIMARY KEY'</span></span><br><span class="line"> WHERE t.TABLE_TYPE = <span class="string">'BASE TABLE'</span></span><br><span class="line">   AND tc.CONSTRAINT_TYPE IS NULL</span><br><span class="line">   AND t.TABLE_SCHEMA NOT IN</span><br><span class="line">       (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="查看MySQL数据库中没有被使用的索引"><a href="#查看MySQL数据库中没有被使用的索引" class="headerlink" title="查看MySQL数据库中没有被使用的索引"></a>查看MySQL数据库中没有被使用的索引</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT OBJECT_SCHEMA, OBJECT_NAME, INDEX_NAME</span><br><span class="line">  FROM performance_schema.TABLE_IO_WAITS_SUMMARY_BY_INDEX_USAGE</span><br><span class="line"> WHERE INDEX_NAME IS NOT NULL</span><br><span class="line">   AND INDEX_NAME != <span class="string">'PRIMARY'</span></span><br><span class="line">   AND COUNT_FETCH = 0</span><br><span class="line">   AND COUNT_READ = 0</span><br><span class="line">   AND OBJECT_SCHEMA NOT IN (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</span><br><span class="line"> ORDER BY OBJECT_SCHEMA, OBJECT_NAME;</span><br></pre></td></tr></table></figure>
+<h2 id="查看MySQL数据库中存在外键约束的表"><a href="#查看MySQL数据库中存在外键约束的表" class="headerlink" title="查看MySQL数据库中存在外键约束的表"></a>查看MySQL数据库中存在外键约束的表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">SELECT c.TABLE_SCHEMA,</span><br><span class="line">       c.REFERENCED_TABLE_NAME,</span><br><span class="line">       c.REFERENCED_COLUMN_NAME,</span><br><span class="line">       c.TABLE_NAME,</span><br><span class="line">       c.COLUMN_NAME,</span><br><span class="line">       c.CONSTRAINT_NAME,</span><br><span class="line">       t.TABLE_COMMENT,</span><br><span class="line">       r.UPDATE_RULE,</span><br><span class="line">       r.DELETE_RULE</span><br><span class="line">  FROM information_schema.KEY_COLUMN_USAGE c</span><br><span class="line">  JOIN information_schema.TABLES t</span><br><span class="line">    ON t.TABLE_NAME = c.TABLE_NAME</span><br><span class="line">  JOIN information_schema.REFERENTIAL_CONSTRAINTS r</span><br><span class="line">    ON r.TABLE_NAME = c.TABLE_NAME</span><br><span class="line">   AND r.CONSTRAINT_NAME = c.CONSTRAINT_NAME</span><br><span class="line">   AND r.REFERENCED_TABLE_NAME = c.REFERENCED_TABLE_NAME</span><br><span class="line"> WHERE c.REFERENCED_TABLE_NAME IS NOT NULL;</span><br></pre></td></tr></table></figure>
+<h2 id="查看MySQL数据库中引擎不是InnoDB的表"><a href="#查看MySQL数据库中引擎不是InnoDB的表" class="headerlink" title="查看MySQL数据库中引擎不是InnoDB的表"></a>查看MySQL数据库中引擎不是InnoDB的表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT CONCAT(<span class="string">'ALTER TABLE '</span>, TABLE_SCHEMA, <span class="string">'.'</span>, TABLE_NAME, <span class="string">' ENGINE = InnoDB;'</span>)</span><br><span class="line">  FROM information_schema.TABLES</span><br><span class="line"> WHERE TABLE_SCHEMA NOT IN</span><br><span class="line">      (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</span><br><span class="line">  AND ENGINE != <span class="string">'InnoDB'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="查看MySQL数据库中主键是复合主键的表"><a href="#查看MySQL数据库中主键是复合主键的表" class="headerlink" title="查看MySQL数据库中主键是复合主键的表"></a>查看MySQL数据库中主键是复合主键的表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT TABLE_SCHEMA, TABLE_NAME,</span><br><span class="line">      GROUP_CONCAT(COLUMN_NAME ORDER BY SEQ_IN_INDEX SEPARATOR <span class="string">','</span>) cols,</span><br><span class="line">      MAX(SEQ_IN_INDEX) len</span><br><span class="line">  FROM information_schema.STATISTICS</span><br><span class="line"> WHERE INDEX_NAME = <span class="string">'PRIMARY'</span></span><br><span class="line">   AND TABLE_SCHEMA NOT IN</span><br><span class="line">      (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</span><br><span class="line"> GROUP BY TABLE_SCHEMA, TABLE_NAME</span><br><span class="line">HAVING len &gt; 1;</span><br></pre></td></tr></table></figure>
+<h2 id="查找MySQL数据库中重复索引前缀的索引"><a href="#查找MySQL数据库中重复索引前缀的索引" class="headerlink" title="查找MySQL数据库中重复索引前缀的索引"></a>查找MySQL数据库中重复索引前缀的索引</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.TABLE_SCHEMA, a.TABLE_NAME, a.INDEX_NAME, a.cols, b.INDEX_NAME, b.cols</span><br><span class="line">  FROM (SELECT TABLE_SCHEMA, TABLE_NAME, INDEX_NAME,</span><br><span class="line">              CONCAT(<span class="string">'| '</span>, GROUP_CONCAT(COLUMN_NAME ORDER BY SEQ_IN_INDEX SEPARATOR <span class="string">' | '</span>), <span class="string">' |'</span>) AS cols</span><br><span class="line">          FROM information_schema.STATISTICS</span><br><span class="line">         WHERE TABLE_SCHEMA NOT IN  (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</span><br><span class="line">           AND INDEX_NAME != <span class="string">'PRIMARY'</span></span><br><span class="line">         GROUP BY TABLE_SCHEMA, TABLE_NAME, INDEX_NAME) a</span><br><span class="line"> INNER JOIN (SELECT TABLE_SCHEMA, TABLE_NAME, INDEX_NAME,</span><br><span class="line">                    CONCAT(<span class="string">'| '</span>, GROUP_CONCAT(COLUMN_NAME ORDER BY SEQ_IN_INDEX SEPARATOR <span class="string">' | '</span>), <span class="string">' |'</span>) AS cols</span><br><span class="line">               FROM information_schema.STATISTICS</span><br><span class="line">              WHERE TABLE_SCHEMA NOT IN  (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</span><br><span class="line">                AND INDEX_NAME != <span class="string">'PRIMARY'</span></span><br><span class="line">              GROUP BY TABLE_SCHEMA, TABLE_NAME, INDEX_NAME) b</span><br><span class="line">    ON a.TABLE_NAME = b.TABLE_NAME</span><br><span class="line">   AND a.TABLE_SCHEMA = b.TABLE_SCHEMA</span><br><span class="line">   AND a.cols LIKE CONCAT(b.cols, <span class="string">'%'</span>)</span><br><span class="line">   AND a.INDEX_NAME != b.INDEX_NAME;</span><br></pre></td></tr></table></figure>
+<h2 id="查找MySQL数据库中低区分度索引（区分度小于0-1）"><a href="#查找MySQL数据库中低区分度索引（区分度小于0-1）" class="headerlink" title="查找MySQL数据库中低区分度索引（区分度小于0.1）"></a>查找MySQL数据库中低区分度索引（区分度小于0.1）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">SELECT p.TABLE_SCHEMA, p.TABLE_NAME, c.INDEX_NAME, c.car, p.car total</span><br><span class="line">  FROM (SELECT TABLE_SCHEMA, TABLE_NAME, INDEX_NAME, MAX(CARDINALITY) car</span><br><span class="line">          FROM information_schema.STATISTICS</span><br><span class="line">         WHERE INDEX_NAME != <span class="string">'PRIMARY'</span></span><br><span class="line">           AND TABLE_SCHEMA NOT IN  (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</span><br><span class="line">         GROUP BY TABLE_SCHEMA, TABLE_NAME, INDEX_NAME) c</span><br><span class="line"> INNER JOIN (SELECT TABLE_SCHEMA, TABLE_NAME, MAX(CARDINALITY) car</span><br><span class="line">               from information_schema.STATISTICS</span><br><span class="line">              WHERE INDEX_NAME = <span class="string">'PRIMARY'</span></span><br><span class="line">                AND TABLE_SCHEMA NOT IN  (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</span><br><span class="line">              GROUP BY TABLE_SCHEMA, TABLE_NAME) p</span><br><span class="line">    ON c.TABLE_NAME = p.TABLE_NAME</span><br><span class="line">   AND c.TABLE_SCHEMA = p.TABLE_SCHEMA</span><br><span class="line"> WHERE p.car &gt; 0</span><br><span class="line">   AND c.car / p.car &lt; 0.1</span><br><span class="line"> ORDER BY c.car / p.car;</span><br></pre></td></tr></table></figure>
+<h2 id="查找MySQL数据库主键不为自增主键的表"><a href="#查找MySQL数据库主键不为自增主键的表" class="headerlink" title="查找MySQL数据库主键不为自增主键的表"></a>查找MySQL数据库主键不为自增主键的表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SELECT TABLE_SCHEMA, TABLE_NAME</span><br><span class="line">  FROM information_schema.TABLES</span><br><span class="line"> WHERE TABLE_SCHEMA NOT IN (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</span><br><span class="line">   AND (TABLE_SCHEMA,TABLE_NAME) NOT IN </span><br><span class="line">       (SELECT TABLE_SCHEMA, TABLE_NAME</span><br><span class="line">          FROM information_schema.COLUMNS</span><br><span class="line">         WHERE TABLE_SCHEMA NOT IN (<span class="string">'sys'</span>, <span class="string">'mysql'</span>, <span class="string">'performance_schema'</span>, <span class="string">'information_schema'</span>, <span class="string">'test'</span>)</span><br><span class="line">           AND IS_NULLABLE = <span class="string">'NO'</span></span><br><span class="line">           AND COLUMN_TYPE LIKE <span class="string">'%int%'</span></span><br><span class="line">           AND COLUMN_KEY = <span class="string">'PRI'</span></span><br><span class="line">           AND EXTRA = <span class="string">'auto_increment'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="查看数据库中的锁请求"><a href="#查看数据库中的锁请求" class="headerlink" title="查看数据库中的锁请求"></a>查看数据库中的锁请求</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">SELECT r.TRX_ISOLATION_LEVEL,</span><br><span class="line">       r.TRX_ID                              WAITING_TRX_ID,</span><br><span class="line">       r.TRX_MYSQL_THREAD_ID  WAITING_TRX_THREAD,</span><br><span class="line">       r.TRX_STATE                       WAITING_TRX_STATE,</span><br><span class="line">       lr.LOCK_MODE                    WAITING_TRX_LOCK_MODE,</span><br><span class="line">       lr.LOCK_TYPE                     WAITING_TRX_LOCK_TYPE,</span><br><span class="line">       lr.LOCK_TABLE                   WAITING_TRX_LOCK_TABLE,</span><br><span class="line">       lr.LOCK_INDEX                    WAITING_TRX_LOCK_INDEX,</span><br><span class="line">       r.TRX_QUERY                      WAITING_TRX_QUERY,</span><br><span class="line">       b.TRX_ID                              BLOCKING_TRX_ID,</span><br><span class="line">       b.TRX_MYSQL_THREAD_ID  BLOCKING_TRX_THREAD,</span><br><span class="line">       b.TRX_STATE                       BLOCKING_TRX_STATE,</span><br><span class="line">       lb.LOCK_MODE                    BLOCKING_TRX_LOCK_MODE,</span><br><span class="line">       lb.LOCK_TYPE                     BLOCKING_TRX_LOCK_TYPE,</span><br><span class="line">       lb.LOCK_TABLE                   BLOCKING_TRX_LOCK_TABLE,</span><br><span class="line">       lb.LOCK_INDEX                    BLOCKING_TRX_LOCK_INDEX,</span><br><span class="line">       b.TRX_QUERY                     BLOCKING_QUERY</span><br><span class="line">  FROM information_schema.INNODB_LOCK_WAITS w</span><br><span class="line"> INNER JOIN INFORMATION_SCHEMA.INNODB_TRX b</span><br><span class="line">    ON b.TRX_ID = W.BLOCKING_TRX_ID</span><br><span class="line"> INNER JOIN information_schema.INNODB_TRX R</span><br><span class="line">    ON r.TRX_ID = W.REQUESTING_TRX_ID</span><br><span class="line"> INNER JOIN information_schema.INNODB_LOCKS lb</span><br><span class="line">    ON lb.LOCK_TRX_ID = W.BLOCKING_TRX_ID</span><br><span class="line"> INNER JOIN information_schema.INNODB_LOCKS lr</span><br><span class="line">    ON lr.LOCK_TRX_ID = W.REQUESTING_TRX_ID;</span><br></pre></td></tr></table></figure>
       
     </div>
+
+    
+
     
     
+    
+     <div>
+		
+		<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+		
+      </div>
+	
     
 
     
 
     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>cai182081</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/04/04/SQL/MySQL_SQL_2/" title="MySQL 常用SQL诊断脚本">http://yoursite.com/2018/04/04/SQL/MySQL_SQL_2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
 
+      </div>
     
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            <a href="/tags/MySQL/" rel="tag"> <i class="fa fa-tag"></i> MySQL</a>
           
-            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+            <a href="/tags/数据库/" rel="tag"> <i class="fa fa-tag"></i> 数据库</a>
           
-            <a href="/tags/数据库优化/" rel="tag"># 数据库优化</a>
+            <a href="/tags/数据库优化/" rel="tag"> <i class="fa fa-tag"></i> 数据库优化</a>
           
         </div>
       
@@ -440,8 +512,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/04/SQL/MySQL_SQL_1/" rel="next" title="由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思">
-                <i class="fa fa-chevron-left"></i> 由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思
+              <a href="/2018/04/04/SQL/MySQL_SQL_1/" rel="next" title="SQL 优化之美：由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思">
+                <i class="fa fa-chevron-left"></i> SQL 优化之美：由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思
               </a>
             
           </div>
@@ -450,8 +522,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/06/Hadoop/Hadoop_Cluster/" rel="prev" title="Hadoop 3.0.1 完全分布式集群搭建">
-                Hadoop 3.0.1 完全分布式集群搭建 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/06/Hadoop/Hadoop_Cluster/" rel="prev" title="Hadoop 3.1.0 完全分布式集群搭建（生产环境下）">
+                Hadoop 3.1.0 完全分布式集群搭建（生产环境下） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -478,9 +550,6 @@
           </div>
           
 
-
-          
-
   
     <div class="comments" id="comments">
       
@@ -490,7 +559,7 @@
 
   
 
-  
+
 
         </div>
         
@@ -529,62 +598,113 @@
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">23</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
+              <a href="/atom2.xml" rel="alternate">
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
             </div>
           
 
-          <div class="links-of-author motion-element">
+          
+
+          
+          
+
+          
+          
+
+          
             
-          </div>
-
           
-          
-
-          
-          
-
           
 
         </div>
@@ -621,16 +741,22 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cai182081</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -638,12 +764,13 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
 
         
+
 
 
 
@@ -682,12 +809,6 @@
 
 
 
-  
-
-
-
-
-
 
 
 
@@ -696,61 +817,77 @@
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+  
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
 
 
 
   
-
-
-  
-
 
 
 
@@ -773,7 +910,6 @@
 
 
 
-
 <!-- LOCAL: You can save these files to your site and update links -->
     
         
@@ -788,7 +924,7 @@
       <script type="text/javascript">
       function renderGitment(){
         var gitment = new Gitmint({
-            id: document.location.href, 
+            id: window.location.pathname,
             owner: 'cai182081',
             repo: 'cai182081.github.io',
             
@@ -815,10 +951,427 @@
 
 
 
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
 
   
 
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("LYl7tK129GkXmPxHi8ILtiuQ-gzGzoHsz", "fNvr4KMQd9tuE6hVX1hFBzlU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
 
 
 
@@ -827,11 +1380,15 @@
   
 
   
-  
 
   
   
 
+  
+
+  
+
+  
 
   
 

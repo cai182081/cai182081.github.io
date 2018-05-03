@@ -2,15 +2,21 @@
 
 
 
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -38,54 +44,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -94,49 +52,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="数据库优化," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Cailiang's Blog" type="application/atom+xml" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
 
 
 
 
 
 
-<meta name="description" content="减少访问数据库的次数去掉不必要的查询和数据检索。其实在项目的实际应用中，很多查询条件是可有可无的，从源头上避免 减少访问的数据量控制高并发业务尽可能通过时间字段对数据冷热隔离，高并发下只针对热数据经行增删改查。冷数据及时归档和隔离，经Hadoop/Spark大数据、ETL、BI等技术对数据处理后，再插入数据库进行展示 尽量避免 SELECT *消除对数据库字典的解析，减少输出的数据量，降低网络流量">
-<meta name="keywords" content="数据库优化">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SQL 调优技巧">
-<meta property="og:url" content="http://yoursite.com/2018/04/10/SQL/DB_SQL_1/index.html">
-<meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="减少访问数据库的次数去掉不必要的查询和数据检索。其实在项目的实际应用中，很多查询条件是可有可无的，从源头上避免 减少访问的数据量控制高并发业务尽可能通过时间字段对数据冷热隔离，高并发下只针对热数据经行增删改查。冷数据及时归档和隔离，经Hadoop/Spark大数据、ETL、BI等技术对数据处理后，再插入数据库进行展示 尽量避免 SELECT *消除对数据库字典的解析，减少输出的数据量，降低网络流量">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T13:39:41.487Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL 调优技巧">
-<meta name="twitter:description" content="减少访问数据库的次数去掉不必要的查询和数据检索。其实在项目的实际应用中，很多查询条件是可有可无的，从源头上避免 减少访问的数据量控制高并发业务尽可能通过时间字段对数据冷热隔离，高并发下只针对热数据经行增删改查。冷数据及时归档和隔离，经Hadoop/Spark大数据、ETL、BI等技术对数据处理后，再插入数据库进行展示 尽量避免 SELECT *消除对数据库字典的解析，减少输出的数据量，降低网络流量">
 
 
 
@@ -145,15 +79,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '5.1.3',
+    version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -165,12 +97,38 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/2018/04/10/SQL/DB_SQL_1/"/>
-
+  
 
 
 
+
+  <meta name="description" content="减少访问数据库的次数去掉不必要的查询和数据检索。其实在项目的实际应用中，很多查询条件是可有可无的，从源头上避免 减少访问的数据量控制高并发业务尽可能通过时间字段对数据冷热隔离，高并发下只针对热数据经行增删改查。冷数据及时归档和隔离，经Hadoop/Spark大数据、ETL、BI等技术对数据处理后，再插入数据库进行展示 尽量避免 SELECT *消除对数据库字典的解析，减少输出的数据量，降低网络流量">
+<meta name="keywords" content="数据库优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL 调优技巧">
+<meta property="og:url" content="http://yoursite.com/2018/04/10/SQL/DB_SQL_1/index.html">
+<meta property="og:site_name" content="Cailiang&#39;s Blog">
+<meta property="og:description" content="减少访问数据库的次数去掉不必要的查询和数据检索。其实在项目的实际应用中，很多查询条件是可有可无的，从源头上避免 减少访问的数据量控制高并发业务尽可能通过时间字段对数据冷热隔离，高并发下只针对热数据经行增删改查。冷数据及时归档和隔离，经Hadoop/Spark大数据、ETL、BI等技术对数据处理后，再插入数据库进行展示 尽量避免 SELECT *消除对数据库字典的解析，减少输出的数据量，降低网络流量">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-10T13:39:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL 调优技巧">
+<meta name="twitter:description" content="减少访问数据库的次数去掉不必要的查询和数据检索。其实在项目的实际应用中，很多查询条件是可有可无的，从源头上避免 减少访问的数据量控制高并发业务尽可能通过时间字段对数据冷热隔离，高并发下只针对热数据经行增删改查。冷数据及时归档和隔离，经Hadoop/Spark大数据、ETL、BI等技术对数据处理后，再插入数据库进行展示 尽量避免 SELECT *消除对数据库字典的解析，减少输出的数据量，降低网络流量">
+
+
+
+  <link rel="alternate" href="/atom2.xml" title="Cailiang's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>SQL 调优技巧 | Cailiang's Blog</title>
   
@@ -182,9 +140,37 @@
 
 
 
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -193,26 +179,26 @@
 
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-
+	<a href="https://github.com/cai182081"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Cailiang's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">飞翔的菜鸟</p>
+        <h1 class="site-subtitle" itemprop="description">飞翔的菜鸟</h1>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -220,68 +206,106 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -292,6 +316,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -316,11 +342,19 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SQL 调优技巧</h1>
+          <h2 class="post-title" itemprop="name headline">SQL 调优技巧
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -328,13 +362,18 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T20:11:04+08:00">
-                2018-04-10
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-10 20:11:04 / 修改时间：21:39:42" itemprop="dateCreated datePublished" datetime="2018-04-10T20:11:04+08:00">2018-04-10</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -350,11 +389,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -370,13 +405,24 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/04/10/SQL/DB_SQL_1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/10/SQL/DB_SQL_1/" itemprop="commentsCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/10/SQL/DB_SQL_1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
           
 
           
+          
+             <span id="/2018/04/10/SQL/DB_SQL_1/" class="leancloud_visitors" data-flag-title="SQL 调优技巧">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -401,41 +447,67 @@
         <h2 id="减少访问数据库的次数"><a href="#减少访问数据库的次数" class="headerlink" title="减少访问数据库的次数"></a>减少访问数据库的次数</h2><p>去掉不必要的查询和数据检索。其实在项目的实际应用中，很多查询条件是可有可无的，从源头上避免</p>
 <h2 id="减少访问的数据量"><a href="#减少访问的数据量" class="headerlink" title="减少访问的数据量"></a>减少访问的数据量</h2><p>控制高并发业务尽可能通过时间字段对数据冷热隔离，高并发下只针对热数据经行增删改查。冷数据及时归档和隔离，经Hadoop/Spark大数据、ETL、BI等技术对数据处理后，再插入数据库进行展示</p>
 <h2 id="尽量避免-SELECT"><a href="#尽量避免-SELECT" class="headerlink" title="尽量避免 SELECT *"></a>尽量避免 SELECT *</h2><p>消除对数据库字典的解析，减少输出的数据量，降低网络流量的耗损，提高传输速度。必要时，可以通过覆盖索引优化</p>
-<h2 id="禁止在SQL中对列进行数学运算"><a href="#禁止在SQL中对列进行数学运算" class="headerlink" title="禁止在SQL中对列进行数学运算"></a>禁止在SQL中对列进行数学运算</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">低效：SELECT e.ename FROM emp e WHERE e.sal*1.1 &gt; 900;</div><div class="line"></div><div class="line">高效：SELECT e.ename FROM emp e WHERE e.sal &gt; 900/1.1;</div></pre></td></tr></table></figure>
-<h2 id="禁止SQL对列进行函数运算"><a href="#禁止SQL对列进行函数运算" class="headerlink" title="禁止SQL对列进行函数运算"></a>禁止SQL对列进行函数运算</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">低效：SELECT e.ename</div><div class="line">          FROM emp e</div><div class="line">         WHERE DATE_FORMAT(e.date, ’%Y%m%d’) = <span class="string">'20160516'</span>;</div><div class="line"></div><div class="line">高效：SELECT e.ename</div><div class="line">          FROM emp e</div><div class="line">         WHERE e.date &gt; = <span class="string">'2016-05-16 00:00:01'</span></div><div class="line">         AND e.date &lt; <span class="string">'2016-05-17 00:00:00'</span>;</div></pre></td></tr></table></figure>
-<h2 id="禁止使用反向查询，使用-gt-、-lt-等，避免使用-和-lt-gt-命令"><a href="#禁止使用反向查询，使用-gt-、-lt-等，避免使用-和-lt-gt-命令" class="headerlink" title="禁止使用反向查询，使用&gt;、&lt;等，避免使用!=和&lt;&gt;命令"></a>禁止使用反向查询，使用&gt;、&lt;等，避免使用!=和&lt;&gt;命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">低效：select * from emp e <span class="built_in">where</span> e.salary != 3000;</div><div class="line"></div><div class="line">高效：select * from emp e <span class="built_in">where</span> e.salary &lt; 3000 or e.salary &gt; 3000;</div></pre></td></tr></table></figure>
-<h2 id="用-gt-替代-gt"><a href="#用-gt-替代-gt" class="headerlink" title="用 &gt;= 替代 &gt;"></a>用 &gt;= 替代 &gt;</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">低效：SELECT loc_id, loc_desc, region FROM location WHERE loc_id &gt; 10 AND loc_desc &gt; 10;</div><div class="line"></div><div class="line">高效：SELECT loc_id, loc_desc, region FROM location WHERE loc_id &gt;= 11 AND loc_desc &gt;= 11;</div></pre></td></tr></table></figure>
-<h2 id="使用-IN-代替-OR，SQL语句中-IN-包含的值不宜过多"><a href="#使用-IN-代替-OR，SQL语句中-IN-包含的值不宜过多" class="headerlink" title="使用 IN 代替 OR，SQL语句中 IN 包含的值不宜过多"></a>使用 IN 代替 OR，SQL语句中 IN 包含的值不宜过多</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">低效：SELECT * FROM location WHERE loc_id = 10 OR loc_id = 20 OR loc_id = 30;</div><div class="line"></div><div class="line">高效：SELECT * FROM location WHERE loc_id IN (10,20,30);</div></pre></td></tr></table></figure>
-<h2 id="禁止模糊匹配-前导查询"><a href="#禁止模糊匹配-前导查询" class="headerlink" title="禁止模糊匹配%前导查询"></a>禁止模糊匹配%前导查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">低效：SELECT e.ename FROM emp e WHERE e.ename LIKE <span class="string">'%abc'</span>;</div><div class="line"></div><div class="line">高效：SELECT e.ename FROM emp e WHERE e.ename LIKE <span class="string">'abc%'</span>;</div></pre></td></tr></table></figure>
-<h2 id="使用-UNION-替换-OR-适用于索引列"><a href="#使用-UNION-替换-OR-适用于索引列" class="headerlink" title="使用 UNION 替换 OR(适用于索引列)"></a>使用 UNION 替换 OR(适用于索引列)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">低效：SELECT loc_id, loc_desc, region</div><div class="line">          FROM location</div><div class="line">         WHERE loc_id = 10 OR region = <span class="string">'MELBOURNE'</span>;</div><div class="line"></div><div class="line">高效：SELECT loc_id, loc_desc, region  </div><div class="line">        FROM location</div><div class="line">        WHERE loc_id = 10</div><div class="line">    UNION</div><div class="line">    SELECT loc_id, loc_desc, region</div><div class="line">        FROM location</div><div class="line">        WHERE region = <span class="string">'MELBOURNE'</span>;</div></pre></td></tr></table></figure>
-<h2 id="在明显不会存在重复值的查询时，使用-UNION-ALL-代替-UNION，避免排序"><a href="#在明显不会存在重复值的查询时，使用-UNION-ALL-代替-UNION，避免排序" class="headerlink" title="在明显不会存在重复值的查询时，使用 UNION ALL 代替 UNION，避免排序"></a>在明显不会存在重复值的查询时，使用 UNION ALL 代替 UNION，避免排序</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">低效：SELECT ACCT_NUM, BALANCE_AMT</div><div class="line">          FROM DEBIT_TRANSACTIONS</div><div class="line">        WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span></div><div class="line">       UNION</div><div class="line">       SELECT ACCT_NUM, BALANCE_AMT</div><div class="line">          FROM DEBIT_TRANSACTIONS</div><div class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span>;</div><div class="line"></div><div class="line">高效：SELECT ACCT_NUM, BALANCE_AMT</div><div class="line">          FROM DEBIT_TRANSACTIONS</div><div class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span></div><div class="line">    UNION ALL</div><div class="line">    SELECT ACCT_NUM, BALANCE_AMT</div><div class="line">          FROM DEBIT_TRANSACTIONS</div><div class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span>;</div></pre></td></tr></table></figure>
-<h2 id="避免在索引列上进行NULL值的判断"><a href="#避免在索引列上进行NULL值的判断" class="headerlink" title="避免在索引列上进行NULL值的判断"></a>避免在索引列上进行NULL值的判断</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">低效: SELECT … FROM  department  WHERE  DEPT_CODE IS NOT NULL;</div><div class="line"></div><div class="line">高效: SELECT … FROM  department  WHERE  DEPT_CODE &gt;= 0;</div></pre></td></tr></table></figure>
-<h2 id="避免-HAVING，用-WHERE-子句替换-HAVING-子句"><a href="#避免-HAVING，用-WHERE-子句替换-HAVING-子句" class="headerlink" title="避免 HAVING，用 WHERE 子句替换 HAVING 子句"></a>避免 HAVING，用 WHERE 子句替换 HAVING 子句</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">低效：SELECT job, AVG(sal) FROM emp GROUP BY job HAVING job = <span class="string">'PRESIDENT'</span> OR job = <span class="string">'MANAGER'</span>;</div><div class="line"></div><div class="line">高效：SELECT job, AVG(sal) FROM emp WHERE job = <span class="string">'PRESIDENT'</span> OR job = <span class="string">'MANAGER'</span> GROUP BY job;</div></pre></td></tr></table></figure>
-<h2 id="用-EXISTS-替换-DISTINCT"><a href="#用-EXISTS-替换-DISTINCT" class="headerlink" title="用 EXISTS 替换 DISTINCT"></a>用 EXISTS 替换 DISTINCT</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">低效: SELECT DISTINCT DEPT_NO,DEPT_NAME FROM DEPT D , EMP E</div><div class="line">         WHERE D.DEPT_NO = E.DEPT_NO;</div><div class="line"></div><div class="line">高效: SELECT DEPT_NO,DEPT_NAME FROM DEPT D</div><div class="line">         WHERE  EXISTS</div><div class="line">           ( SELECT ‘X’ FROM EMP E WHERE E.DEPT_NO = D.DEPT_NO);</div></pre></td></tr></table></figure>
-<h2 id="合理的分页方式以提高分页效率"><a href="#合理的分页方式以提高分页效率" class="headerlink" title="合理的分页方式以提高分页效率"></a>合理的分页方式以提高分页效率</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">低效：SELECT e.ename FROM emp e <span class="built_in">limit</span> 10000,10;</div><div class="line"></div><div class="line">高效：SELECT e.ename FROM emp e  WHERE e.id &gt;=10000 <span class="built_in">limit</span> 10;</div></pre></td></tr></table></figure>
-<h2 id="禁止order-by-rand-查询"><a href="#禁止order-by-rand-查询" class="headerlink" title="禁止order by rand()查询"></a>禁止order by rand()查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">低效：SELECT * FROM emp ORDER BY RAND() LIMIT 1;</div><div class="line"></div><div class="line">高效：SELECT *</div><div class="line">        FROM emp AS t1</div><div class="line">        JOIN (SELECT ROUND(RAND() *</div><div class="line">                        ((SELECT MAX(id) FROM EMP) - (SELECT MIN(id) FROM EMP)) +</div><div class="line">                        (SELECT MIN(id) FROM emp)) AS id) AS t2</div><div class="line">            WHERE t1.id &gt;= t2.id</div><div class="line">        ORDER BY t1.id LIMIT 1;</div></pre></td></tr></table></figure>
-<h2 id="避免使用-in-exists-子查询，用join替换"><a href="#避免使用-in-exists-子查询，用join替换" class="headerlink" title="避免使用 in/exists 子查询，用join替换"></a>避免使用 in/exists 子查询，用join替换</h2><p>in 是把外表和内表作 hash 连接，而 exists 是对外表作 loop 循环，每次 loop 循环再对内表进行查询，认为 exists 比 in 效率高的说法是不准确的。如果查询的两个表的数据量大小相当，那么用 in 和 exists 子查询效率差别不大；如果两个表中一个较小一个较大，则子查询表大的用 exists 更为效率，子查询表小的用 in 更效率，但对于 join 来说，根据代价来确定表的连接顺序，执行效率总是最高。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">emp 数据量小于 department ：</div><div class="line">低效：SELECT * FROM emp e WHERE e.name IN (SELECT d.name FROM department d)</div><div class="line"></div><div class="line">低效：SELECT * FROM department d WHERE EXISTS (SELECT 1 FROM emp e WHERE e.name = d.name)</div><div class="line"></div><div class="line">高效：SELECT * FROM emp e INNER JOIN department d ON e.name = d.name</div></pre></td></tr></table></figure></p>
-<h2 id="避免使用-not-in-子查询，使用-not-exists-或-left-join替换"><a href="#避免使用-not-in-子查询，使用-not-exists-或-left-join替换" class="headerlink" title="避免使用 not in 子查询，使用 not exists 或 left join替换"></a>避免使用 not in 子查询，使用 not exists 或 left join替换</h2><p>查询语句使用了not in，那么对内外表都进行全表扫描，没有用到索引；而 not exists 的子查询依然能用到表上的索引。所以无论哪个表大，用not exists都比not in 要快。<br>注意:NOT EXISTS 与 NOT IN 不能完全互相替换，看具体的需求。如果选择的列可以为空，则不能被替换。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">低效：SELECT * FROM emp e WHERE e.name NOT IN (SELECT d.name FROM department d)</div><div class="line"></div><div class="line">高效：SELECT * FROM emp e WHERE NOT EXISTS (SELECT 1 FROM department d WHERE d.name = e.name)</div><div class="line"></div><div class="line">高效：SELECT * FROM emp e LEFT JOIN department d ON e.name = d.name WHERE d.name IS NULL;</div></pre></td></tr></table></figure></p>
-<h2 id="子查询展开优化"><a href="#子查询展开优化" class="headerlink" title="子查询展开优化"></a>子查询展开优化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">低效：SELECT * FROM t1, (SELECT * FROM t2 WHERE t2.a2 &gt; 10) v_t2 WHERE t1.a1 &lt; 10 AND v_t2.a2 &lt; 20;</div><div class="line"></div><div class="line">高效：SELECT * FROM t1, t2 WHERE t2.a2 &gt; 10 AND t1.a1 &lt; 10 AND t2.a2 &lt; 20;</div></pre></td></tr></table></figure>
-<h2 id="子查询合并优化"><a href="#子查询合并优化" class="headerlink" title="子查询合并优化"></a>子查询合并优化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">低效：SELECT *</div><div class="line">        FROM t1</div><div class="line">      WHERE a1 &lt; 10 </div><div class="line">      AND (EXISTS </div><div class="line">            (SELECT a2 FROM t2 WHERE t2.a2 &lt; 5 AND t2.b2 = 1) </div><div class="line">            OR EXISTS</div><div class="line">              (SELECT a2 FROM t2 WHERE t2.a2 &lt; AND t2.b2 = 2));</div><div class="line"></div><div class="line">高效：SELECT * FROM t1 WHERE t2.a2 &lt; 5 AND (t2.b2 = 1 OR t2.b2 = 2);</div></pre></td></tr></table></figure>
-<h2 id="避免隐式转换"><a href="#避免隐式转换" class="headerlink" title="避免隐式转换"></a>避免隐式转换</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">1、varchar与int类型转换</div><div class="line">低效：SELECT * FROM emp e WHERE e.name = 123;</div><div class="line"></div><div class="line">高效：SELECT * FROM emp e WHERE e.name = <span class="string">'123'</span>;</div><div class="line"></div><div class="line">2、datetime与varchar类型转换</div><div class="line">低效：SELECT * FROM emp e WHERE e.date LIKE CONCAT(<span class="string">'2018-04-10'</span>,<span class="string">'%'</span>);</div><div class="line"></div><div class="line">高效：SELECT * FROM emp e WHERE e.date BETWEEN <span class="string">'2018-04-10 00:00:00'</span> AND <span class="string">'2018-04-10 23:59:59'</span>;</div><div class="line"></div><div class="line">3、varchar与varbinary类型转换</div><div class="line"></div><div class="line">4、不通字符集间的隐式转换</div><div class="line"></div><div class="line">5、同字符集，不同字符集顺序间的隐式转换</div></pre></td></tr></table></figure>
+<h2 id="禁止在SQL中对列进行数学运算"><a href="#禁止在SQL中对列进行数学运算" class="headerlink" title="禁止在SQL中对列进行数学运算"></a>禁止在SQL中对列进行数学运算</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT e.ename FROM emp e WHERE e.sal*1.1 &gt; 900;</span><br><span class="line"></span><br><span class="line">高效：SELECT e.ename FROM emp e WHERE e.sal &gt; 900/1.1;</span><br></pre></td></tr></table></figure>
+<h2 id="禁止SQL对列进行函数运算"><a href="#禁止SQL对列进行函数运算" class="headerlink" title="禁止SQL对列进行函数运算"></a>禁止SQL对列进行函数运算</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT e.ename</span><br><span class="line">          FROM emp e</span><br><span class="line">         WHERE DATE_FORMAT(e.date, ’%Y%m%d’) = <span class="string">'20160516'</span>;</span><br><span class="line"></span><br><span class="line">高效：SELECT e.ename</span><br><span class="line">          FROM emp e</span><br><span class="line">         WHERE e.date &gt; = <span class="string">'2016-05-16 00:00:01'</span></span><br><span class="line">         AND e.date &lt; <span class="string">'2016-05-17 00:00:00'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="禁止使用反向查询，使用-gt-、-lt-等，避免使用-和-lt-gt-命令"><a href="#禁止使用反向查询，使用-gt-、-lt-等，避免使用-和-lt-gt-命令" class="headerlink" title="禁止使用反向查询，使用&gt;、&lt;等，避免使用!=和&lt;&gt;命令"></a>禁止使用反向查询，使用&gt;、&lt;等，避免使用!=和&lt;&gt;命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">低效：select * from emp e <span class="built_in">where</span> e.salary != 3000;</span><br><span class="line"></span><br><span class="line">高效：select * from emp e <span class="built_in">where</span> e.salary &lt; 3000 or e.salary &gt; 3000;</span><br></pre></td></tr></table></figure>
+<h2 id="用-gt-替代-gt"><a href="#用-gt-替代-gt" class="headerlink" title="用 &gt;= 替代 &gt;"></a>用 &gt;= 替代 &gt;</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT loc_id, loc_desc, region FROM location WHERE loc_id &gt; 10 AND loc_desc &gt; 10;</span><br><span class="line"></span><br><span class="line">高效：SELECT loc_id, loc_desc, region FROM location WHERE loc_id &gt;= 11 AND loc_desc &gt;= 11;</span><br></pre></td></tr></table></figure>
+<h2 id="使用-IN-代替-OR，SQL语句中-IN-包含的值不宜过多"><a href="#使用-IN-代替-OR，SQL语句中-IN-包含的值不宜过多" class="headerlink" title="使用 IN 代替 OR，SQL语句中 IN 包含的值不宜过多"></a>使用 IN 代替 OR，SQL语句中 IN 包含的值不宜过多</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT * FROM location WHERE loc_id = 10 OR loc_id = 20 OR loc_id = 30;</span><br><span class="line"></span><br><span class="line">高效：SELECT * FROM location WHERE loc_id IN (10,20,30);</span><br></pre></td></tr></table></figure>
+<h2 id="禁止模糊匹配-前导查询"><a href="#禁止模糊匹配-前导查询" class="headerlink" title="禁止模糊匹配%前导查询"></a>禁止模糊匹配%前导查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT e.ename FROM emp e WHERE e.ename LIKE <span class="string">'%abc'</span>;</span><br><span class="line"></span><br><span class="line">高效：SELECT e.ename FROM emp e WHERE e.ename LIKE <span class="string">'abc%'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="使用-UNION-替换-OR-适用于索引列"><a href="#使用-UNION-替换-OR-适用于索引列" class="headerlink" title="使用 UNION 替换 OR(适用于索引列)"></a>使用 UNION 替换 OR(适用于索引列)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT loc_id, loc_desc, region</span><br><span class="line">          FROM location</span><br><span class="line">         WHERE loc_id = 10 OR region = <span class="string">'MELBOURNE'</span>;</span><br><span class="line"></span><br><span class="line">高效：SELECT loc_id, loc_desc, region  </span><br><span class="line">        FROM location</span><br><span class="line">        WHERE loc_id = 10</span><br><span class="line">    UNION</span><br><span class="line">    SELECT loc_id, loc_desc, region</span><br><span class="line">        FROM location</span><br><span class="line">        WHERE region = <span class="string">'MELBOURNE'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="在明显不会存在重复值的查询时，使用-UNION-ALL-代替-UNION，避免排序"><a href="#在明显不会存在重复值的查询时，使用-UNION-ALL-代替-UNION，避免排序" class="headerlink" title="在明显不会存在重复值的查询时，使用 UNION ALL 代替 UNION，避免排序"></a>在明显不会存在重复值的查询时，使用 UNION ALL 代替 UNION，避免排序</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT ACCT_NUM, BALANCE_AMT</span><br><span class="line">          FROM DEBIT_TRANSACTIONS</span><br><span class="line">        WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span></span><br><span class="line">       UNION</span><br><span class="line">       SELECT ACCT_NUM, BALANCE_AMT</span><br><span class="line">          FROM DEBIT_TRANSACTIONS</span><br><span class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span>;</span><br><span class="line"></span><br><span class="line">高效：SELECT ACCT_NUM, BALANCE_AMT</span><br><span class="line">          FROM DEBIT_TRANSACTIONS</span><br><span class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span></span><br><span class="line">    UNION ALL</span><br><span class="line">    SELECT ACCT_NUM, BALANCE_AMT</span><br><span class="line">          FROM DEBIT_TRANSACTIONS</span><br><span class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="避免在索引列上进行NULL值的判断"><a href="#避免在索引列上进行NULL值的判断" class="headerlink" title="避免在索引列上进行NULL值的判断"></a>避免在索引列上进行NULL值的判断</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">低效: SELECT … FROM  department  WHERE  DEPT_CODE IS NOT NULL;</span><br><span class="line"></span><br><span class="line">高效: SELECT … FROM  department  WHERE  DEPT_CODE &gt;= 0;</span><br></pre></td></tr></table></figure>
+<h2 id="避免-HAVING，用-WHERE-子句替换-HAVING-子句"><a href="#避免-HAVING，用-WHERE-子句替换-HAVING-子句" class="headerlink" title="避免 HAVING，用 WHERE 子句替换 HAVING 子句"></a>避免 HAVING，用 WHERE 子句替换 HAVING 子句</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT job, AVG(sal) FROM emp GROUP BY job HAVING job = <span class="string">'PRESIDENT'</span> OR job = <span class="string">'MANAGER'</span>;</span><br><span class="line"></span><br><span class="line">高效：SELECT job, AVG(sal) FROM emp WHERE job = <span class="string">'PRESIDENT'</span> OR job = <span class="string">'MANAGER'</span> GROUP BY job;</span><br></pre></td></tr></table></figure>
+<h2 id="用-EXISTS-替换-DISTINCT"><a href="#用-EXISTS-替换-DISTINCT" class="headerlink" title="用 EXISTS 替换 DISTINCT"></a>用 EXISTS 替换 DISTINCT</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">低效: SELECT DISTINCT DEPT_NO,DEPT_NAME FROM DEPT D , EMP E</span><br><span class="line">         WHERE D.DEPT_NO = E.DEPT_NO;</span><br><span class="line"></span><br><span class="line">高效: SELECT DEPT_NO,DEPT_NAME FROM DEPT D</span><br><span class="line">         WHERE  EXISTS</span><br><span class="line">           ( SELECT ‘X’ FROM EMP E WHERE E.DEPT_NO = D.DEPT_NO);</span><br></pre></td></tr></table></figure>
+<h2 id="合理的分页方式以提高分页效率"><a href="#合理的分页方式以提高分页效率" class="headerlink" title="合理的分页方式以提高分页效率"></a>合理的分页方式以提高分页效率</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT e.ename FROM emp e <span class="built_in">limit</span> 10000,10;</span><br><span class="line"></span><br><span class="line">高效：SELECT e.ename FROM emp e  WHERE e.id &gt;=10000 <span class="built_in">limit</span> 10;</span><br></pre></td></tr></table></figure>
+<h2 id="禁止order-by-rand-查询"><a href="#禁止order-by-rand-查询" class="headerlink" title="禁止order by rand()查询"></a>禁止order by rand()查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT * FROM emp ORDER BY RAND() LIMIT 1;</span><br><span class="line"></span><br><span class="line">高效：SELECT *</span><br><span class="line">        FROM emp AS t1</span><br><span class="line">        JOIN (SELECT ROUND(RAND() *</span><br><span class="line">                        ((SELECT MAX(id) FROM EMP) - (SELECT MIN(id) FROM EMP)) +</span><br><span class="line">                        (SELECT MIN(id) FROM emp)) AS id) AS t2</span><br><span class="line">            WHERE t1.id &gt;= t2.id</span><br><span class="line">        ORDER BY t1.id LIMIT 1;</span><br></pre></td></tr></table></figure>
+<h2 id="避免使用-in-exists-子查询，用join替换"><a href="#避免使用-in-exists-子查询，用join替换" class="headerlink" title="避免使用 in/exists 子查询，用join替换"></a>避免使用 in/exists 子查询，用join替换</h2><p>in 是把外表和内表作 hash 连接，而 exists 是对外表作 loop 循环，每次 loop 循环再对内表进行查询，认为 exists 比 in 效率高的说法是不准确的。如果查询的两个表的数据量大小相当，那么用 in 和 exists 子查询效率差别不大；如果两个表中一个较小一个较大，则子查询表大的用 exists 更为效率，子查询表小的用 in 更效率，但对于 join 来说，根据代价来确定表的连接顺序，执行效率总是最高。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">emp 数据量小于 department ：</span><br><span class="line">低效：SELECT * FROM emp e WHERE e.name IN (SELECT d.name FROM department d)</span><br><span class="line"></span><br><span class="line">低效：SELECT * FROM department d WHERE EXISTS (SELECT 1 FROM emp e WHERE e.name = d.name)</span><br><span class="line"></span><br><span class="line">高效：SELECT * FROM emp e INNER JOIN department d ON e.name = d.name</span><br></pre></td></tr></table></figure></p>
+<h2 id="避免使用-not-in-子查询，使用-not-exists-或-left-join替换"><a href="#避免使用-not-in-子查询，使用-not-exists-或-left-join替换" class="headerlink" title="避免使用 not in 子查询，使用 not exists 或 left join替换"></a>避免使用 not in 子查询，使用 not exists 或 left join替换</h2><p>查询语句使用了not in，那么对内外表都进行全表扫描，没有用到索引；而 not exists 的子查询依然能用到表上的索引。所以无论哪个表大，用not exists都比not in 要快。<br>注意:NOT EXISTS 与 NOT IN 不能完全互相替换，看具体的需求。如果选择的列可以为空，则不能被替换。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT * FROM emp e WHERE e.name NOT IN (SELECT d.name FROM department d)</span><br><span class="line"></span><br><span class="line">高效：SELECT * FROM emp e WHERE NOT EXISTS (SELECT 1 FROM department d WHERE d.name = e.name)</span><br><span class="line"></span><br><span class="line">高效：SELECT * FROM emp e LEFT JOIN department d ON e.name = d.name WHERE d.name IS NULL;</span><br></pre></td></tr></table></figure></p>
+<h2 id="子查询展开优化"><a href="#子查询展开优化" class="headerlink" title="子查询展开优化"></a>子查询展开优化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT * FROM t1, (SELECT * FROM t2 WHERE t2.a2 &gt; 10) v_t2 WHERE t1.a1 &lt; 10 AND v_t2.a2 &lt; 20;</span><br><span class="line"></span><br><span class="line">高效：SELECT * FROM t1, t2 WHERE t2.a2 &gt; 10 AND t1.a1 &lt; 10 AND t2.a2 &lt; 20;</span><br></pre></td></tr></table></figure>
+<h2 id="子查询合并优化"><a href="#子查询合并优化" class="headerlink" title="子查询合并优化"></a>子查询合并优化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT *</span><br><span class="line">        FROM t1</span><br><span class="line">      WHERE a1 &lt; 10 </span><br><span class="line">      AND (EXISTS </span><br><span class="line">            (SELECT a2 FROM t2 WHERE t2.a2 &lt; 5 AND t2.b2 = 1) </span><br><span class="line">            OR EXISTS</span><br><span class="line">              (SELECT a2 FROM t2 WHERE t2.a2 &lt; AND t2.b2 = 2));</span><br><span class="line"></span><br><span class="line">高效：SELECT * FROM t1 WHERE t2.a2 &lt; 5 AND (t2.b2 = 1 OR t2.b2 = 2);</span><br></pre></td></tr></table></figure>
+<h2 id="避免隐式转换"><a href="#避免隐式转换" class="headerlink" title="避免隐式转换"></a>避免隐式转换</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1、varchar与int类型转换</span><br><span class="line">低效：SELECT * FROM emp e WHERE e.name = 123;</span><br><span class="line"></span><br><span class="line">高效：SELECT * FROM emp e WHERE e.name = <span class="string">'123'</span>;</span><br><span class="line"></span><br><span class="line">2、datetime与varchar类型转换</span><br><span class="line">低效：SELECT * FROM emp e WHERE e.date LIKE CONCAT(<span class="string">'2018-04-10'</span>,<span class="string">'%'</span>);</span><br><span class="line"></span><br><span class="line">高效：SELECT * FROM emp e WHERE e.date BETWEEN <span class="string">'2018-04-10 00:00:00'</span> AND <span class="string">'2018-04-10 23:59:59'</span>;</span><br><span class="line"></span><br><span class="line">3、varchar与varbinary类型转换</span><br><span class="line"></span><br><span class="line">4、不通字符集间的隐式转换</span><br><span class="line"></span><br><span class="line">5、同字符集，不同字符集顺序间的隐式转换</span><br></pre></td></tr></table></figure>
       
     </div>
+
+    
+
     
     
+    
+     <div>
+		
+		<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+		
+      </div>
+	
     
 
     
 
     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>cai182081</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/04/10/SQL/DB_SQL_1/" title="SQL 调优技巧">http://yoursite.com/2018/04/10/SQL/DB_SQL_1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
 
+      </div>
     
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/数据库优化/" rel="tag"># 数据库优化</a>
+            <a href="/tags/数据库优化/" rel="tag"> <i class="fa fa-tag"></i> 数据库优化</a>
           
         </div>
       
@@ -448,8 +520,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/06/Hadoop/Hadoop_Cluster/" rel="next" title="Hadoop 3.0.1 完全分布式集群搭建">
-                <i class="fa fa-chevron-left"></i> Hadoop 3.0.1 完全分布式集群搭建
+              <a href="/2018/04/06/Hadoop/Hadoop_Cluster/" rel="next" title="Hadoop 3.1.0 完全分布式集群搭建（生产环境下）">
+                <i class="fa fa-chevron-left"></i> Hadoop 3.1.0 完全分布式集群搭建（生产环境下）
               </a>
             
           </div>
@@ -486,9 +558,6 @@
           </div>
           
 
-
-          
-
   
     <div class="comments" id="comments">
       
@@ -498,7 +567,7 @@
 
   
 
-  
+
 
         </div>
         
@@ -537,62 +606,113 @@
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">23</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
+              <a href="/atom2.xml" rel="alternate">
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
             </div>
           
 
-          <div class="links-of-author motion-element">
+          
+
+          
+          
+
+          
+          
+
+          
             
-          </div>
-
           
-          
-
-          
-          
-
           
 
         </div>
@@ -608,7 +728,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#减少访问数据库的次数"><span class="nav-number">1.</span> <span class="nav-text">减少访问数据库的次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#减少访问的数据量"><span class="nav-number">2.</span> <span class="nav-text">减少访问的数据量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尽量避免-SELECT"><span class="nav-number">3.</span> <span class="nav-text">尽量避免 SELECT *</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止在SQL中对列进行数学运算"><span class="nav-number">4.</span> <span class="nav-text">禁止在SQL中对列进行数学运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止SQL对列进行函数运算"><span class="nav-number">5.</span> <span class="nav-text">禁止SQL对列进行函数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止使用反向查询，使用-gt-、-lt-等，避免使用-和-lt-gt-命令"><span class="nav-number">6.</span> <span class="nav-text">禁止使用反向查询，使用>、<等，避免使用!=和<>命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用-gt-替代-gt"><span class="nav-number">7.</span> <span class="nav-text">用 >= 替代 ></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-IN-代替-OR，SQL语句中-IN-包含的值不宜过多"><span class="nav-number">8.</span> <span class="nav-text">使用 IN 代替 OR，SQL语句中 IN 包含的值不宜过多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止模糊匹配-前导查询"><span class="nav-number">9.</span> <span class="nav-text">禁止模糊匹配%前导查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-UNION-替换-OR-适用于索引列"><span class="nav-number">10.</span> <span class="nav-text">使用 UNION 替换 OR(适用于索引列)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在明显不会存在重复值的查询时，使用-UNION-ALL-代替-UNION，避免排序"><span class="nav-number">11.</span> <span class="nav-text">在明显不会存在重复值的查询时，使用 UNION ALL 代替 UNION，避免排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免在索引列上进行NULL值的判断"><span class="nav-number">12.</span> <span class="nav-text">避免在索引列上进行NULL值的判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免-HAVING，用-WHERE-子句替换-HAVING-子句"><span class="nav-number">13.</span> <span class="nav-text">避免 HAVING，用 WHERE 子句替换 HAVING 子句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用-EXISTS-替换-DISTINCT"><span class="nav-number">14.</span> <span class="nav-text">用 EXISTS 替换 DISTINCT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合理的分页方式以提高分页效率"><span class="nav-number">15.</span> <span class="nav-text">合理的分页方式以提高分页效率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止order-by-rand-查询"><span class="nav-number">16.</span> <span class="nav-text">禁止order by rand()查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免使用-in-exists-子查询，用join替换"><span class="nav-number">17.</span> <span class="nav-text">避免使用 in/exists 子查询，用join替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免使用-not-in-子查询，使用-not-exists-或-left-join替换"><span class="nav-number">18.</span> <span class="nav-text">避免使用 not in 子查询，使用 not exists 或 left join替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询展开优化"><span class="nav-number">19.</span> <span class="nav-text">子查询展开优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询合并优化"><span class="nav-number">20.</span> <span class="nav-text">子查询合并优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免隐式转换"><span class="nav-number">21.</span> <span class="nav-text">避免隐式转换</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#减少访问数据库的次数"><span class="nav-number">1.</span> <span class="nav-text">减少访问数据库的次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#减少访问的数据量"><span class="nav-number">2.</span> <span class="nav-text">减少访问的数据量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尽量避免-SELECT"><span class="nav-number">3.</span> <span class="nav-text">尽量避免 SELECT *</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止在SQL中对列进行数学运算"><span class="nav-number">4.</span> <span class="nav-text">禁止在SQL中对列进行数学运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止SQL对列进行函数运算"><span class="nav-number">5.</span> <span class="nav-text">禁止SQL对列进行函数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止使用反向查询，使用-gt-、-lt-等，避免使用-和-lt-gt-命令"><span class="nav-number">6.</span> <span class="nav-text">禁止使用反向查询，使用&gt;、&lt;等，避免使用!=和&lt;&gt;命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用-gt-替代-gt"><span class="nav-number">7.</span> <span class="nav-text">用 &gt;= 替代 &gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-IN-代替-OR，SQL语句中-IN-包含的值不宜过多"><span class="nav-number">8.</span> <span class="nav-text">使用 IN 代替 OR，SQL语句中 IN 包含的值不宜过多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止模糊匹配-前导查询"><span class="nav-number">9.</span> <span class="nav-text">禁止模糊匹配%前导查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-UNION-替换-OR-适用于索引列"><span class="nav-number">10.</span> <span class="nav-text">使用 UNION 替换 OR(适用于索引列)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在明显不会存在重复值的查询时，使用-UNION-ALL-代替-UNION，避免排序"><span class="nav-number">11.</span> <span class="nav-text">在明显不会存在重复值的查询时，使用 UNION ALL 代替 UNION，避免排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免在索引列上进行NULL值的判断"><span class="nav-number">12.</span> <span class="nav-text">避免在索引列上进行NULL值的判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免-HAVING，用-WHERE-子句替换-HAVING-子句"><span class="nav-number">13.</span> <span class="nav-text">避免 HAVING，用 WHERE 子句替换 HAVING 子句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用-EXISTS-替换-DISTINCT"><span class="nav-number">14.</span> <span class="nav-text">用 EXISTS 替换 DISTINCT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合理的分页方式以提高分页效率"><span class="nav-number">15.</span> <span class="nav-text">合理的分页方式以提高分页效率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止order-by-rand-查询"><span class="nav-number">16.</span> <span class="nav-text">禁止order by rand()查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免使用-in-exists-子查询，用join替换"><span class="nav-number">17.</span> <span class="nav-text">避免使用 in/exists 子查询，用join替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免使用-not-in-子查询，使用-not-exists-或-left-join替换"><span class="nav-number">18.</span> <span class="nav-text">避免使用 not in 子查询，使用 not exists 或 left join替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询展开优化"><span class="nav-number">19.</span> <span class="nav-text">子查询展开优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询合并优化"><span class="nav-number">20.</span> <span class="nav-text">子查询合并优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免隐式转换"><span class="nav-number">21.</span> <span class="nav-text">避免隐式转换</span></a></li></ol></div>
             
 
           </div>
@@ -629,16 +749,22 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cai182081</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -646,12 +772,13 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
 
         
+
 
 
 
@@ -690,12 +817,6 @@
 
 
 
-  
-
-
-
-
-
 
 
 
@@ -704,61 +825,77 @@
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+  
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
 
 
 
   
-
-
-  
-
 
 
 
@@ -781,7 +918,6 @@
 
 
 
-
 <!-- LOCAL: You can save these files to your site and update links -->
     
         
@@ -796,7 +932,7 @@
       <script type="text/javascript">
       function renderGitment(){
         var gitment = new Gitmint({
-            id: document.location.href, 
+            id: window.location.pathname,
             owner: 'cai182081',
             repo: 'cai182081.github.io',
             
@@ -823,10 +959,427 @@
 
 
 
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
 
   
 
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("LYl7tK129GkXmPxHi8ILtiuQ-gzGzoHsz", "fNvr4KMQd9tuE6hVX1hFBzlU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
 
 
 
@@ -835,11 +1388,15 @@
   
 
   
-  
 
   
   
 
+  
+
+  
+
+  
 
   
 

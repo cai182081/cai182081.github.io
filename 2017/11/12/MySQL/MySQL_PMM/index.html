@@ -2,15 +2,21 @@
 
 
 
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -38,54 +44,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -94,51 +52,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="MySQL,Percona,MongoDB,数据库监控," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Cailiang's Blog" type="application/atom+xml" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
 
 
 
 
 
 
-<meta name="description" content="PMM 架构组成及实现原理 PMM Server 端安装过程及注意事项安装 Docker在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以 安装较高版本Docker。安装Docker后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认路径12[root@PMM ~]# rpm -qa|grep docker | xa">
-<meta name="keywords" content="MySQL,Percona,MongoDB,数据库监控">
-<meta property="og:type" content="article">
-<meta property="og:title" content="全面解析 MySQL、MongoDB 数据库监控工具 PMM">
-<meta property="og:url" content="http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/index.html">
-<meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="PMM 架构组成及实现原理 PMM Server 端安装过程及注意事项安装 Docker在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以 安装较高版本Docker。安装Docker后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认路径12[root@PMM ~]# rpm -qa|grep docker | xa">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/MySQL/PMM_Architecture.png">
-<meta property="og:updated_time" content="2018-04-11T03:04:01.533Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="全面解析 MySQL、MongoDB 数据库监控工具 PMM">
-<meta name="twitter:description" content="PMM 架构组成及实现原理 PMM Server 端安装过程及注意事项安装 Docker在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以 安装较高版本Docker。安装Docker后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认路径12[root@PMM ~]# rpm -qa|grep docker | xa">
-<meta name="twitter:image" content="http://yoursite.com/images/MySQL/PMM_Architecture.png">
 
 
 
@@ -147,15 +79,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '5.1.3',
+    version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -167,12 +97,40 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/"/>
-
+  
 
 
 
+
+  <meta name="description" content="PMM 架构组成及实现原理 PMM Server 端安装过程及注意事项Docker 安装在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以安装较高版本 Docker。安装 Docker 后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认存储路径 安装 Docker方法一：12[root@PMM ~]# rpm -q">
+<meta name="keywords" content="MySQL,MongoDB,Percona,数据库监控">
+<meta property="og:type" content="article">
+<meta property="og:title" content="全面解析 MySQL、MongoDB 数据库监控工具 PMM">
+<meta property="og:url" content="http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/index.html">
+<meta property="og:site_name" content="Cailiang&#39;s Blog">
+<meta property="og:description" content="PMM 架构组成及实现原理 PMM Server 端安装过程及注意事项Docker 安装在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以安装较高版本 Docker。安装 Docker 后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认存储路径 安装 Docker方法一：12[root@PMM ~]# rpm -q">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/MySQL/PMM_Architecture.png">
+<meta property="og:updated_time" content="2018-04-22T10:29:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="全面解析 MySQL、MongoDB 数据库监控工具 PMM">
+<meta name="twitter:description" content="PMM 架构组成及实现原理 PMM Server 端安装过程及注意事项Docker 安装在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以安装较高版本 Docker。安装 Docker 后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认存储路径 安装 Docker方法一：12[root@PMM ~]# rpm -q">
+<meta name="twitter:image" content="http://yoursite.com/images/MySQL/PMM_Architecture.png">
+
+
+
+  <link rel="alternate" href="/atom2.xml" title="Cailiang's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>全面解析 MySQL、MongoDB 数据库监控工具 PMM | Cailiang's Blog</title>
   
@@ -184,9 +142,37 @@
 
 
 
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -195,26 +181,26 @@
 
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-
+	<a href="https://github.com/cai182081"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Cailiang's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">飞翔的菜鸟</p>
+        <h1 class="site-subtitle" itemprop="description">飞翔的菜鸟</h1>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -222,68 +208,106 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -294,6 +318,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -318,11 +344,19 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">全面解析 MySQL、MongoDB 数据库监控工具 PMM</h1>
+          <h2 class="post-title" itemprop="name headline">全面解析 MySQL、MongoDB 数据库监控工具 PMM
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -330,13 +364,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T03:19:32+08:00">
-                2017-11-12
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-12 03:19:32" itemprop="dateCreated datePublished" datetime="2017-11-12T03:19:32+08:00">2017-11-12</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-22 18:29:22" itemprop="dateModified" datetime="2018-04-22T18:29:22+08:00">2018-04-22</time>
+              
             
           </span>
 
@@ -352,11 +403,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
 
                 
                 
@@ -372,13 +419,24 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/11/12/MySQL/MySQL_PMM/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/11/12/MySQL/MySQL_PMM/" itemprop="commentsCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2017/11/12/MySQL/MySQL_PMM/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
           
 
           
+          
+             <span id="/2017/11/12/MySQL/MySQL_PMM/" class="leancloud_visitors" data-flag-title="全面解析 MySQL、MongoDB 数据库监控工具 PMM">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -400,44 +458,73 @@
       
 
       
-        <h2 id="PMM-架构组成及实现原理"><a href="#PMM-架构组成及实现原理" class="headerlink" title="PMM 架构组成及实现原理"></a>PMM 架构组成及实现原理</h2><p><img src="/images/MySQL/PMM_Architecture.png" alt="PMM 体系架构"></p>
-<h2 id="PMM-Server-端安装过程及注意事项"><a href="#PMM-Server-端安装过程及注意事项" class="headerlink" title="PMM Server 端安装过程及注意事项"></a>PMM Server 端安装过程及注意事项</h2><h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h3><p>在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以 安装较高版本Docker。安装Docker后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@PMM ~]<span class="comment"># rpm -qa|grep docker | xargs rpm -e --nodeps</span></div><div class="line">[root@PMM ~]<span class="comment"># curl -sSL https://get.docker.com/ | sh</span></div></pre></td></tr></table></figure></p>
-<p>设置云镜像库加速与修改默认存储路径，并启动Docker<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@PMM ~]<span class="comment"># mkdir -p /data/docker</span></div><div class="line">[root@PMM ~]<span class="comment"># mkdir -p /etc/docker/</span></div><div class="line"></div><div class="line">[root@PMM ~]<span class="comment"># cat &gt;&gt; /etc/docker/daemon.json &lt;&lt;EOF                        </span></div><div class="line">&#123;<span class="string">"registry-mirrors"</span>: [<span class="string">"http://396e823a.m.daocloud.io"</span>], <span class="string">"graph"</span>: <span class="string">"/data/docker"</span>&#125;</div><div class="line">EOF</div><div class="line"></div><div class="line">[root@PMM ~]<span class="comment"># systemctl start docker</span></div></pre></td></tr></table></figure></p>
-<h3 id="拉取-PMM-镜像安装Server端"><a href="#拉取-PMM-镜像安装Server端" class="headerlink" title="拉取 PMM 镜像安装Server端"></a>拉取 PMM 镜像安装Server端</h3><h4 id="拉取PMM最新容器镜像"><a href="#拉取PMM最新容器镜像" class="headerlink" title="拉取PMM最新容器镜像"></a>拉取PMM最新容器镜像</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@PMM ~]<span class="comment"># docker pull percona/pmm-server:latest</span></div></pre></td></tr></table></figure>
-<h4 id="建立数据PMM-Server卷容器"><a href="#建立数据PMM-Server卷容器" class="headerlink" title="建立数据PMM-Server卷容器"></a>建立数据PMM-Server卷容器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@PMM ~]<span class="comment"># docker create \</span></div><div class="line">   -v /opt/prometheus/data \</div><div class="line">   -v /opt/consul-data \</div><div class="line">   -v /var/lib/mysql \</div><div class="line">   -v /var/lib/grafana \</div><div class="line">   --name pmm-data \</div><div class="line">   percona/pmm-server:latest /bin/<span class="literal">true</span></div></pre></td></tr></table></figure>
-<h4 id="运行PMM-Server（同时设置登录用户名-SERVER-USER-和密码-SERVER-PASSWORD-根据需要进行修改-如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM-镜像"><a href="#运行PMM-Server（同时设置登录用户名-SERVER-USER-和密码-SERVER-PASSWORD-根据需要进行修改-如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM-镜像" class="headerlink" title="运行PMM Server（同时设置登录用户名(SERVER_USER)和密码(SERVER_PASSWORD), 根据需要进行修改.如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM 镜像"></a>运行PMM Server（同时设置登录用户名(SERVER_USER)和密码(SERVER_PASSWORD), 根据需要进行修改.如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM 镜像</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@PMM ~]<span class="comment"># docker run -d -p 8082:80 \</span></div><div class="line">  --volumes-from pmm-data \</div><div class="line">  --name pmm-server \</div><div class="line">  -e SERVER_USER=pmm \</div><div class="line">  -e SERVER_PASSWORD=pmmpasswd \</div><div class="line">  -e ORCHESTRATOR_ENABLED=<span class="literal">true</span> \</div><div class="line">  --restart always \</div><div class="line">  percona/pmm-server:latest</div></pre></td></tr></table></figure>
-<h4 id="更改面板数据sqlite3库存储类型为MYSQL-容器自带"><a href="#更改面板数据sqlite3库存储类型为MYSQL-容器自带" class="headerlink" title="更改面板数据sqlite3库存储类型为MYSQL(容器自带)"></a>更改面板数据sqlite3库存储类型为MYSQL(容器自带)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[root@PMM ~]<span class="comment"># docker exec -i -t pmm-server /bin/bash</span></div><div class="line"></div><div class="line">sed -i <span class="string">'s/;type = sqlite3/type=mysql/g'</span> /etc/grafana/grafana.ini</div><div class="line">sed -i <span class="string">'s/;host = 127.0.0.1:3306/host = 127.0.0.1:3306/g'</span> /etc/grafana/grafana.ini</div><div class="line">sed -i <span class="string">'s/;name = grafana/name = grafana/g'</span> /etc/grafana/grafana.ini</div><div class="line">sed -i <span class="string">'s/;user = root/user = root/g'</span> /etc/grafana/grafana.ini</div><div class="line">sed -i <span class="string">'s/;password =/password =/g'</span> /etc/grafana/grafana.ini</div><div class="line"></div><div class="line">mysql -e <span class="string">"create database grafana;"</span></div></pre></td></tr></table></figure>
-<p>退出Docker容器，重启PMM Server<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker restart pmm-server</div></pre></td></tr></table></figure></p>
-<h2 id="PMM-Client-端搭建过程及监控注意事项"><a href="#PMM-Client-端搭建过程及监控注意事项" class="headerlink" title="PMM Client 端搭建过程及监控注意事项"></a>PMM Client 端搭建过程及监控注意事项</h2><p>到官网下载安装最新版本PMM Client客户端以及pt-toolkit，并开通各PMM Client到PMM Serevr 42000和42002端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install -y https://www.percona.com/downloads/pmm/1.8.1/binary/redhat/7/x86_64/pmm-client-1.8.1-1.x86_64.rpm</div><div class="line">yum install -y https://www.percona.com/downloads/percona-toolkit/3.0.8/binary/redhat/7/x86_64/percona-toolkit-3.0.8-1.el7.x86_64.rpm</div></pre></td></tr></table></figure></p>
-<p>被监控的MySQL创建相关权限监控账号<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">'pmm_monitor'</span>@<span class="string">'192.168.1.3'</span> IDENTIFIED BY <span class="string">'pmmpawd'</span>;</div><div class="line">FLUSH PRIVILEGES;</div></pre></td></tr></table></figure></p>
-<p>配置服务端连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pmm-admin config --server 192.168.1.2:8082 --server-user pmm --server-password pmmpasswd --client-address 192.168.1.3 --client-name master_192.168.1.3</div></pre></td></tr></table></figure></p>
-<p>采集MySQL监控数据<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pmm-admin add mysql --query-source perfschema --user pmm_monitor --password pmmpawd --host 192.168.1.3--port 3306</div></pre></td></tr></table></figure></p>
-<p>检查PMM连接、监控（如果不能获取数据需要打开端口42002、42000）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pmm-admin add mysql --query-source perfschema --user pmm_monitor --password pmmpasswd --host 192.168.1.3--port 3306</div></pre></td></tr></table></figure></p>
-<h2 id="PMM-Client-端搭建过程及监控注意事项-1"><a href="#PMM-Client-端搭建过程及监控注意事项-1" class="headerlink" title="PMM Client 端搭建过程及监控注意事项"></a>PMM Client 端搭建过程及监控注意事项</h2><p>到官网下载安装最新版本PMM Client客户端，并开通各PMM Client到PMM Serevr 42000和42002端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y https://www.percona.com/downloads/pmm/1.4.1/binary/redhat/7/x86_64/pmm-client-1.4.1-1.x86_64.rpm</div></pre></td></tr></table></figure></p>
-
+        <h1 id="PMM-架构组成及实现原理"><a href="#PMM-架构组成及实现原理" class="headerlink" title="PMM 架构组成及实现原理"></a>PMM 架构组成及实现原理</h1><p><img src="/images/MySQL/PMM_Architecture.png" alt="PMM 体系架构"></p>
+<h1 id="PMM-Server-端安装过程及注意事项"><a href="#PMM-Server-端安装过程及注意事项" class="headerlink" title="PMM Server 端安装过程及注意事项"></a>PMM Server 端安装过程及注意事项</h1><h2 id="Docker-安装"><a href="#Docker-安装" class="headerlink" title="Docker 安装"></a>Docker 安装</h2><p>在低版本Docker中，安装PMM，SQL慢日志页面可能加载不出来，固推荐以安装较高版本 Docker。安装 Docker 后，默认Docker镜像路径在/usr/lib/docker目录，为防止根目录在使用过程中被撑爆，需修改默认存储路径</p>
+<h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h3><p>方法一：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@PMM ~]<span class="comment"># rpm -qa|grep docker | xargs rpm -e --nodeps</span></span><br><span class="line">[root@PMM ~]<span class="comment"># curl -sSL https://get.docker.com/ | sh</span></span><br></pre></td></tr></table></figure></p>
+<p>方法二：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@PMM ~]<span class="comment"># cat &gt;&gt; /etc/yum.repos.d/docker.repo &lt;&lt;EOF</span></span><br><span class="line">[dockerrepo]</span><br><span class="line">name=Docker Repository</span><br><span class="line">baseurl=http://yum.dockerproject.org/repo/main/centos/7/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">[root@PMM ~]<span class="comment"># yum install -y docker-engine</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="设置云镜像库加速与修改默认存储路径"><a href="#设置云镜像库加速与修改默认存储路径" class="headerlink" title="设置云镜像库加速与修改默认存储路径"></a>设置云镜像库加速与修改默认存储路径</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@PMM ~]<span class="comment"># mkdir -p /data/docker</span></span><br><span class="line">[root@PMM ~]<span class="comment"># mkdir -p /etc/docker/</span></span><br><span class="line"></span><br><span class="line">[root@PMM ~]<span class="comment"># cat &gt;&gt; /etc/docker/daemon.json &lt;&lt;EOF                        </span></span><br><span class="line">&#123;<span class="string">"registry-mirrors"</span>: [<span class="string">"https://apg1cbea.mirror.aliyuncs.com"</span>], <span class="string">"graph"</span>: <span class="string">"/data/docker"</span>&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<h3 id="启动-Docker，并设置开机自启动"><a href="#启动-Docker，并设置开机自启动" class="headerlink" title="启动 Docker，并设置开机自启动"></a>启动 Docker，并设置开机自启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@PMM ~]<span class="comment"># systemctl start docker</span></span><br><span class="line">[root@PMM ~]<span class="comment"># systemctl enable docker</span></span><br></pre></td></tr></table></figure>
+<h2 id="拉取-PMM-镜像安装-Server-端"><a href="#拉取-PMM-镜像安装-Server-端" class="headerlink" title="拉取 PMM 镜像安装 Server 端"></a>拉取 PMM 镜像安装 Server 端</h2><h3 id="拉取PMM最新容器镜像"><a href="#拉取PMM最新容器镜像" class="headerlink" title="拉取PMM最新容器镜像"></a>拉取PMM最新容器镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@PMM ~]<span class="comment"># docker pull percona/pmm-server:latest</span></span><br><span class="line">latest: Pulling from percona/pmm-server</span><br><span class="line">469cfcc7a4b3: Pull complete </span><br><span class="line">fa45d21b9629: Pull complete </span><br><span class="line">Digest: sha256:1c088ceb2d3b2c32c6abfb11b30e555356473b559b7dbb8f07efc78520995fad</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> percona/pmm-server:latest</span><br></pre></td></tr></table></figure>
+<h3 id="建立-PMM-Server-数据卷容器"><a href="#建立-PMM-Server-数据卷容器" class="headerlink" title="建立 PMM-Server 数据卷容器"></a>建立 PMM-Server 数据卷容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@PMM ~]<span class="comment"># docker create \</span></span><br><span class="line">   -v /opt/prometheus/data \</span><br><span class="line">   -v /opt/consul-data \</span><br><span class="line">   -v /var/lib/mysql \</span><br><span class="line">   -v /var/lib/grafana \</span><br><span class="line">   --name pmm-data \</span><br><span class="line">   percona/pmm-server:latest /bin/<span class="literal">true</span></span><br><span class="line">77746794afa669677389cdfb2490917e711334a98bffef0d1915c514b9e16604</span><br></pre></td></tr></table></figure>
+<h3 id="运行PMM-Server（同时设置登录用户名-SERVER-USER-和密码-SERVER-PASSWORD-根据需要进行修改-如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM-镜像"><a href="#运行PMM-Server（同时设置登录用户名-SERVER-USER-和密码-SERVER-PASSWORD-根据需要进行修改-如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM-镜像" class="headerlink" title="运行PMM Server（同时设置登录用户名(SERVER_USER)和密码(SERVER_PASSWORD), 根据需要进行修改.如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM 镜像"></a>运行PMM Server（同时设置登录用户名(SERVER_USER)和密码(SERVER_PASSWORD), 根据需要进行修改.如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM 镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@PMM ~]<span class="comment"># docker run -d -p 8082:80 \</span></span><br><span class="line">  --volumes-from pmm-data \</span><br><span class="line">  --name pmm-server \</span><br><span class="line">  -e SERVER_USER=pmm \</span><br><span class="line">  -e SERVER_PASSWORD=pmm_passwd \</span><br><span class="line">  -e ORCHESTRATOR_ENABLED=<span class="literal">true</span> \</span><br><span class="line">  --restart always \</span><br><span class="line">  percona/pmm-server:latest</span><br><span class="line">285e395000dbd24adcf3d5cf6e59fa5aada3820f3798cf172888fc499ff0675e</span><br></pre></td></tr></table></figure>
+<h3 id="更改面板数据sqlite3库存储类型为MYSQL-容器自带"><a href="#更改面板数据sqlite3库存储类型为MYSQL-容器自带" class="headerlink" title="更改面板数据sqlite3库存储类型为MYSQL(容器自带)"></a>更改面板数据sqlite3库存储类型为MYSQL(容器自带)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@PMM ~]<span class="comment"># docker exec -i -t pmm-server /bin/bash</span></span><br><span class="line"></span><br><span class="line">[root@285e395000db opt]<span class="comment"># sed -i 's/;type = sqlite3/type=mysql/g' /etc/grafana/grafana.ini</span></span><br><span class="line">[root@285e395000db opt]<span class="comment"># sed -i 's/;host = 127.0.0.1:3306/host = 127.0.0.1:3306/g' /etc/grafana/grafana.ini</span></span><br><span class="line">[root@285e395000db opt]<span class="comment"># sed -i 's/;name = grafana/name = grafana/g' /etc/grafana/grafana.ini</span></span><br><span class="line">[root@285e395000db opt]<span class="comment"># sed -i 's/;user = root/user = root/g' /etc/grafana/grafana.ini</span></span><br><span class="line">[root@285e395000db opt]<span class="comment"># sed -i 's/;password =/password =/g' /etc/grafana/grafana.ini</span></span><br><span class="line"></span><br><span class="line">[root@285e395000db opt]<span class="comment"># mysql -e "create database grafana;"</span></span><br></pre></td></tr></table></figure>
+<h2 id="退出Docker容器，重启PMM-Server"><a href="#退出Docker容器，重启PMM-Server" class="headerlink" title="退出Docker容器，重启PMM Server"></a>退出Docker容器，重启PMM Server</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@PMM ~]<span class="comment"># docker restart pmm-server</span></span><br></pre></td></tr></table></figure>
+<h1 id="PMM-Client-端搭建过程及监控注意事项"><a href="#PMM-Client-端搭建过程及监控注意事项" class="headerlink" title="PMM Client 端搭建过程及监控注意事项"></a>PMM Client 端搭建过程及监控注意事项</h1><p>到官网下载安装最新版本PMM Client客户端以及pt-toolkit，并开通各PMM Client到 PMM Serevr 42000和42002端口</p>
+<h2 id="安装-PMM-Client"><a href="#安装-PMM-Client" class="headerlink" title="安装 PMM-Client"></a>安装 PMM-Client</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># yum install -y https://www.percona.com/downloads/pmm/1.10.0/binary/redhat/7/x86_64/pmm-client-1.10.0-1.el7.x86_64.rpm</span></span><br><span class="line">[root@node1 ~]<span class="comment"># yum install -y https://www.percona.com/downloads/percona-toolkit/3.0.9/binary/redhat/7/x86_64/percona-toolkit-3.0.9-1.el7.x86_64.rpm</span></span><br></pre></td></tr></table></figure>
+<h2 id="被监控端创建-MySQL-账号，并控制权限"><a href="#被监控端创建-MySQL-账号，并控制权限" class="headerlink" title="被监控端创建 MySQL 账号，并控制权限"></a>被监控端创建 MySQL 账号，并控制权限</h2><p>被监控的MySQL创建相关监控账号，并控制权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@localhost:(none)&gt; GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, REPLICATION SLAVE, RELOAD ON *.* TO <span class="string">'pmm_monitor'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'pmm_passwd'</span> WITH MAX_USER_CONNECTIONS 10;</span><br><span class="line">root@localhost:(none)&gt; GRANT SELECT, UPDATE, DELETE, DROP ON performance_schema.* TO <span class="string">'pmm_monitor'</span>@<span class="string">'localhost'</span>;</span><br><span class="line">root@localhost:(none)&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置服务端连接"><a href="#配置服务端连接" class="headerlink" title="配置服务端连接"></a>配置服务端连接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># pmm-admin config --server 192.168.1.14:8082 --server-user pmm --server-password pmm_passwd --client-address 192.168.1.10 --client-name master_192.168.1.10</span></span><br><span class="line">OK, PMM server is alive.</span><br><span class="line"></span><br><span class="line">PMM Server      | 192.168.1.14:8082 (password-protected)</span><br><span class="line">Client Name     | master_192.168.1.10</span><br><span class="line">Client Address  | 192.168.1.10</span><br></pre></td></tr></table></figure>
+<h2 id="采集MySQL监控数据"><a href="#采集MySQL监控数据" class="headerlink" title="采集MySQL监控数据"></a>采集MySQL监控数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># pmm-admin add mysql --query-source perfschema --user pmm_monitor --password pmm_passwd --host localhost --port 3306</span></span><br><span class="line">[linux:metrics] OK, already monitoring this system.</span><br><span class="line">[mysql:metrics] OK, now monitoring MySQL metrics using DSN pmm_monitor:***@unix(/tmp/mysql.sock)</span><br><span class="line">[mysql:queries] OK, now monitoring MySQL queries from perfschema using DSN pmm_monitor:***@unix(/tmp/mysql.sock)</span><br></pre></td></tr></table></figure>
+<h2 id="检查PMM连接、监控连接状态"><a href="#检查PMM连接、监控连接状态" class="headerlink" title="检查PMM连接、监控连接状态"></a>检查PMM连接、监控连接状态</h2><p>如果不能获取数据需要打开端口42002、42000<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># pmm-admin list</span></span><br><span class="line">pmm-admin 1.10.0</span><br><span class="line"></span><br><span class="line">PMM Server      | 192.168.1.14:8082 (password-protected)</span><br><span class="line">Client Name     | master_192.168.1.10</span><br><span class="line">Client Address  | 192.168.1.10 </span><br><span class="line">Service Manager | linux-systemd</span><br><span class="line"></span><br><span class="line">-------------- -------------------- ----------- -------- -------------------------------------- ---------------------------------------------</span><br><span class="line">SERVICE TYPE   NAME                 LOCAL PORT  RUNNING  DATA SOURCE                            OPTIONS                                      </span><br><span class="line">-------------- -------------------- ----------- -------- -------------------------------------- ---------------------------------------------</span><br><span class="line">mysql:queries  master_192.168.1.10  -           YES      pmm_monitor:***@unix(/tmp/mysql.sock)  query_source=perfschema, query_examples=<span class="literal">true</span> </span><br><span class="line">linux:metrics  master_192.168.1.10  42000       YES      -                                                                                   </span><br><span class="line">mysql:metrics  master_192.168.1.10  42002       YES      pmm_monitor:***@unix(/tmp/mysql.sock)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># pmm-admin check-network</span></span><br><span class="line">PMM Network Status</span><br><span class="line"></span><br><span class="line">Server Address | 192.168.1.14:8082</span><br><span class="line">Client Address | 192.168.1.10 </span><br><span class="line"></span><br><span class="line">* System Time</span><br><span class="line">NTP Server (0.pool.ntp.org)         | 2018-04-22 18:15:54 +0800 CST</span><br><span class="line">PMM Server                          | 2018-04-22 10:15:51 +0000 GMT</span><br><span class="line">PMM Client                          | 2018-04-22 18:15:51 +0800 CST</span><br><span class="line">PMM Server Time Drift               | OK</span><br><span class="line">PMM Client Time Drift               | OK</span><br><span class="line">PMM Client to PMM Server Time Drift | OK</span><br><span class="line"></span><br><span class="line">* Connection: Client --&gt; Server</span><br><span class="line">-------------------- -------      </span><br><span class="line">SERVER SERVICE       STATUS       </span><br><span class="line">-------------------- -------      </span><br><span class="line">Consul API           OK</span><br><span class="line">Prometheus API       OK</span><br><span class="line">Query Analytics API  OK</span><br><span class="line"></span><br><span class="line">Connection duration | 508.744µs</span><br><span class="line">Request duration    | 5.462146ms</span><br><span class="line">Full round trip     | 5.97089ms</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* Connection: Client &lt;-- Server</span><br><span class="line">-------------- -------------------- ------------------- ------- ---------- ---------</span><br><span class="line">SERVICE TYPE   NAME                 REMOTE ENDPOINT     STATUS  HTTPS/TLS  PASSWORD </span><br><span class="line">-------------- -------------------- ------------------- ------- ---------- ---------</span><br><span class="line">linux:metrics  master_192.168.1.10  192.168.1.10:42000  OK      YES        YES</span><br><span class="line">mysql:metrics  master_192.168.1.10  192.168.1.10:42002  OK      YES        YES</span><br></pre></td></tr></table></figure>
       
     </div>
+
+    
+
     
     
+    
+     <div>
+		
+		<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+		
+      </div>
+	
     
 
     
 
     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>cai182081</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/" title="全面解析 MySQL、MongoDB 数据库监控工具 PMM">http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
 
+      </div>
     
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            <a href="/tags/MySQL/" rel="tag"> <i class="fa fa-tag"></i> MySQL</a>
           
-            <a href="/tags/Percona/" rel="tag"># Percona</a>
+            <a href="/tags/MongoDB/" rel="tag"> <i class="fa fa-tag"></i> MongoDB</a>
           
-            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+            <a href="/tags/Percona/" rel="tag"> <i class="fa fa-tag"></i> Percona</a>
           
-            <a href="/tags/数据库监控/" rel="tag"># 数据库监控</a>
+            <a href="/tags/数据库监控/" rel="tag"> <i class="fa fa-tag"></i> 数据库监控</a>
           
         </div>
       
@@ -450,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/11/SQL/MySQL_SQL/" rel="next" title="MySQL SQL优化技巧——对隐式转换、not in子查询诊断和改写">
-                <i class="fa fa-chevron-left"></i> MySQL SQL优化技巧——对隐式转换、not in子查询诊断和改写
+              <a href="/2017/11/11/SQL/MySQL_SQL/" rel="next" title="SQL优化之美：对隐式转换、not in子查询诊断和改写">
+                <i class="fa fa-chevron-left"></i> SQL优化之美：对隐式转换、not in子查询诊断和改写
               </a>
             
           </div>
@@ -488,9 +575,6 @@
           </div>
           
 
-
-          
-
   
     <div class="comments" id="comments">
       
@@ -500,7 +584,7 @@
 
   
 
-  
+
 
         </div>
         
@@ -539,62 +623,113 @@
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">23</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
+              <a href="/atom2.xml" rel="alternate">
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
             </div>
           
 
-          <div class="links-of-author motion-element">
+          
+
+          
+          
+
+          
+          
+
+          
             
-          </div>
-
           
-          
-
-          
-          
-
           
 
         </div>
@@ -610,7 +745,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-架构组成及实现原理"><span class="nav-number">1.</span> <span class="nav-text">PMM 架构组成及实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-Server-端安装过程及注意事项"><span class="nav-number">2.</span> <span class="nav-text">PMM Server 端安装过程及注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Docker"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取-PMM-镜像安装Server端"><span class="nav-number">2.2.</span> <span class="nav-text">拉取 PMM 镜像安装Server端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拉取PMM最新容器镜像"><span class="nav-number">2.2.1.</span> <span class="nav-text">拉取PMM最新容器镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建立数据PMM-Server卷容器"><span class="nav-number">2.2.2.</span> <span class="nav-text">建立数据PMM-Server卷容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行PMM-Server（同时设置登录用户名-SERVER-USER-和密码-SERVER-PASSWORD-根据需要进行修改-如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM-镜像"><span class="nav-number">2.2.3.</span> <span class="nav-text">运行PMM Server（同时设置登录用户名(SERVER_USER)和密码(SERVER_PASSWORD), 根据需要进行修改.如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM 镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更改面板数据sqlite3库存储类型为MYSQL-容器自带"><span class="nav-number">2.2.4.</span> <span class="nav-text">更改面板数据sqlite3库存储类型为MYSQL(容器自带)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-Client-端搭建过程及监控注意事项"><span class="nav-number">3.</span> <span class="nav-text">PMM Client 端搭建过程及监控注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PMM-Client-端搭建过程及监控注意事项-1"><span class="nav-number">4.</span> <span class="nav-text">PMM Client 端搭建过程及监控注意事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PMM-架构组成及实现原理"><span class="nav-number">1.</span> <span class="nav-text">PMM 架构组成及实现原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PMM-Server-端安装过程及注意事项"><span class="nav-number">2.</span> <span class="nav-text">PMM Server 端安装过程及注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-安装"><span class="nav-number">2.1.</span> <span class="nav-text">Docker 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Docker"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装 Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置云镜像库加速与修改默认存储路径"><span class="nav-number">2.1.2.</span> <span class="nav-text">设置云镜像库加速与修改默认存储路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动-Docker，并设置开机自启动"><span class="nav-number">2.1.3.</span> <span class="nav-text">启动 Docker，并设置开机自启动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拉取-PMM-镜像安装-Server-端"><span class="nav-number">2.2.</span> <span class="nav-text">拉取 PMM 镜像安装 Server 端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取PMM最新容器镜像"><span class="nav-number">2.2.1.</span> <span class="nav-text">拉取PMM最新容器镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立-PMM-Server-数据卷容器"><span class="nav-number">2.2.2.</span> <span class="nav-text">建立 PMM-Server 数据卷容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行PMM-Server（同时设置登录用户名-SERVER-USER-和密码-SERVER-PASSWORD-根据需要进行修改-如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM-镜像"><span class="nav-number">2.2.3.</span> <span class="nav-text">运行PMM Server（同时设置登录用户名(SERVER_USER)和密码(SERVER_PASSWORD), 根据需要进行修改.如果80端口被占用或者修改为自己想使用的端口，以如下方式启动PMM 镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改面板数据sqlite3库存储类型为MYSQL-容器自带"><span class="nav-number">2.2.4.</span> <span class="nav-text">更改面板数据sqlite3库存储类型为MYSQL(容器自带)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#退出Docker容器，重启PMM-Server"><span class="nav-number">2.3.</span> <span class="nav-text">退出Docker容器，重启PMM Server</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PMM-Client-端搭建过程及监控注意事项"><span class="nav-number">3.</span> <span class="nav-text">PMM Client 端搭建过程及监控注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-PMM-Client"><span class="nav-number">3.1.</span> <span class="nav-text">安装 PMM-Client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#被监控端创建-MySQL-账号，并控制权限"><span class="nav-number">3.2.</span> <span class="nav-text">被监控端创建 MySQL 账号，并控制权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置服务端连接"><span class="nav-number">3.3.</span> <span class="nav-text">配置服务端连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#采集MySQL监控数据"><span class="nav-number">3.4.</span> <span class="nav-text">采集MySQL监控数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查PMM连接、监控连接状态"><span class="nav-number">3.5.</span> <span class="nav-text">检查PMM连接、监控连接状态</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -631,16 +766,22 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cai182081</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -648,12 +789,13 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
 
         
+
 
 
 
@@ -692,12 +834,6 @@
 
 
 
-  
-
-
-
-
-
 
 
 
@@ -706,61 +842,77 @@
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+  
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
 
 
 
   
-
-
-  
-
 
 
 
@@ -783,7 +935,6 @@
 
 
 
-
 <!-- LOCAL: You can save these files to your site and update links -->
     
         
@@ -798,7 +949,7 @@
       <script type="text/javascript">
       function renderGitment(){
         var gitment = new Gitmint({
-            id: document.location.href, 
+            id: window.location.pathname,
             owner: 'cai182081',
             repo: 'cai182081.github.io',
             
@@ -825,10 +976,427 @@
 
 
 
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
 
   
 
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("LYl7tK129GkXmPxHi8ILtiuQ-gzGzoHsz", "fNvr4KMQd9tuE6hVX1hFBzlU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
 
 
 
@@ -837,11 +1405,15 @@
   
 
   
-  
 
   
   
 
+  
+
+  
+
+  
 
   
 

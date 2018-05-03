@@ -2,15 +2,21 @@
 
 
 
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -38,54 +44,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -94,49 +52,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hadoop,大数据," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Cailiang's Blog" type="application/atom+xml" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
 
 
 
 
 
 
-<meta name="description" content="Hadoop 集群服务器及节点规划12 服务器主机名及hosts文件配置123456789#allecho node$ &amp;gt; /etc/hostnamecat &amp;gt;&amp;gt; /etc/hosts &amp;lt;&amp;lt;EOF192.168.1.10 node1192.168.1.11 node2192.168.1.12 node3192.168.1.13 node4EOF 关闭服务器防火墙123">
-<meta name="keywords" content="Hadoop,大数据">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hadoop 3.0.1 完全分布式集群搭建">
-<meta property="og:url" content="http://yoursite.com/2018/04/06/Hadoop/Hadoop_Cluster/index.html">
-<meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="Hadoop 集群服务器及节点规划12 服务器主机名及hosts文件配置123456789#allecho node$ &amp;gt; /etc/hostnamecat &amp;gt;&amp;gt; /etc/hosts &amp;lt;&amp;lt;EOF192.168.1.10 node1192.168.1.11 node2192.168.1.12 node3192.168.1.13 node4EOF 关闭服务器防火墙123">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-06T08:18:15.392Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hadoop 3.0.1 完全分布式集群搭建">
-<meta name="twitter:description" content="Hadoop 集群服务器及节点规划12 服务器主机名及hosts文件配置123456789#allecho node$ &amp;gt; /etc/hostnamecat &amp;gt;&amp;gt; /etc/hosts &amp;lt;&amp;lt;EOF192.168.1.10 node1192.168.1.11 node2192.168.1.12 node3192.168.1.13 node4EOF 关闭服务器防火墙123">
 
 
 
@@ -145,15 +79,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '5.1.3',
+    version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -165,14 +97,40 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/2018/04/06/Hadoop/Hadoop_Cluster/"/>
-
+  
 
 
 
 
-  <title>Hadoop 3.0.1 完全分布式集群搭建 | Cailiang's Blog</title>
+  <meta name="description" content="Hadoop 集群服务器及节点规划12 服务器操作系统设置服务器主机名及hosts文件配置1234567891011#	all[root@node1 ~]# echo node$ &amp;gt; /etc/hostname[root@node1 ~]# cat &amp;gt;&amp;gt; /etc/hosts &amp;lt;&amp;lt;EOF192.168.1.10 node1192.168.1.11 node2192.1">
+<meta name="keywords" content="Hadoop,大数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop 3.1.0 完全分布式集群搭建（生产环境下）">
+<meta property="og:url" content="http://yoursite.com/2018/04/06/Hadoop/Hadoop_Cluster/index.html">
+<meta property="og:site_name" content="Cailiang&#39;s Blog">
+<meta property="og:description" content="Hadoop 集群服务器及节点规划12 服务器操作系统设置服务器主机名及hosts文件配置1234567891011#	all[root@node1 ~]# echo node$ &amp;gt; /etc/hostname[root@node1 ~]# cat &amp;gt;&amp;gt; /etc/hosts &amp;lt;&amp;lt;EOF192.168.1.10 node1192.168.1.11 node2192.1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-15T13:44:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hadoop 3.1.0 完全分布式集群搭建（生产环境下）">
+<meta name="twitter:description" content="Hadoop 集群服务器及节点规划12 服务器操作系统设置服务器主机名及hosts文件配置1234567891011#	all[root@node1 ~]# echo node$ &amp;gt; /etc/hostname[root@node1 ~]# cat &amp;gt;&amp;gt; /etc/hosts &amp;lt;&amp;lt;EOF192.168.1.10 node1192.168.1.11 node2192.1">
+
+
+
+  <link rel="alternate" href="/atom2.xml" title="Cailiang's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Hadoop 3.1.0 完全分布式集群搭建（生产环境下） | Cailiang's Blog</title>
   
 
 
@@ -182,9 +140,37 @@
 
 
 
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -193,26 +179,26 @@
 
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-
+	<a href="https://github.com/cai182081"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Cailiang's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">飞翔的菜鸟</p>
+        <h1 class="site-subtitle" itemprop="description">飞翔的菜鸟</h1>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -220,68 +206,106 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -292,6 +316,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -316,11 +342,19 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hadoop 3.0.1 完全分布式集群搭建</h1>
+          <h2 class="post-title" itemprop="name headline">Hadoop 3.1.0 完全分布式集群搭建（生产环境下）
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -328,13 +362,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T16:01:39+08:00">
-                2018-04-06
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-06 16:01:39" itemprop="dateCreated datePublished" datetime="2018-04-06T16:01:39+08:00">2018-04-06</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-15 21:44:18" itemprop="dateModified" datetime="2018-04-15T21:44:18+08:00">2018-04-15</time>
+              
             
           </span>
 
@@ -350,11 +401,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Hadoop</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a></span>
 
                 
                 
@@ -370,13 +417,24 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/04/06/Hadoop/Hadoop_Cluster/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/06/Hadoop/Hadoop_Cluster/" itemprop="commentsCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/06/Hadoop/Hadoop_Cluster/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
           
 
           
+          
+             <span id="/2018/04/06/Hadoop/Hadoop_Cluster/" class="leancloud_visitors" data-flag-title="Hadoop 3.1.0 完全分布式集群搭建（生产环境下）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -398,46 +456,75 @@
       
 
       
-        <h2 id="Hadoop-集群服务器及节点规划"><a href="#Hadoop-集群服务器及节点规划" class="headerlink" title="Hadoop 集群服务器及节点规划"></a>Hadoop 集群服务器及节点规划</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<h2 id="服务器主机名及hosts文件配置"><a href="#服务器主机名及hosts文件配置" class="headerlink" title="服务器主机名及hosts文件配置"></a>服务器主机名及hosts文件配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#all</span></div><div class="line"><span class="built_in">echo</span> node$ &gt; /etc/hostname</div><div class="line"></div><div class="line">cat &gt;&gt; /etc/hosts &lt;&lt;EOF</div><div class="line">192.168.1.10 node1</div><div class="line">192.168.1.11 node2</div><div class="line">192.168.1.12 node3</div><div class="line">192.168.1.13 node4</div><div class="line">EOF</div></pre></td></tr></table></figure>
-<h2 id="关闭服务器防火墙"><a href="#关闭服务器防火墙" class="headerlink" title="关闭服务器防火墙"></a>关闭服务器防火墙</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">systemctl stop firewalld.service</div><div class="line">systemctl <span class="built_in">disable</span> firewalld.service</div><div class="line">firewall-cmd --state</div><div class="line"></div><div class="line">setenforce 0</div><div class="line">sed -i <span class="string">'s/SELINUX=enforcing/SELINUX=disabled/g'</span> /etc/selinux/config</div></pre></td></tr></table></figure>
-<h3 id="创建Hadoop集群用户组和用户、设置密码"><a href="#创建Hadoop集群用户组和用户、设置密码" class="headerlink" title="创建Hadoop集群用户组和用户、设置密码"></a>创建Hadoop集群用户组和用户、设置密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">groupadd hadoop</div><div class="line">useradd hadoop -g hadoop</div><div class="line">passwd hadoop</div></pre></td></tr></table></figure>
-<h2 id="服务器Hadoop用户SSH免密认证"><a href="#服务器Hadoop用户SSH免密认证" class="headerlink" title="服务器Hadoop用户SSH免密认证"></a>服务器Hadoop用户SSH免密认证</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#all</span></div><div class="line">ssh-keygen -t rsa -P <span class="string">''</span> -f ~/.ssh/id_rsa</div><div class="line"></div><div class="line"><span class="comment">#node1</span></div><div class="line">cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</div><div class="line"></div><div class="line"><span class="comment">#node&#123;2-4&#125;</span></div><div class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub hadoop@node1</div><div class="line"></div><div class="line"><span class="comment">#node1</span></div><div class="line">chmod 600 ~/.ssh/authorized_keys</div><div class="line"><span class="keyword">for</span> a <span class="keyword">in</span> &#123;2..4&#125;; <span class="keyword">do</span> scp ~/.ssh/authorized_keys hadoop@node<span class="variable">$a</span>:~/.ssh/ ; <span class="keyword">done</span></div><div class="line"></div><div class="line"><span class="comment">#all</span></div><div class="line">ssh hadoop@node<span class="variable">$a</span></div></pre></td></tr></table></figure>
-<h2 id="JDK安装及JAVA环境变量配置"><a href="#JDK安装及JAVA环境变量配置" class="headerlink" title="JDK安装及JAVA环境变量配置"></a>JDK安装及JAVA环境变量配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">sudo rpm -qa | grep java | xargs rpm -e --nodeps</div><div class="line">sudo tar -zxf jdk-8u151-linux-x64.tar.gz -C /usr/<span class="built_in">local</span>/</div><div class="line">sudo ln -sv /usr/<span class="built_in">local</span>/jdk1.8.0_151 /usr/<span class="built_in">local</span>/jdk</div><div class="line"></div><div class="line">sudo cat &gt;&gt; /etc/profile &lt;&lt;EOF</div><div class="line"><span class="comment"># JDK</span></div><div class="line"><span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdk</div><div class="line"><span class="built_in">export</span> JRE_HOME=\<span class="variable">$JAVA_HOME</span>/jre</div><div class="line"><span class="built_in">export</span> JAVA_LIBRARY_PATH=\<span class="variable">$HADOOP_HOME</span>/lib/native </div><div class="line"><span class="built_in">export</span> CLASSPATH=.:\<span class="variable">$JAVA_HOME</span>/lib/dt.jar:\<span class="variable">$JAVA_HOME</span>/lib/tools.jar</div><div class="line"><span class="built_in">export</span> PATH=\<span class="variable">$PATH</span>:\<span class="variable">$JAVA_HOME</span>/bin:\<span class="variable">$JRE_HOME</span>/bin</div><div class="line">EOF</div><div class="line">sudo <span class="built_in">source</span> /etc/profile</div></pre></td></tr></table></figure>
-<h2 id="Hadoop集群搭建"><a href="#Hadoop集群搭建" class="headerlink" title="Hadoop集群搭建"></a>Hadoop集群搭建</h2><h3 id="创建Hadoop集群用户组和用户、设置密码-1"><a href="#创建Hadoop集群用户组和用户、设置密码-1" class="headerlink" title="创建Hadoop集群用户组和用户、设置密码"></a>创建Hadoop集群用户组和用户、设置密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">groupadd hadoop</div><div class="line">useradd hadoop -g hadoop</div><div class="line">passwd hadoop</div></pre></td></tr></table></figure>
-<h3 id="下载Hadoop，并解压hadoop"><a href="#下载Hadoop，并解压hadoop" class="headerlink" title="下载Hadoop，并解压hadoop"></a>下载Hadoop，并解压hadoop</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> HADOOP_VERSION=hadoop-3.0.0</div><div class="line">sudo tar -zxf /dba/tools/<span class="variable">$HADOOP_VERSION</span>.tar.gz -C /usr/<span class="built_in">local</span>/</div><div class="line">sudo ln -sv /usr/<span class="built_in">local</span>/<span class="variable">$HADOOP_VERSION</span> /usr/<span class="built_in">local</span>/hadoop</div><div class="line">sudo chown -R hadoop:hadoop /usr/<span class="built_in">local</span>/<span class="variable">$HADOOP_VERSION</span></div></pre></td></tr></table></figure>
-<h3 id="配置Hadoop-集群环境变量"><a href="#配置Hadoop-集群环境变量" class="headerlink" title="配置Hadoop 集群环境变量"></a>配置Hadoop 集群环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">cat &gt;&gt; ~/.bash_profile &lt;&lt;EOF</div><div class="line"><span class="comment"># Zookeeper</span></div><div class="line"><span class="built_in">export</span> ZOO_HOME=/usr/<span class="built_in">local</span>/zookeeper </div><div class="line"><span class="built_in">export</span> ZOO_LOG_DIR=/data/hadoop/zookeeper/logs</div><div class="line"><span class="built_in">export</span> PATH=\<span class="variable">$PATH</span>:\<span class="variable">$ZOO_HOME</span>/bin</div><div class="line"></div><div class="line"><span class="comment"># Hadoop</span></div><div class="line"><span class="built_in">export</span> HADOOP_HOME=/usr/<span class="built_in">local</span>/hadoop</div><div class="line"><span class="built_in">export</span> HADOOP_PID_DIR=\<span class="variable">$HADOOP_HOME</span>/pids </div><div class="line"><span class="built_in">export</span> HADOOP_COMMON_LIB_NATIVE_DIR=\<span class="variable">$HADOOP_HOME</span>/lib/native </div><div class="line"><span class="built_in">export</span> HADOOP_OPTS=<span class="string">"\$HADOOP_OPTS-Djava.library.path=\$HADOOP_HOME/lib:\$HADOOP_HOME/lib/native"</span> </div><div class="line"><span class="built_in">export</span> HADOOP_MAPRED_HOME=\<span class="variable">$HADOOP_HOME</span> </div><div class="line"><span class="built_in">export</span> HADOOP_COMMON_HOME=\<span class="variable">$HADOOP_HOME</span> </div><div class="line"><span class="built_in">export</span> HADOOP_HDFS_HOME=\<span class="variable">$HADOOP_HOME</span> </div><div class="line"><span class="built_in">export</span> HADOOP_YARN_HOME=\<span class="variable">$HADOOP_HOME</span> </div><div class="line"><span class="built_in">export</span> HADOOP_CONF_DIR=\<span class="variable">$HADOOP_HOME</span>/etc/hadoop </div><div class="line"><span class="built_in">export</span> HADOOP_ROOT_LOGGER=INFO,console  </div><div class="line"><span class="built_in">export</span> PATH=\<span class="variable">$PATH</span>:\<span class="variable">$HADOOP_HOME</span>/bin:\<span class="variable">$HADOOP_HOME</span>/sbin</div><div class="line">EOF</div><div class="line"><span class="built_in">source</span> ~/.bash_profile</div></pre></td></tr></table></figure>
-<h3 id="配置Hadoop集群基本配置文件"><a href="#配置Hadoop集群基本配置文件" class="headerlink" title="配置Hadoop集群基本配置文件"></a>配置Hadoop集群基本配置文件</h3><h4 id="配置hadoop-env-sh"><a href="#配置hadoop-env-sh" class="headerlink" title="配置hadoop-env.sh"></a>配置hadoop-env.sh</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i <span class="string">'/# export JAVA_HOME=/a\export JAVA_HOME=/usr/local/jdk'</span> /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/hadoop-env.sh</div></pre></td></tr></table></figure>
-<h4 id="配置works"><a href="#配置works" class="headerlink" title="配置works"></a>配置works</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cat &gt;&gt; /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/workers &lt;&lt;EOF</div><div class="line">node1</div><div class="line">node2</div><div class="line">node3</div><div class="line">node4</div><div class="line">EOF</div></pre></td></tr></table></figure>
-<h4 id="配置core-site-xml"><a href="#配置core-site-xml" class="headerlink" title="配置core-site.xml"></a>配置core-site.xml</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">vi /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/core-site.xml</div><div class="line"></div><div class="line">&lt;configuration&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;fs.defaultFS&lt;/name&gt;</div><div class="line">		&lt;value&gt;hdfs://node1:9000&lt;/value&gt;</div><div class="line">		&lt;final&gt;<span class="literal">true</span>&lt;/final&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</div><div class="line">        &lt;value&gt;file:/usr/<span class="built_in">local</span>/hadoop/tmp&lt;/value&gt;</div><div class="line">        &lt;description&gt;abase <span class="keyword">for</span> other temporary directories.&lt;/description&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;io.file.buffer.size&lt;/name&gt;</div><div class="line">		&lt;value&gt;131584&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">	&lt;name&gt;hadoop.proxyuser.hadoop.hosts&lt;/name&gt;</div><div class="line">		&lt;value&gt;*&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;hadoop.proxyuser.hadoop.groups&lt;/name&gt;</div><div class="line">		&lt;value&gt;*&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;hadoop.native.lib&lt;/name&gt;</div><div class="line">		&lt;value&gt;<span class="literal">true</span>&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;</div><div class="line">		&lt;value&gt;node1:2181,node2:2181,node3:2181&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;ha.zookeeper.session-timeout.ms&lt;/name&gt;</div><div class="line">		&lt;value&gt;2000&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>
-<h4 id="配置hdfs-site-xml"><a href="#配置hdfs-site-xml" class="headerlink" title="配置hdfs-site.xml"></a>配置hdfs-site.xml</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">vi /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/hdfs-site.xml</div><div class="line"></div><div class="line">&lt;configuration&gt;</div><div class="line">	&lt;property&gt;  </div><div class="line">		&lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;  </div><div class="line">		&lt;value&gt;node2:9001&lt;/value&gt;  </div><div class="line">	&lt;/property&gt;  </div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;dfs.replication&lt;/name&gt;</div><div class="line">		&lt;value&gt;3&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;</div><div class="line">		&lt;value&gt;<span class="literal">true</span>&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</div><div class="line">		&lt;value&gt;file:///data/hadoop/hdfs/name&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</div><div class="line">		&lt;value&gt;file:///data/hadoop/hdfs/data&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;fs.checkpoint.dir&lt;/name&gt;</div><div class="line">		&lt;value&gt;file:///data/hadoop/hdfs/check&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;fs.checkpoint.edits.dir&lt;/name&gt;</div><div class="line">		&lt;value&gt;file:///data/hadoop/hdfs/check&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;</div><div class="line">		&lt;value&gt;<span class="literal">true</span>&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>
-<h4 id="配置mapred-site-xml"><a href="#配置mapred-site-xml" class="headerlink" title="配置mapred-site.xml"></a>配置mapred-site.xml</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">vi /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/mapred-site.xml</div><div class="line"></div><div class="line">&lt;configuration&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;mapreduce.framework.name&lt;/name&gt;</div><div class="line">		&lt;value&gt;yarn&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;</div><div class="line">		&lt;value&gt;node1:10020&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;mapreduce.jobhistory.webapp.address&lt;/name&gt;</div><div class="line">		&lt;value&gt;node1:19888&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>
-<h4 id="配置yarn-site-xml"><a href="#配置yarn-site-xml" class="headerlink" title="配置yarn-site.xml"></a>配置yarn-site.xml</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">vi /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/yarn-site.xml</div><div class="line"></div><div class="line">&lt;configuration&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;yarn.resourcemanager.scheduler.address&lt;/name&gt;</div><div class="line">		&lt;value&gt;node1:8030&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;yarn.resourcemanager.resource-tracker.address&lt;/name&gt;</div><div class="line">		&lt;value&gt;node1:8031&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;yarn.resourcemanager.address&lt;/name&gt;</div><div class="line">		&lt;value&gt;node1:8032&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;yarn.resourcemanager.admin.address&lt;/name&gt;</div><div class="line">		&lt;value&gt;node1:8033&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;</div><div class="line">		&lt;value&gt;node1:8088&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</div><div class="line">		&lt;value&gt;mapreduce_shuffle&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;yarn.nodemanager.auxservices.mapreduce_shuffle.class&lt;/name&gt;</div><div class="line">		&lt;value&gt;org.apache.hadoop.mapred.ShuffleHandler&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;yarn.resourcemanager.scheduler.class&lt;/name&gt;</div><div class="line">		&lt;value&gt;org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">		&lt;name&gt;yarn.nodemanager.vmem-check-enabled&lt;/name&gt;</div><div class="line">		&lt;value&gt;<span class="literal">false</span>&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>
-<h2 id="初始化Hdfs"><a href="#初始化Hdfs" class="headerlink" title="初始化Hdfs"></a>初始化Hdfs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hdfs namenode -format</div></pre></td></tr></table></figure>
-<h2 id="初始化Hdfs-1"><a href="#初始化Hdfs-1" class="headerlink" title="初始化Hdfs"></a>初始化Hdfs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hdfs namenode -format</div></pre></td></tr></table></figure>
-<h2 id="启动Zookeeper并查看Zookeeper启动状态"><a href="#启动Zookeeper并查看Zookeeper启动状态" class="headerlink" title="启动Zookeeper并查看Zookeeper启动状态"></a>启动Zookeeper并查看Zookeeper启动状态</h2><p>查看状态，如果发现每个node当前状态标记为follower或者leader，那么测试通过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zkServer.sh start</div><div class="line">zkServer.sh status</div></pre></td></tr></table></figure></p>
-<h2 id="启动Hadoop集群"><a href="#启动Hadoop集群" class="headerlink" title="启动Hadoop集群"></a>启动Hadoop集群</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">start-dfs.sh</div><div class="line">start-yarn.sh</div></pre></td></tr></table></figure>
-<h2 id="进入Hadoop-集群Web控制台"><a href="#进入Hadoop-集群Web控制台" class="headerlink" title="进入Hadoop 集群Web控制台"></a>进入Hadoop 集群Web控制台</h2><p><a href="http://192.168.1.10:8088/" target="_blank" rel="external">http://192.168.1.10:8088/</a> #NameNode图形界面, 任务分配和任务进度信息的查询<br><a href="http://192.168.1.10:9870/" target="_blank" rel="external">http://192.168.1.10:9870/</a> #集群结点(Node Of Cluster)图形界面</p>
-<h2 id="Yarn可用测试"><a href="#Yarn可用测试" class="headerlink" title="Yarn可用测试"></a>Yarn可用测试</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">hdfs dfs -mkdir /user</div><div class="line">hdfs dfs -mkdir /user/hadoop</div><div class="line">hdfs dfs -mkdir input</div><div class="line">hdfs dfs -put /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/*.xml input</div><div class="line">hadoop jar /usr/<span class="built_in">local</span>/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.0.0.jar grep input output <span class="string">'dfs[a-z.]+'</span></div><div class="line">hdfs dfs -get output output</div><div class="line">cat output/*</div></pre></td></tr></table></figure>
+        <h1 id="Hadoop-集群服务器及节点规划"><a href="#Hadoop-集群服务器及节点规划" class="headerlink" title="Hadoop 集群服务器及节点规划"></a>Hadoop 集群服务器及节点规划</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="服务器操作系统设置"><a href="#服务器操作系统设置" class="headerlink" title="服务器操作系统设置"></a>服务器操作系统设置</h1><h2 id="服务器主机名及hosts文件配置"><a href="#服务器主机名及hosts文件配置" class="headerlink" title="服务器主机名及hosts文件配置"></a>服务器主机名及hosts文件配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#	all</span></span><br><span class="line">[root@node1 ~]<span class="comment"># echo node$ &gt; /etc/hostname</span></span><br><span class="line"></span><br><span class="line">[root@node1 ~]<span class="comment"># cat &gt;&gt; /etc/hosts &lt;&lt;EOF</span></span><br><span class="line">192.168.1.10 node1</span><br><span class="line">192.168.1.11 node2</span><br><span class="line">192.168.1.12 node3</span><br><span class="line">192.168.1.13 node4</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">[root@node1 ~]<span class="comment"># for a in &#123;2..4&#125;; do scp /etc/hosts root@node$a:/etc ; done</span></span><br></pre></td></tr></table></figure>
+<h2 id="关闭操作系统防火墙"><a href="#关闭操作系统防火墙" class="headerlink" title="关闭操作系统防火墙"></a>关闭操作系统防火墙</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># systemctl stop firewalld.service</span></span><br><span class="line">[root@node1 ~]<span class="comment"># systemctl disable firewalld.service</span></span><br><span class="line">[root@node1 ~]<span class="comment"># firewall-cmd --state</span></span><br><span class="line"></span><br><span class="line">[root@node1 ~]<span class="comment"># setenforce 0</span></span><br><span class="line">[root@node1 ~]<span class="comment"># sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建Hadoop目录及环境变量"><a href="#创建Hadoop目录及环境变量" class="headerlink" title="创建Hadoop目录及环境变量"></a>创建Hadoop目录及环境变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># groupadd hadoop</span></span><br><span class="line">[root@node1 ~]<span class="comment"># useradd hadoop -g hadoop</span></span><br><span class="line">[root@node1 ~]<span class="comment"># passwd hadoop</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建Hadoop集群用户组和用户、设置密码"><a href="#创建Hadoop集群用户组和用户、设置密码" class="headerlink" title="创建Hadoop集群用户组和用户、设置密码"></a>创建Hadoop集群用户组和用户、设置密码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># mkdir -pv /data/hadoop/hdfs/&#123;name,data,check&#125;</span></span><br><span class="line">[root@node1 ~]<span class="comment"># mkdir -pv /data/hadoop/zookeeper/&#123;data,logs&#125;</span></span><br><span class="line">[root@node1 ~]<span class="comment"># chown -R hadoop:hadoop /data/hadoop</span></span><br><span class="line">[root@node1 ~]<span class="comment"># chmod -R 775 /data/hadoop</span></span><br><span class="line"></span><br><span class="line">[root@node1 ~]<span class="comment"># mkdir -pv /var/log/hadoop/yarn</span></span><br><span class="line">[root@node1 ~]<span class="comment"># chown -R hadoop:hadoop /var/log/hadoop/yarn</span></span><br></pre></td></tr></table></figure>
+<h2 id="配置hadoop用户-sudo-root免密"><a href="#配置hadoop用户-sudo-root免密" class="headerlink" title="配置hadoop用户 sudo root免密"></a>配置hadoop用户 sudo root免密</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># chmod u+w /etc/sudoers</span></span><br><span class="line">[root@node1 ~]<span class="comment"># sed -i '/Allow root to run any/a\hadoop  ALL=(ALL)       NOPASSWD: ALL' /etc/sudoers</span></span><br><span class="line">[root@node1 ~]<span class="comment"># chmod u-w /etc/sudoers</span></span><br></pre></td></tr></table></figure>
+<h2 id="服务器Hadoop用户SSH免密认证"><a href="#服务器Hadoop用户SSH免密认证" class="headerlink" title="服务器Hadoop用户SSH免密认证"></a>服务器Hadoop用户SSH免密认证</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node1 ~]$ ssh-keygen -t rsa -P <span class="string">''</span> -f ~/.ssh/id_rsa</span><br><span class="line">[hadoop@node2 ~]$ ssh-keygen -t rsa -P <span class="string">''</span> -f ~/.ssh/id_rsa</span><br><span class="line">[hadoop@node3 ~]$ ssh-keygen -t rsa -P <span class="string">''</span> -f ~/.ssh/id_rsa</span><br><span class="line">[hadoop@node4 ~]$ ssh-keygen -t rsa -P <span class="string">''</span> -f ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line">[hadoop@node1 ~]$ cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line"></span><br><span class="line">[hadoop@node2 ~]$ ssh-copy-id -i ~/.ssh/id_rsa.pub hadoop@node1</span><br><span class="line">[hadoop@node3 ~]$ ssh-copy-id -i ~/.ssh/id_rsa.pub hadoop@node1</span><br><span class="line">[hadoop@node4 ~]$ ssh-copy-id -i ~/.ssh/id_rsa.pub hadoop@node1</span><br><span class="line"></span><br><span class="line">[hadoop@node1 ~]$ chmod 600 ~/.ssh/authorized_keys</span><br><span class="line">[hadoop@node1 ~]$ <span class="keyword">for</span> a <span class="keyword">in</span> &#123;2..4&#125;; <span class="keyword">do</span> scp ~/.ssh/authorized_keys hadoop@node<span class="variable">$a</span>:~/.ssh/ ; <span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">[hadoop@node1 ~]$ ssh hadoop@node1</span><br><span class="line">[hadoop@node1 ~]$ ssh hadoop@node2</span><br><span class="line">[hadoop@node1 ~]$ ssh hadoop@node3</span><br><span class="line">[hadoop@node1 ~]$ ssh hadoop@node4</span><br></pre></td></tr></table></figure>
+<h1 id="Hadoop集群搭建"><a href="#Hadoop集群搭建" class="headerlink" title="Hadoop集群搭建"></a>Hadoop集群搭建</h1><h2 id="安装JDK及配置JAVA环境变量"><a href="#安装JDK及配置JAVA环境变量" class="headerlink" title="安装JDK及配置JAVA环境变量"></a>安装JDK及配置JAVA环境变量</h2><p>JDK 下载地址：<a href="http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz?AuthParam=1523783670_c89245f1738f3a64a4367b3e62873c0f" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz?AuthParam=1523783670_c89245f1738f3a64a4367b3e62873c0f</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># rpm -qa | grep java | xargs rpm -e --nodeps</span></span><br><span class="line">[root@node1 ~]<span class="comment"># tar -zxf /dba/tools/jdk-8u161-linux-x64.tar.gz -C /usr/local/</span></span><br><span class="line">[root@node1 ~]<span class="comment"># ln -sv /usr/local/jdk1.8.0_161 /usr/local/jdk</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="下载-ZooKeeper，并解压配置"><a href="#下载-ZooKeeper，并解压配置" class="headerlink" title="下载 ZooKeeper，并解压配置"></a>下载 ZooKeeper，并解压配置</h2><p> ZooKeeper 下载地址：<a href="http://mirror.bit.edu.cn/apache/zookeeper/stable/zookeeper-3.4.10.tar.gz" target="_blank" rel="noopener">http://mirror.bit.edu.cn/apache/zookeeper/stable/zookeeper-3.4.10.tar.gz</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 tools]<span class="comment"># export ZOO_VERSION=zookeeper-3.4.10</span></span><br><span class="line">[root@node1 tools]<span class="comment"># tar -zxf /dba/tools/$ZOO_VERSION.tar.gz  -C /usr/local/</span></span><br><span class="line">[root@node1 tools]<span class="comment"># ln -sv /usr/local/$ZOO_VERSION /usr/local/zookeeper</span></span><br><span class="line">[root@node1 tools]<span class="comment"># chown -R hadoop:hadoop /usr/local/$ZOO_VERSION</span></span><br><span class="line">[root@node1 tools]<span class="comment"># chown -R hadoop:hadoop /usr/local/zookeeper</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="下载Hadoop，并解压hadoop"><a href="#下载Hadoop，并解压hadoop" class="headerlink" title="下载Hadoop，并解压hadoop"></a>下载Hadoop，并解压hadoop</h2><p>Hadoop 下载地址：<a href="http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-3.1.0/hadoop-3.1.0.tar.gz" target="_blank" rel="noopener">http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-3.1.0/hadoop-3.1.0.tar.gz</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># export HADOOP_VERSION=hadoop-3.1.0</span></span><br><span class="line">[root@node1 ~]<span class="comment"># tar -zxf /dba/tools/$HADOOP_VERSION.tar.gz -C /usr/local/</span></span><br><span class="line">[root@node1 ~]<span class="comment"># ln -sv /usr/local/$HADOOP_VERSION /usr/local/hadoop</span></span><br><span class="line">[root@node1 ~]<span class="comment"># chown -R hadoop:hadoop /usr/local/$HADOOP_VERSION</span></span><br><span class="line">[root@node1 ~]<span class="comment"># chown -R hadoop:hadoop /usr/local/hadoop</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="配置Zookeeper、Hadoop-集群环境变量"><a href="#配置Zookeeper、Hadoop-集群环境变量" class="headerlink" title="配置Zookeeper、Hadoop 集群环境变量"></a>配置Zookeeper、Hadoop 集群环境变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># cat &gt;&gt; /etc/profile &lt;&lt;EOF</span></span><br><span class="line"><span class="comment"># JDK</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdk</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=\<span class="variable">$JAVA_HOME</span>/jre</span><br><span class="line"><span class="built_in">export</span> JAVA_LIBRARY_PATH=\<span class="variable">$HADOOP_HOME</span>/lib/native </span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:\<span class="variable">$JAVA_HOME</span>/lib/dt.jar:\<span class="variable">$JAVA_HOME</span>/lib/tools.jar</span><br><span class="line"><span class="built_in">export</span> PATH=\<span class="variable">$PATH</span>:\<span class="variable">$JAVA_HOME</span>/bin:\<span class="variable">$JRE_HOME</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="comment"># Zookeeper</span></span><br><span class="line"><span class="built_in">export</span> ZOO_HOME=/usr/<span class="built_in">local</span>/zookeeper </span><br><span class="line"><span class="built_in">export</span> ZOO_LOG_DIR=/data/hadoop/zookeeper/logs</span><br><span class="line"><span class="built_in">export</span> PATH=\<span class="variable">$PATH</span>:\<span class="variable">$ZOO_HOME</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="comment"># Hadoop</span></span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=/usr/<span class="built_in">local</span>/hadoop</span><br><span class="line"><span class="built_in">export</span> HADOOP_PID_DIR=\<span class="variable">$HADOOP_HOME</span>/pids </span><br><span class="line"><span class="built_in">export</span> HADOOP_COMMON_LIB_NATIVE_DIR=\<span class="variable">$HADOOP_HOME</span>/lib/native </span><br><span class="line"><span class="built_in">export</span> HADOOP_OPTS=<span class="string">"\$HADOOP_OPTS-Djava.library.path=\$HADOOP_HOME/lib:\$HADOOP_HOME/lib/native"</span> </span><br><span class="line"><span class="built_in">export</span> HADOOP_MAPRED_HOME=\<span class="variable">$HADOOP_HOME</span> </span><br><span class="line"><span class="built_in">export</span> HADOOP_COMMON_HOME=\<span class="variable">$HADOOP_HOME</span> </span><br><span class="line"><span class="built_in">export</span> HADOOP_HDFS_HOME=\<span class="variable">$HADOOP_HOME</span> </span><br><span class="line"><span class="built_in">export</span> HADOOP_YARN_HOME=\<span class="variable">$HADOOP_HOME</span> </span><br><span class="line"><span class="built_in">export</span> HADOOP_CONF_DIR=\<span class="variable">$HADOOP_HOME</span>/etc/hadoop </span><br><span class="line"><span class="built_in">export</span> HADOOP_ROOT_LOGGER=INFO,console  </span><br><span class="line"><span class="built_in">export</span> PATH=\<span class="variable">$PATH</span>:\<span class="variable">$HADOOP_HOME</span>/bin:\<span class="variable">$HADOOP_HOME</span>/sbin</span><br><span class="line">EOF</span><br><span class="line">[root@node1 ~]<span class="comment"># source ~/.bash_profile</span></span><br></pre></td></tr></table></figure>
+<h2 id="配置-ZooKeeper-参数文件"><a href="#配置-ZooKeeper-参数文件" class="headerlink" title="配置 ZooKeeper 参数文件"></a>配置 ZooKeeper 参数文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node1 ~]$ cat &gt;&gt; /usr/<span class="built_in">local</span>/zookeeper/conf/zoo.cfg &lt;&lt;EOF</span><br><span class="line">tickTime=2000</span><br><span class="line">initLimit=10</span><br><span class="line">syncLimit=5</span><br><span class="line">   </span><br><span class="line">dataDir=/data/hadoop/zookeeper/data</span><br><span class="line">clientPort=2181</span><br><span class="line"></span><br><span class="line">server.1=node1:2888:3888</span><br><span class="line">server.2=node2:2888:3888</span><br><span class="line">server.3=node3:2888:3888</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">[hadoop@node1 ~]$ <span class="built_in">echo</span> 1 &gt; /data/hadoop/zookeeper/data/myid</span><br><span class="line">[hadoop@node2 ~]$ <span class="built_in">echo</span> 2 &gt; /data/hadoop/zookeeper/data/myid</span><br><span class="line">[hadoop@node3 ~]$ <span class="built_in">echo</span> 3 &gt; /data/hadoop/zookeeper/data/myid</span><br></pre></td></tr></table></figure>
+<h2 id="配置Hadoop集群基本配置文件"><a href="#配置Hadoop集群基本配置文件" class="headerlink" title="配置Hadoop集群基本配置文件"></a>配置Hadoop集群基本配置文件</h2><h3 id="配置hadoop-env-sh"><a href="#配置hadoop-env-sh" class="headerlink" title="配置hadoop-env.sh"></a>配置hadoop-env.sh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node1 ~]$ sed -i <span class="string">'/# export JAVA_HOME=/a\export JAVA_HOME=/usr/local/jdk'</span> /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/hadoop-env.sh</span><br></pre></td></tr></table></figure>
+<h3 id="配置works"><a href="#配置works" class="headerlink" title="配置works"></a>配置works</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node1 ~]$ cat /dev/null &gt; /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/workers</span><br><span class="line">[hadoop@node1 ~]$ cat &gt;&gt; /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/workers &lt;&lt;EOF</span><br><span class="line">node1</span><br><span class="line">node2</span><br><span class="line">node3</span><br><span class="line">node4</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<h3 id="配置core-site-xml"><a href="#配置core-site-xml" class="headerlink" title="配置core-site.xml"></a>配置core-site.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node1 ~]$ vi /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/core-site.xml</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;hdfs://node1:9000&lt;/value&gt;</span><br><span class="line">		&lt;final&gt;<span class="literal">true</span>&lt;/final&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;file:/usr/<span class="built_in">local</span>/hadoop/tmp&lt;/value&gt;</span><br><span class="line">		&lt;description&gt;abase <span class="keyword">for</span> other temporary directories.&lt;/description&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;io.file.buffer.size&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;131584&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">	&lt;name&gt;hadoop.proxyuser.hadoop.hosts&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;*&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;hadoop.proxyuser.hadoop.groups&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;*&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;hadoop.native.lib&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;<span class="literal">true</span>&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;node1:2181,node2:2181,node3:2181&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;ha.zookeeper.session-timeout.ms&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;2000&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="配置hdfs-site-xml"><a href="#配置hdfs-site-xml" class="headerlink" title="配置hdfs-site.xml"></a>配置hdfs-site.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node1 ~]$ vi /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/hdfs-site.xml</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;property&gt;  </span><br><span class="line">		&lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;  </span><br><span class="line">		&lt;value&gt;node2:9001&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  </span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;3&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;<span class="literal">true</span>&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;file:///data/hadoop/hdfs/name&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;file:///data/hadoop/hdfs/data&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;fs.checkpoint.dir&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;file:///data/hadoop/hdfs/check&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;fs.checkpoint.edits.dir&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;file:///data/hadoop/hdfs/check&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;<span class="literal">true</span>&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="配置mapred-site-xml"><a href="#配置mapred-site-xml" class="headerlink" title="配置mapred-site.xml"></a>配置mapred-site.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node1 ~]$ vi /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/mapred-site.xml </span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;node1:10020&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;mapreduce.jobhistory.webapp.address&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;node1:19888&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="配置yarn-site-xml"><a href="#配置yarn-site-xml" class="headerlink" title="配置yarn-site.xml"></a>配置yarn-site.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node1 ~]$ vi /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/yarn-site.xml</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;yarn.resourcemanager.scheduler.address&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;node1:8030&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;yarn.resourcemanager.resource-tracker.address&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;node1:8031&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;yarn.resourcemanager.address&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;node1:8032&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;yarn.resourcemanager.admin.address&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;node1:8033&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;node1:8088&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;yarn.nodemanager.auxservices.mapreduce_shuffle.class&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;org.apache.hadoop.mapred.ShuffleHandler&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;yarn.resourcemanager.scheduler.class&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;yarn.nodemanager.vmem-check-enabled&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;<span class="literal">false</span>&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="创建ZooKeeper、Hadoop目录，并同步Hadoop、ZooKeeper安装文件"><a href="#创建ZooKeeper、Hadoop目录，并同步Hadoop、ZooKeeper安装文件" class="headerlink" title="创建ZooKeeper、Hadoop目录，并同步Hadoop、ZooKeeper安装文件"></a>创建ZooKeeper、Hadoop目录，并同步Hadoop、ZooKeeper安装文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node2 ~]$ sudo mkdir -p /usr/<span class="built_in">local</span>/&#123;hadoop,zookeeper&#125;</span><br><span class="line">[hadoop@node2 ~]$ sudo chown -R hadoop:hadoop /usr/<span class="built_in">local</span>/&#123;hadoop,zookeeper&#125;</span><br><span class="line"></span><br><span class="line">[hadoop@node3 ~]$ sudo mkdir -p /usr/<span class="built_in">local</span>/&#123;hadoop,zookeeper&#125;</span><br><span class="line">[hadoop@node3 ~]$ sudo chown -R hadoop:hadoop /usr/<span class="built_in">local</span>/&#123;hadoop,zookeeper&#125;</span><br><span class="line"></span><br><span class="line">[hadoop@node2 ~]$ sudo mkdir -p /usr/<span class="built_in">local</span>/&#123;hadoop,zookeeper&#125;</span><br><span class="line">[hadoop@node2 ~]$ sudo chown -R hadoop:hadoop /usr/<span class="built_in">local</span>/&#123;hadoop,zookeeper&#125;</span><br><span class="line"></span><br><span class="line">[hadoop@node1 ~]$ <span class="keyword">for</span> a <span class="keyword">in</span> &#123;2..4&#125;; <span class="keyword">do</span> scp -r /usr/<span class="built_in">local</span>/hadoop/* hadoop@node<span class="variable">$a</span>:/usr/<span class="built_in">local</span>/hadoop/ ; <span class="keyword">done</span></span><br><span class="line">[hadoop@node1 ~]$ <span class="keyword">for</span> a <span class="keyword">in</span> &#123;2..3&#125;; <span class="keyword">do</span> scp -r /usr/<span class="built_in">local</span>/zookeeper/* hadoop@node<span class="variable">$a</span>:/usr/<span class="built_in">local</span>/zookeeper/ ; <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h2 id="初始化Hdfs"><a href="#初始化Hdfs" class="headerlink" title="初始化Hdfs"></a>初始化Hdfs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node1 ~]$ hdfs namenode -format</span><br></pre></td></tr></table></figure>
+<h2 id="启动ZooKeeper，并查看Zookeeper启动状态"><a href="#启动ZooKeeper，并查看Zookeeper启动状态" class="headerlink" title="启动ZooKeeper，并查看Zookeeper启动状态"></a>启动ZooKeeper，并查看Zookeeper启动状态</h2><p>查看状态，如果发现每个node当前状态标记为follower或者leader，那么测试通过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node1 ~]$ zkServer.sh start</span><br><span class="line">[hadoop@node1 ~]$ zkServer.sh status</span><br><span class="line"></span><br><span class="line">[hadoop@node1 ~]$ zkServer.sh start</span><br><span class="line">[hadoop@node1 ~]$ zkServer.sh status</span><br><span class="line"></span><br><span class="line">[hadoop@node1 ~]$ zkServer.sh start</span><br><span class="line">[hadoop@node1 ~]$ zkServer.sh status</span><br></pre></td></tr></table></figure></p>
+<h2 id="启动Hadoop集群，并检查进程"><a href="#启动Hadoop集群，并检查进程" class="headerlink" title="启动Hadoop集群，并检查进程"></a>启动Hadoop集群，并检查进程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node1 ~]$ start-dfs.sh</span><br><span class="line">[hadoop@node1 ~]$ start-yarn.sh</span><br><span class="line">[hadoop@node1 ~]$ jps</span><br></pre></td></tr></table></figure>
+<h2 id="进入Hadoop-集群Web控制台"><a href="#进入Hadoop-集群Web控制台" class="headerlink" title="进入Hadoop 集群Web控制台"></a>进入Hadoop 集群Web控制台</h2><p><a href="http://192.168.1.10:8088/" target="_blank" rel="noopener">http://192.168.1.10:8088/</a> #NameNode图形界面, 任务分配和任务进度信息的查询<br><a href="http://192.168.1.10:9870/" target="_blank" rel="noopener">http://192.168.1.10:9870/</a> #集群结点(Node Of Cluster)图形界面</p>
+<h2 id="Yarn可用测试"><a href="#Yarn可用测试" class="headerlink" title="Yarn可用测试"></a>Yarn可用测试</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[hadoop@node1 ~]$ hdfs dfs -mkdir /user</span><br><span class="line">[hadoop@node1 ~]$ hdfs dfs -mkdir /user/hadoop</span><br><span class="line">[hadoop@node1 ~]$ hdfs dfs -mkdir input</span><br><span class="line">[hadoop@node1 ~]$ hdfs dfs -put /usr/<span class="built_in">local</span>/hadoop/etc/hadoop/*.xml input</span><br><span class="line">[hadoop@node1 ~]$ hadoop jar /usr/<span class="built_in">local</span>/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jar grep input output <span class="string">'dfs[a-z.]+'</span></span><br><span class="line">[hadoop@node1 ~]$ hdfs dfs -get output output</span><br><span class="line">[hadoop@node1 ~]$ cat output/*</span><br></pre></td></tr></table></figure>
       
     </div>
+
+    
+
     
     
+    
+     <div>
+		
+		<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+		
+      </div>
+	
     
 
     
 
     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>cai182081</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/04/06/Hadoop/Hadoop_Cluster/" title="Hadoop 3.1.0 完全分布式集群搭建（生产环境下）">http://yoursite.com/2018/04/06/Hadoop/Hadoop_Cluster/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
 
+      </div>
     
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+            <a href="/tags/Hadoop/" rel="tag"> <i class="fa fa-tag"></i> Hadoop</a>
           
-            <a href="/tags/大数据/" rel="tag"># 大数据</a>
+            <a href="/tags/大数据/" rel="tag"> <i class="fa fa-tag"></i> 大数据</a>
           
         </div>
       
@@ -488,9 +575,6 @@
           </div>
           
 
-
-          
-
   
     <div class="comments" id="comments">
       
@@ -500,7 +584,7 @@
 
   
 
-  
+
 
         </div>
         
@@ -539,62 +623,113 @@
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">23</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
+              <a href="/atom2.xml" rel="alternate">
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
             </div>
           
 
-          <div class="links-of-author motion-element">
+          
+
+          
+          
+
+          
+          
+
+          
             
-          </div>
-
           
-          
-
-          
-          
-
           
 
         </div>
@@ -610,7 +745,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop-集群服务器及节点规划"><span class="nav-number">1.</span> <span class="nav-text">Hadoop 集群服务器及节点规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器主机名及hosts文件配置"><span class="nav-number">2.</span> <span class="nav-text">服务器主机名及hosts文件配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭服务器防火墙"><span class="nav-number">3.</span> <span class="nav-text">关闭服务器防火墙</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Hadoop集群用户组和用户、设置密码"><span class="nav-number">3.1.</span> <span class="nav-text">创建Hadoop集群用户组和用户、设置密码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器Hadoop用户SSH免密认证"><span class="nav-number">4.</span> <span class="nav-text">服务器Hadoop用户SSH免密认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK安装及JAVA环境变量配置"><span class="nav-number">5.</span> <span class="nav-text">JDK安装及JAVA环境变量配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop集群搭建"><span class="nav-number">6.</span> <span class="nav-text">Hadoop集群搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Hadoop集群用户组和用户、设置密码-1"><span class="nav-number">6.1.</span> <span class="nav-text">创建Hadoop集群用户组和用户、设置密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载Hadoop，并解压hadoop"><span class="nav-number">6.2.</span> <span class="nav-text">下载Hadoop，并解压hadoop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Hadoop-集群环境变量"><span class="nav-number">6.3.</span> <span class="nav-text">配置Hadoop 集群环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Hadoop集群基本配置文件"><span class="nav-number">6.4.</span> <span class="nav-text">配置Hadoop集群基本配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置hadoop-env-sh"><span class="nav-number">6.4.1.</span> <span class="nav-text">配置hadoop-env.sh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置works"><span class="nav-number">6.4.2.</span> <span class="nav-text">配置works</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置core-site-xml"><span class="nav-number">6.4.3.</span> <span class="nav-text">配置core-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置hdfs-site-xml"><span class="nav-number">6.4.4.</span> <span class="nav-text">配置hdfs-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置mapred-site-xml"><span class="nav-number">6.4.5.</span> <span class="nav-text">配置mapred-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置yarn-site-xml"><span class="nav-number">6.4.6.</span> <span class="nav-text">配置yarn-site.xml</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化Hdfs"><span class="nav-number">7.</span> <span class="nav-text">初始化Hdfs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化Hdfs-1"><span class="nav-number">8.</span> <span class="nav-text">初始化Hdfs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动Zookeeper并查看Zookeeper启动状态"><span class="nav-number">9.</span> <span class="nav-text">启动Zookeeper并查看Zookeeper启动状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动Hadoop集群"><span class="nav-number">10.</span> <span class="nav-text">启动Hadoop集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进入Hadoop-集群Web控制台"><span class="nav-number">11.</span> <span class="nav-text">进入Hadoop 集群Web控制台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Yarn可用测试"><span class="nav-number">12.</span> <span class="nav-text">Yarn可用测试</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hadoop-集群服务器及节点规划"><span class="nav-number">1.</span> <span class="nav-text">Hadoop 集群服务器及节点规划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器操作系统设置"><span class="nav-number">2.</span> <span class="nav-text">服务器操作系统设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器主机名及hosts文件配置"><span class="nav-number">2.1.</span> <span class="nav-text">服务器主机名及hosts文件配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭操作系统防火墙"><span class="nav-number">2.2.</span> <span class="nav-text">关闭操作系统防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Hadoop目录及环境变量"><span class="nav-number">2.3.</span> <span class="nav-text">创建Hadoop目录及环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Hadoop集群用户组和用户、设置密码"><span class="nav-number">2.4.</span> <span class="nav-text">创建Hadoop集群用户组和用户、设置密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置hadoop用户-sudo-root免密"><span class="nav-number">2.5.</span> <span class="nav-text">配置hadoop用户 sudo root免密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器Hadoop用户SSH免密认证"><span class="nav-number">2.6.</span> <span class="nav-text">服务器Hadoop用户SSH免密认证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hadoop集群搭建"><span class="nav-number">3.</span> <span class="nav-text">Hadoop集群搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装JDK及配置JAVA环境变量"><span class="nav-number">3.1.</span> <span class="nav-text">安装JDK及配置JAVA环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载-ZooKeeper，并解压配置"><span class="nav-number">3.2.</span> <span class="nav-text">下载 ZooKeeper，并解压配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载Hadoop，并解压hadoop"><span class="nav-number">3.3.</span> <span class="nav-text">下载Hadoop，并解压hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Zookeeper、Hadoop-集群环境变量"><span class="nav-number">3.4.</span> <span class="nav-text">配置Zookeeper、Hadoop 集群环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-ZooKeeper-参数文件"><span class="nav-number">3.5.</span> <span class="nav-text">配置 ZooKeeper 参数文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Hadoop集群基本配置文件"><span class="nav-number">3.6.</span> <span class="nav-text">配置Hadoop集群基本配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置hadoop-env-sh"><span class="nav-number">3.6.1.</span> <span class="nav-text">配置hadoop-env.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置works"><span class="nav-number">3.6.2.</span> <span class="nav-text">配置works</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置core-site-xml"><span class="nav-number">3.6.3.</span> <span class="nav-text">配置core-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置hdfs-site-xml"><span class="nav-number">3.6.4.</span> <span class="nav-text">配置hdfs-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置mapred-site-xml"><span class="nav-number">3.6.5.</span> <span class="nav-text">配置mapred-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置yarn-site-xml"><span class="nav-number">3.6.6.</span> <span class="nav-text">配置yarn-site.xml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建ZooKeeper、Hadoop目录，并同步Hadoop、ZooKeeper安装文件"><span class="nav-number">3.7.</span> <span class="nav-text">创建ZooKeeper、Hadoop目录，并同步Hadoop、ZooKeeper安装文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化Hdfs"><span class="nav-number">3.8.</span> <span class="nav-text">初始化Hdfs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动ZooKeeper，并查看Zookeeper启动状态"><span class="nav-number">3.9.</span> <span class="nav-text">启动ZooKeeper，并查看Zookeeper启动状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动Hadoop集群，并检查进程"><span class="nav-number">3.10.</span> <span class="nav-text">启动Hadoop集群，并检查进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进入Hadoop-集群Web控制台"><span class="nav-number">3.11.</span> <span class="nav-text">进入Hadoop 集群Web控制台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Yarn可用测试"><span class="nav-number">3.12.</span> <span class="nav-text">Yarn可用测试</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -631,16 +766,22 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cai182081</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -648,12 +789,13 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
 
         
+
 
 
 
@@ -692,12 +834,6 @@
 
 
 
-  
-
-
-
-
-
 
 
 
@@ -706,61 +842,77 @@
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+  
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
 
 
 
   
-
-
-  
-
 
 
 
@@ -783,7 +935,6 @@
 
 
 
-
 <!-- LOCAL: You can save these files to your site and update links -->
     
         
@@ -798,7 +949,7 @@
       <script type="text/javascript">
       function renderGitment(){
         var gitment = new Gitmint({
-            id: document.location.href, 
+            id: window.location.pathname,
             owner: 'cai182081',
             repo: 'cai182081.github.io',
             
@@ -825,10 +976,427 @@
 
 
 
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
 
   
 
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("LYl7tK129GkXmPxHi8ILtiuQ-gzGzoHsz", "fNvr4KMQd9tuE6hVX1hFBzlU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
 
 
 
@@ -837,11 +1405,15 @@
   
 
   
-  
 
   
   
 
+  
+
+  
+
+  
 
   
 

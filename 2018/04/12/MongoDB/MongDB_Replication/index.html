@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="MonogDB 复制集群与单机安装非常类似，只有少数不同之处，但鉴于照顾很多初学者或者接触 MongoDB 不多的技术人员，特详细记录 MongoDB 副本集安装配置，与 MongoDB 单机安装步骤多有重复，特在此说明 下载 MongoDB 安装软件123[root@node1 ~]# yum install -y psmisc* numactl* wget net-snmp*[root@nod">
+<meta name="keywords" content="数据库,MongoDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB 3.6.3 (生产环境下)副本集群（复制集群&#x2F;主从集群）安装配置详解">
+<meta property="og:url" content="http://yoursite.com/2018/04/12/MongoDB/MongDB_Replication/index.html">
+<meta property="og:site_name" content="Cailiang&#39;s Blog">
+<meta property="og:description" content="MonogDB 复制集群与单机安装非常类似，只有少数不同之处，但鉴于照顾很多初学者或者接触 MongoDB 不多的技术人员，特详细记录 MongoDB 副本集安装配置，与 MongoDB 单机安装步骤多有重复，特在此说明 下载 MongoDB 安装软件123[root@node1 ~]# yum install -y psmisc* numactl* wget net-snmp*[root@nod">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-15T06:23:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB 3.6.3 (生产环境下)副本集群（复制集群&#x2F;主从集群）安装配置详解">
+<meta name="twitter:description" content="MonogDB 复制集群与单机安装非常类似，只有少数不同之处，但鉴于照顾很多初学者或者接触 MongoDB 不多的技术人员，特详细记录 MongoDB 副本集安装配置，与 MongoDB 单机安装步骤多有重复，特在此说明 下载 MongoDB 安装软件123[root@node1 ~]# yum install -y psmisc* numactl* wget net-snmp*[root@nod">
+
+
+
+  <link rel="alternate" href="/atom2.xml" title="Cailiang's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>MongoDB 3.6.3 (生产环境下)副本集群（复制集群/主从集群）安装配置详解 | Cailiang's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/cai182081"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cailiang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">飞翔的菜鸟</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/12/MongoDB/MongDB_Replication/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cai182081">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cailiang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">MongoDB 3.6.3 (生产环境下)副本集群（复制集群/主从集群）安装配置详解
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-12 23:15:50" itemprop="dateCreated datePublished" datetime="2018-04-12T23:15:50+08:00">2018-04-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-15 14:23:22" itemprop="dateModified" datetime="2018-04-15T14:23:22+08:00">2018-04-15</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MongoDB/" itemprop="url" rel="index"><span itemprop="name">MongoDB</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/12/MongoDB/MongDB_Replication/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/12/MongoDB/MongDB_Replication/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/04/12/MongoDB/MongDB_Replication/" class="leancloud_visitors" data-flag-title="MongoDB 3.6.3 (生产环境下)副本集群（复制集群/主从集群）安装配置详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>MonogDB 复制集群与单机安装非常类似，只有少数不同之处，但鉴于照顾很多初学者或者接触 MongoDB 不多的技术人员，特详细记录 MongoDB 副本集安装配置，与 MongoDB 单机安装步骤多有重复，特在此说明</p>
+<h1 id="下载-MongoDB-安装软件"><a href="#下载-MongoDB-安装软件" class="headerlink" title="下载 MongoDB 安装软件"></a>下载 MongoDB 安装软件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># yum install -y psmisc* numactl* wget net-snmp*</span></span><br><span class="line">[root@node1 ~]<span class="comment"># wget https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-rhel70-3.6.3.tgz -P /dba/tools</span></span><br><span class="line">[root@node1 ~]<span class="comment"># wget https://www.percona.com/downloads/percona-server-mongodb-LATEST/percona-server-mongodb-3.4.13-2.11/binary/tarball/percona-server-mongodb-3.4.13-2.11-centos6-x86_64.tar.gz -P /dba/tools</span></span><br></pre></td></tr></table></figure>
+<h1 id="所有节点创建MongoDB组、用户和目录，并赋权限"><a href="#所有节点创建MongoDB组、用户和目录，并赋权限" class="headerlink" title="所有节点创建MongoDB组、用户和目录，并赋权限"></a>所有节点创建MongoDB组、用户和目录，并赋权限</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># groupadd mongod </span></span><br><span class="line">[root@node1 ~]<span class="comment"># useradd -g mongod mongod</span></span><br><span class="line">[root@node1 ~]<span class="comment"># passwd mongod</span></span><br><span class="line">[root@node1 ~]<span class="comment"># mkdir -pv /data/mongodb/data</span></span><br><span class="line">[root@node1 ~]<span class="comment"># chown -R mongod:mongod /data/mongodb</span></span><br><span class="line">[root@node1 ~]<span class="comment"># chmod -R 775 /data/mongodb</span></span><br></pre></td></tr></table></figure>
+<h1 id="所有节点安装，并配置环境变量"><a href="#所有节点安装，并配置环境变量" class="headerlink" title="所有节点安装，并配置环境变量"></a>所有节点安装，并配置环境变量</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># tar -zxf /dba/tools/mongodb-linux-x86_64-enterprise-rhel70-3.6.3.tgz -C /usr/local/</span></span><br><span class="line">[root@node1 ~]<span class="comment"># ln -sv /usr/local/mongodb-linux-x86_64-enterprise-rhel70-3.6.3 /usr/local/mongodb</span></span><br><span class="line">[root@node1 ~]<span class="comment"># chown -R mongod:mongod /usr/local/mongodb</span></span><br><span class="line">[root@node1 ~]<span class="comment"># echo "export PATH=/usr/local/mongodb/bin:\$PATH" &gt;&gt; /etc/profile</span></span><br><span class="line">[root@node1 ~]<span class="comment"># source /etc/profile</span></span><br></pre></td></tr></table></figure>
+<h1 id="所有节点优化操作系统参数"><a href="#所有节点优化操作系统参数" class="headerlink" title="所有节点优化操作系统参数"></a>所有节点优化操作系统参数</h1><h2 id="关闭透明大页"><a href="#关闭透明大页" class="headerlink" title="关闭透明大页"></a>关闭透明大页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># echo never &gt;&gt;  /sys/kernel/mm/transparent_hugepage/enabled</span></span><br><span class="line">[root@node1 ~]<span class="comment"># echo never &gt;&gt;  /sys/kernel/mm/transparent_hugepage/defrag</span></span><br></pre></td></tr></table></figure>
+<h2 id="修改磁盘io调度策略"><a href="#修改磁盘io调度策略" class="headerlink" title="修改磁盘io调度策略"></a>修改磁盘io调度策略</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># echo deadline &gt; /sys/block/sda/queue/scheduler</span></span><br></pre></td></tr></table></figure>
+<h2 id="修改文件数限制"><a href="#修改文件数限制" class="headerlink" title="修改文件数限制"></a>修改文件数限制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># ulimit -f unlimited</span></span><br><span class="line">[root@node1 ~]<span class="comment"># ulimit -t unlimited</span></span><br><span class="line">[root@node1 ~]<span class="comment"># ulimit -v unlimited</span></span><br><span class="line">[root@node1 ~]<span class="comment"># ulimit -n 65535</span></span><br><span class="line">[root@node1 ~]<span class="comment"># ulimit -m unlimited</span></span><br><span class="line">[root@node1 ~]<span class="comment"># ulimit -u 65535</span></span><br></pre></td></tr></table></figure>
+<h2 id="修改内存分配策略"><a href="#修改内存分配策略" class="headerlink" title="修改内存分配策略"></a>修改内存分配策略</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># echo 0 &gt; /proc/sys/vm/zone_reclaim_mode</span></span><br><span class="line">[root@node1 ~]<span class="comment"># sysctl -w vm.zone_reclaim_mode=0</span></span><br><span class="line">[root@node1 ~]<span class="comment"># sysctl vm.overcommit_memory=1</span></span><br></pre></td></tr></table></figure>
+<h1 id="配置-MongoDB-参数文件"><a href="#配置-MongoDB-参数文件" class="headerlink" title="配置 MongoDB 参数文件"></a>配置 MongoDB 参数文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># su - mongod</span></span><br><span class="line">[mongod@node1 ~]$ cat &gt;&gt; /home/mongod/mongod.conf &lt;&lt;EOF</span><br><span class="line">systemLog:</span><br><span class="line">    quiet: <span class="literal">false</span></span><br><span class="line">    path: <span class="string">"/home/mongod/mongod.log"</span></span><br><span class="line">    logAppend: <span class="literal">true</span>   </span><br><span class="line">    destination: file</span><br><span class="line">    timeStampFormat: iso8601-local</span><br><span class="line">processManagement:</span><br><span class="line">    fork: <span class="literal">true</span></span><br><span class="line">    pidFilePath: <span class="string">"/home/mongod/mongod.pid"</span></span><br><span class="line">storage:</span><br><span class="line">    dbPath: <span class="string">"/data/mongodb/data"</span></span><br><span class="line">    indexBuildRetry: <span class="literal">true</span></span><br><span class="line">    journal:</span><br><span class="line">        enabled: <span class="literal">true</span></span><br><span class="line">    directoryPerDB: <span class="literal">true</span></span><br><span class="line">    syncPeriodSecs: 60</span><br><span class="line">    engine: wiredTiger</span><br><span class="line">    wiredTiger:</span><br><span class="line">        engineConfig:</span><br><span class="line">            cacheSizeGB: 12</span><br><span class="line">            statisticsLogDelaySecs: 0</span><br><span class="line">            journalCompressor: snappy</span><br><span class="line">            directoryForIndexes: <span class="literal">true</span></span><br><span class="line">        collectionConfig:</span><br><span class="line">            blockCompressor: snappy</span><br><span class="line">        indexConfig:</span><br><span class="line">            prefixCompression: <span class="literal">true</span></span><br><span class="line">net:  </span><br><span class="line">    bindIp: 192.168.1.10,127.0.0.1</span><br><span class="line">    port: 47017</span><br><span class="line">    maxIncomingConnections: 52528</span><br><span class="line">    wireObjectCheck: <span class="literal">true</span></span><br><span class="line">    ipv6: <span class="literal">false</span></span><br><span class="line">    unixDomainSocket:</span><br><span class="line">        enabled: <span class="literal">false</span></span><br><span class="line">operationProfiling:</span><br><span class="line">    slowOpThresholdMs: 200</span><br><span class="line">    mode: slowOp</span><br><span class="line">security:</span><br><span class="line">    authorization: disabled</span><br><span class="line">    <span class="comment">#clusterAuthMode: keyFile</span></span><br><span class="line">    <span class="comment">#keyFile: "/home/mongod/keyfile"</span></span><br><span class="line">    javascriptEnabled: <span class="literal">true</span></span><br><span class="line">setParameter:</span><br><span class="line">    enableLocalhostAuthBypass: <span class="literal">true</span></span><br><span class="line">    authenticationMechanisms: SCRAM-SHA-1</span><br><span class="line">replication:</span><br><span class="line">    oplogSizeMB: 5120</span><br><span class="line">    replSetName: configRS</span><br><span class="line">    secondaryIndexPrefetch: all</span><br><span class="line"><span class="comment">#sharding:</span></span><br><span class="line">    <span class="comment">#clusterRole: configsvr</span></span><br><span class="line">    <span class="comment">#archiveMovedChunks: true</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<h1 id="配置-mongorc-js"><a href="#配置-mongorc-js" class="headerlink" title="配置 .mongorc.js"></a>配置 .mongorc.js</h1><p>在mongod用户家目创建录.mongorc.js 文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[mongod@node1 ~]$ cat &gt;&gt; /home/mongod/.mongorc.js &lt;&lt;EOF</span><br><span class="line">prompt = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> (typeof db == <span class="string">'undefined'</span>) &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="string">'(nodb)&gt; '</span>;</span><br><span class="line">&#125;</span><br><span class="line">    try &#123;</span><br><span class="line">        db.runCommand(&#123;getLastError:1&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    catch (e) &#123;</span><br><span class="line">        <span class="built_in">print</span>(e); </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> db+<span class="string">" &gt;"</span>;</span><br><span class="line">&#125;;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure></p>
+<p>更完整 .mongorc.js 的配置文件下载地址 <a href="https://pan.lanzou.com/i0tvfqb" target="_blank" rel="noopener">https://pan.lanzou.com/i0tvfqb</a></p>
+<h1 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[mongod@node1 ~]$ numactl --interleave=all mongod -f /home/mongod/mongod.conf </span><br><span class="line">[mongod@node2 ~]$ numactl --interleave=all mongod -f /home/mongod/mongod.conf </span><br><span class="line">[mongod@node3 ~]$ numactl --interleave=all mongod -f /home/mongod/mongod.conf</span><br></pre></td></tr></table></figure>
+<h1 id="配置-MongoDB-副本集"><a href="#配置-MongoDB-副本集" class="headerlink" title="配置 MongoDB 副本集"></a>配置 MongoDB 副本集</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[mongod@node1 ~]$ mongo 192.168.1.10:47017/admin</span><br><span class="line">192.168.1.10:47017/admin&gt; config = &#123;_id: <span class="string">'configRS'</span>, members: [</span><br><span class="line">                                    &#123;_id: 0, host: <span class="string">'192.168.1.10:47017'</span>,priority:3&#125;,</span><br><span class="line">                                    &#123;_id: 1, host: <span class="string">'192.168.1.11:47017'</span>,priority:0,hidden:<span class="literal">true</span>&#125;,</span><br><span class="line">                                    &#123;_id: 2, host: <span class="string">'192.168.1.12:47017'</span>,arbiterOnly:<span class="literal">true</span>&#125;]&#125;</span><br><span class="line">192.168.1.10:47017/admin&gt; rs.initiate(config)</span><br><span class="line">192.168.1.10:47017/admin&gt; rs.conf()</span><br><span class="line">192.168.1.10:47017/admin&gt; rs.status()</span><br></pre></td></tr></table></figure>
+<h1 id="添加管理员账号"><a href="#添加管理员账号" class="headerlink" title="添加管理员账号"></a>添加管理员账号</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.10:47017/admin&gt; db.createUser(&#123;user:<span class="string">'admin'</span>,<span class="built_in">pwd</span>:<span class="string">'oRcl_123'</span>, roles:[&#123;role:<span class="string">'userAdminAnyDatabase'</span>, db:<span class="string">'admin'</span>&#125;]&#125;)</span><br><span class="line">192.168.1.10:47017/admin&gt; db.auth(<span class="string">"admin"</span>,<span class="string">"oRcl_123"</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="MongoDB-副本集-配置-keyfile-文件"><a href="#MongoDB-副本集-配置-keyfile-文件" class="headerlink" title="MongoDB 副本集 配置 keyfile 文件"></a>MongoDB 副本集 配置 keyfile 文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[mongod@node1 ~]$ openssl rand -base64 753 &gt; keyfile</span><br><span class="line">[mongod@node1 ~]$ scp /home/mongod/keyfile mongod@192.168.1.11:/home/mongod</span><br><span class="line">[mongod@node1 ~]$ scp /home/mongod/keyfile mongod@192.168.1.12:/home/mongod</span><br><span class="line"></span><br><span class="line">[mongod@node1 ~]$ chmod 600 keyfile</span><br><span class="line">[mongod@node2 ~]$ chmod 600 keyfile</span><br><span class="line">[mongod@node3 ~]$ chmod 600 keyfile</span><br></pre></td></tr></table></figure>
+<h1 id="开启用户验证参数"><a href="#开启用户验证参数" class="headerlink" title="开启用户验证参数"></a>开启用户验证参数</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[mongod@node1 ~]$ sed -i <span class="string">'s/authorization: disabled/authorization: enabled/g'</span> /home/mongod/mongod.conf</span><br><span class="line">[mongod@node1 ~]$ sed -i <span class="string">'s/#clusterAuthMode: keyFile/clusterAuthMode: keyFile/g'</span> /home/mongod/mongod.conf</span><br><span class="line">[mongod@node1 ~]$ sed -i <span class="string">'s/#keyFile: "\/home\/mongod\/keyfile"/keyFile: "\/home\/mongod\/keyfile"/g'</span> /home/mongod/mongod.conf</span><br><span class="line"></span><br><span class="line">[mongod@node2 ~]$ sed -i <span class="string">'s/authorization: disabled/authorization: enabled/g'</span> /home/mongod/mongod.conf</span><br><span class="line">[mongod@node2 ~]$ sed -i <span class="string">'s/#clusterAuthMode: keyFile/clusterAuthMode: keyFile/g'</span> /home/mongod/mongod.conf</span><br><span class="line">[mongod@node2 ~]$ sed -i <span class="string">'s/#keyFile: "\/home\/mongod\/keyfile"/keyFile: "\/home\/mongod\/keyfile"/g'</span> /home/mongod/mongod.conf</span><br><span class="line"></span><br><span class="line">[mongod@node3 ~]$ sed -i <span class="string">'s/authorization: disabled/authorization: enabled/g'</span> /home/mongod/mongod.conf </span><br><span class="line">[mongod@node3 ~]$ sed -i <span class="string">'s/#clusterAuthMode: keyFile/clusterAuthMode: keyFile/g'</span> /home/mongod/mongod.conf</span><br><span class="line">[mongod@node3 ~]$ sed -i <span class="string">'s/#keyFile: "\/home\/mongod\/keyfile"/keyFile: "\/home\/mongod\/keyfile"/g'</span> /home/mongod/mongod.conf</span><br></pre></td></tr></table></figure>
+<h1 id="重启-MongoDB-数据库，并验证安全验证登录"><a href="#重启-MongoDB-数据库，并验证安全验证登录" class="headerlink" title="重启 MongoDB 数据库，并验证安全验证登录"></a>重启 MongoDB 数据库，并验证安全验证登录</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[mongod@node1 ~]$ killall mongod</span><br><span class="line">[mongod@node1 ~]$ numactl --interleave=all mongod -f /home/mongod/mongod.conf</span><br><span class="line"></span><br><span class="line">[mongod@node2 ~]$ killall mongod </span><br><span class="line">[mongod@node2 ~]$ numactl --interleave=all mongod -f /home/mongod/mongod.conf</span><br><span class="line"></span><br><span class="line">[mongod@node3 ~]$ killall mongod </span><br><span class="line">[mongod@node3 ~]$ numactl --interleave=all mongod -f /home/mongod/mongod.conf</span><br><span class="line"></span><br><span class="line">[mongod@node1 ~]$ mongo -u admin -poRcl_123 192.168.1.10:47017/admin</span><br><span class="line">192.168.1.10:47017/admin&gt; rs.status()</span><br></pre></td></tr></table></figure>
+<h1 id="设置MongoDB开机自启动"><a href="#设置MongoDB开机自启动" class="headerlink" title="设置MongoDB开机自启动"></a>设置MongoDB开机自启动</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/rc.d/rc.local</span><br><span class="line">numactl --interleave=all mongod -f /home/mongod/mongod.conf</span><br></pre></td></tr></table></figure>
+<h1 id="测试副本集的故障转移功能"><a href="#测试副本集的故障转移功能" class="headerlink" title="测试副本集的故障转移功能"></a>测试副本集的故障转移功能</h1>
+      
+    </div>
+
+    
+
+    
+    
+    
+     <div>
+		
+		<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+		
+      </div>
+	
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>cai182081</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/04/12/MongoDB/MongDB_Replication/" title="MongoDB 3.6.3 (生产环境下)副本集群（复制集群/主从集群）安装配置详解">http://yoursite.com/2018/04/12/MongoDB/MongDB_Replication/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"> <i class="fa fa-tag"></i> 数据库</a>
+          
+            <a href="/tags/MongoDB/" rel="tag"> <i class="fa fa-tag"></i> MongoDB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/12/MongoDB/MongDB_Install/" rel="next" title="MongoDB 3.6.3 （生产环境下）二进制单机安装与安全认证配置">
+                <i class="fa fa-chevron-left"></i> MongoDB 3.6.3 （生产环境下）二进制单机安装与安全认证配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/14/Hadoop/Hadoop_CDH/" rel="prev" title="Hadoop 3.0.1 完全分布式集群搭建">
+                Hadoop 3.0.1 完全分布式集群搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">cai182081</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom2.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载-MongoDB-安装软件"><span class="nav-number">1.</span> <span class="nav-text">下载 MongoDB 安装软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#所有节点创建MongoDB组、用户和目录，并赋权限"><span class="nav-number">2.</span> <span class="nav-text">所有节点创建MongoDB组、用户和目录，并赋权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#所有节点安装，并配置环境变量"><span class="nav-number">3.</span> <span class="nav-text">所有节点安装，并配置环境变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#所有节点优化操作系统参数"><span class="nav-number">4.</span> <span class="nav-text">所有节点优化操作系统参数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭透明大页"><span class="nav-number">4.1.</span> <span class="nav-text">关闭透明大页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改磁盘io调度策略"><span class="nav-number">4.2.</span> <span class="nav-text">修改磁盘io调度策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文件数限制"><span class="nav-number">4.3.</span> <span class="nav-text">修改文件数限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改内存分配策略"><span class="nav-number">4.4.</span> <span class="nav-text">修改内存分配策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置-MongoDB-参数文件"><span class="nav-number">5.</span> <span class="nav-text">配置 MongoDB 参数文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置-mongorc-js"><span class="nav-number">6.</span> <span class="nav-text">配置 .mongorc.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化数据库"><span class="nav-number">7.</span> <span class="nav-text">初始化数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置-MongoDB-副本集"><span class="nav-number">8.</span> <span class="nav-text">配置 MongoDB 副本集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加管理员账号"><span class="nav-number">9.</span> <span class="nav-text">添加管理员账号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MongoDB-副本集-配置-keyfile-文件"><span class="nav-number">10.</span> <span class="nav-text">MongoDB 副本集 配置 keyfile 文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开启用户验证参数"><span class="nav-number">11.</span> <span class="nav-text">开启用户验证参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重启-MongoDB-数据库，并验证安全验证登录"><span class="nav-number">12.</span> <span class="nav-text">重启 MongoDB 数据库，并验证安全验证登录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置MongoDB开机自启动"><span class="nav-number">13.</span> <span class="nav-text">设置MongoDB开机自启动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试副本集的故障转移功能"><span class="nav-number">14.</span> <span class="nav-text">测试副本集的故障转移功能</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cai182081</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'cai182081',
+            repo: 'cai182081.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '843030b4a3d8746e2debd7448a168be4115e713d',
+            
+                client_id: 'd7af101417fa775e9a0d'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("LYl7tK129GkXmPxHi8ILtiuQ-gzGzoHsz", "fNvr4KMQd9tuE6hVX1hFBzlU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

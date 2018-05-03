@@ -2,15 +2,21 @@
 
 
 
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -38,54 +44,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -94,49 +52,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="MySQL,数据库,数据库优化," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Cailiang's Blog" type="application/atom+xml" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
 
 
 
 
 
 
-<meta name="description" content="命名规范库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割1234MySQL 配置参数 lower_case_table_names=1，即库表名以小写存储，大小写不敏感。如果是0，则库表名以实际情况存储，大小写敏感；如果是2，以实际情况存储，但以小写比较；如果大小写混合使用，可能存在abc，Abc，ABC等多个表共存，容易导致混乱；字段名显示区分大小写，但实际使⽤时不">
-<meta name="keywords" content="MySQL,数据库,数据库优化">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MySQL 数据库开发与设计规范">
-<meta property="og:url" content="http://yoursite.com/2017/10/12/MySQL/MySQL_design_specifications/index.html">
-<meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="命名规范库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割1234MySQL 配置参数 lower_case_table_names=1，即库表名以小写存储，大小写不敏感。如果是0，则库表名以实际情况存储，大小写敏感；如果是2，以实际情况存储，但以小写比较；如果大小写混合使用，可能存在abc，Abc，ABC等多个表共存，容易导致混乱；字段名显示区分大小写，但实际使⽤时不">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T09:23:01.905Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL 数据库开发与设计规范">
-<meta name="twitter:description" content="命名规范库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割1234MySQL 配置参数 lower_case_table_names=1，即库表名以小写存储，大小写不敏感。如果是0，则库表名以实际情况存储，大小写敏感；如果是2，以实际情况存储，但以小写比较；如果大小写混合使用，可能存在abc，Abc，ABC等多个表共存，容易导致混乱；字段名显示区分大小写，但实际使⽤时不">
 
 
 
@@ -145,15 +79,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '5.1.3',
+    version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -165,12 +97,38 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/2017/10/12/MySQL/MySQL_design_specifications/"/>
-
+  
 
 
 
+
+  <meta name="description" content="命名规范库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割1234MySQL 配置参数 lower_case_table_names=1，即库表名以小写存储，大小写不敏感。如果是0，则库表名以实际情况存储，大小写敏感；如果是2，以实际情况存储，但以小写比较；如果大小写混合使用，可能存在abc，Abc，ABC等多个表共存，容易导致混乱；字段名显示区分大小写，但实际使⽤时不">
+<meta name="keywords" content="MySQL,数据库,数据库优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 数据库开发与设计规范">
+<meta property="og:url" content="http://yoursite.com/2017/10/12/MySQL/MySQL_Design_Specifications/index.html">
+<meta property="og:site_name" content="Cailiang&#39;s Blog">
+<meta property="og:description" content="命名规范库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割1234MySQL 配置参数 lower_case_table_names=1，即库表名以小写存储，大小写不敏感。如果是0，则库表名以实际情况存储，大小写敏感；如果是2，以实际情况存储，但以小写比较；如果大小写混合使用，可能存在abc，Abc，ABC等多个表共存，容易导致混乱；字段名显示区分大小写，但实际使⽤时不">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-10T09:23:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL 数据库开发与设计规范">
+<meta name="twitter:description" content="命名规范库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割1234MySQL 配置参数 lower_case_table_names=1，即库表名以小写存储，大小写不敏感。如果是0，则库表名以实际情况存储，大小写敏感；如果是2，以实际情况存储，但以小写比较；如果大小写混合使用，可能存在abc，Abc，ABC等多个表共存，容易导致混乱；字段名显示区分大小写，但实际使⽤时不">
+
+
+
+  <link rel="alternate" href="/atom2.xml" title="Cailiang's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>MySQL 数据库开发与设计规范 | Cailiang's Blog</title>
   
@@ -182,9 +140,37 @@
 
 
 
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -193,26 +179,26 @@
 
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-
+	<a href="https://github.com/cai182081"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Cailiang's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">飞翔的菜鸟</p>
+        <h1 class="site-subtitle" itemprop="description">飞翔的菜鸟</h1>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -220,68 +206,106 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -294,12 +318,14 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/12/MySQL/MySQL_design_specifications/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/12/MySQL/MySQL_Design_Specifications/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cai182081">
@@ -316,11 +342,19 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL 数据库开发与设计规范</h1>
+          <h2 class="post-title" itemprop="name headline">MySQL 数据库开发与设计规范
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -328,13 +362,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-12T20:52:02+08:00">
-                2017-10-12
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-10-12 20:52:02" itemprop="dateCreated datePublished" datetime="2017-10-12T20:52:02+08:00">2017-10-12</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-10 17:23:02" itemprop="dateModified" datetime="2018-04-10T17:23:02+08:00">2018-04-10</time>
+              
             
           </span>
 
@@ -350,11 +401,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
 
                 
                 
@@ -369,14 +416,25 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/12/MySQL/MySQL_design_specifications/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/10/12/MySQL/MySQL_design_specifications/" itemprop="commentsCount"></span>
+                <a href="/2017/10/12/MySQL/MySQL_Design_Specifications/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2017/10/12/MySQL/MySQL_Design_Specifications/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
           
 
           
+          
+             <span id="/2017/10/12/MySQL/MySQL_Design_Specifications/" class="leancloud_visitors" data-flag-title="MySQL 数据库开发与设计规范">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -398,74 +456,100 @@
       
 
       
-        <h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><h3 id="库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割"><a href="#库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割" class="headerlink" title="库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割"></a>库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MySQL 配置参数 lower_case_table_names=1，即库表名以小写存储，大小写不敏感。如果是0，则库表名以实际情况存储，大小写敏感；如果是2，以实际情况存储，但以小写比较；</div><div class="line">如果大小写混合使用，可能存在abc，Abc，ABC等多个表共存，容易导致混乱；</div><div class="line">字段名显示区分大小写，但实际使⽤时不区分，即不可以建立两个名字一样但大小写不一样的字段；</div><div class="line">为了统一规范， 库名、表名、字段名使用小写字母。</div></pre></td></tr></table></figure>
-<h3 id="库名以d开头，表名以t开头，字段名以f-开头（只作为参考，但必须统一命名标准）"><a href="#库名以d开头，表名以t开头，字段名以f-开头（只作为参考，但必须统一命名标准）" class="headerlink" title="库名以d开头，表名以t开头，字段名以f_开头（只作为参考，但必须统一命名标准）"></a>库名以d开头，表名以t开头，字段名以f_开头（只作为参考，但必须统一命名标准）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">比如表 t_crm_relation，中间的 crm 代表业务模块名；</div><div class="line">视图以view_开头，事件以event_开头，触发器以trig_开头，存储过程以proc_开头，函数以func_开头；</div><div class="line">普通索引以 idx_col1_col2 命名，唯一索引以uk_col1_col2命名（可去掉f_公共部分）。如 idx_companyid_corpid_contacttime(f_company_id,f_corp_id,f_contact_time)。</div></pre></td></tr></table></figure>
-<h3 id="库名、表名、字段名必须见名知意。命名与业务、产品线等相关联，禁止使用MySQL保留字禁止在MySQL中进行数学运算和函数运算"><a href="#库名、表名、字段名必须见名知意。命名与业务、产品线等相关联，禁止使用MySQL保留字禁止在MySQL中进行数学运算和函数运算" class="headerlink" title="库名、表名、字段名必须见名知意。命名与业务、产品线等相关联，禁止使用MySQL保留字禁止在MySQL中进行数学运算和函数运算"></a>库名、表名、字段名必须见名知意。命名与业务、产品线等相关联，禁止使用MySQL保留字禁止在MySQL中进行数学运算和函数运算</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">当库名、表名、字段名等属性含有保留字时，SQL语句必须用反引号引用属性名称，这将使得SQL语句书写、SHELL脚本中变量的转义等变得非常复杂。</div></pre></td></tr></table></figure>
-<h3 id="库名、表名、字段名禁止超过32个字符"><a href="#库名、表名、字段名禁止超过32个字符" class="headerlink" title="库名、表名、字段名禁止超过32个字符"></a>库名、表名、字段名禁止超过32个字符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">库名、表名、字段名支持最多64个字符，但为了统一规范、易于辨识以及减少传输量，禁止超过20个字符。</div></pre></td></tr></table></figure>
-<h3 id="临时库、表名必须以tmp为前缀，并以日期为后缀"><a href="#临时库、表名必须以tmp为前缀，并以日期为后缀" class="headerlink" title="临时库、表名必须以tmp为前缀，并以日期为后缀"></a>临时库、表名必须以tmp为前缀，并以日期为后缀</h3><h3 id="备份库、表必须以bak为前缀，并以日期为后缀"><a href="#备份库、表必须以bak为前缀，并以日期为后缀" class="headerlink" title="备份库、表必须以bak为前缀，并以日期为后缀"></a>备份库、表必须以bak为前缀，并以日期为后缀</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">这也是为将来有可能分表做准备的，比如 t_crm_ec_record_201403，但像 t_crm_contact_at201506 就打破了这种规范。</div><div class="line">不具有时间特性的，直接以 t_tbname_001 这样的方式命名。</div></pre></td></tr></table></figure>
-<h3 id="按日期时间分表须符合-YYYY-MM-DD-格式"><a href="#按日期时间分表须符合-YYYY-MM-DD-格式" class="headerlink" title="按日期时间分表须符合_YYYY[MM][DD]格式"></a>按日期时间分表须符合_YYYY[MM][DD]格式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如 t_crm_relation_tmp0425。备份表也类似，形如 _bak20160425。</div></pre></td></tr></table></figure>
-<h2 id="库表基础规范"><a href="#库表基础规范" class="headerlink" title="库表基础规范"></a>库表基础规范</h2><h3 id="表使用InnoDB存储引擎"><a href="#表使用InnoDB存储引擎" class="headerlink" title="表使用InnoDB存储引擎"></a>表使用InnoDB存储引擎</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MySQL 5.5版本开始MySQL默认存储引擎就是InnoDB，MySQL 5.7版本开始，系统表开始弃用 MyISAM 引擎。</div></pre></td></tr></table></figure>
-<h3 id="库、表字符集统一使用UTF8，必要时遇-EMOJ-等表情字符需求使用-UTF8MB4"><a href="#库、表字符集统一使用UTF8，必要时遇-EMOJ-等表情字符需求使用-UTF8MB4" class="headerlink" title="库、表字符集统一使用UTF8，必要时遇 EMOJ 等表情字符需求使用 UTF8MB4"></a>库、表字符集统一使用UTF8，必要时遇 EMOJ 等表情字符需求使用 UTF8MB4</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">UTF8字符集存储汉字占用3个字节，存储英文字符占用一个字节；</div><div class="line">校对字符集使用默认的 utf8_general_ci；</div><div class="line">连接的客户端也使用 UTF8，建立连接时指定 charset 或 SET NAMES UTF8;</div><div class="line">如果遇到EMOJ等表情符号的存储需求，可申请使用 UTF8MB4 字符集。</div></pre></td></tr></table></figure>
-<h3 id="所有表、列都需要添加注释"><a href="#所有表、列都需要添加注释" class="headerlink" title="所有表、列都需要添加注释"></a>所有表、列都需要添加注释</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">尽量给字段也添加注释。类 status 型需指明主要值的含义，如“0-离线，1-在线”。</div></pre></td></tr></table></figure>
-<h3 id="控制单表字段数量，单表字段数上限20"><a href="#控制单表字段数量，单表字段数上限20" class="headerlink" title="控制单表字段数量，单表字段数上限20"></a>控制单表字段数量，单表字段数上限20</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">单表字段数上限20左右，再多的话考虑垂直分表。1、冷热数据分离；2、大字段分离；3、常在一起做条件和返回列的不分离。</div><div class="line">表字段控制少而精，可以提高IO效率，内存缓存更多有效数据，从而提高响应速度和并发能力，后续 alter table 也更快。</div></pre></td></tr></table></figure>
-<h3 id="所有-InooDB-表都必须显式指定主键，推荐使用-UNSIGNED-自增列作为主键，禁止使用-UUID、MD5、HASH、字符串列作为主键以及多字段复合主键"><a href="#所有-InooDB-表都必须显式指定主键，推荐使用-UNSIGNED-自增列作为主键，禁止使用-UUID、MD5、HASH、字符串列作为主键以及多字段复合主键" class="headerlink" title="所有 InooDB 表都必须显式指定主键，推荐使用 UNSIGNED 自增列作为主键，禁止使用 UUID、MD5、HASH、字符串列作为主键以及多字段复合主键"></a>所有 InooDB 表都必须显式指定主键，推荐使用 UNSIGNED 自增列作为主键，禁止使用 UUID、MD5、HASH、字符串列作为主键以及多字段复合主键</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">主键尽量采用自增方式，InnoDB 表实际是一棵索引组织表，顺序存储可以提高存取效率，充分利用磁盘空间。还有对一些复杂查询可能需要自连接来优化时需要用到。</div><div class="line">需要全局唯一主键时，使用外部发号器 ticket server（建设中）。</div><div class="line">如果没有主键或唯一索引，update/delete 是通过所有字段来定位操作的行，相当于每行就是一次全表扫描。</div><div class="line">少数情况可以使用联合唯一主键，需与DBA协商。</div></pre></td></tr></table></figure>
-<h3 id="避免使用存储过程、视图，禁止使用触发器以及事件"><a href="#避免使用存储过程、视图，禁止使用触发器以及事件" class="headerlink" title="避免使用存储过程、视图，禁止使用触发器以及事件"></a>避免使用存储过程、视图，禁止使用触发器以及事件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">存储过程（procedure）虽然可以简化业务端代码，在传统企业写复杂逻辑时可能会用到，而在互联网企业变更是很频繁的，在分库分表的情况下要升级一个存储过程相当麻烦。又因为它是不记录<span class="built_in">log</span>的，所以也不方便debug性能问题。</div><div class="line">如果使用过程，一定考虑如果执行失败的情况；</div><div class="line">  使用视图一定程度上也是为了降低代码里SQL的复杂度，但有时候为了视图的通用性会损失性能（比如返回不必要的字段）；</div><div class="line">  触发器（trigger）也是同样，但也不应该通过它去约束数据的强一致性，MySQL只支持“基于行的触发”，也就是说，触发器始终是针对一条记录的，而不是针对整个sql语句的，如果变更的数据集非常大的话，效率会很低。掩盖一条</div><div class="line">SQL背后的工作，一旦出现问题将是灾难性的，但又很难快速分析和定位。再者需要ddl时无法使用 PT-OSC 工具。放在 transaction 执行；</div><div class="line">事件（event）也是一种偷懒的表现，目前已经遇到数次由于定时任务执行失败影响业务的情况，而且MySQL无法对它做失败预警。建立专门的 job scheduler 平台。</div></pre></td></tr></table></figure>
-<h3 id="禁止使用外键参考"><a href="#禁止使用外键参考" class="headerlink" title="禁止使用外键参考"></a>禁止使用外键参考</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">即使2个表的字段有明确的外键参考关系，也不使用 FOREIGN KEY ，因为新纪录会去主键表做校验，影响性能。</div><div class="line">外键会导致父表和子表之间耦合，十分影响SQL性能，出现过多的锁等待，甚至会造成死锁。</div></pre></td></tr></table></figure>
-<h3 id="单表数据量控制在1500w范围以内，超过1500w考虑表分区等优化措施"><a href="#单表数据量控制在1500w范围以内，超过1500w考虑表分区等优化措施" class="headerlink" title="单表数据量控制在1500w范围以内，超过1500w考虑表分区等优化措施"></a>单表数据量控制在1500w范围以内，超过1500w考虑表分区等优化措施</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">做好数据评估，建议纯INT数据不超过1500万，含有 CHAR 或者 VARCHAR 数据的不要超过1000万。字段类型在满足需求条件下越小越好，尽量使用 UNSIGNED 存储非负整数，因为实际使用时候存储负数的场景不多。</div></pre></td></tr></table></figure>
-<h2 id="字段规范"><a href="#字段规范" class="headerlink" title="字段规范"></a>字段规范</h2><h3 id="优先选择符合存储需要的最小的数据类型"><a href="#优先选择符合存储需要的最小的数据类型" class="headerlink" title="优先选择符合存储需要的最小的数据类型"></a>优先选择符合存储需要的最小的数据类型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">TINYINT(4)：带符号的范围是-128到127。无符号的范围是0到255</div><div class="line">SMALLINT(6)：带符号的范围是-32768到32767。无符号的范围是0到65535</div><div class="line">MEDIUMINT(9)：带符号的范围是 -8388608到8388607。无符号的范围是0到 16777215</div><div class="line">INT(11)：带符号的范围是 -2147483648 到 2147483647。无符号的范围是0到 4294967295</div><div class="line">BIGINT(20)：带符号的范围是 -9223372036854775808 到 9223372036854775807。无符号的范围是0到 18446744073709551615</div><div class="line">TINYINT(1) 和 TINYINT(4) 中的1和4并不表示存储长度，只有字段指定zerofill是有用，如tinyint(4)，如果实际值是2，如果列指定了zerofill，查询结果就是0002，左边用0来填充</div></pre></td></tr></table></figure>
-<h3 id="对于非负型的数据来说，要有限使用无符号整型来存储"><a href="#对于非负型的数据来说，要有限使用无符号整型来存储" class="headerlink" title="对于非负型的数据来说，要有限使用无符号整型来存储"></a>对于非负型的数据来说，要有限使用无符号整型来存储</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">同样的字节数，非负存储的数值范围更大。如TINYINT有符号为 -128-127，无符号为0-255</div></pre></td></tr></table></figure>
-<h3 id="char、varchar、text等字符串类型定义"><a href="#char、varchar、text等字符串类型定义" class="headerlink" title="char、varchar、text等字符串类型定义"></a>char、varchar、text等字符串类型定义</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">对于长度基本固定的列，如果该列恰好更新又特别频繁，适合 char</div><div class="line">varchar 虽然存储变长字符串，但不可太小也不可太大。UTF8 最多能存21844个汉字，或65532个英文</div><div class="line">varbinary(M) 保存的是二进制字符串，它保存的是字节而不是字符，所以没有字符集的概念，M长度0-255（字节）。只用于排序或比较时大小写敏感的类型，不包括密码存储</div><div class="line">TEXT类型与VARCHAR都类似，存储可变长度，最大限制也是2^16，但是它20bytes以后的内容是在数据页以外的空间存储（row_format=dynamic），对它的使用需要多一次寻址，没有默认值。</div><div class="line">一般用于存放容量平均都很大、操作没有其它字段那样频繁的值。</div><div class="line">网上部分文章说要避免使用text和blob，要知道如果纯用varchar可能会导致行溢出，效果差不多，但因为每行占用字节数过多，会导致 buffer_pool能 缓存的数据行、页下降。另外text和blob上面一般不会去建索引，而是利用 sphinx 之类的第三方全文搜索引擎，如果确实要创建（前缀）索引，那就会影响性能。凡事看具体场景。</div><div class="line">另外尽可能把 text/blob 拆到另一个表中</div><div class="line">BLOB可以看出 varbinary 的扩展版本，内容以二进制字符串存储，无字符集，区分大小写，有一种经常提但不用的场景：不要在数据库里存储图片。</div></pre></td></tr></table></figure>
-<h3 id="尽可能把所有列定义为NOT-NULL"><a href="#尽可能把所有列定义为NOT-NULL" class="headerlink" title="尽可能把所有列定义为NOT NULL"></a>尽可能把所有列定义为NOT NULL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">对表的每一行，每个为 NULL 的列都需要额外的空间来标识。</div><div class="line">B树索引时不会存储 NULL 值，所以如果索引字段可以为NULL，索引效率会下降。建议用0、特殊值或空串代替NULL值。</div><div class="line">如果是索引字段，一定要定义为 NOT NULL 。因为 NULL 值会影响 CORDINATE 统计，影响优化器对索引的选择</div><div class="line">如果不能保证INSERT时一定有值过来，定义时使用 DEFAULT <span class="string">' '</span>，或0。</div></pre></td></tr></table></figure>
-<h3 id="使用-TIMESTAMP-或-DATETIME-类型存储时间"><a href="#使用-TIMESTAMP-或-DATETIME-类型存储时间" class="headerlink" title="使用 TIMESTAMP 或 DATETIME 类型存储时间"></a>使用 TIMESTAMP 或 DATETIME 类型存储时间</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">DATETIME 和 TIMESTAMP 都是精确到秒，优先选择 TIMESTAMP，因为 TIMESTAMP 只有4个字节，而DATETIME占用8个字节。同时 TIMESTAMP 具有自动赋值以及自动更新的特性：</div><div class="line">创建新记录和修改记录修改现有记录的时候都对这个数据列刷新：</div><div class="line">TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</div><div class="line">创建新记录的时候把这个字段设置为当前时间，但以后修改时，不再刷新它：</div><div class="line">TIMESTAMP  DEFAULT CURRENT_TIMESTAMP</div><div class="line">创建新记录的时候把这个字段设置为0，以后修改时刷新它：</div><div class="line">TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</div><div class="line">创建新记录的时候把这个字段设置为给定值，以后修改时刷新它：</div><div class="line">TIMESTAMP DEFAULT <span class="string">'yyyy-mm-dd hh:mm:ss'</span> ON UPDATE CURRENT_TIMESTAMP</div></pre></td></tr></table></figure>
-<h3 id="使用INT-UNSIGNED存储IPV4"><a href="#使用INT-UNSIGNED存储IPV4" class="headerlink" title="使用INT UNSIGNED存储IPV4"></a>使用INT UNSIGNED存储IPV4</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">通常使用 VARCHAR(15) 或者 CHAR(15) 保存IP地址，其实IP地址是无符号的32位整数，不是字符串，小数点仅仅为了可读性。MySQL提供了 INET_ATON() 、NET_NTOA()用于IP地址和整数之前转换</div></pre></td></tr></table></figure>
-<h3 id="强烈建议使用-TINYINT-来代替枚举-ENUM-类型"><a href="#强烈建议使用-TINYINT-来代替枚举-ENUM-类型" class="headerlink" title="强烈建议使用 TINYINT 来代替枚举 ENUM 类型"></a>强烈建议使用 TINYINT 来代替枚举 ENUM 类型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ENUM 类型在需要修改或增加枚举值时，需要在线 DDL，成本较高；ENUM列值如果含有数字类型，可能会引起默认值混淆。</div></pre></td></tr></table></figure>
-<h3 id="使用-VARBINARY-存储大小写敏感的变长字符串或二进制内容"><a href="#使用-VARBINARY-存储大小写敏感的变长字符串或二进制内容" class="headerlink" title="使用 VARBINARY 存储大小写敏感的变长字符串或二进制内容"></a>使用 VARBINARY 存储大小写敏感的变长字符串或二进制内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">VARBINARY 默认不区分大小写，没有字符集概念，速度快</div></pre></td></tr></table></figure>
-<h3 id="同一意义的字段定义必须相同"><a href="#同一意义的字段定义必须相同" class="headerlink" title="同一意义的字段定义必须相同"></a>同一意义的字段定义必须相同</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">比如不同表中都有 user_id 字段，那么它的类型、字段长度、字符集、字符集顺序要设计成一样</div></pre></td></tr></table></figure>
-<h3 id="禁止在数据库中存储明文密码"><a href="#禁止在数据库中存储明文密码" class="headerlink" title="禁止在数据库中存储明文密码"></a>禁止在数据库中存储明文密码</h3><h3 id="尽可能不使用TEXT、BLOB类型"><a href="#尽可能不使用TEXT、BLOB类型" class="headerlink" title="尽可能不使用TEXT、BLOB类型"></a>尽可能不使用TEXT、BLOB类型</h3><h3 id="用-DECIMAL-代替-FLOAT-和-DOUBLE-存储精确浮点数，同财务相关的金额类型数据必须使用DECIMAL类型"><a href="#用-DECIMAL-代替-FLOAT-和-DOUBLE-存储精确浮点数，同财务相关的金额类型数据必须使用DECIMAL类型" class="headerlink" title="用 DECIMAL 代替 FLOAT 和 DOUBLE 存储精确浮点数，同财务相关的金额类型数据必须使用DECIMAL类型"></a>用 DECIMAL 代替 FLOAT 和 DOUBLE 存储精确浮点数，同财务相关的金额类型数据必须使用DECIMAL类型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">可以保证在浮点计算时，不丢失精度；</div><div class="line">decimal 占用空间有定义的宽度决定，（每4个字节可以存储9位数字，并且小数点也占用一个字节）；</div><div class="line">可用于存储比 BIGINT 更大的整数数据。</div></pre></td></tr></table></figure>
-<h2 id="索引规范"><a href="#索引规范" class="headerlink" title="索引规范"></a>索引规范</h2><h3 id="任何新上线的-SELECT、UPDATE、DELETE，都需要-EXPLAIN，查看-SQL-的索引使用情况"><a href="#任何新上线的-SELECT、UPDATE、DELETE，都需要-EXPLAIN，查看-SQL-的索引使用情况" class="headerlink" title="任何新上线的 SELECT、UPDATE、DELETE，都需要 EXPLAIN，查看 SQL 的索引使用情况"></a>任何新上线的 SELECT、UPDATE、DELETE，都需要 EXPLAIN，查看 SQL 的索引使用情况</h3><h3 id="单表索引建议控制在5个以内，单复合索引字段数不允许超过5个"><a href="#单表索引建议控制在5个以内，单复合索引字段数不允许超过5个" class="headerlink" title="单表索引建议控制在5个以内，单复合索引字段数不允许超过5个"></a>单表索引建议控制在5个以内，单复合索引字段数不允许超过5个</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">字段超过5个时，实际已经起不到有效过滤数据的作用了。</div><div class="line">索引是双刃剑，会增加维护负担，增大IO压力，索引占用空间是成倍增加的</div><div class="line">单张表的索引数量控制在5个以内，或不超过表字段个数的20%。若单张表多个字段在查询需求上都要单独用到索引，需要经过DBA评估。</div></pre></td></tr></table></figure>
-<h3 id="禁止索引的字段有-NULL值"><a href="#禁止索引的字段有-NULL值" class="headerlink" title="禁止索引的字段有 NULL值"></a>禁止索引的字段有 NULL值</h3><h3 id="InnoDB-单个索引中的字节数不超过-767（-MyISAM-引擎下为-1000）"><a href="#InnoDB-单个索引中的字节数不超过-767（-MyISAM-引擎下为-1000）" class="headerlink" title="InnoDB 单个索引中的字节数不超过 767（ MyISAM 引擎下为 1000）"></a>InnoDB 单个索引中的字节数不超过 767（ MyISAM 引擎下为 1000）</h3><h3 id="非唯一索引按照“IDX字段名称-字段名称-”进用行命名。唯一索引按照“UK字段名称-字段名称-”进用行命名"><a href="#非唯一索引按照“IDX字段名称-字段名称-”进用行命名。唯一索引按照“UK字段名称-字段名称-”进用行命名" class="headerlink" title="非唯一索引按照“IDX字段名称[字段名称]”进用行命名。唯一索引按照“UK字段名称[字段名称]”进用行命名"></a>非唯一索引按照“IDX<em>字段名称[</em>字段名称]”进用行命名。唯一索引按照“UK<em>字段名称[</em>字段名称]”进用行命名</h3><h3 id="避免建立冗余索引和重复索引"><a href="#避免建立冗余索引和重复索引" class="headerlink" title="避免建立冗余索引和重复索引"></a>避免建立冗余索引和重复索引</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">InnoDB表是一棵索引组织表，主键是和数据放在一起的聚集索引，普通索引最终指向的是主键地址，所以把主键做最后一列是多余的。如f_crm_id作为主键，联合索引(f_user_id,f_crm_id)上的f_crm_id就完全多余</div><div class="line">(a,b,c)、(a,b)，后者为冗余索引。可以利用前缀索引来达到加速目的，减轻维护负担</div><div class="line">组合索引建议包含所有字段名，过长的字段名可以采用缩写形式</div></pre></td></tr></table></figure>
-<h3 id="唯一键由3个以下字段组成，并且字段都是整形时，可使用唯一键作为主键。其他情况下，建议使用自增列或发号器作主键合理创建联合索引"><a href="#唯一键由3个以下字段组成，并且字段都是整形时，可使用唯一键作为主键。其他情况下，建议使用自增列或发号器作主键合理创建联合索引" class="headerlink" title="唯一键由3个以下字段组成，并且字段都是整形时，可使用唯一键作为主键。其他情况下，建议使用自增列或发号器作主键合理创建联合索引"></a>唯一键由3个以下字段组成，并且字段都是整形时，可使用唯一键作为主键。其他情况下，建议使用自增列或发号器作主键合理创建联合索引</h3><h3 id="选择区分度大的列建立索引。组合索引中，区分度大的字段放在最前"><a href="#选择区分度大的列建立索引。组合索引中，区分度大的字段放在最前" class="headerlink" title="选择区分度大的列建立索引。组合索引中，区分度大的字段放在最前"></a>选择区分度大的列建立索引。组合索引中，区分度大的字段放在最前</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">不在低基数列上建立索引，例如性别、类型。但有一种情况，idx_feedbackid_type (f_feedback_id,f_type)，如果经常用 f_type=1 比较，而且能过滤掉90%行，那这个组合索引就值得创建。有时候同样的查询语句，由于条件取值不同导致使用不同的索引，也是这个道理。</div><div class="line">索引选择性计算方法（基数/数据行数）Selectivity = Cardinality / Total Rows = select count(distinct col1)/count(*) from tbname，越接近1说明col1上使用索引的过滤效果越好。</div><div class="line">走索引扫描行数超过30%时，改全表扫描。</div></pre></td></tr></table></figure>
-<h3 id="对于频繁的查询优先考虑使用覆盖索引，避免Innodb表进行索引的二次查找"><a href="#对于频繁的查询优先考虑使用覆盖索引，避免Innodb表进行索引的二次查找" class="headerlink" title="对于频繁的查询优先考虑使用覆盖索引，避免Innodb表进行索引的二次查找"></a>对于频繁的查询优先考虑使用覆盖索引，避免Innodb表进行索引的二次查找</h3><h3 id="尽量不要在频繁更新的列上创建索引"><a href="#尽量不要在频繁更新的列上创建索引" class="headerlink" title="尽量不要在频繁更新的列上创建索引"></a>尽量不要在频繁更新的列上创建索引</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如不在定义了 ON UPDATE CURRENT_STAMP 的列上创建索引，维护成本太高（好在 MySQL 有 insert buffer，会合并索引的插入）</div></pre></td></tr></table></figure>
-<h3 id="联表查询时，JOIN列的数据类型必须相同，并且要建立索引"><a href="#联表查询时，JOIN列的数据类型必须相同，并且要建立索引" class="headerlink" title="联表查询时，JOIN列的数据类型必须相同，并且要建立索引"></a>联表查询时，JOIN列的数据类型必须相同，并且要建立索引</h3><h3 id="不在低基数列上建立索引，比如性别列建立索引"><a href="#不在低基数列上建立索引，比如性别列建立索引" class="headerlink" title="不在低基数列上建立索引，比如性别列建立索引"></a>不在低基数列上建立索引，比如性别列建立索引</h3><h3 id="对字符串使用前缀索引，前缀索引长度不超过8个字符"><a href="#对字符串使用前缀索引，前缀索引长度不超过8个字符" class="headerlink" title="对字符串使用前缀索引，前缀索引长度不超过8个字符"></a>对字符串使用前缀索引，前缀索引长度不超过8个字符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">对超过30个字符长度的列创建索引时，考虑使用前缀索引，如 idx_cs_guid2 (f_cs_guid(26)) 表示截取前26个字符做索引，既可以提高查找效率，也可以节省空间；</div><div class="line">前缀索引也有它的缺点是，如果在该列上 ORDER BY 或 GROUP BY 时无法使用索引，也不能把它们用作覆盖索引(Covering Index)；</div><div class="line">如果在 varbinary 或 blob 这种以二进制存储的列上建立前缀索引，要考虑字符集，括号里表示的是字节数。</div></pre></td></tr></table></figure>
-<h3 id="不对过长的-VARCHAR-或者-TXET-字段建立索引。建议优先考虑前缀索引，或添加-CRC32-或-MD5-伪列并建立索引"><a href="#不对过长的-VARCHAR-或者-TXET-字段建立索引。建议优先考虑前缀索引，或添加-CRC32-或-MD5-伪列并建立索引" class="headerlink" title="不对过长的 VARCHAR 或者 TXET 字段建立索引。建议优先考虑前缀索引，或添加 CRC32 或 MD5 伪列并建立索引"></a>不对过长的 VARCHAR 或者 TXET 字段建立索引。建议优先考虑前缀索引，或添加 CRC32 或 MD5 伪列并建立索引</h3><h3 id="最左前缀原则"><a href="#最左前缀原则" class="headerlink" title="最左前缀原则"></a>最左前缀原则</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql使用联合索引时，从左向右匹配，遇到断开或者范围查询时，无法用到后续的索引列</div><div class="line">比如索引 idx_c1_c2_c3 (c1,c2,c3)，相当于创建了(c1)、(c1,c2)、(c1,c2,c3)三个索引，<span class="built_in">where</span>条件包含上面三种情况的字段比较则可以用到索引，但像 <span class="built_in">where</span> c1=a and c3=c 只能用到c1列的索引，像 c2=b and c3=c等情况就完全用不到这个索引</div><div class="line">遇到范围查询(&gt;、&lt;、between、like)也会停止索引匹配，比如 c1=a and c2 &gt; 2 and c3=c，只有c1,c2列上的比较能用到索引，(c1,c2,c3)排列的索引才可能会都用上</div><div class="line"><span class="built_in">where</span>条件里面字段的顺序与索引顺序无关，mysql优化器会自动调整顺序</div></pre></td></tr></table></figure>
-<h3 id="合理使用覆盖索引减少IO，避免排序"><a href="#合理使用覆盖索引减少IO，避免排序" class="headerlink" title="合理使用覆盖索引减少IO，避免排序"></a>合理使用覆盖索引减少IO，避免排序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">INNODB存储引擎中，secondary index(非主键索引，又称为辅助索引、二级索引)没有直接存储行地址，而是存储主键值。</div><div class="line">如果用户需要查询 secondary index 中所不包含的数据列，则需要先通过 secondary index 查找到主键值，然后再通过主键查询到其他数据列，因此需要查询两次。覆盖索引则可以在一个索引中获取所有需要的数据列，从而避免回表进行二次查找，节省IO因此效率较高。</div><div class="line">例如 SELECT email，uid FROM user_email WHERE uid=xx，如果uid不是主键，适当时候可以将索引添加为 index(uid，email)，以获得性能提升</div></pre></td></tr></table></figure>
-<h3 id="可以把随机I-O变为顺序I-O加快查询效率"><a href="#可以把随机I-O变为顺序I-O加快查询效率" class="headerlink" title="可以把随机I/O变为顺序I/O加快查询效率"></a>可以把随机I/O变为顺序I/O加快查询效率</h3><h2 id="SQL编码规范"><a href="#SQL编码规范" class="headerlink" title="SQL编码规范"></a>SQL编码规范</h2><h3 id="使用-prepared-statement，可以提升性能并避免SQL注入"><a href="#使用-prepared-statement，可以提升性能并避免SQL注入" class="headerlink" title="使用 prepared statement，可以提升性能并避免SQL注入"></a>使用 prepared statement，可以提升性能并避免SQL注入</h3><h3 id="禁止隐式转换。数值类型禁止加引号；字符串类型必须加引号"><a href="#禁止隐式转换。数值类型禁止加引号；字符串类型必须加引号" class="headerlink" title="禁止隐式转换。数值类型禁止加引号；字符串类型必须加引号"></a>禁止隐式转换。数值类型禁止加引号；字符串类型必须加引号</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">两个参数至少有一个是 NULL 时，比较的结果也是 NULL，例外是使用 &lt;=&gt; 对两个 NULL 做比较时会返回 1，这两种情况都不需要做类型转换；</div><div class="line">两个参数都是字符串，会按照字符串来比较，不做类型转换；</div><div class="line">两个参数都是整数，按照整数来比较，不做类型转换；</div><div class="line">十六进制的值和非数字做比较时，会被当做二进制串；</div><div class="line">有一个参数是 TIMESTAMP 或 DATETIME，并且另外一个参数是常量，常量会被转换为 TIMESTAMP；</div><div class="line">有一个参数是 decimal 类型，如果另外一个参数是 decimal 或者整数，会将整数转换为 decimal 后进行比较，如果另外一个参数是浮点数，则会把 decimal 转换为浮点数进行比较；</div><div class="line">所有其他情况下，两个参数都会被转换为浮点数再进行比较。如果一个索引建立在string类型上，如果这个字段和一个int类型的值比较。如f_phone定义的类型是varchar，但<span class="built_in">where</span>使用f_phone <span class="keyword">in</span> (098890)，两个参数都会被当成成浮点型。发生这个隐式转换并不是最糟的，最糟的是string转换后的<span class="built_in">float</span>，MySQL无法使用索引，这才导致了性能问题。如果是 f_user_id = ‘1234567’ 的情况,直接把数字当字符串比较。</div></pre></td></tr></table></figure>
-<h3 id="减少与数据库交互次数，尽量采用批量SQL语句"><a href="#减少与数据库交互次数，尽量采用批量SQL语句" class="headerlink" title="减少与数据库交互次数，尽量采用批量SQL语句"></a>减少与数据库交互次数，尽量采用批量SQL语句</h3><h3 id="拆分复杂SQL为多个小SQL，避免大事务"><a href="#拆分复杂SQL为多个小SQL，避免大事务" class="headerlink" title="拆分复杂SQL为多个小SQL，避免大事务"></a>拆分复杂SQL为多个小SQL，避免大事务</h3><h3 id="获取大量数据时，建议分批次获取数据，每次获取数据少于2000条，结果集应小于1M"><a href="#获取大量数据时，建议分批次获取数据，每次获取数据少于2000条，结果集应小于1M" class="headerlink" title="获取大量数据时，建议分批次获取数据，每次获取数据少于2000条，结果集应小于1M"></a>获取大量数据时，建议分批次获取数据，每次获取数据少于2000条，结果集应小于1M</h3><h3 id="统计表中记录数时使用-COUNT-，而不是-COUNT-primary-key-和-COUNT-1-备注：仅针对-MyiSAM"><a href="#统计表中记录数时使用-COUNT-，而不是-COUNT-primary-key-和-COUNT-1-备注：仅针对-MyiSAM" class="headerlink" title="统计表中记录数时使用 COUNT(*)，而不是 COUNT(primary_key) 和 COUNT(1) 备注：仅针对 MyiSAM"></a>统计表中记录数时使用 COUNT(*)，而不是 COUNT(primary_key) 和 COUNT(1) 备注：仅针对 MyiSAM</h3><h3 id="SELECT只获取必要的字段，杜绝直接-SELECT-读取全部字段"><a href="#SELECT只获取必要的字段，杜绝直接-SELECT-读取全部字段" class="headerlink" title="SELECT只获取必要的字段，杜绝直接 SELECT * 读取全部字段"></a>SELECT只获取必要的字段，杜绝直接 SELECT * 读取全部字段</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">即使需要所有字段，减少网络带宽消耗，能有效利用覆盖索引，表结构变更对程序基本无影响</div></pre></td></tr></table></figure>
-<h3 id="SQL中避免出现-now-、rand-、sysdate-、current-user-等不确定结果的函数"><a href="#SQL中避免出现-now-、rand-、sysdate-、current-user-等不确定结果的函数" class="headerlink" title="SQL中避免出现 now()、rand()、sysdate()、current_user()等不确定结果的函数"></a>SQL中避免出现 now()、rand()、sysdate()、current_user()等不确定结果的函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">语句级复制场景下，引起主从数据不一致；不确定值的函数，产⽣生的SQL语句无法利用QUERY CACHE。</div></pre></td></tr></table></figure>
-<h3 id="INSERT语句必须指定字段列表，禁止使用-INSERT-INTO-TABLE"><a href="#INSERT语句必须指定字段列表，禁止使用-INSERT-INTO-TABLE" class="headerlink" title="INSERT语句必须指定字段列表，禁止使用 INSERT INTO TABLE()"></a>INSERT语句必须指定字段列表，禁止使用 INSERT INTO TABLE()</h3><h3 id="禁止从库上执行后台管理和统计类功能的查询，必要时申请统计类从库"><a href="#禁止从库上执行后台管理和统计类功能的查询，必要时申请统计类从库" class="headerlink" title="禁止从库上执行后台管理和统计类功能的查询，必要时申请统计类从库"></a>禁止从库上执行后台管理和统计类功能的查询，必要时申请统计类从库</h3><h3 id="禁止UPDATE、DELETE语句使用LIMIT"><a href="#禁止UPDATE、DELETE语句使用LIMIT" class="headerlink" title="禁止UPDATE、DELETE语句使用LIMIT"></a>禁止UPDATE、DELETE语句使用LIMIT</h3><h3 id="程序应有捕获SQL异常的处理机制，必要时通过rollback显式回滚"><a href="#程序应有捕获SQL异常的处理机制，必要时通过rollback显式回滚" class="headerlink" title="程序应有捕获SQL异常的处理机制，必要时通过rollback显式回滚"></a>程序应有捕获SQL异常的处理机制，必要时通过rollback显式回滚</h3><h3 id="禁止使用反向查询，例如-not-in、not-like、not-exisits"><a href="#禁止使用反向查询，例如-not-in、not-like、not-exisits" class="headerlink" title="禁止使用反向查询，例如 not in、not like、not exisits"></a>禁止使用反向查询，例如 not in、not like、not exisits</h3><h3 id="禁止使用order-by-rand"><a href="#禁止使用order-by-rand" class="headerlink" title="禁止使用order by rand()"></a>禁止使用order by rand()</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">低效：SELECT * FROM EMP ORDER BY RAND() LIMIT 1;</div><div class="line">高效：SELECT *</div><div class="line">         FROM EMP AS t1</div><div class="line">        JOIN (SELECT ROUND(RAND() *</div><div class="line">                     ((SELECT MAX(id) FROM EMP) - (SELECT MIN(id) FROM EMP)) +</div><div class="line">                     (SELECT MIN(id) FROM EMP)) AS id) AS t2</div><div class="line">        WHERE t1.id &gt;= t2.id</div><div class="line">        ORDER BY t1.id LIMIT 1;</div></pre></td></tr></table></figure>
-<h3 id="禁止使用-前导查询，例如：like-‘-abc’，无法利用到索引"><a href="#禁止使用-前导查询，例如：like-‘-abc’，无法利用到索引" class="headerlink" title="禁止使用%前导查询，例如：like  ‘%abc’，无法利用到索引"></a>禁止使用%前导查询，例如：like  ‘%abc’，无法利用到索引</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">低效：SELECT e.ename FROM emp e  WHERE e.ename LIKE <span class="string">'%abc'</span>;</div><div class="line">高效：SELECT e.ename FROM emp e  WHERE e.ename LIKE <span class="string">'abc%'</span>;</div></pre></td></tr></table></figure>
-<h3 id="避免使用JOIN和子查询。必要时推荐用JOIN代替子查询"><a href="#避免使用JOIN和子查询。必要时推荐用JOIN代替子查询" class="headerlink" title="避免使用JOIN和子查询。必要时推荐用JOIN代替子查询"></a>避免使用JOIN和子查询。必要时推荐用JOIN代替子查询</h3><h3 id="使用-IN-代替-OR；SQL语句中IN包含的值不应过多，应少于300个，否则使用转为字符串LIKE"><a href="#使用-IN-代替-OR；SQL语句中IN包含的值不应过多，应少于300个，否则使用转为字符串LIKE" class="headerlink" title="使用 IN 代替 OR；SQL语句中IN包含的值不应过多，应少于300个，否则使用转为字符串LIKE"></a>使用 IN 代替 OR；SQL语句中IN包含的值不应过多，应少于300个，否则使用转为字符串LIKE</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">低效：SELECT * FROM location WHERE loc_id = 10 OR loc_id = 20 OR loc_id = 30;</div><div class="line">高效：SELECT * FROM location WHERE loc_id IN (10,20,30);</div></pre></td></tr></table></figure>
-<h3 id="使用-gt-、-lt-等，避免使用-和-lt-gt-命令"><a href="#使用-gt-、-lt-等，避免使用-和-lt-gt-命令" class="headerlink" title="使用&gt;、&lt;等，避免使用!=和&lt;&gt;命令"></a>使用&gt;、&lt;等，避免使用!=和&lt;&gt;命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">低效：select * from employee <span class="built_in">where</span> salary &lt;&gt; 3000;</div><div class="line">高效：select * from employee <span class="built_in">where</span> salary &lt; 3000 or salary &gt; 3000;</div></pre></td></tr></table></figure>
-<h3 id="使用-UNION-替换-OR-适用于索引列"><a href="#使用-UNION-替换-OR-适用于索引列" class="headerlink" title="使用 UNION 替换 OR(适用于索引列)"></a>使用 UNION 替换 OR(适用于索引列)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">低效：SELECT loc_id, loc_desc, region</div><div class="line">          FROM location</div><div class="line">         WHERE loc_id = 10 OR region = <span class="string">'MELBOURNE'</span>;</div><div class="line">高效：SELECT loc_id, loc_desc, region  </div><div class="line">          FROM location</div><div class="line">         WHERE loc_id = 10</div><div class="line">       UNION</div><div class="line">       SELECT loc_id, loc_desc, region</div><div class="line">          FROM location</div><div class="line">         WHERE region = <span class="string">'MELBOURNE'</span>;</div></pre></td></tr></table></figure>
-<h3 id="在明显不会有重复值时使用UNION-ALL-代替UNION"><a href="#在明显不会有重复值时使用UNION-ALL-代替UNION" class="headerlink" title="在明显不会有重复值时使用UNION ALL 代替UNION"></a>在明显不会有重复值时使用UNION ALL 代替UNION</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">低效：SELECT ACCT_NUM, BALANCE_AMT</div><div class="line">          FROM DEBIT_TRANSACTIONS</div><div class="line">        WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span></div><div class="line">       UNION</div><div class="line">       SELECT ACCT_NUM, BALANCE_AMT</div><div class="line">          FROM DEBIT_TRANSACTIONS</div><div class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span>;</div><div class="line">高效：SELECT ACCT_NUM, BALANCE_AMT</div><div class="line">          FROM DEBIT_TRANSACTIONS</div><div class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span></div><div class="line">       UNION ALL</div><div class="line">       SELECT ACCT_NUM, BALANCE_AMT</div><div class="line">          FROM DEBIT_TRANSACTIONS</div><div class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span>;</div></pre></td></tr></table></figure>
-<h3 id="禁止在MySQL中对列进行数学运算"><a href="#禁止在MySQL中对列进行数学运算" class="headerlink" title="禁止在MySQL中对列进行数学运算"></a>禁止在MySQL中对列进行数学运算</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">低效：SELECT e.ename FROM emp e WHERE e.sal*1.1 &gt; 900;</div><div class="line">高效：SELECT e.ename FROM emp e WHERE e.sal &gt; 900/1.1;</div></pre></td></tr></table></figure>
-<h3 id="禁止在MySQL中对列进行函数运算"><a href="#禁止在MySQL中对列进行函数运算" class="headerlink" title="禁止在MySQL中对列进行函数运算"></a>禁止在MySQL中对列进行函数运算</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">低效：SELECT e.ename</div><div class="line">          FROM emp e</div><div class="line">         WHERE DATE_FORMAT(e.date, ’%Y%m%d’) = <span class="string">'20160516'</span>;</div><div class="line">高效：SELECT e.ename</div><div class="line">          FROM emp e</div><div class="line">         WHERE e.date &gt; = <span class="string">'2016-05-16 00:00:01'</span></div><div class="line">         AND e.date &lt; <span class="string">'2016-05-17 00:00:00'</span>;</div></pre></td></tr></table></figure>
-<h3 id="建议使用合理的分页方式以提高分页效率"><a href="#建议使用合理的分页方式以提高分页效率" class="headerlink" title="建议使用合理的分页方式以提高分页效率"></a>建议使用合理的分页方式以提高分页效率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">低效：SELECT e.ename FROM emp e <span class="built_in">limit</span> 10000,10;</div><div class="line">高效：SELECT e.ename FROM emp e  WHERE e.id &gt;=10000 <span class="built_in">limit</span> 10;</div></pre></td></tr></table></figure>
-<h3 id="用EXISTS替换DISTINCT"><a href="#用EXISTS替换DISTINCT" class="headerlink" title="用EXISTS替换DISTINCT"></a>用EXISTS替换DISTINCT</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">低效: SELECT DISTINCT DEPT_NO,DEPT_NAME FROM DEPT D , EMP E</div><div class="line">         WHERE D.DEPT_NO = E.DEPT_NO</div><div class="line">高效: SELECT DEPT_NO,DEPT_NAME FROM DEPT D</div><div class="line">         WHERE  EXISTS</div><div class="line">           ( SELECT ‘X’ FROM EMP E WHERE E.DEPT_NO = D.DEPT_NO);</div></pre></td></tr></table></figure>
-<h3 id="避免在索引列上使用-IS-NULL和-IS-NOT-NULL"><a href="#避免在索引列上使用-IS-NULL和-IS-NOT-NULL" class="headerlink" title="避免在索引列上使用 IS NULL和 IS NOT NULL"></a>避免在索引列上使用 IS NULL和 IS NOT NULL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">低效: SELECT … FROM  DEPARTMENT  WHERE  DEPT_CODE IS NOT NULL;</div><div class="line">高效: SELECT … FROM  DEPARTMENT  WHERE  DEPT_CODE &gt;=0;</div></pre></td></tr></table></figure>
-<h2 id="数据库操作规范"><a href="#数据库操作规范" class="headerlink" title="数据库操作规范"></a>数据库操作规范</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">不允许在 DBA 不知情的情况下在线上数据库导数据，对数据库增、删、改以及操作一些复杂的查询；</div><div class="line">对于大表上线，需要 DBA 做详细的评估；</div><div class="line">大批量更新，如修复数据，避开高峰期，并通知DBA。直接执行 SQL 由DBA同事操作；</div><div class="line">及时处理已下线业务的 SQL、数据库和表；</div><div class="line">重要项目的数据库方案选型和设计必须提前通知 DBA 参与；</div><div class="line">提交线上的所有 DDL 需求，所有 SQL 语句都需要备注说明；</div><div class="line">所有新上线的表和 SQL 确定走索引后才能上线；</div><div class="line">表结构变更必须通知 DBA 进行审核；</div><div class="line">禁止有 DDL、DCL 权限的应用程序账号存在；</div><div class="line">批量导入、导出数据必须通过 DBA 审核，并在执行过程中观察服务；</div><div class="line">批量更新数据，如 UPDATE、DELETE 操作，必须 DBA 进行审核，并在执行过程中观察服务；</div><div class="line">产品出现非数据库导致的故障时，如被攻击，必须及时通 DBA，便于维护服务稳定；</div><div class="line">业务部门程序出现 BUG 等影响数据库服务的问题，必须及时通知 DBA，便于维护服务稳定；</div><div class="line">业务部门推广活动或上线新功能，必须提前通知 DBA 进行服务和访问量评估，并留出必要时间以便 DBA 完成扩容；</div><div class="line">出现业务部门人为误操作导致数据丢失，需要恢复数据的，必须第一时间通知 DBA，并提供准确时间点、 误操作语句等重要线索；</div><div class="line">提交线上建表改表需求，必须详细注明涉及到的所有 SQL 语句(包括INSERT、DELETE、UPDATE)，便于 DBA 进行审核和优化；</div><div class="line">对同一个表的多次 ALTER 操作必须合并为一次操作；</div><div class="line">禁止在 MySQL 数据库中存放业务逻辑；</div><div class="line">禁止在线上做数据库压力测试。</div></pre></td></tr></table></figure>
+        <h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><h3 id="库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割"><a href="#库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割" class="headerlink" title="库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割"></a>库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MySQL 配置参数 lower_case_table_names=1，即库表名以小写存储，大小写不敏感。如果是0，则库表名以实际情况存储，大小写敏感；如果是2，以实际情况存储，但以小写比较；</span><br><span class="line">如果大小写混合使用，可能存在abc，Abc，ABC等多个表共存，容易导致混乱；</span><br><span class="line">字段名显示区分大小写，但实际使⽤时不区分，即不可以建立两个名字一样但大小写不一样的字段；</span><br><span class="line">为了统一规范， 库名、表名、字段名使用小写字母。</span><br></pre></td></tr></table></figure>
+<h3 id="库名以d开头，表名以t开头，字段名以f-开头（只作为参考，但必须统一命名标准）"><a href="#库名以d开头，表名以t开头，字段名以f-开头（只作为参考，但必须统一命名标准）" class="headerlink" title="库名以d开头，表名以t开头，字段名以f_开头（只作为参考，但必须统一命名标准）"></a>库名以d开头，表名以t开头，字段名以f_开头（只作为参考，但必须统一命名标准）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">比如表 t_crm_relation，中间的 crm 代表业务模块名；</span><br><span class="line">视图以view_开头，事件以event_开头，触发器以trig_开头，存储过程以proc_开头，函数以func_开头；</span><br><span class="line">普通索引以 idx_col1_col2 命名，唯一索引以uk_col1_col2命名（可去掉f_公共部分）。如 idx_companyid_corpid_contacttime(f_company_id,f_corp_id,f_contact_time)。</span><br></pre></td></tr></table></figure>
+<h3 id="库名、表名、字段名必须见名知意。命名与业务、产品线等相关联，禁止使用MySQL保留字禁止在MySQL中进行数学运算和函数运算"><a href="#库名、表名、字段名必须见名知意。命名与业务、产品线等相关联，禁止使用MySQL保留字禁止在MySQL中进行数学运算和函数运算" class="headerlink" title="库名、表名、字段名必须见名知意。命名与业务、产品线等相关联，禁止使用MySQL保留字禁止在MySQL中进行数学运算和函数运算"></a>库名、表名、字段名必须见名知意。命名与业务、产品线等相关联，禁止使用MySQL保留字禁止在MySQL中进行数学运算和函数运算</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当库名、表名、字段名等属性含有保留字时，SQL语句必须用反引号引用属性名称，这将使得SQL语句书写、SHELL脚本中变量的转义等变得非常复杂。</span><br></pre></td></tr></table></figure>
+<h3 id="库名、表名、字段名禁止超过32个字符"><a href="#库名、表名、字段名禁止超过32个字符" class="headerlink" title="库名、表名、字段名禁止超过32个字符"></a>库名、表名、字段名禁止超过32个字符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">库名、表名、字段名支持最多64个字符，但为了统一规范、易于辨识以及减少传输量，禁止超过20个字符。</span><br></pre></td></tr></table></figure>
+<h3 id="临时库、表名必须以tmp为前缀，并以日期为后缀"><a href="#临时库、表名必须以tmp为前缀，并以日期为后缀" class="headerlink" title="临时库、表名必须以tmp为前缀，并以日期为后缀"></a>临时库、表名必须以tmp为前缀，并以日期为后缀</h3><h3 id="备份库、表必须以bak为前缀，并以日期为后缀"><a href="#备份库、表必须以bak为前缀，并以日期为后缀" class="headerlink" title="备份库、表必须以bak为前缀，并以日期为后缀"></a>备份库、表必须以bak为前缀，并以日期为后缀</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这也是为将来有可能分表做准备的，比如 t_crm_ec_record_201403，但像 t_crm_contact_at201506 就打破了这种规范。</span><br><span class="line">不具有时间特性的，直接以 t_tbname_001 这样的方式命名。</span><br></pre></td></tr></table></figure>
+<h3 id="按日期时间分表须符合-YYYY-MM-DD-格式"><a href="#按日期时间分表须符合-YYYY-MM-DD-格式" class="headerlink" title="按日期时间分表须符合_YYYY[MM][DD]格式"></a>按日期时间分表须符合_YYYY[MM][DD]格式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如 t_crm_relation_tmp0425。备份表也类似，形如 _bak20160425。</span><br></pre></td></tr></table></figure>
+<h2 id="库表基础规范"><a href="#库表基础规范" class="headerlink" title="库表基础规范"></a>库表基础规范</h2><h3 id="表使用InnoDB存储引擎"><a href="#表使用InnoDB存储引擎" class="headerlink" title="表使用InnoDB存储引擎"></a>表使用InnoDB存储引擎</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MySQL 5.5版本开始MySQL默认存储引擎就是InnoDB，MySQL 5.7版本开始，系统表开始弃用 MyISAM 引擎。</span><br></pre></td></tr></table></figure>
+<h3 id="库、表字符集统一使用UTF8，必要时遇-EMOJ-等表情字符需求使用-UTF8MB4"><a href="#库、表字符集统一使用UTF8，必要时遇-EMOJ-等表情字符需求使用-UTF8MB4" class="headerlink" title="库、表字符集统一使用UTF8，必要时遇 EMOJ 等表情字符需求使用 UTF8MB4"></a>库、表字符集统一使用UTF8，必要时遇 EMOJ 等表情字符需求使用 UTF8MB4</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UTF8字符集存储汉字占用3个字节，存储英文字符占用一个字节；</span><br><span class="line">校对字符集使用默认的 utf8_general_ci；</span><br><span class="line">连接的客户端也使用 UTF8，建立连接时指定 charset 或 SET NAMES UTF8;</span><br><span class="line">如果遇到EMOJ等表情符号的存储需求，可申请使用 UTF8MB4 字符集。</span><br></pre></td></tr></table></figure>
+<h3 id="所有表、列都需要添加注释"><a href="#所有表、列都需要添加注释" class="headerlink" title="所有表、列都需要添加注释"></a>所有表、列都需要添加注释</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">尽量给字段也添加注释。类 status 型需指明主要值的含义，如“0-离线，1-在线”。</span><br></pre></td></tr></table></figure>
+<h3 id="控制单表字段数量，单表字段数上限20"><a href="#控制单表字段数量，单表字段数上限20" class="headerlink" title="控制单表字段数量，单表字段数上限20"></a>控制单表字段数量，单表字段数上限20</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单表字段数上限20左右，再多的话考虑垂直分表。1、冷热数据分离；2、大字段分离；3、常在一起做条件和返回列的不分离。</span><br><span class="line">表字段控制少而精，可以提高IO效率，内存缓存更多有效数据，从而提高响应速度和并发能力，后续 alter table 也更快。</span><br></pre></td></tr></table></figure>
+<h3 id="所有-InooDB-表都必须显式指定主键，推荐使用-UNSIGNED-自增列作为主键，禁止使用-UUID、MD5、HASH、字符串列作为主键以及多字段复合主键"><a href="#所有-InooDB-表都必须显式指定主键，推荐使用-UNSIGNED-自增列作为主键，禁止使用-UUID、MD5、HASH、字符串列作为主键以及多字段复合主键" class="headerlink" title="所有 InooDB 表都必须显式指定主键，推荐使用 UNSIGNED 自增列作为主键，禁止使用 UUID、MD5、HASH、字符串列作为主键以及多字段复合主键"></a>所有 InooDB 表都必须显式指定主键，推荐使用 UNSIGNED 自增列作为主键，禁止使用 UUID、MD5、HASH、字符串列作为主键以及多字段复合主键</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">主键尽量采用自增方式，InnoDB 表实际是一棵索引组织表，顺序存储可以提高存取效率，充分利用磁盘空间。还有对一些复杂查询可能需要自连接来优化时需要用到。</span><br><span class="line">需要全局唯一主键时，使用外部发号器 ticket server（建设中）。</span><br><span class="line">如果没有主键或唯一索引，update/delete 是通过所有字段来定位操作的行，相当于每行就是一次全表扫描。</span><br><span class="line">少数情况可以使用联合唯一主键，需与DBA协商。</span><br></pre></td></tr></table></figure>
+<h3 id="避免使用存储过程、视图，禁止使用触发器以及事件"><a href="#避免使用存储过程、视图，禁止使用触发器以及事件" class="headerlink" title="避免使用存储过程、视图，禁止使用触发器以及事件"></a>避免使用存储过程、视图，禁止使用触发器以及事件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">存储过程（procedure）虽然可以简化业务端代码，在传统企业写复杂逻辑时可能会用到，而在互联网企业变更是很频繁的，在分库分表的情况下要升级一个存储过程相当麻烦。又因为它是不记录<span class="built_in">log</span>的，所以也不方便debug性能问题。</span><br><span class="line">如果使用过程，一定考虑如果执行失败的情况；</span><br><span class="line">  使用视图一定程度上也是为了降低代码里SQL的复杂度，但有时候为了视图的通用性会损失性能（比如返回不必要的字段）；</span><br><span class="line">  触发器（trigger）也是同样，但也不应该通过它去约束数据的强一致性，MySQL只支持“基于行的触发”，也就是说，触发器始终是针对一条记录的，而不是针对整个sql语句的，如果变更的数据集非常大的话，效率会很低。掩盖一条</span><br><span class="line">SQL背后的工作，一旦出现问题将是灾难性的，但又很难快速分析和定位。再者需要ddl时无法使用 PT-OSC 工具。放在 transaction 执行；</span><br><span class="line">事件（event）也是一种偷懒的表现，目前已经遇到数次由于定时任务执行失败影响业务的情况，而且MySQL无法对它做失败预警。建立专门的 job scheduler 平台。</span><br></pre></td></tr></table></figure>
+<h3 id="禁止使用外键参考"><a href="#禁止使用外键参考" class="headerlink" title="禁止使用外键参考"></a>禁止使用外键参考</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">即使2个表的字段有明确的外键参考关系，也不使用 FOREIGN KEY ，因为新纪录会去主键表做校验，影响性能。</span><br><span class="line">外键会导致父表和子表之间耦合，十分影响SQL性能，出现过多的锁等待，甚至会造成死锁。</span><br></pre></td></tr></table></figure>
+<h3 id="单表数据量控制在1500w范围以内，超过1500w考虑表分区等优化措施"><a href="#单表数据量控制在1500w范围以内，超过1500w考虑表分区等优化措施" class="headerlink" title="单表数据量控制在1500w范围以内，超过1500w考虑表分区等优化措施"></a>单表数据量控制在1500w范围以内，超过1500w考虑表分区等优化措施</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">做好数据评估，建议纯INT数据不超过1500万，含有 CHAR 或者 VARCHAR 数据的不要超过1000万。字段类型在满足需求条件下越小越好，尽量使用 UNSIGNED 存储非负整数，因为实际使用时候存储负数的场景不多。</span><br></pre></td></tr></table></figure>
+<h2 id="字段规范"><a href="#字段规范" class="headerlink" title="字段规范"></a>字段规范</h2><h3 id="优先选择符合存储需要的最小的数据类型"><a href="#优先选择符合存储需要的最小的数据类型" class="headerlink" title="优先选择符合存储需要的最小的数据类型"></a>优先选择符合存储需要的最小的数据类型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TINYINT(4)：带符号的范围是-128到127。无符号的范围是0到255</span><br><span class="line">SMALLINT(6)：带符号的范围是-32768到32767。无符号的范围是0到65535</span><br><span class="line">MEDIUMINT(9)：带符号的范围是 -8388608到8388607。无符号的范围是0到 16777215</span><br><span class="line">INT(11)：带符号的范围是 -2147483648 到 2147483647。无符号的范围是0到 4294967295</span><br><span class="line">BIGINT(20)：带符号的范围是 -9223372036854775808 到 9223372036854775807。无符号的范围是0到 18446744073709551615</span><br><span class="line">TINYINT(1) 和 TINYINT(4) 中的1和4并不表示存储长度，只有字段指定zerofill是有用，如tinyint(4)，如果实际值是2，如果列指定了zerofill，查询结果就是0002，左边用0来填充</span><br></pre></td></tr></table></figure>
+<h3 id="对于非负型的数据来说，要有限使用无符号整型来存储"><a href="#对于非负型的数据来说，要有限使用无符号整型来存储" class="headerlink" title="对于非负型的数据来说，要有限使用无符号整型来存储"></a>对于非负型的数据来说，要有限使用无符号整型来存储</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">同样的字节数，非负存储的数值范围更大。如TINYINT有符号为 -128-127，无符号为0-255</span><br></pre></td></tr></table></figure>
+<h3 id="char、varchar、text等字符串类型定义"><a href="#char、varchar、text等字符串类型定义" class="headerlink" title="char、varchar、text等字符串类型定义"></a>char、varchar、text等字符串类型定义</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">对于长度基本固定的列，如果该列恰好更新又特别频繁，适合 char</span><br><span class="line">varchar 虽然存储变长字符串，但不可太小也不可太大。UTF8 最多能存21844个汉字，或65532个英文</span><br><span class="line">varbinary(M) 保存的是二进制字符串，它保存的是字节而不是字符，所以没有字符集的概念，M长度0-255（字节）。只用于排序或比较时大小写敏感的类型，不包括密码存储</span><br><span class="line">TEXT类型与VARCHAR都类似，存储可变长度，最大限制也是2^16，但是它20bytes以后的内容是在数据页以外的空间存储（row_format=dynamic），对它的使用需要多一次寻址，没有默认值。</span><br><span class="line">一般用于存放容量平均都很大、操作没有其它字段那样频繁的值。</span><br><span class="line">网上部分文章说要避免使用text和blob，要知道如果纯用varchar可能会导致行溢出，效果差不多，但因为每行占用字节数过多，会导致 buffer_pool能 缓存的数据行、页下降。另外text和blob上面一般不会去建索引，而是利用 sphinx 之类的第三方全文搜索引擎，如果确实要创建（前缀）索引，那就会影响性能。凡事看具体场景。</span><br><span class="line">另外尽可能把 text/blob 拆到另一个表中</span><br><span class="line">BLOB可以看出 varbinary 的扩展版本，内容以二进制字符串存储，无字符集，区分大小写，有一种经常提但不用的场景：不要在数据库里存储图片。</span><br></pre></td></tr></table></figure>
+<h3 id="尽可能把所有列定义为NOT-NULL"><a href="#尽可能把所有列定义为NOT-NULL" class="headerlink" title="尽可能把所有列定义为NOT NULL"></a>尽可能把所有列定义为NOT NULL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">对表的每一行，每个为 NULL 的列都需要额外的空间来标识。</span><br><span class="line">B树索引时不会存储 NULL 值，所以如果索引字段可以为NULL，索引效率会下降。建议用0、特殊值或空串代替NULL值。</span><br><span class="line">如果是索引字段，一定要定义为 NOT NULL 。因为 NULL 值会影响 CORDINATE 统计，影响优化器对索引的选择</span><br><span class="line">如果不能保证INSERT时一定有值过来，定义时使用 DEFAULT <span class="string">' '</span>，或0。</span><br></pre></td></tr></table></figure>
+<h3 id="使用-TIMESTAMP-或-DATETIME-类型存储时间"><a href="#使用-TIMESTAMP-或-DATETIME-类型存储时间" class="headerlink" title="使用 TIMESTAMP 或 DATETIME 类型存储时间"></a>使用 TIMESTAMP 或 DATETIME 类型存储时间</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DATETIME 和 TIMESTAMP 都是精确到秒，优先选择 TIMESTAMP，因为 TIMESTAMP 只有4个字节，而DATETIME占用8个字节。同时 TIMESTAMP 具有自动赋值以及自动更新的特性：</span><br><span class="line">创建新记录和修改记录修改现有记录的时候都对这个数据列刷新：</span><br><span class="line">TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</span><br><span class="line">创建新记录的时候把这个字段设置为当前时间，但以后修改时，不再刷新它：</span><br><span class="line">TIMESTAMP  DEFAULT CURRENT_TIMESTAMP</span><br><span class="line">创建新记录的时候把这个字段设置为0，以后修改时刷新它：</span><br><span class="line">TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</span><br><span class="line">创建新记录的时候把这个字段设置为给定值，以后修改时刷新它：</span><br><span class="line">TIMESTAMP DEFAULT <span class="string">'yyyy-mm-dd hh:mm:ss'</span> ON UPDATE CURRENT_TIMESTAMP</span><br></pre></td></tr></table></figure>
+<h3 id="使用INT-UNSIGNED存储IPV4"><a href="#使用INT-UNSIGNED存储IPV4" class="headerlink" title="使用INT UNSIGNED存储IPV4"></a>使用INT UNSIGNED存储IPV4</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通常使用 VARCHAR(15) 或者 CHAR(15) 保存IP地址，其实IP地址是无符号的32位整数，不是字符串，小数点仅仅为了可读性。MySQL提供了 INET_ATON() 、NET_NTOA()用于IP地址和整数之前转换</span><br></pre></td></tr></table></figure>
+<h3 id="强烈建议使用-TINYINT-来代替枚举-ENUM-类型"><a href="#强烈建议使用-TINYINT-来代替枚举-ENUM-类型" class="headerlink" title="强烈建议使用 TINYINT 来代替枚举 ENUM 类型"></a>强烈建议使用 TINYINT 来代替枚举 ENUM 类型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ENUM 类型在需要修改或增加枚举值时，需要在线 DDL，成本较高；ENUM列值如果含有数字类型，可能会引起默认值混淆。</span><br></pre></td></tr></table></figure>
+<h3 id="使用-VARBINARY-存储大小写敏感的变长字符串或二进制内容"><a href="#使用-VARBINARY-存储大小写敏感的变长字符串或二进制内容" class="headerlink" title="使用 VARBINARY 存储大小写敏感的变长字符串或二进制内容"></a>使用 VARBINARY 存储大小写敏感的变长字符串或二进制内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VARBINARY 默认不区分大小写，没有字符集概念，速度快</span><br></pre></td></tr></table></figure>
+<h3 id="同一意义的字段定义必须相同"><a href="#同一意义的字段定义必须相同" class="headerlink" title="同一意义的字段定义必须相同"></a>同一意义的字段定义必须相同</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">比如不同表中都有 user_id 字段，那么它的类型、字段长度、字符集、字符集顺序要设计成一样</span><br></pre></td></tr></table></figure>
+<h3 id="禁止在数据库中存储明文密码"><a href="#禁止在数据库中存储明文密码" class="headerlink" title="禁止在数据库中存储明文密码"></a>禁止在数据库中存储明文密码</h3><h3 id="尽可能不使用TEXT、BLOB类型"><a href="#尽可能不使用TEXT、BLOB类型" class="headerlink" title="尽可能不使用TEXT、BLOB类型"></a>尽可能不使用TEXT、BLOB类型</h3><h3 id="用-DECIMAL-代替-FLOAT-和-DOUBLE-存储精确浮点数，同财务相关的金额类型数据必须使用DECIMAL类型"><a href="#用-DECIMAL-代替-FLOAT-和-DOUBLE-存储精确浮点数，同财务相关的金额类型数据必须使用DECIMAL类型" class="headerlink" title="用 DECIMAL 代替 FLOAT 和 DOUBLE 存储精确浮点数，同财务相关的金额类型数据必须使用DECIMAL类型"></a>用 DECIMAL 代替 FLOAT 和 DOUBLE 存储精确浮点数，同财务相关的金额类型数据必须使用DECIMAL类型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">可以保证在浮点计算时，不丢失精度；</span><br><span class="line">decimal 占用空间有定义的宽度决定，（每4个字节可以存储9位数字，并且小数点也占用一个字节）；</span><br><span class="line">可用于存储比 BIGINT 更大的整数数据。</span><br></pre></td></tr></table></figure>
+<h2 id="索引规范"><a href="#索引规范" class="headerlink" title="索引规范"></a>索引规范</h2><h3 id="任何新上线的-SELECT、UPDATE、DELETE，都需要-EXPLAIN，查看-SQL-的索引使用情况"><a href="#任何新上线的-SELECT、UPDATE、DELETE，都需要-EXPLAIN，查看-SQL-的索引使用情况" class="headerlink" title="任何新上线的 SELECT、UPDATE、DELETE，都需要 EXPLAIN，查看 SQL 的索引使用情况"></a>任何新上线的 SELECT、UPDATE、DELETE，都需要 EXPLAIN，查看 SQL 的索引使用情况</h3><h3 id="单表索引建议控制在5个以内，单复合索引字段数不允许超过5个"><a href="#单表索引建议控制在5个以内，单复合索引字段数不允许超过5个" class="headerlink" title="单表索引建议控制在5个以内，单复合索引字段数不允许超过5个"></a>单表索引建议控制在5个以内，单复合索引字段数不允许超过5个</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">字段超过5个时，实际已经起不到有效过滤数据的作用了。</span><br><span class="line">索引是双刃剑，会增加维护负担，增大IO压力，索引占用空间是成倍增加的</span><br><span class="line">单张表的索引数量控制在5个以内，或不超过表字段个数的20%。若单张表多个字段在查询需求上都要单独用到索引，需要经过DBA评估。</span><br></pre></td></tr></table></figure>
+<h3 id="禁止索引的字段有-NULL值"><a href="#禁止索引的字段有-NULL值" class="headerlink" title="禁止索引的字段有 NULL值"></a>禁止索引的字段有 NULL值</h3><h3 id="InnoDB-单个索引中的字节数不超过-767（-MyISAM-引擎下为-1000）"><a href="#InnoDB-单个索引中的字节数不超过-767（-MyISAM-引擎下为-1000）" class="headerlink" title="InnoDB 单个索引中的字节数不超过 767（ MyISAM 引擎下为 1000）"></a>InnoDB 单个索引中的字节数不超过 767（ MyISAM 引擎下为 1000）</h3><h3 id="非唯一索引按照“IDX-字段名称-字段名称-”进用行命名。唯一索引按照“UK字段名称-字段名称-”进用行命名"><a href="#非唯一索引按照“IDX-字段名称-字段名称-”进用行命名。唯一索引按照“UK字段名称-字段名称-”进用行命名" class="headerlink" title="非唯一索引按照“IDX_字段名称[字段名称]”进用行命名。唯一索引按照“UK字段名称[_字段名称]”进用行命名"></a>非唯一索引按照“IDX_字段名称[<em>字段名称]”进用行命名。唯一索引按照“UK</em>字段名称[_字段名称]”进用行命名</h3><h3 id="避免建立冗余索引和重复索引"><a href="#避免建立冗余索引和重复索引" class="headerlink" title="避免建立冗余索引和重复索引"></a>避免建立冗余索引和重复索引</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">InnoDB表是一棵索引组织表，主键是和数据放在一起的聚集索引，普通索引最终指向的是主键地址，所以把主键做最后一列是多余的。如f_crm_id作为主键，联合索引(f_user_id,f_crm_id)上的f_crm_id就完全多余</span><br><span class="line">(a,b,c)、(a,b)，后者为冗余索引。可以利用前缀索引来达到加速目的，减轻维护负担</span><br><span class="line">组合索引建议包含所有字段名，过长的字段名可以采用缩写形式</span><br></pre></td></tr></table></figure>
+<h3 id="唯一键由3个以下字段组成，并且字段都是整形时，可使用唯一键作为主键。其他情况下，建议使用自增列或发号器作主键合理创建联合索引"><a href="#唯一键由3个以下字段组成，并且字段都是整形时，可使用唯一键作为主键。其他情况下，建议使用自增列或发号器作主键合理创建联合索引" class="headerlink" title="唯一键由3个以下字段组成，并且字段都是整形时，可使用唯一键作为主键。其他情况下，建议使用自增列或发号器作主键合理创建联合索引"></a>唯一键由3个以下字段组成，并且字段都是整形时，可使用唯一键作为主键。其他情况下，建议使用自增列或发号器作主键合理创建联合索引</h3><h3 id="选择区分度大的列建立索引。组合索引中，区分度大的字段放在最前"><a href="#选择区分度大的列建立索引。组合索引中，区分度大的字段放在最前" class="headerlink" title="选择区分度大的列建立索引。组合索引中，区分度大的字段放在最前"></a>选择区分度大的列建立索引。组合索引中，区分度大的字段放在最前</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">不在低基数列上建立索引，例如性别、类型。但有一种情况，idx_feedbackid_type (f_feedback_id,f_type)，如果经常用 f_type=1 比较，而且能过滤掉90%行，那这个组合索引就值得创建。有时候同样的查询语句，由于条件取值不同导致使用不同的索引，也是这个道理。</span><br><span class="line">索引选择性计算方法（基数/数据行数）Selectivity = Cardinality / Total Rows = select count(distinct col1)/count(*) from tbname，越接近1说明col1上使用索引的过滤效果越好。</span><br><span class="line">走索引扫描行数超过30%时，改全表扫描。</span><br></pre></td></tr></table></figure>
+<h3 id="对于频繁的查询优先考虑使用覆盖索引，避免Innodb表进行索引的二次查找"><a href="#对于频繁的查询优先考虑使用覆盖索引，避免Innodb表进行索引的二次查找" class="headerlink" title="对于频繁的查询优先考虑使用覆盖索引，避免Innodb表进行索引的二次查找"></a>对于频繁的查询优先考虑使用覆盖索引，避免Innodb表进行索引的二次查找</h3><h3 id="尽量不要在频繁更新的列上创建索引"><a href="#尽量不要在频繁更新的列上创建索引" class="headerlink" title="尽量不要在频繁更新的列上创建索引"></a>尽量不要在频繁更新的列上创建索引</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如不在定义了 ON UPDATE CURRENT_STAMP 的列上创建索引，维护成本太高（好在 MySQL 有 insert buffer，会合并索引的插入）</span><br></pre></td></tr></table></figure>
+<h3 id="联表查询时，JOIN列的数据类型必须相同，并且要建立索引"><a href="#联表查询时，JOIN列的数据类型必须相同，并且要建立索引" class="headerlink" title="联表查询时，JOIN列的数据类型必须相同，并且要建立索引"></a>联表查询时，JOIN列的数据类型必须相同，并且要建立索引</h3><h3 id="不在低基数列上建立索引，比如性别列建立索引"><a href="#不在低基数列上建立索引，比如性别列建立索引" class="headerlink" title="不在低基数列上建立索引，比如性别列建立索引"></a>不在低基数列上建立索引，比如性别列建立索引</h3><h3 id="对字符串使用前缀索引，前缀索引长度不超过8个字符"><a href="#对字符串使用前缀索引，前缀索引长度不超过8个字符" class="headerlink" title="对字符串使用前缀索引，前缀索引长度不超过8个字符"></a>对字符串使用前缀索引，前缀索引长度不超过8个字符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对超过30个字符长度的列创建索引时，考虑使用前缀索引，如 idx_cs_guid2 (f_cs_guid(26)) 表示截取前26个字符做索引，既可以提高查找效率，也可以节省空间；</span><br><span class="line">前缀索引也有它的缺点是，如果在该列上 ORDER BY 或 GROUP BY 时无法使用索引，也不能把它们用作覆盖索引(Covering Index)；</span><br><span class="line">如果在 varbinary 或 blob 这种以二进制存储的列上建立前缀索引，要考虑字符集，括号里表示的是字节数。</span><br></pre></td></tr></table></figure>
+<h3 id="不对过长的-VARCHAR-或者-TXET-字段建立索引。建议优先考虑前缀索引，或添加-CRC32-或-MD5-伪列并建立索引"><a href="#不对过长的-VARCHAR-或者-TXET-字段建立索引。建议优先考虑前缀索引，或添加-CRC32-或-MD5-伪列并建立索引" class="headerlink" title="不对过长的 VARCHAR 或者 TXET 字段建立索引。建议优先考虑前缀索引，或添加 CRC32 或 MD5 伪列并建立索引"></a>不对过长的 VARCHAR 或者 TXET 字段建立索引。建议优先考虑前缀索引，或添加 CRC32 或 MD5 伪列并建立索引</h3><h3 id="最左前缀原则"><a href="#最左前缀原则" class="headerlink" title="最左前缀原则"></a>最左前缀原则</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql使用联合索引时，从左向右匹配，遇到断开或者范围查询时，无法用到后续的索引列</span><br><span class="line">比如索引 idx_c1_c2_c3 (c1,c2,c3)，相当于创建了(c1)、(c1,c2)、(c1,c2,c3)三个索引，<span class="built_in">where</span>条件包含上面三种情况的字段比较则可以用到索引，但像 <span class="built_in">where</span> c1=a and c3=c 只能用到c1列的索引，像 c2=b and c3=c等情况就完全用不到这个索引</span><br><span class="line">遇到范围查询(&gt;、&lt;、between、like)也会停止索引匹配，比如 c1=a and c2 &gt; 2 and c3=c，只有c1,c2列上的比较能用到索引，(c1,c2,c3)排列的索引才可能会都用上</span><br><span class="line"><span class="built_in">where</span>条件里面字段的顺序与索引顺序无关，mysql优化器会自动调整顺序</span><br></pre></td></tr></table></figure>
+<h3 id="合理使用覆盖索引减少IO，避免排序"><a href="#合理使用覆盖索引减少IO，避免排序" class="headerlink" title="合理使用覆盖索引减少IO，避免排序"></a>合理使用覆盖索引减少IO，避免排序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INNODB存储引擎中，secondary index(非主键索引，又称为辅助索引、二级索引)没有直接存储行地址，而是存储主键值。</span><br><span class="line">如果用户需要查询 secondary index 中所不包含的数据列，则需要先通过 secondary index 查找到主键值，然后再通过主键查询到其他数据列，因此需要查询两次。覆盖索引则可以在一个索引中获取所有需要的数据列，从而避免回表进行二次查找，节省IO因此效率较高。</span><br><span class="line">例如 SELECT email，uid FROM user_email WHERE uid=xx，如果uid不是主键，适当时候可以将索引添加为 index(uid，email)，以获得性能提升</span><br></pre></td></tr></table></figure>
+<h3 id="可以把随机I-O变为顺序I-O加快查询效率"><a href="#可以把随机I-O变为顺序I-O加快查询效率" class="headerlink" title="可以把随机I/O变为顺序I/O加快查询效率"></a>可以把随机I/O变为顺序I/O加快查询效率</h3><h2 id="SQL编码规范"><a href="#SQL编码规范" class="headerlink" title="SQL编码规范"></a>SQL编码规范</h2><h3 id="使用-prepared-statement，可以提升性能并避免SQL注入"><a href="#使用-prepared-statement，可以提升性能并避免SQL注入" class="headerlink" title="使用 prepared statement，可以提升性能并避免SQL注入"></a>使用 prepared statement，可以提升性能并避免SQL注入</h3><h3 id="禁止隐式转换。数值类型禁止加引号；字符串类型必须加引号"><a href="#禁止隐式转换。数值类型禁止加引号；字符串类型必须加引号" class="headerlink" title="禁止隐式转换。数值类型禁止加引号；字符串类型必须加引号"></a>禁止隐式转换。数值类型禁止加引号；字符串类型必须加引号</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">两个参数至少有一个是 NULL 时，比较的结果也是 NULL，例外是使用 &lt;=&gt; 对两个 NULL 做比较时会返回 1，这两种情况都不需要做类型转换；</span><br><span class="line">两个参数都是字符串，会按照字符串来比较，不做类型转换；</span><br><span class="line">两个参数都是整数，按照整数来比较，不做类型转换；</span><br><span class="line">十六进制的值和非数字做比较时，会被当做二进制串；</span><br><span class="line">有一个参数是 TIMESTAMP 或 DATETIME，并且另外一个参数是常量，常量会被转换为 TIMESTAMP；</span><br><span class="line">有一个参数是 decimal 类型，如果另外一个参数是 decimal 或者整数，会将整数转换为 decimal 后进行比较，如果另外一个参数是浮点数，则会把 decimal 转换为浮点数进行比较；</span><br><span class="line">所有其他情况下，两个参数都会被转换为浮点数再进行比较。如果一个索引建立在string类型上，如果这个字段和一个int类型的值比较。如f_phone定义的类型是varchar，但<span class="built_in">where</span>使用f_phone <span class="keyword">in</span> (098890)，两个参数都会被当成成浮点型。发生这个隐式转换并不是最糟的，最糟的是string转换后的<span class="built_in">float</span>，MySQL无法使用索引，这才导致了性能问题。如果是 f_user_id = ‘1234567’ 的情况,直接把数字当字符串比较。</span><br></pre></td></tr></table></figure>
+<h3 id="减少与数据库交互次数，尽量采用批量SQL语句"><a href="#减少与数据库交互次数，尽量采用批量SQL语句" class="headerlink" title="减少与数据库交互次数，尽量采用批量SQL语句"></a>减少与数据库交互次数，尽量采用批量SQL语句</h3><h3 id="拆分复杂SQL为多个小SQL，避免大事务"><a href="#拆分复杂SQL为多个小SQL，避免大事务" class="headerlink" title="拆分复杂SQL为多个小SQL，避免大事务"></a>拆分复杂SQL为多个小SQL，避免大事务</h3><h3 id="获取大量数据时，建议分批次获取数据，每次获取数据少于2000条，结果集应小于1M"><a href="#获取大量数据时，建议分批次获取数据，每次获取数据少于2000条，结果集应小于1M" class="headerlink" title="获取大量数据时，建议分批次获取数据，每次获取数据少于2000条，结果集应小于1M"></a>获取大量数据时，建议分批次获取数据，每次获取数据少于2000条，结果集应小于1M</h3><h3 id="统计表中记录数时使用-COUNT-，而不是-COUNT-primary-key-和-COUNT-1-备注：仅针对-MyiSAM"><a href="#统计表中记录数时使用-COUNT-，而不是-COUNT-primary-key-和-COUNT-1-备注：仅针对-MyiSAM" class="headerlink" title="统计表中记录数时使用 COUNT(*)，而不是 COUNT(primary_key) 和 COUNT(1) 备注：仅针对 MyiSAM"></a>统计表中记录数时使用 COUNT(*)，而不是 COUNT(primary_key) 和 COUNT(1) 备注：仅针对 MyiSAM</h3><h3 id="SELECT只获取必要的字段，杜绝直接-SELECT-读取全部字段"><a href="#SELECT只获取必要的字段，杜绝直接-SELECT-读取全部字段" class="headerlink" title="SELECT只获取必要的字段，杜绝直接 SELECT * 读取全部字段"></a>SELECT只获取必要的字段，杜绝直接 SELECT * 读取全部字段</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">即使需要所有字段，减少网络带宽消耗，能有效利用覆盖索引，表结构变更对程序基本无影响</span><br></pre></td></tr></table></figure>
+<h3 id="SQL中避免出现-now-、rand-、sysdate-、current-user-等不确定结果的函数"><a href="#SQL中避免出现-now-、rand-、sysdate-、current-user-等不确定结果的函数" class="headerlink" title="SQL中避免出现 now()、rand()、sysdate()、current_user()等不确定结果的函数"></a>SQL中避免出现 now()、rand()、sysdate()、current_user()等不确定结果的函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语句级复制场景下，引起主从数据不一致；不确定值的函数，产⽣生的SQL语句无法利用QUERY CACHE。</span><br></pre></td></tr></table></figure>
+<h3 id="INSERT语句必须指定字段列表，禁止使用-INSERT-INTO-TABLE"><a href="#INSERT语句必须指定字段列表，禁止使用-INSERT-INTO-TABLE" class="headerlink" title="INSERT语句必须指定字段列表，禁止使用 INSERT INTO TABLE()"></a>INSERT语句必须指定字段列表，禁止使用 INSERT INTO TABLE()</h3><h3 id="禁止从库上执行后台管理和统计类功能的查询，必要时申请统计类从库"><a href="#禁止从库上执行后台管理和统计类功能的查询，必要时申请统计类从库" class="headerlink" title="禁止从库上执行后台管理和统计类功能的查询，必要时申请统计类从库"></a>禁止从库上执行后台管理和统计类功能的查询，必要时申请统计类从库</h3><h3 id="禁止UPDATE、DELETE语句使用LIMIT"><a href="#禁止UPDATE、DELETE语句使用LIMIT" class="headerlink" title="禁止UPDATE、DELETE语句使用LIMIT"></a>禁止UPDATE、DELETE语句使用LIMIT</h3><h3 id="程序应有捕获SQL异常的处理机制，必要时通过rollback显式回滚"><a href="#程序应有捕获SQL异常的处理机制，必要时通过rollback显式回滚" class="headerlink" title="程序应有捕获SQL异常的处理机制，必要时通过rollback显式回滚"></a>程序应有捕获SQL异常的处理机制，必要时通过rollback显式回滚</h3><h3 id="禁止使用反向查询，例如-not-in、not-like、not-exisits"><a href="#禁止使用反向查询，例如-not-in、not-like、not-exisits" class="headerlink" title="禁止使用反向查询，例如 not in、not like、not exisits"></a>禁止使用反向查询，例如 not in、not like、not exisits</h3><h3 id="禁止使用order-by-rand"><a href="#禁止使用order-by-rand" class="headerlink" title="禁止使用order by rand()"></a>禁止使用order by rand()</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT * FROM EMP ORDER BY RAND() LIMIT 1;</span><br><span class="line">高效：SELECT *</span><br><span class="line">         FROM EMP AS t1</span><br><span class="line">        JOIN (SELECT ROUND(RAND() *</span><br><span class="line">                     ((SELECT MAX(id) FROM EMP) - (SELECT MIN(id) FROM EMP)) +</span><br><span class="line">                     (SELECT MIN(id) FROM EMP)) AS id) AS t2</span><br><span class="line">        WHERE t1.id &gt;= t2.id</span><br><span class="line">        ORDER BY t1.id LIMIT 1;</span><br></pre></td></tr></table></figure>
+<h3 id="禁止使用-前导查询，例如：like-‘-abc’，无法利用到索引"><a href="#禁止使用-前导查询，例如：like-‘-abc’，无法利用到索引" class="headerlink" title="禁止使用%前导查询，例如：like  ‘%abc’，无法利用到索引"></a>禁止使用%前导查询，例如：like  ‘%abc’，无法利用到索引</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT e.ename FROM emp e  WHERE e.ename LIKE <span class="string">'%abc'</span>;</span><br><span class="line">高效：SELECT e.ename FROM emp e  WHERE e.ename LIKE <span class="string">'abc%'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="避免使用JOIN和子查询。必要时推荐用JOIN代替子查询"><a href="#避免使用JOIN和子查询。必要时推荐用JOIN代替子查询" class="headerlink" title="避免使用JOIN和子查询。必要时推荐用JOIN代替子查询"></a>避免使用JOIN和子查询。必要时推荐用JOIN代替子查询</h3><h3 id="使用-IN-代替-OR；SQL语句中IN包含的值不应过多，应少于300个，否则使用转为字符串LIKE"><a href="#使用-IN-代替-OR；SQL语句中IN包含的值不应过多，应少于300个，否则使用转为字符串LIKE" class="headerlink" title="使用 IN 代替 OR；SQL语句中IN包含的值不应过多，应少于300个，否则使用转为字符串LIKE"></a>使用 IN 代替 OR；SQL语句中IN包含的值不应过多，应少于300个，否则使用转为字符串LIKE</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT * FROM location WHERE loc_id = 10 OR loc_id = 20 OR loc_id = 30;</span><br><span class="line">高效：SELECT * FROM location WHERE loc_id IN (10,20,30);</span><br></pre></td></tr></table></figure>
+<h3 id="使用-gt-、-lt-等，避免使用-和-lt-gt-命令"><a href="#使用-gt-、-lt-等，避免使用-和-lt-gt-命令" class="headerlink" title="使用&gt;、&lt;等，避免使用!=和&lt;&gt;命令"></a>使用&gt;、&lt;等，避免使用!=和&lt;&gt;命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">低效：select * from employee <span class="built_in">where</span> salary &lt;&gt; 3000;</span><br><span class="line">高效：select * from employee <span class="built_in">where</span> salary &lt; 3000 or salary &gt; 3000;</span><br></pre></td></tr></table></figure>
+<h3 id="使用-UNION-替换-OR-适用于索引列"><a href="#使用-UNION-替换-OR-适用于索引列" class="headerlink" title="使用 UNION 替换 OR(适用于索引列)"></a>使用 UNION 替换 OR(适用于索引列)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT loc_id, loc_desc, region</span><br><span class="line">          FROM location</span><br><span class="line">         WHERE loc_id = 10 OR region = <span class="string">'MELBOURNE'</span>;</span><br><span class="line">高效：SELECT loc_id, loc_desc, region  </span><br><span class="line">          FROM location</span><br><span class="line">         WHERE loc_id = 10</span><br><span class="line">       UNION</span><br><span class="line">       SELECT loc_id, loc_desc, region</span><br><span class="line">          FROM location</span><br><span class="line">         WHERE region = <span class="string">'MELBOURNE'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="在明显不会有重复值时使用UNION-ALL-代替UNION"><a href="#在明显不会有重复值时使用UNION-ALL-代替UNION" class="headerlink" title="在明显不会有重复值时使用UNION ALL 代替UNION"></a>在明显不会有重复值时使用UNION ALL 代替UNION</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT ACCT_NUM, BALANCE_AMT</span><br><span class="line">          FROM DEBIT_TRANSACTIONS</span><br><span class="line">        WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span></span><br><span class="line">       UNION</span><br><span class="line">       SELECT ACCT_NUM, BALANCE_AMT</span><br><span class="line">          FROM DEBIT_TRANSACTIONS</span><br><span class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span>;</span><br><span class="line">高效：SELECT ACCT_NUM, BALANCE_AMT</span><br><span class="line">          FROM DEBIT_TRANSACTIONS</span><br><span class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span></span><br><span class="line">       UNION ALL</span><br><span class="line">       SELECT ACCT_NUM, BALANCE_AMT</span><br><span class="line">          FROM DEBIT_TRANSACTIONS</span><br><span class="line">         WHERE TRAN_DATE = <span class="string">'31 - DEC - 95'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="禁止在MySQL中对列进行数学运算"><a href="#禁止在MySQL中对列进行数学运算" class="headerlink" title="禁止在MySQL中对列进行数学运算"></a>禁止在MySQL中对列进行数学运算</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT e.ename FROM emp e WHERE e.sal*1.1 &gt; 900;</span><br><span class="line">高效：SELECT e.ename FROM emp e WHERE e.sal &gt; 900/1.1;</span><br></pre></td></tr></table></figure>
+<h3 id="禁止在MySQL中对列进行函数运算"><a href="#禁止在MySQL中对列进行函数运算" class="headerlink" title="禁止在MySQL中对列进行函数运算"></a>禁止在MySQL中对列进行函数运算</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT e.ename</span><br><span class="line">          FROM emp e</span><br><span class="line">         WHERE DATE_FORMAT(e.date, ’%Y%m%d’) = <span class="string">'20160516'</span>;</span><br><span class="line">高效：SELECT e.ename</span><br><span class="line">          FROM emp e</span><br><span class="line">         WHERE e.date &gt; = <span class="string">'2016-05-16 00:00:01'</span></span><br><span class="line">         AND e.date &lt; <span class="string">'2016-05-17 00:00:00'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="建议使用合理的分页方式以提高分页效率"><a href="#建议使用合理的分页方式以提高分页效率" class="headerlink" title="建议使用合理的分页方式以提高分页效率"></a>建议使用合理的分页方式以提高分页效率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">低效：SELECT e.ename FROM emp e <span class="built_in">limit</span> 10000,10;</span><br><span class="line">高效：SELECT e.ename FROM emp e  WHERE e.id &gt;=10000 <span class="built_in">limit</span> 10;</span><br></pre></td></tr></table></figure>
+<h3 id="用EXISTS替换DISTINCT"><a href="#用EXISTS替换DISTINCT" class="headerlink" title="用EXISTS替换DISTINCT"></a>用EXISTS替换DISTINCT</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">低效: SELECT DISTINCT DEPT_NO,DEPT_NAME FROM DEPT D , EMP E</span><br><span class="line">         WHERE D.DEPT_NO = E.DEPT_NO</span><br><span class="line">高效: SELECT DEPT_NO,DEPT_NAME FROM DEPT D</span><br><span class="line">         WHERE  EXISTS</span><br><span class="line">           ( SELECT ‘X’ FROM EMP E WHERE E.DEPT_NO = D.DEPT_NO);</span><br></pre></td></tr></table></figure>
+<h3 id="避免在索引列上使用-IS-NULL和-IS-NOT-NULL"><a href="#避免在索引列上使用-IS-NULL和-IS-NOT-NULL" class="headerlink" title="避免在索引列上使用 IS NULL和 IS NOT NULL"></a>避免在索引列上使用 IS NULL和 IS NOT NULL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">低效: SELECT … FROM  DEPARTMENT  WHERE  DEPT_CODE IS NOT NULL;</span><br><span class="line">高效: SELECT … FROM  DEPARTMENT  WHERE  DEPT_CODE &gt;=0;</span><br></pre></td></tr></table></figure>
+<h2 id="数据库操作规范"><a href="#数据库操作规范" class="headerlink" title="数据库操作规范"></a>数据库操作规范</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">不允许在 DBA 不知情的情况下在线上数据库导数据，对数据库增、删、改以及操作一些复杂的查询；</span><br><span class="line">对于大表上线，需要 DBA 做详细的评估；</span><br><span class="line">大批量更新，如修复数据，避开高峰期，并通知DBA。直接执行 SQL 由DBA同事操作；</span><br><span class="line">及时处理已下线业务的 SQL、数据库和表；</span><br><span class="line">重要项目的数据库方案选型和设计必须提前通知 DBA 参与；</span><br><span class="line">提交线上的所有 DDL 需求，所有 SQL 语句都需要备注说明；</span><br><span class="line">所有新上线的表和 SQL 确定走索引后才能上线；</span><br><span class="line">表结构变更必须通知 DBA 进行审核；</span><br><span class="line">禁止有 DDL、DCL 权限的应用程序账号存在；</span><br><span class="line">批量导入、导出数据必须通过 DBA 审核，并在执行过程中观察服务；</span><br><span class="line">批量更新数据，如 UPDATE、DELETE 操作，必须 DBA 进行审核，并在执行过程中观察服务；</span><br><span class="line">产品出现非数据库导致的故障时，如被攻击，必须及时通 DBA，便于维护服务稳定；</span><br><span class="line">业务部门程序出现 BUG 等影响数据库服务的问题，必须及时通知 DBA，便于维护服务稳定；</span><br><span class="line">业务部门推广活动或上线新功能，必须提前通知 DBA 进行服务和访问量评估，并留出必要时间以便 DBA 完成扩容；</span><br><span class="line">出现业务部门人为误操作导致数据丢失，需要恢复数据的，必须第一时间通知 DBA，并提供准确时间点、 误操作语句等重要线索；</span><br><span class="line">提交线上建表改表需求，必须详细注明涉及到的所有 SQL 语句(包括INSERT、DELETE、UPDATE)，便于 DBA 进行审核和优化；</span><br><span class="line">对同一个表的多次 ALTER 操作必须合并为一次操作；</span><br><span class="line">禁止在 MySQL 数据库中存放业务逻辑；</span><br><span class="line">禁止在线上做数据库压力测试。</span><br></pre></td></tr></table></figure>
 
       
     </div>
+
+    
+
     
     
+    
+     <div>
+		
+		<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+		
+      </div>
+	
     
 
     
 
     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>cai182081</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2017/10/12/MySQL/MySQL_Design_Specifications/" title="MySQL 数据库开发与设计规范">http://yoursite.com/2017/10/12/MySQL/MySQL_Design_Specifications/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
 
+      </div>
     
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            <a href="/tags/MySQL/" rel="tag"> <i class="fa fa-tag"></i> MySQL</a>
           
-            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+            <a href="/tags/数据库/" rel="tag"> <i class="fa fa-tag"></i> 数据库</a>
           
-            <a href="/tags/数据库优化/" rel="tag"># 数据库优化</a>
+            <a href="/tags/数据库优化/" rel="tag"> <i class="fa fa-tag"></i> 数据库优化</a>
           
         </div>
       
@@ -512,9 +596,6 @@
           </div>
           
 
-
-          
-
   
     <div class="comments" id="comments">
       
@@ -524,7 +605,7 @@
 
   
 
-  
+
 
         </div>
         
@@ -563,62 +644,113 @@
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">23</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
+              <a href="/atom2.xml" rel="alternate">
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
             </div>
           
 
-          <div class="links-of-author motion-element">
+          
+
+          
+          
+
+          
+          
+
+          
             
-          </div>
-
           
-          
-
-          
-          
-
           
 
         </div>
@@ -634,7 +766,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命名规范"><span class="nav-number">1.</span> <span class="nav-text">命名规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割"><span class="nav-number">1.1.</span> <span class="nav-text">库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#库名以d开头，表名以t开头，字段名以f-开头（只作为参考，但必须统一命名标准）"><span class="nav-number">1.2.</span> <span class="nav-text">库名以d开头，表名以t开头，字段名以f_开头（只作为参考，但必须统一命名标准）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#库名、表名、字段名必须见名知意。命名与业务、产品线等相关联，禁止使用MySQL保留字禁止在MySQL中进行数学运算和函数运算"><span class="nav-number">1.3.</span> <span class="nav-text">库名、表名、字段名必须见名知意。命名与业务、产品线等相关联，禁止使用MySQL保留字禁止在MySQL中进行数学运算和函数运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#库名、表名、字段名禁止超过32个字符"><span class="nav-number">1.4.</span> <span class="nav-text">库名、表名、字段名禁止超过32个字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#临时库、表名必须以tmp为前缀，并以日期为后缀"><span class="nav-number">1.5.</span> <span class="nav-text">临时库、表名必须以tmp为前缀，并以日期为后缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份库、表必须以bak为前缀，并以日期为后缀"><span class="nav-number">1.6.</span> <span class="nav-text">备份库、表必须以bak为前缀，并以日期为后缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按日期时间分表须符合-YYYY-MM-DD-格式"><span class="nav-number">1.7.</span> <span class="nav-text">按日期时间分表须符合_YYYY[MM][DD]格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#库表基础规范"><span class="nav-number">2.</span> <span class="nav-text">库表基础规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表使用InnoDB存储引擎"><span class="nav-number">2.1.</span> <span class="nav-text">表使用InnoDB存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#库、表字符集统一使用UTF8，必要时遇-EMOJ-等表情字符需求使用-UTF8MB4"><span class="nav-number">2.2.</span> <span class="nav-text">库、表字符集统一使用UTF8，必要时遇 EMOJ 等表情字符需求使用 UTF8MB4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所有表、列都需要添加注释"><span class="nav-number">2.3.</span> <span class="nav-text">所有表、列都需要添加注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制单表字段数量，单表字段数上限20"><span class="nav-number">2.4.</span> <span class="nav-text">控制单表字段数量，单表字段数上限20</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所有-InooDB-表都必须显式指定主键，推荐使用-UNSIGNED-自增列作为主键，禁止使用-UUID、MD5、HASH、字符串列作为主键以及多字段复合主键"><span class="nav-number">2.5.</span> <span class="nav-text">所有 InooDB 表都必须显式指定主键，推荐使用 UNSIGNED 自增列作为主键，禁止使用 UUID、MD5、HASH、字符串列作为主键以及多字段复合主键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免使用存储过程、视图，禁止使用触发器以及事件"><span class="nav-number">2.6.</span> <span class="nav-text">避免使用存储过程、视图，禁止使用触发器以及事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止使用外键参考"><span class="nav-number">2.7.</span> <span class="nav-text">禁止使用外键参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单表数据量控制在1500w范围以内，超过1500w考虑表分区等优化措施"><span class="nav-number">2.8.</span> <span class="nav-text">单表数据量控制在1500w范围以内，超过1500w考虑表分区等优化措施</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字段规范"><span class="nav-number">3.</span> <span class="nav-text">字段规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优先选择符合存储需要的最小的数据类型"><span class="nav-number">3.1.</span> <span class="nav-text">优先选择符合存储需要的最小的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于非负型的数据来说，要有限使用无符号整型来存储"><span class="nav-number">3.2.</span> <span class="nav-text">对于非负型的数据来说，要有限使用无符号整型来存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#char、varchar、text等字符串类型定义"><span class="nav-number">3.3.</span> <span class="nav-text">char、varchar、text等字符串类型定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽可能把所有列定义为NOT-NULL"><span class="nav-number">3.4.</span> <span class="nav-text">尽可能把所有列定义为NOT NULL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-TIMESTAMP-或-DATETIME-类型存储时间"><span class="nav-number">3.5.</span> <span class="nav-text">使用 TIMESTAMP 或 DATETIME 类型存储时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用INT-UNSIGNED存储IPV4"><span class="nav-number">3.6.</span> <span class="nav-text">使用INT UNSIGNED存储IPV4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强烈建议使用-TINYINT-来代替枚举-ENUM-类型"><span class="nav-number">3.7.</span> <span class="nav-text">强烈建议使用 TINYINT 来代替枚举 ENUM 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-VARBINARY-存储大小写敏感的变长字符串或二进制内容"><span class="nav-number">3.8.</span> <span class="nav-text">使用 VARBINARY 存储大小写敏感的变长字符串或二进制内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同一意义的字段定义必须相同"><span class="nav-number">3.9.</span> <span class="nav-text">同一意义的字段定义必须相同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止在数据库中存储明文密码"><span class="nav-number">3.10.</span> <span class="nav-text">禁止在数据库中存储明文密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽可能不使用TEXT、BLOB类型"><span class="nav-number">3.11.</span> <span class="nav-text">尽可能不使用TEXT、BLOB类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用-DECIMAL-代替-FLOAT-和-DOUBLE-存储精确浮点数，同财务相关的金额类型数据必须使用DECIMAL类型"><span class="nav-number">3.12.</span> <span class="nav-text">用 DECIMAL 代替 FLOAT 和 DOUBLE 存储精确浮点数，同财务相关的金额类型数据必须使用DECIMAL类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引规范"><span class="nav-number">4.</span> <span class="nav-text">索引规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#任何新上线的-SELECT、UPDATE、DELETE，都需要-EXPLAIN，查看-SQL-的索引使用情况"><span class="nav-number">4.1.</span> <span class="nav-text">任何新上线的 SELECT、UPDATE、DELETE，都需要 EXPLAIN，查看 SQL 的索引使用情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单表索引建议控制在5个以内，单复合索引字段数不允许超过5个"><span class="nav-number">4.2.</span> <span class="nav-text">单表索引建议控制在5个以内，单复合索引字段数不允许超过5个</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止索引的字段有-NULL值"><span class="nav-number">4.3.</span> <span class="nav-text">禁止索引的字段有 NULL值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InnoDB-单个索引中的字节数不超过-767（-MyISAM-引擎下为-1000）"><span class="nav-number">4.4.</span> <span class="nav-text">InnoDB 单个索引中的字节数不超过 767（ MyISAM 引擎下为 1000）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非唯一索引按照“IDX字段名称-字段名称-”进用行命名。唯一索引按照“UK字段名称-字段名称-”进用行命名"><span class="nav-number">4.5.</span> <span class="nav-text">非唯一索引按照“IDX字段名称[字段名称]”进用行命名。唯一索引按照“UK字段名称[字段名称]”进用行命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免建立冗余索引和重复索引"><span class="nav-number">4.6.</span> <span class="nav-text">避免建立冗余索引和重复索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#唯一键由3个以下字段组成，并且字段都是整形时，可使用唯一键作为主键。其他情况下，建议使用自增列或发号器作主键合理创建联合索引"><span class="nav-number">4.7.</span> <span class="nav-text">唯一键由3个以下字段组成，并且字段都是整形时，可使用唯一键作为主键。其他情况下，建议使用自增列或发号器作主键合理创建联合索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择区分度大的列建立索引。组合索引中，区分度大的字段放在最前"><span class="nav-number">4.8.</span> <span class="nav-text">选择区分度大的列建立索引。组合索引中，区分度大的字段放在最前</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于频繁的查询优先考虑使用覆盖索引，避免Innodb表进行索引的二次查找"><span class="nav-number">4.9.</span> <span class="nav-text">对于频繁的查询优先考虑使用覆盖索引，避免Innodb表进行索引的二次查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽量不要在频繁更新的列上创建索引"><span class="nav-number">4.10.</span> <span class="nav-text">尽量不要在频繁更新的列上创建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联表查询时，JOIN列的数据类型必须相同，并且要建立索引"><span class="nav-number">4.11.</span> <span class="nav-text">联表查询时，JOIN列的数据类型必须相同，并且要建立索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不在低基数列上建立索引，比如性别列建立索引"><span class="nav-number">4.12.</span> <span class="nav-text">不在低基数列上建立索引，比如性别列建立索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对字符串使用前缀索引，前缀索引长度不超过8个字符"><span class="nav-number">4.13.</span> <span class="nav-text">对字符串使用前缀索引，前缀索引长度不超过8个字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不对过长的-VARCHAR-或者-TXET-字段建立索引。建议优先考虑前缀索引，或添加-CRC32-或-MD5-伪列并建立索引"><span class="nav-number">4.14.</span> <span class="nav-text">不对过长的 VARCHAR 或者 TXET 字段建立索引。建议优先考虑前缀索引，或添加 CRC32 或 MD5 伪列并建立索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最左前缀原则"><span class="nav-number">4.15.</span> <span class="nav-text">最左前缀原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合理使用覆盖索引减少IO，避免排序"><span class="nav-number">4.16.</span> <span class="nav-text">合理使用覆盖索引减少IO，避免排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可以把随机I-O变为顺序I-O加快查询效率"><span class="nav-number">4.17.</span> <span class="nav-text">可以把随机I/O变为顺序I/O加快查询效率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL编码规范"><span class="nav-number">5.</span> <span class="nav-text">SQL编码规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-prepared-statement，可以提升性能并避免SQL注入"><span class="nav-number">5.1.</span> <span class="nav-text">使用 prepared statement，可以提升性能并避免SQL注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止隐式转换。数值类型禁止加引号；字符串类型必须加引号"><span class="nav-number">5.2.</span> <span class="nav-text">禁止隐式转换。数值类型禁止加引号；字符串类型必须加引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少与数据库交互次数，尽量采用批量SQL语句"><span class="nav-number">5.3.</span> <span class="nav-text">减少与数据库交互次数，尽量采用批量SQL语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拆分复杂SQL为多个小SQL，避免大事务"><span class="nav-number">5.4.</span> <span class="nav-text">拆分复杂SQL为多个小SQL，避免大事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取大量数据时，建议分批次获取数据，每次获取数据少于2000条，结果集应小于1M"><span class="nav-number">5.5.</span> <span class="nav-text">获取大量数据时，建议分批次获取数据，每次获取数据少于2000条，结果集应小于1M</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计表中记录数时使用-COUNT-，而不是-COUNT-primary-key-和-COUNT-1-备注：仅针对-MyiSAM"><span class="nav-number">5.6.</span> <span class="nav-text">统计表中记录数时使用 COUNT(*)，而不是 COUNT(primary_key) 和 COUNT(1) 备注：仅针对 MyiSAM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SELECT只获取必要的字段，杜绝直接-SELECT-读取全部字段"><span class="nav-number">5.7.</span> <span class="nav-text">SELECT只获取必要的字段，杜绝直接 SELECT * 读取全部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL中避免出现-now-、rand-、sysdate-、current-user-等不确定结果的函数"><span class="nav-number">5.8.</span> <span class="nav-text">SQL中避免出现 now()、rand()、sysdate()、current_user()等不确定结果的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INSERT语句必须指定字段列表，禁止使用-INSERT-INTO-TABLE"><span class="nav-number">5.9.</span> <span class="nav-text">INSERT语句必须指定字段列表，禁止使用 INSERT INTO TABLE()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止从库上执行后台管理和统计类功能的查询，必要时申请统计类从库"><span class="nav-number">5.10.</span> <span class="nav-text">禁止从库上执行后台管理和统计类功能的查询，必要时申请统计类从库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止UPDATE、DELETE语句使用LIMIT"><span class="nav-number">5.11.</span> <span class="nav-text">禁止UPDATE、DELETE语句使用LIMIT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序应有捕获SQL异常的处理机制，必要时通过rollback显式回滚"><span class="nav-number">5.12.</span> <span class="nav-text">程序应有捕获SQL异常的处理机制，必要时通过rollback显式回滚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止使用反向查询，例如-not-in、not-like、not-exisits"><span class="nav-number">5.13.</span> <span class="nav-text">禁止使用反向查询，例如 not in、not like、not exisits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止使用order-by-rand"><span class="nav-number">5.14.</span> <span class="nav-text">禁止使用order by rand()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止使用-前导查询，例如：like-‘-abc’，无法利用到索引"><span class="nav-number">5.15.</span> <span class="nav-text">禁止使用%前导查询，例如：like  ‘%abc’，无法利用到索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免使用JOIN和子查询。必要时推荐用JOIN代替子查询"><span class="nav-number">5.16.</span> <span class="nav-text">避免使用JOIN和子查询。必要时推荐用JOIN代替子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-IN-代替-OR；SQL语句中IN包含的值不应过多，应少于300个，否则使用转为字符串LIKE"><span class="nav-number">5.17.</span> <span class="nav-text">使用 IN 代替 OR；SQL语句中IN包含的值不应过多，应少于300个，否则使用转为字符串LIKE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-gt-、-lt-等，避免使用-和-lt-gt-命令"><span class="nav-number">5.18.</span> <span class="nav-text">使用>、<等，避免使用!=和<>命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-UNION-替换-OR-适用于索引列"><span class="nav-number">5.19.</span> <span class="nav-text">使用 UNION 替换 OR(适用于索引列)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在明显不会有重复值时使用UNION-ALL-代替UNION"><span class="nav-number">5.20.</span> <span class="nav-text">在明显不会有重复值时使用UNION ALL 代替UNION</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止在MySQL中对列进行数学运算"><span class="nav-number">5.21.</span> <span class="nav-text">禁止在MySQL中对列进行数学运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止在MySQL中对列进行函数运算"><span class="nav-number">5.22.</span> <span class="nav-text">禁止在MySQL中对列进行函数运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建议使用合理的分页方式以提高分页效率"><span class="nav-number">5.23.</span> <span class="nav-text">建议使用合理的分页方式以提高分页效率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用EXISTS替换DISTINCT"><span class="nav-number">5.24.</span> <span class="nav-text">用EXISTS替换DISTINCT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免在索引列上使用-IS-NULL和-IS-NOT-NULL"><span class="nav-number">5.25.</span> <span class="nav-text">避免在索引列上使用 IS NULL和 IS NOT NULL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库操作规范"><span class="nav-number">6.</span> <span class="nav-text">数据库操作规范</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命名规范"><span class="nav-number">1.</span> <span class="nav-text">命名规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割"><span class="nav-number">1.1.</span> <span class="nav-text">库名、表名、字段名必须统一使用小写或者大写字母，禁止混合使用，并采用下划线分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#库名以d开头，表名以t开头，字段名以f-开头（只作为参考，但必须统一命名标准）"><span class="nav-number">1.2.</span> <span class="nav-text">库名以d开头，表名以t开头，字段名以f_开头（只作为参考，但必须统一命名标准）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#库名、表名、字段名必须见名知意。命名与业务、产品线等相关联，禁止使用MySQL保留字禁止在MySQL中进行数学运算和函数运算"><span class="nav-number">1.3.</span> <span class="nav-text">库名、表名、字段名必须见名知意。命名与业务、产品线等相关联，禁止使用MySQL保留字禁止在MySQL中进行数学运算和函数运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#库名、表名、字段名禁止超过32个字符"><span class="nav-number">1.4.</span> <span class="nav-text">库名、表名、字段名禁止超过32个字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#临时库、表名必须以tmp为前缀，并以日期为后缀"><span class="nav-number">1.5.</span> <span class="nav-text">临时库、表名必须以tmp为前缀，并以日期为后缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份库、表必须以bak为前缀，并以日期为后缀"><span class="nav-number">1.6.</span> <span class="nav-text">备份库、表必须以bak为前缀，并以日期为后缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按日期时间分表须符合-YYYY-MM-DD-格式"><span class="nav-number">1.7.</span> <span class="nav-text">按日期时间分表须符合_YYYY[MM][DD]格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#库表基础规范"><span class="nav-number">2.</span> <span class="nav-text">库表基础规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表使用InnoDB存储引擎"><span class="nav-number">2.1.</span> <span class="nav-text">表使用InnoDB存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#库、表字符集统一使用UTF8，必要时遇-EMOJ-等表情字符需求使用-UTF8MB4"><span class="nav-number">2.2.</span> <span class="nav-text">库、表字符集统一使用UTF8，必要时遇 EMOJ 等表情字符需求使用 UTF8MB4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所有表、列都需要添加注释"><span class="nav-number">2.3.</span> <span class="nav-text">所有表、列都需要添加注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制单表字段数量，单表字段数上限20"><span class="nav-number">2.4.</span> <span class="nav-text">控制单表字段数量，单表字段数上限20</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所有-InooDB-表都必须显式指定主键，推荐使用-UNSIGNED-自增列作为主键，禁止使用-UUID、MD5、HASH、字符串列作为主键以及多字段复合主键"><span class="nav-number">2.5.</span> <span class="nav-text">所有 InooDB 表都必须显式指定主键，推荐使用 UNSIGNED 自增列作为主键，禁止使用 UUID、MD5、HASH、字符串列作为主键以及多字段复合主键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免使用存储过程、视图，禁止使用触发器以及事件"><span class="nav-number">2.6.</span> <span class="nav-text">避免使用存储过程、视图，禁止使用触发器以及事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止使用外键参考"><span class="nav-number">2.7.</span> <span class="nav-text">禁止使用外键参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单表数据量控制在1500w范围以内，超过1500w考虑表分区等优化措施"><span class="nav-number">2.8.</span> <span class="nav-text">单表数据量控制在1500w范围以内，超过1500w考虑表分区等优化措施</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字段规范"><span class="nav-number">3.</span> <span class="nav-text">字段规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优先选择符合存储需要的最小的数据类型"><span class="nav-number">3.1.</span> <span class="nav-text">优先选择符合存储需要的最小的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于非负型的数据来说，要有限使用无符号整型来存储"><span class="nav-number">3.2.</span> <span class="nav-text">对于非负型的数据来说，要有限使用无符号整型来存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#char、varchar、text等字符串类型定义"><span class="nav-number">3.3.</span> <span class="nav-text">char、varchar、text等字符串类型定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽可能把所有列定义为NOT-NULL"><span class="nav-number">3.4.</span> <span class="nav-text">尽可能把所有列定义为NOT NULL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-TIMESTAMP-或-DATETIME-类型存储时间"><span class="nav-number">3.5.</span> <span class="nav-text">使用 TIMESTAMP 或 DATETIME 类型存储时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用INT-UNSIGNED存储IPV4"><span class="nav-number">3.6.</span> <span class="nav-text">使用INT UNSIGNED存储IPV4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强烈建议使用-TINYINT-来代替枚举-ENUM-类型"><span class="nav-number">3.7.</span> <span class="nav-text">强烈建议使用 TINYINT 来代替枚举 ENUM 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-VARBINARY-存储大小写敏感的变长字符串或二进制内容"><span class="nav-number">3.8.</span> <span class="nav-text">使用 VARBINARY 存储大小写敏感的变长字符串或二进制内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同一意义的字段定义必须相同"><span class="nav-number">3.9.</span> <span class="nav-text">同一意义的字段定义必须相同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止在数据库中存储明文密码"><span class="nav-number">3.10.</span> <span class="nav-text">禁止在数据库中存储明文密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽可能不使用TEXT、BLOB类型"><span class="nav-number">3.11.</span> <span class="nav-text">尽可能不使用TEXT、BLOB类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用-DECIMAL-代替-FLOAT-和-DOUBLE-存储精确浮点数，同财务相关的金额类型数据必须使用DECIMAL类型"><span class="nav-number">3.12.</span> <span class="nav-text">用 DECIMAL 代替 FLOAT 和 DOUBLE 存储精确浮点数，同财务相关的金额类型数据必须使用DECIMAL类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引规范"><span class="nav-number">4.</span> <span class="nav-text">索引规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#任何新上线的-SELECT、UPDATE、DELETE，都需要-EXPLAIN，查看-SQL-的索引使用情况"><span class="nav-number">4.1.</span> <span class="nav-text">任何新上线的 SELECT、UPDATE、DELETE，都需要 EXPLAIN，查看 SQL 的索引使用情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单表索引建议控制在5个以内，单复合索引字段数不允许超过5个"><span class="nav-number">4.2.</span> <span class="nav-text">单表索引建议控制在5个以内，单复合索引字段数不允许超过5个</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止索引的字段有-NULL值"><span class="nav-number">4.3.</span> <span class="nav-text">禁止索引的字段有 NULL值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InnoDB-单个索引中的字节数不超过-767（-MyISAM-引擎下为-1000）"><span class="nav-number">4.4.</span> <span class="nav-text">InnoDB 单个索引中的字节数不超过 767（ MyISAM 引擎下为 1000）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非唯一索引按照“IDX-字段名称-字段名称-”进用行命名。唯一索引按照“UK字段名称-字段名称-”进用行命名"><span class="nav-number">4.5.</span> <span class="nav-text">非唯一索引按照“IDX_字段名称[字段名称]”进用行命名。唯一索引按照“UK字段名称[_字段名称]”进用行命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免建立冗余索引和重复索引"><span class="nav-number">4.6.</span> <span class="nav-text">避免建立冗余索引和重复索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#唯一键由3个以下字段组成，并且字段都是整形时，可使用唯一键作为主键。其他情况下，建议使用自增列或发号器作主键合理创建联合索引"><span class="nav-number">4.7.</span> <span class="nav-text">唯一键由3个以下字段组成，并且字段都是整形时，可使用唯一键作为主键。其他情况下，建议使用自增列或发号器作主键合理创建联合索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择区分度大的列建立索引。组合索引中，区分度大的字段放在最前"><span class="nav-number">4.8.</span> <span class="nav-text">选择区分度大的列建立索引。组合索引中，区分度大的字段放在最前</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于频繁的查询优先考虑使用覆盖索引，避免Innodb表进行索引的二次查找"><span class="nav-number">4.9.</span> <span class="nav-text">对于频繁的查询优先考虑使用覆盖索引，避免Innodb表进行索引的二次查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽量不要在频繁更新的列上创建索引"><span class="nav-number">4.10.</span> <span class="nav-text">尽量不要在频繁更新的列上创建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联表查询时，JOIN列的数据类型必须相同，并且要建立索引"><span class="nav-number">4.11.</span> <span class="nav-text">联表查询时，JOIN列的数据类型必须相同，并且要建立索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不在低基数列上建立索引，比如性别列建立索引"><span class="nav-number">4.12.</span> <span class="nav-text">不在低基数列上建立索引，比如性别列建立索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对字符串使用前缀索引，前缀索引长度不超过8个字符"><span class="nav-number">4.13.</span> <span class="nav-text">对字符串使用前缀索引，前缀索引长度不超过8个字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不对过长的-VARCHAR-或者-TXET-字段建立索引。建议优先考虑前缀索引，或添加-CRC32-或-MD5-伪列并建立索引"><span class="nav-number">4.14.</span> <span class="nav-text">不对过长的 VARCHAR 或者 TXET 字段建立索引。建议优先考虑前缀索引，或添加 CRC32 或 MD5 伪列并建立索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最左前缀原则"><span class="nav-number">4.15.</span> <span class="nav-text">最左前缀原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合理使用覆盖索引减少IO，避免排序"><span class="nav-number">4.16.</span> <span class="nav-text">合理使用覆盖索引减少IO，避免排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可以把随机I-O变为顺序I-O加快查询效率"><span class="nav-number">4.17.</span> <span class="nav-text">可以把随机I/O变为顺序I/O加快查询效率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL编码规范"><span class="nav-number">5.</span> <span class="nav-text">SQL编码规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-prepared-statement，可以提升性能并避免SQL注入"><span class="nav-number">5.1.</span> <span class="nav-text">使用 prepared statement，可以提升性能并避免SQL注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止隐式转换。数值类型禁止加引号；字符串类型必须加引号"><span class="nav-number">5.2.</span> <span class="nav-text">禁止隐式转换。数值类型禁止加引号；字符串类型必须加引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少与数据库交互次数，尽量采用批量SQL语句"><span class="nav-number">5.3.</span> <span class="nav-text">减少与数据库交互次数，尽量采用批量SQL语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拆分复杂SQL为多个小SQL，避免大事务"><span class="nav-number">5.4.</span> <span class="nav-text">拆分复杂SQL为多个小SQL，避免大事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取大量数据时，建议分批次获取数据，每次获取数据少于2000条，结果集应小于1M"><span class="nav-number">5.5.</span> <span class="nav-text">获取大量数据时，建议分批次获取数据，每次获取数据少于2000条，结果集应小于1M</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计表中记录数时使用-COUNT-，而不是-COUNT-primary-key-和-COUNT-1-备注：仅针对-MyiSAM"><span class="nav-number">5.6.</span> <span class="nav-text">统计表中记录数时使用 COUNT(*)，而不是 COUNT(primary_key) 和 COUNT(1) 备注：仅针对 MyiSAM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SELECT只获取必要的字段，杜绝直接-SELECT-读取全部字段"><span class="nav-number">5.7.</span> <span class="nav-text">SELECT只获取必要的字段，杜绝直接 SELECT * 读取全部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL中避免出现-now-、rand-、sysdate-、current-user-等不确定结果的函数"><span class="nav-number">5.8.</span> <span class="nav-text">SQL中避免出现 now()、rand()、sysdate()、current_user()等不确定结果的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INSERT语句必须指定字段列表，禁止使用-INSERT-INTO-TABLE"><span class="nav-number">5.9.</span> <span class="nav-text">INSERT语句必须指定字段列表，禁止使用 INSERT INTO TABLE()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止从库上执行后台管理和统计类功能的查询，必要时申请统计类从库"><span class="nav-number">5.10.</span> <span class="nav-text">禁止从库上执行后台管理和统计类功能的查询，必要时申请统计类从库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止UPDATE、DELETE语句使用LIMIT"><span class="nav-number">5.11.</span> <span class="nav-text">禁止UPDATE、DELETE语句使用LIMIT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序应有捕获SQL异常的处理机制，必要时通过rollback显式回滚"><span class="nav-number">5.12.</span> <span class="nav-text">程序应有捕获SQL异常的处理机制，必要时通过rollback显式回滚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止使用反向查询，例如-not-in、not-like、not-exisits"><span class="nav-number">5.13.</span> <span class="nav-text">禁止使用反向查询，例如 not in、not like、not exisits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止使用order-by-rand"><span class="nav-number">5.14.</span> <span class="nav-text">禁止使用order by rand()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止使用-前导查询，例如：like-‘-abc’，无法利用到索引"><span class="nav-number">5.15.</span> <span class="nav-text">禁止使用%前导查询，例如：like  ‘%abc’，无法利用到索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免使用JOIN和子查询。必要时推荐用JOIN代替子查询"><span class="nav-number">5.16.</span> <span class="nav-text">避免使用JOIN和子查询。必要时推荐用JOIN代替子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-IN-代替-OR；SQL语句中IN包含的值不应过多，应少于300个，否则使用转为字符串LIKE"><span class="nav-number">5.17.</span> <span class="nav-text">使用 IN 代替 OR；SQL语句中IN包含的值不应过多，应少于300个，否则使用转为字符串LIKE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-gt-、-lt-等，避免使用-和-lt-gt-命令"><span class="nav-number">5.18.</span> <span class="nav-text">使用&gt;、&lt;等，避免使用!=和&lt;&gt;命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-UNION-替换-OR-适用于索引列"><span class="nav-number">5.19.</span> <span class="nav-text">使用 UNION 替换 OR(适用于索引列)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在明显不会有重复值时使用UNION-ALL-代替UNION"><span class="nav-number">5.20.</span> <span class="nav-text">在明显不会有重复值时使用UNION ALL 代替UNION</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止在MySQL中对列进行数学运算"><span class="nav-number">5.21.</span> <span class="nav-text">禁止在MySQL中对列进行数学运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止在MySQL中对列进行函数运算"><span class="nav-number">5.22.</span> <span class="nav-text">禁止在MySQL中对列进行函数运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建议使用合理的分页方式以提高分页效率"><span class="nav-number">5.23.</span> <span class="nav-text">建议使用合理的分页方式以提高分页效率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用EXISTS替换DISTINCT"><span class="nav-number">5.24.</span> <span class="nav-text">用EXISTS替换DISTINCT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免在索引列上使用-IS-NULL和-IS-NOT-NULL"><span class="nav-number">5.25.</span> <span class="nav-text">避免在索引列上使用 IS NULL和 IS NOT NULL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库操作规范"><span class="nav-number">6.</span> <span class="nav-text">数据库操作规范</span></a></li></ol></div>
             
 
           </div>
@@ -655,16 +787,22 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cai182081</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -672,12 +810,13 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
 
         
+
 
 
 
@@ -716,12 +855,6 @@
 
 
 
-  
-
-
-
-
-
 
 
 
@@ -730,61 +863,77 @@
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+  
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
 
 
 
   
-
-
-  
-
 
 
 
@@ -807,7 +956,6 @@
 
 
 
-
 <!-- LOCAL: You can save these files to your site and update links -->
     
         
@@ -822,7 +970,7 @@
       <script type="text/javascript">
       function renderGitment(){
         var gitment = new Gitmint({
-            id: document.location.href, 
+            id: window.location.pathname,
             owner: 'cai182081',
             repo: 'cai182081.github.io',
             
@@ -849,10 +997,427 @@
 
 
 
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
 
   
 
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("LYl7tK129GkXmPxHi8ILtiuQ-gzGzoHsz", "fNvr4KMQd9tuE6hVX1hFBzlU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
 
 
 
@@ -861,11 +1426,15 @@
   
 
   
-  
 
   
   
 
+  
+
+  
+
+  
 
   
 

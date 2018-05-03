@@ -2,15 +2,21 @@
 
 
 
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -38,54 +44,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -94,49 +52,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="MySQL,数据库,数据库优化," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Cailiang's Blog" type="application/atom+xml" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
 
 
 
 
 
 
-<meta name="description" content="MySQL 索引实现在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，本文主要讨论MyISAM和InnoDB两个存储引擎(MySQL数据库MyISAM和InnoDB存储引擎的比较)的索引实现方式。MyISAM属于对堆组织表，InnoDB属于索引组织表。 MySQL 索引类型Hash 索引基于哈希表实现，只有精确匹配索引所有列的查询才有效，对于每一行数据，存储引擎都会">
-<meta name="keywords" content="MySQL,数据库,数据库优化">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MySQL 索引原理详解">
-<meta property="og:url" content="http://yoursite.com/2017/10/14/MySQL/MySQL_index/index.html">
-<meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="MySQL 索引实现在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，本文主要讨论MyISAM和InnoDB两个存储引擎(MySQL数据库MyISAM和InnoDB存储引擎的比较)的索引实现方式。MyISAM属于对堆组织表，InnoDB属于索引组织表。 MySQL 索引类型Hash 索引基于哈希表实现，只有精确匹配索引所有列的查询才有效，对于每一行数据，存储引擎都会">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-15T01:25:31.237Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL 索引原理详解">
-<meta name="twitter:description" content="MySQL 索引实现在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，本文主要讨论MyISAM和InnoDB两个存储引擎(MySQL数据库MyISAM和InnoDB存储引擎的比较)的索引实现方式。MyISAM属于对堆组织表，InnoDB属于索引组织表。 MySQL 索引类型Hash 索引基于哈希表实现，只有精确匹配索引所有列的查询才有效，对于每一行数据，存储引擎都会">
 
 
 
@@ -145,15 +79,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '5.1.3',
+    version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -165,12 +97,38 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/2017/10/14/MySQL/MySQL_index/"/>
-
+  
 
 
 
+
+  <meta name="description" content="MySQL 索引实现在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，本文主要讨论MyISAM和InnoDB两个存储引擎(MySQL数据库MyISAM和InnoDB存储引擎的比较)的索引实现方式。MyISAM属于对堆组织表，InnoDB属于索引组织表。 MySQL 索引类型Hash 索引基于哈希表实现，只有精确匹配索引所有列的查询才有效，对于每一行数据，存储引擎都会">
+<meta name="keywords" content="MySQL,数据库,数据库优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 索引原理详解">
+<meta property="og:url" content="http://yoursite.com/2017/10/14/MySQL/MySQL_Index/index.html">
+<meta property="og:site_name" content="Cailiang&#39;s Blog">
+<meta property="og:description" content="MySQL 索引实现在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，本文主要讨论MyISAM和InnoDB两个存储引擎(MySQL数据库MyISAM和InnoDB存储引擎的比较)的索引实现方式。MyISAM属于对堆组织表，InnoDB属于索引组织表。 MySQL 索引类型Hash 索引基于哈希表实现，只有精确匹配索引所有列的查询才有效，对于每一行数据，存储引擎都会">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-15T01:25:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL 索引原理详解">
+<meta name="twitter:description" content="MySQL 索引实现在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，本文主要讨论MyISAM和InnoDB两个存储引擎(MySQL数据库MyISAM和InnoDB存储引擎的比较)的索引实现方式。MyISAM属于对堆组织表，InnoDB属于索引组织表。 MySQL 索引类型Hash 索引基于哈希表实现，只有精确匹配索引所有列的查询才有效，对于每一行数据，存储引擎都会">
+
+
+
+  <link rel="alternate" href="/atom2.xml" title="Cailiang's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>MySQL 索引原理详解 | Cailiang's Blog</title>
   
@@ -182,9 +140,37 @@
 
 
 
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -193,26 +179,26 @@
 
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-
+	<a href="https://github.com/cai182081"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Cailiang's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">飞翔的菜鸟</p>
+        <h1 class="site-subtitle" itemprop="description">飞翔的菜鸟</h1>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -220,68 +206,106 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -294,12 +318,14 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/14/MySQL/MySQL_index/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/14/MySQL/MySQL_Index/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cai182081">
@@ -316,11 +342,19 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL 索引原理详解</h1>
+          <h2 class="post-title" itemprop="name headline">MySQL 索引原理详解
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -328,13 +362,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T11:58:28+08:00">
-                2017-10-14
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-10-14 11:58:28" itemprop="dateCreated datePublished" datetime="2017-10-14T11:58:28+08:00">2017-10-14</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-10-15 09:25:32" itemprop="dateModified" datetime="2017-10-15T09:25:32+08:00">2017-10-15</time>
+              
             
           </span>
 
@@ -350,11 +401,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
 
                 
                 
@@ -369,14 +416,25 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/14/MySQL/MySQL_index/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/10/14/MySQL/MySQL_index/" itemprop="commentsCount"></span>
+                <a href="/2017/10/14/MySQL/MySQL_Index/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2017/10/14/MySQL/MySQL_Index/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
           
 
           
+          
+             <span id="/2017/10/14/MySQL/MySQL_Index/" class="leancloud_visitors" data-flag-title="MySQL 索引原理详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -399,37 +457,63 @@
 
       
         <h2 id="MySQL-索引实现"><a href="#MySQL-索引实现" class="headerlink" title="MySQL 索引实现"></a>MySQL 索引实现</h2><p>在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，本文主要讨论MyISAM和InnoDB两个存储引擎(MySQL数据库MyISAM和InnoDB存储引擎的比较)的索引实现方式。MyISAM属于对堆组织表，InnoDB属于索引组织表。</p>
-<h2 id="MySQL-索引类型"><a href="#MySQL-索引类型" class="headerlink" title="MySQL 索引类型"></a>MySQL 索引类型</h2><h3 id="Hash-索引"><a href="#Hash-索引" class="headerlink" title="Hash 索引"></a>Hash 索引</h3><p>基于哈希表实现，只有精确匹配索引所有列的查询才有效，对于每一行数据，存储引擎都会对所有的索引列的值计算一个哈希码，哈希码是一个较小的值，并且不同键值的行计算出来的哈希码不一样，哈希索引将所有的哈希码存储在索引中，同时在哈希表中保存指向每个数据行的指针。<br>Hash 索引就是采用一定的哈希算法，把键值换算成新的哈希值，检索时不需要类似B+树那样从根节点到叶子节点逐级查找，只需一次哈希算法即可立刻定位到相应的位置，速度非常快。hash相当于把key通过hash函数计算，得到key的hash值,再用这个hash值做指针，查找hash表中是否存在key，如果存在就返回 key所对应的value，选定一个好的hash函数很重要，好的hash函数可以使计算出的hash值分布均匀，降低冲突，只有冲突减小了，才会降低 hash表的查找时间Hash 索引结构的特殊性，其检索效率非常高，索引的检索可以一次定位，不像B-Tree 索引需要从根节点到枝节点，最后才能访问到页节点这样多次的IO访问，所以 Hash 索引的查询效率要远高于 B-Tree 索引。在MySQL中，只有HEAP/MEMORY引擎表才能显式支持哈希索引（NDB也支持，但这个不常用），而且支持非唯一的哈希索引。在数据库世界里是比较与众不同，如果多个列的哈希值相同，索引会以链表的方式存放多个记录指针到同一个哈希条目中。InnoDB引擎的自适应哈希索引（adaptive hash index）不在此列。InnoDB具有一个特别的特性被称为自适应性hash索引。InnoDB发现比较频繁访问的索引值，会为其在B-Tree索引之上建立Hash索引，这使得B-Tree索引具有一定的hash特性，这个特性是自动的，无法控制和配置,只能开启和关闭此特性。<br>虽然 hash 索引效率高，但是 hash 索引本身由于其特殊性也带来了很多限制和弊端，主要有以下这些：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">a、<span class="built_in">hash</span> 索引仅仅能满足=，&lt;=&gt;，IN，IS NULL或者IS NOT NULL查询，不能使用范围查询。</div><div class="line">    由于 Hash 索引比较的是进行 Hash 运算之后的 Hash 值，所以它只能用于等值的过滤，不能用于基于范围的过滤，因为经过相应的 Hash 算法处理之后的 Hash 值的大小关系，并不能保证和Hash运算前完全一样。</div><div class="line">b、Hash 索引无法被用来避免数据的排序操作。</div><div class="line">    由于 Hash 索引中存放的是经过 Hash 计算之后的 Hash 值，而且Hash值的大小关系并不一定和 Hash 运算前的键值完全一样，所以数据库无法利用索引的数据来避免任何排序运算；</div><div class="line">c、Hash 索引不能利用部分索引键查询。</div><div class="line">    对于组合索引，Hash 索引在计算 Hash 值的时候是组合索引键合并后再一起计算 Hash 值，而不是单独计算 Hash 值，所以通过组合索引的前面一个或几个索引键进行查询的时候，Hash 索引也无法被利用。</div><div class="line">d、Hash 索引在任何时候都不能避免表扫描。</div><div class="line">    Hash 索引是将索引键通过 Hash 运算之后，将 Hash运算结果的 Hash 值和所对应的行指针信息存放于一个 Hash 表中，由于不同索引键存在相同 Hash 值，所以即使取满足某个 Hash 键值的数据的记录条数，也无法从 Hash 索引中直接完成查询，还是要通过访问表中的实际数据进行相应的比较，并得到相应的结果。</div><div class="line">e、Hash 索引遇到大量Hash值相等的情况后性能并不一定就会比B-Tree索引高。</div><div class="line">    对于选择性比较低的索引键，如果创建 Hash 索引，那么将会存在大量记录指针信息存于同一个 Hash 值相关联。这样要定位某一条记录时就会非常麻烦，会浪费多次表数据的访问，而造成整体性能低下</div></pre></td></tr></table></figure></p>
-<h3 id="B-树索引"><a href="#B-树索引" class="headerlink" title="B+ 树索引"></a>B+ 树索引</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<h3 id="R-树索引"><a href="#R-树索引" class="headerlink" title="R 树索引"></a>R 树索引</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h2 id="MySQL-索引类型"><a href="#MySQL-索引类型" class="headerlink" title="MySQL 索引类型"></a>MySQL 索引类型</h2><h3 id="Hash-索引"><a href="#Hash-索引" class="headerlink" title="Hash 索引"></a>Hash 索引</h3><p>基于哈希表实现，只有精确匹配索引所有列的查询才有效，对于每一行数据，存储引擎都会对所有的索引列的值计算一个哈希码，哈希码是一个较小的值，并且不同键值的行计算出来的哈希码不一样，哈希索引将所有的哈希码存储在索引中，同时在哈希表中保存指向每个数据行的指针。<br>Hash 索引就是采用一定的哈希算法，把键值换算成新的哈希值，检索时不需要类似B+树那样从根节点到叶子节点逐级查找，只需一次哈希算法即可立刻定位到相应的位置，速度非常快。hash相当于把key通过hash函数计算，得到key的hash值,再用这个hash值做指针，查找hash表中是否存在key，如果存在就返回 key所对应的value，选定一个好的hash函数很重要，好的hash函数可以使计算出的hash值分布均匀，降低冲突，只有冲突减小了，才会降低 hash表的查找时间Hash 索引结构的特殊性，其检索效率非常高，索引的检索可以一次定位，不像B-Tree 索引需要从根节点到枝节点，最后才能访问到页节点这样多次的IO访问，所以 Hash 索引的查询效率要远高于 B-Tree 索引。在MySQL中，只有HEAP/MEMORY引擎表才能显式支持哈希索引（NDB也支持，但这个不常用），而且支持非唯一的哈希索引。在数据库世界里是比较与众不同，如果多个列的哈希值相同，索引会以链表的方式存放多个记录指针到同一个哈希条目中。InnoDB引擎的自适应哈希索引（adaptive hash index）不在此列。InnoDB具有一个特别的特性被称为自适应性hash索引。InnoDB发现比较频繁访问的索引值，会为其在B-Tree索引之上建立Hash索引，这使得B-Tree索引具有一定的hash特性，这个特性是自动的，无法控制和配置,只能开启和关闭此特性。<br>虽然 hash 索引效率高，但是 hash 索引本身由于其特殊性也带来了很多限制和弊端，主要有以下这些：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a、<span class="built_in">hash</span> 索引仅仅能满足=，&lt;=&gt;，IN，IS NULL或者IS NOT NULL查询，不能使用范围查询。</span><br><span class="line">    由于 Hash 索引比较的是进行 Hash 运算之后的 Hash 值，所以它只能用于等值的过滤，不能用于基于范围的过滤，因为经过相应的 Hash 算法处理之后的 Hash 值的大小关系，并不能保证和Hash运算前完全一样。</span><br><span class="line">b、Hash 索引无法被用来避免数据的排序操作。</span><br><span class="line">    由于 Hash 索引中存放的是经过 Hash 计算之后的 Hash 值，而且Hash值的大小关系并不一定和 Hash 运算前的键值完全一样，所以数据库无法利用索引的数据来避免任何排序运算；</span><br><span class="line">c、Hash 索引不能利用部分索引键查询。</span><br><span class="line">    对于组合索引，Hash 索引在计算 Hash 值的时候是组合索引键合并后再一起计算 Hash 值，而不是单独计算 Hash 值，所以通过组合索引的前面一个或几个索引键进行查询的时候，Hash 索引也无法被利用。</span><br><span class="line">d、Hash 索引在任何时候都不能避免表扫描。</span><br><span class="line">    Hash 索引是将索引键通过 Hash 运算之后，将 Hash运算结果的 Hash 值和所对应的行指针信息存放于一个 Hash 表中，由于不同索引键存在相同 Hash 值，所以即使取满足某个 Hash 键值的数据的记录条数，也无法从 Hash 索引中直接完成查询，还是要通过访问表中的实际数据进行相应的比较，并得到相应的结果。</span><br><span class="line">e、Hash 索引遇到大量Hash值相等的情况后性能并不一定就会比B-Tree索引高。</span><br><span class="line">    对于选择性比较低的索引键，如果创建 Hash 索引，那么将会存在大量记录指针信息存于同一个 Hash 值相关联。这样要定位某一条记录时就会非常麻烦，会浪费多次表数据的访问，而造成整体性能低下</span><br></pre></td></tr></table></figure></p>
+<h3 id="B-树索引"><a href="#B-树索引" class="headerlink" title="B+ 树索引"></a>B+ 树索引</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="R-树索引"><a href="#R-树索引" class="headerlink" title="R 树索引"></a>R 树索引</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="Fulltext-索引"><a href="#Fulltext-索引" class="headerlink" title="Fulltext 索引"></a>Fulltext 索引</h3><p>MySQL 5.6.4版本之前只有MyISAM引擎支持fulltext全文索引，InnoDB在5.6.4版本以后就开始支持fulltext全文索引，从MySQL 5.7.6开始，MySQL内置了ngram全文检索插件，开始支持中文全文索引，并且对MyISAM和InnoDB引擎有效。</p>
-<h2 id="InnoDB和MyISAM引擎索引实现原理"><a href="#InnoDB和MyISAM引擎索引实现原理" class="headerlink" title="InnoDB和MyISAM引擎索引实现原理"></a>InnoDB和MyISAM引擎索引实现原理</h2><h3 id="MyISAM-与-InnoDB-区别"><a href="#MyISAM-与-InnoDB-区别" class="headerlink" title="MyISAM 与 InnoDB 区别"></a>MyISAM 与 InnoDB 区别</h3><p>  MyISAM中的表是以堆表的方式进行存储，堆表没有主键，因此没有聚集索引，辅助索引叶节点不是返回主键值，而是返回行标志符（ROWID），通过ROWID再去查找相应的行。很显然，对于堆表来说，通过辅助索引访问更快(IO更少)，但是如果在OLTP应用下，表中数据经常被修改，辅助索引中的ROWID可能需要经常更新，如果更新影响到物理地址的更改，这种开销比索引组织表要大得多。因此，索引组织表还是堆表，这取决于你的应用，如果你的应用是OLAP，数据更新很少，堆表更好一些。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">InnoDB支持事务，MyisAM不支持；</div><div class="line">MyisAM顺序储存数据，索引叶子节点保存对应数据行地址，辅助索引很主键索引相差无几；InnoDB主键节点同时保存数据行，其他辅助索引保存的是主键索引的值；</div><div class="line">MyisAM键值分离，索引载入内存（key_buffer_size），数据缓存依赖操作系统；InnoDB键值一起保存，索引与数据一起载入InnoDB缓冲池；MyisAM主键（唯一）索引按升序来存数据，InnoDB则不一定</div><div class="line">MyisAM索引的基数值（Cardinality，show index 命令可以看见）是精确的，InnoDB则是估计值。这里涉及到信息统计的知识，MyisAM统计信息是保存磁盘中，在alter表或Analyze table操作更新此信息，而InnoDB则是在表第一次打开的时候估计值保存在缓存区内；</div><div class="line">MyisAM处理字符串索引时用增量保存的方式，如第一个索引是‘preform’，第二个是‘preformence’，则第二个保存是‘7，ance’，这个明显的好处是缩短索引，但是缺陷就是不支持倒序提取索引，必须顺序遍历获取索引</div></pre></td></tr></table></figure></p>
+<h2 id="InnoDB和MyISAM引擎索引实现原理"><a href="#InnoDB和MyISAM引擎索引实现原理" class="headerlink" title="InnoDB和MyISAM引擎索引实现原理"></a>InnoDB和MyISAM引擎索引实现原理</h2><h3 id="MyISAM-与-InnoDB-区别"><a href="#MyISAM-与-InnoDB-区别" class="headerlink" title="MyISAM 与 InnoDB 区别"></a>MyISAM 与 InnoDB 区别</h3><p>  MyISAM中的表是以堆表的方式进行存储，堆表没有主键，因此没有聚集索引，辅助索引叶节点不是返回主键值，而是返回行标志符（ROWID），通过ROWID再去查找相应的行。很显然，对于堆表来说，通过辅助索引访问更快(IO更少)，但是如果在OLTP应用下，表中数据经常被修改，辅助索引中的ROWID可能需要经常更新，如果更新影响到物理地址的更改，这种开销比索引组织表要大得多。因此，索引组织表还是堆表，这取决于你的应用，如果你的应用是OLAP，数据更新很少，堆表更好一些。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">InnoDB支持事务，MyisAM不支持；</span><br><span class="line">MyisAM顺序储存数据，索引叶子节点保存对应数据行地址，辅助索引很主键索引相差无几；InnoDB主键节点同时保存数据行，其他辅助索引保存的是主键索引的值；</span><br><span class="line">MyisAM键值分离，索引载入内存（key_buffer_size），数据缓存依赖操作系统；InnoDB键值一起保存，索引与数据一起载入InnoDB缓冲池；MyisAM主键（唯一）索引按升序来存数据，InnoDB则不一定</span><br><span class="line">MyisAM索引的基数值（Cardinality，show index 命令可以看见）是精确的，InnoDB则是估计值。这里涉及到信息统计的知识，MyisAM统计信息是保存磁盘中，在alter表或Analyze table操作更新此信息，而InnoDB则是在表第一次打开的时候估计值保存在缓存区内；</span><br><span class="line">MyisAM处理字符串索引时用增量保存的方式，如第一个索引是‘preform’，第二个是‘preformence’，则第二个保存是‘7，ance’，这个明显的好处是缩短索引，但是缺陷就是不支持倒序提取索引，必须顺序遍历获取索引</span><br></pre></td></tr></table></figure></p>
 <h3 id="MyISAM-索引实现原理"><a href="#MyISAM-索引实现原理" class="headerlink" title="MyISAM 索引实现原理"></a>MyISAM 索引实现原理</h3><p>在MyISAM中，主索引和辅助索引（Secondary key）在结构上没有任何区别，只是主索引要求key是唯一的，而辅助索引的key可以重复。MyISAM中索引检索的算法为首先按照B+Tree搜索算法搜索索引，如果指定的Key存在，则取出其data域的值，然后以data域的值为地址，读取相应数据记录。对于非聚簇索引表来说，表数据和索引是分成两部分存储的，主键索引和二级索引存储上没有任何区别。使用的是B+树作为索引的存储结构，所有的节点都是索引，叶子节点存储的是索引+索引对应的记录的地址。对于聚簇索引表来说，表数据是和主键一起存储的，主键索引的叶结点存储行数据(包含了主键值)，二级索引的叶结点存储行的主键值。使用的是B+树作为索引的存储结构，非叶子节点都是索引关键字，但非叶子节点中的关键字中不存储对应记录的具体内容或内容地址。叶子节点上的数据是主键与具体记录(数据内容)。</p>
-<h3 id="InnoDB-索引实现原理"><a href="#InnoDB-索引实现原理" class="headerlink" title="InnoDB 索引实现原理"></a>InnoDB 索引实现原理</h3><h4 id="聚集索引"><a href="#聚集索引" class="headerlink" title="聚集索引"></a>聚集索引</h4><p>聚集索引并不是一种单独的索引类型，而是一种数据存储方式（不是数据结构，而是存储结构），具体细节依赖于其实现方式，但InnoDB的聚集索引实际上是在同一个结构中保存了B-Tree索引和数据行。<br>当表有索引时，它的数据行实际上存放在索引的叶子页中，属于聚集表示数据行和相邻的键值紧凑地存储在一起，因为无法同时把数据行存放在两个不同的地方，所以一个表只能有一个聚集索引。因为是存储引擎负责实现索引，因此不是所有的存储引擎都支持聚集索引。下面主要介绍InnoDB，但下面讨论的原理对于任何支持聚集索引（TokuDB可以有多个聚集索引）的引擎都适用：<br>叶子页包含了行的全部数据，但是节点页只包含了索引列（或者可以说非叶子节点的节点页包含的是索引值的索引，因为这些节点页包含的值是从索引列中提取出来的）。<br>InnoDB将通过主键聚集数据，如果没有定义主键，InnoDB会选择第一个非空的唯一索引代替，如果没有非空唯一索引，InnoDB会隐式定义一个6字节的rowid主键来作为聚集索引。InnoDB只聚集在同一个页面中的记录，包含相邻键值的页面可能会相距甚远。<br>要注意：聚集主键可能对性能有帮助，但也可能导致严重的性能问题，尤其是将表的存储引擎从InnoDB转换成其他引擎的时候。<br>聚集的数据有一些重要的优点：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A：可以把相关数据保存在一起，如：实现电子邮箱时，可以根据用户ID来聚集数据，这样只需要从磁盘读取少量的数据页就能获取某个用户全部邮件，如果没有使用聚集索引，则每封邮件都可能导致一次磁盘IO</div><div class="line">B：数据访问更快，聚集索引将索引和数据保存在同一个B-Tree中，因此从聚集索引中获取数据通常比在非聚集索引中查找要快</div><div class="line">C：使用覆盖索引扫描的查询可以直接使用页节点中的主键值</div></pre></td></tr></table></figure></p>
-<p>聚集索引的缺点：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">A：聚集数据最大限度地提高了IO密集型应用的性能，但如果数据全部放在内存中，则访问的顺序就没有那么重要了，聚集索引也没有什么优势了</div><div class="line">B：插入速度严重依赖于插入顺序，按照主键的顺序插入是加载数据到InnoDB表中速度最快的方式，但如果不是按照主键顺序加载数据，那么在加载完成后最好使用optimize table命令重新组织一下表</div><div class="line">C：更新聚集索引列的代价很高，因为会强制InnoDB将每个被更新的行移动到新的位置</div><div class="line">D：基于聚集索引的表在插入新行，或者主键被更新导致需要移动行的时候，可能面临页分裂的问题，当行的主键值要求必须将这一行插入到某个已满的页中时，存储引擎会将该页分裂成两个页面来容纳该行，这就是一次页分裂操作，页分裂会导致表占用更多的磁盘空间</div><div class="line">E：聚集索引可能导致全表扫描变慢，尤其是行比较稀疏，或者由于页分裂导致数据存储不连续的时候</div><div class="line">F：二级索引可能比想象的更大，因为在二级索引的叶子节点包含了引用行的主键列。</div><div class="line">G：二级索引访问需要两次索引查找，而不是一次</div></pre></td></tr></table></figure></p>
-<h2 id="InnoDB的主键选择与优化"><a href="#InnoDB的主键选择与优化" class="headerlink" title="InnoDB的主键选择与优化"></a>InnoDB的主键选择与优化</h2><p>如果我们定义了主键(PRIMARY KEY)，那么InnoDB会选择主键作为聚集索引、如果没有显式定义主键，则InnoDB会选择第一个不包含有NULL值的唯一索引作为主键索引，如果也没有这样的唯一索引，则InnoDB会选择内置6字节长的ROWID作为隐含的聚集索引(ROWID随着行记录的写入而主键递增，这个ROWID不像ORACLE的ROWID那样可引用，是隐含的)。<br>数据记录本身被存于主键索引（一颗B+Tree）的叶子节点上。这就要求同一个叶子节点内（大小为一个内存页或磁盘页）的各条数据记录按主键顺序存放，因此每当有一条新的记录插入时，MySQL会根据其主键将其插入适当的节点和位置，如果页面达到装载因子（InnoDB默认为15/16），则开辟一个新的页（节点）。如果表使用自增主键，那么每次插入新的记录，记录就会顺序添加到当前索引节点的后续位置，当一页写满，就会自动开辟一个新的页；如果使用非自增主键（如果身份证号或学号等），由于每次插入主键的值近似于随机，因此每次新纪录都要被插到现有索引页得中间某个位置，此时MySQL不得不为了将新记录插到合适位置而移动数据，甚至目标页面可能已经被回写到磁盘上而从缓存中清掉，此时又要从磁盘上读回来，这增加了很多开销，同时频繁的移动、分页操作造成了大量的碎片，得到了不够紧凑的索引结构，后续不得不通过OPTIMIZE TABLE来重建表并优化填充页面。<br>综上总结，如果InnoDB表的数据写入顺序能和B+树索引的叶子节点顺序一致的话，这时候存取效率是最高的，也就是下面这几种情况的存取效率最高：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A、使用自增列(INT/BIGINT类型)做主键，这时候写入顺序是自增的，和B+数叶子节点分裂顺序一致；</div><div class="line">B、该表不指定自增列做主键，同时也没有可以被选为主键的唯一索引(上面的条件)，这时候InnoDB会选择内置的ROWID作为主键，写入顺序和ROWID增长顺序一致；</div><div class="line">除此以外，如果一个InnoDB表又没有显示主键，又有可以被选择为主键的唯一索引，但该唯一索引可能不是递增关系时(例如字符串、UUID、多字段联合唯一索引的情况)，该表的存取效率就会比较差。</div></pre></td></tr></table></figure></p>
+<h3 id="InnoDB-索引实现原理"><a href="#InnoDB-索引实现原理" class="headerlink" title="InnoDB 索引实现原理"></a>InnoDB 索引实现原理</h3><h4 id="聚集索引"><a href="#聚集索引" class="headerlink" title="聚集索引"></a>聚集索引</h4><p>聚集索引并不是一种单独的索引类型，而是一种数据存储方式（不是数据结构，而是存储结构），具体细节依赖于其实现方式，但InnoDB的聚集索引实际上是在同一个结构中保存了B-Tree索引和数据行。<br>当表有索引时，它的数据行实际上存放在索引的叶子页中，属于聚集表示数据行和相邻的键值紧凑地存储在一起，因为无法同时把数据行存放在两个不同的地方，所以一个表只能有一个聚集索引。因为是存储引擎负责实现索引，因此不是所有的存储引擎都支持聚集索引。下面主要介绍InnoDB，但下面讨论的原理对于任何支持聚集索引（TokuDB可以有多个聚集索引）的引擎都适用：<br>叶子页包含了行的全部数据，但是节点页只包含了索引列（或者可以说非叶子节点的节点页包含的是索引值的索引，因为这些节点页包含的值是从索引列中提取出来的）。<br>InnoDB将通过主键聚集数据，如果没有定义主键，InnoDB会选择第一个非空的唯一索引代替，如果没有非空唯一索引，InnoDB会隐式定义一个6字节的rowid主键来作为聚集索引。InnoDB只聚集在同一个页面中的记录，包含相邻键值的页面可能会相距甚远。<br>要注意：聚集主键可能对性能有帮助，但也可能导致严重的性能问题，尤其是将表的存储引擎从InnoDB转换成其他引擎的时候。<br>聚集的数据有一些重要的优点：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A：可以把相关数据保存在一起，如：实现电子邮箱时，可以根据用户ID来聚集数据，这样只需要从磁盘读取少量的数据页就能获取某个用户全部邮件，如果没有使用聚集索引，则每封邮件都可能导致一次磁盘IO</span><br><span class="line">B：数据访问更快，聚集索引将索引和数据保存在同一个B-Tree中，因此从聚集索引中获取数据通常比在非聚集索引中查找要快</span><br><span class="line">C：使用覆盖索引扫描的查询可以直接使用页节点中的主键值</span><br></pre></td></tr></table></figure></p>
+<p>聚集索引的缺点：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A：聚集数据最大限度地提高了IO密集型应用的性能，但如果数据全部放在内存中，则访问的顺序就没有那么重要了，聚集索引也没有什么优势了</span><br><span class="line">B：插入速度严重依赖于插入顺序，按照主键的顺序插入是加载数据到InnoDB表中速度最快的方式，但如果不是按照主键顺序加载数据，那么在加载完成后最好使用optimize table命令重新组织一下表</span><br><span class="line">C：更新聚集索引列的代价很高，因为会强制InnoDB将每个被更新的行移动到新的位置</span><br><span class="line">D：基于聚集索引的表在插入新行，或者主键被更新导致需要移动行的时候，可能面临页分裂的问题，当行的主键值要求必须将这一行插入到某个已满的页中时，存储引擎会将该页分裂成两个页面来容纳该行，这就是一次页分裂操作，页分裂会导致表占用更多的磁盘空间</span><br><span class="line">E：聚集索引可能导致全表扫描变慢，尤其是行比较稀疏，或者由于页分裂导致数据存储不连续的时候</span><br><span class="line">F：二级索引可能比想象的更大，因为在二级索引的叶子节点包含了引用行的主键列。</span><br><span class="line">G：二级索引访问需要两次索引查找，而不是一次</span><br></pre></td></tr></table></figure></p>
+<h2 id="InnoDB的主键选择与优化"><a href="#InnoDB的主键选择与优化" class="headerlink" title="InnoDB的主键选择与优化"></a>InnoDB的主键选择与优化</h2><p>如果我们定义了主键(PRIMARY KEY)，那么InnoDB会选择主键作为聚集索引、如果没有显式定义主键，则InnoDB会选择第一个不包含有NULL值的唯一索引作为主键索引，如果也没有这样的唯一索引，则InnoDB会选择内置6字节长的ROWID作为隐含的聚集索引(ROWID随着行记录的写入而主键递增，这个ROWID不像ORACLE的ROWID那样可引用，是隐含的)。<br>数据记录本身被存于主键索引（一颗B+Tree）的叶子节点上。这就要求同一个叶子节点内（大小为一个内存页或磁盘页）的各条数据记录按主键顺序存放，因此每当有一条新的记录插入时，MySQL会根据其主键将其插入适当的节点和位置，如果页面达到装载因子（InnoDB默认为15/16），则开辟一个新的页（节点）。如果表使用自增主键，那么每次插入新的记录，记录就会顺序添加到当前索引节点的后续位置，当一页写满，就会自动开辟一个新的页；如果使用非自增主键（如果身份证号或学号等），由于每次插入主键的值近似于随机，因此每次新纪录都要被插到现有索引页得中间某个位置，此时MySQL不得不为了将新记录插到合适位置而移动数据，甚至目标页面可能已经被回写到磁盘上而从缓存中清掉，此时又要从磁盘上读回来，这增加了很多开销，同时频繁的移动、分页操作造成了大量的碎片，得到了不够紧凑的索引结构，后续不得不通过OPTIMIZE TABLE来重建表并优化填充页面。<br>综上总结，如果InnoDB表的数据写入顺序能和B+树索引的叶子节点顺序一致的话，这时候存取效率是最高的，也就是下面这几种情况的存取效率最高：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A、使用自增列(INT/BIGINT类型)做主键，这时候写入顺序是自增的，和B+数叶子节点分裂顺序一致；</span><br><span class="line">B、该表不指定自增列做主键，同时也没有可以被选为主键的唯一索引(上面的条件)，这时候InnoDB会选择内置的ROWID作为主键，写入顺序和ROWID增长顺序一致；</span><br><span class="line">除此以外，如果一个InnoDB表又没有显示主键，又有可以被选择为主键的唯一索引，但该唯一索引可能不是递增关系时(例如字符串、UUID、多字段联合唯一索引的情况)，该表的存取效率就会比较差。</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
+
+    
+
     
     
+    
+     <div>
+		
+		<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+		
+      </div>
+	
     
 
     
 
     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>cai182081</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2017/10/14/MySQL/MySQL_Index/" title="MySQL 索引原理详解">http://yoursite.com/2017/10/14/MySQL/MySQL_Index/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
 
+      </div>
     
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            <a href="/tags/MySQL/" rel="tag"> <i class="fa fa-tag"></i> MySQL</a>
           
-            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+            <a href="/tags/数据库/" rel="tag"> <i class="fa fa-tag"></i> 数据库</a>
           
-            <a href="/tags/数据库优化/" rel="tag"># 数据库优化</a>
+            <a href="/tags/数据库优化/" rel="tag"> <i class="fa fa-tag"></i> 数据库优化</a>
           
         </div>
       
@@ -442,7 +526,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/13/MySQL/MySQL_ architecture/" rel="next" title="MySQL 体系结构详解">
+              <a href="/2017/10/13/MySQL/MySQL_ Architecture/" rel="next" title="MySQL 体系结构详解">
                 <i class="fa fa-chevron-left"></i> MySQL 体系结构详解
               </a>
             
@@ -452,8 +536,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/15/MySQL/MySQL_my.conf/" rel="prev" title="MySQL my.conf参数文件配置详解">
-                MySQL my.conf参数文件配置详解 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/15/MySQL/MySQL_my.conf/" rel="prev" title="MySQL 5.7 最新 my.conf参数文件配置">
+                MySQL 5.7 最新 my.conf参数文件配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -480,9 +564,6 @@
           </div>
           
 
-
-          
-
   
     <div class="comments" id="comments">
       
@@ -492,7 +573,7 @@
 
   
 
-  
+
 
         </div>
         
@@ -531,62 +612,113 @@
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">23</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
+              <a href="/atom2.xml" rel="alternate">
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
             </div>
           
 
-          <div class="links-of-author motion-element">
+          
+
+          
+          
+
+          
+          
+
+          
             
-          </div>
-
           
-          
-
-          
-          
-
           
 
         </div>
@@ -623,16 +755,22 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cai182081</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -640,12 +778,13 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
 
         
+
 
 
 
@@ -684,12 +823,6 @@
 
 
 
-  
-
-
-
-
-
 
 
 
@@ -698,61 +831,77 @@
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+  
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
 
 
 
   
-
-
-  
-
 
 
 
@@ -775,7 +924,6 @@
 
 
 
-
 <!-- LOCAL: You can save these files to your site and update links -->
     
         
@@ -790,7 +938,7 @@
       <script type="text/javascript">
       function renderGitment(){
         var gitment = new Gitmint({
-            id: document.location.href, 
+            id: window.location.pathname,
             owner: 'cai182081',
             repo: 'cai182081.github.io',
             
@@ -817,10 +965,427 @@
 
 
 
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
 
   
 
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("LYl7tK129GkXmPxHi8ILtiuQ-gzGzoHsz", "fNvr4KMQd9tuE6hVX1hFBzlU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
 
 
 
@@ -829,11 +1394,15 @@
   
 
   
-  
 
   
   
 
+  
+
+  
+
+  
 
   
 

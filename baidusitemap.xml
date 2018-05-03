@@ -4,8 +4,346 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/</loc>
+    <lastmod>2018-04-22T10:29:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>全面解析 MySQL、MongoDB 数据库监控工具 PMM</title>
+        <pubTime>2017-11-11T19:19:32.344Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>MongoDB</tag>
+         
+        <tag>Percona</tag>
+         
+        <tag>数据库监控</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_MHA/</loc>
+    <lastmod>2018-04-21T23:11:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>基于 MySQL 数据库的 MHA 集群原理及搭建过程</title>
+        <pubTime>2017-10-19T13:37:37.596Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>数据库</tag>
+         
+        <tag>MySQL 集群</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/15/MySQL/MySQL_my.conf/</loc>
+    <lastmod>2018-04-21T10:15:10.000Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 5.7 最新 my.conf参数文件配置</title>
+        <pubTime>2017-10-15T02:18:17.846Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/22/MySQL/MySQL_Change_Definder/</loc>
+    <lastmod>2018-04-21T04:50:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>函数、存储过程和试图定义者变更脚本</title>
+        <pubTime>2018-04-21T23:08:30.964Z</pubTime>
+        
+        <tag>MySQL 日常维护</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
+    <lastmod>2018-04-20T20:00:46.000Z</lastmod>
+    <data>
+        <display>
+        <title>SQL优化之美：对隐式转换、not in子查询诊断和改写</title>
+        <pubTime>2017-11-11T14:30:31.518Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>SQL 优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="SQL" url="http://yoursite.com/categories/SQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/16/SQL/MySQL_SQL_4/</loc>
+    <lastmod>2018-04-20T19:59:42.000Z</lastmod>
+    <data>
+        <display>
+        <title>SQL 优化之美：对一条简单 SQL 优化的理解、分析</title>
+        <pubTime>2018-04-15T19:12:42.932Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>数据库优化</tag>
+         
+        <tag>SQL 优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/04/SQL/MySQL_SQL_1/</loc>
+    <lastmod>2018-04-20T19:59:04.000Z</lastmod>
+    <data>
+        <display>
+        <title>SQL 优化之美：由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思</title>
+        <pubTime>2018-04-04T14:26:55.089Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>数据库优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/21/SQL/DB_SQL_5/</loc>
+    <lastmod>2018-04-20T18:43:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>SQL 优化之美：对一条简单 SQL 优化的理解、分析</title>
+        <pubTime>2018-04-20T17:21:02.872Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>数据库优化</tag>
+         
+        <tag>SQL 优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/18/MySQL/MySQL_PT_OSC/</loc>
+    <lastmod>2018-04-19T05:50:52.000Z</lastmod>
+    <data>
+        <display>
+        <title>pt-online-schema-change 实现原理及其用法</title>
+        <pubTime>2018-04-18T11:48:56.126Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>pt-tools</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/12/MongoDB/MongDB_Install/</loc>
+    <lastmod>2018-04-19T03:47:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>MongoDB 3.6.3 （生产环境下）二进制单机安装与安全认证配置</title>
+        <pubTime>2018-04-12T01:27:45.992Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>MongoDB</tag>
+         
+         
+           
+             
+              <breadCrumb title="MongoDB" url="http://yoursite.com/categories/MongoDB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/18/MySQL/MySQL_Partition/</loc>
+    <lastmod>2018-04-18T21:15:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>pt-online-schema-change 实现 MySQL 在线重定义普通表转分区表</title>
+        <pubTime>2018-04-18T11:48:56.124Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>pt-tools</tag>
+         
+        <tag>MySQL 优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/15/Spark/Spark_Cluster/</loc>
+    <lastmod>2018-04-15T14:44:46.000Z</lastmod>
+    <data>
+        <display>
+        <title>Spark 2.3.0 on Yarn 集群搭建（生产环境下）</title>
+        <pubTime>2018-04-15T13:41:33.613Z</pubTime>
+        
+        <tag>大数据</tag>
+         
+        <tag>Spark</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spark" url="http://yoursite.com/categories/Spark/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/06/Hadoop/Hadoop_Cluster/</loc>
+    <lastmod>2018-04-15T13:44:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hadoop 3.1.0 完全分布式集群搭建（生产环境下）</title>
+        <pubTime>2018-04-06T08:01:39.233Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+        <tag>大数据</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hadoop" url="http://yoursite.com/categories/Hadoop/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Install/</loc>
+    <lastmod>2018-04-15T07:50:10.000Z</lastmod>
+    <data>
+        <display>
+        <title>生产环境中 MySQL(v5.7.21) for Linux 下二进制安装配置详解</title>
+        <pubTime>2018-04-10T12:18:13.634Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/12/MongoDB/MongDB_Replication/</loc>
+    <lastmod>2018-04-15T06:23:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>MongoDB 3.6.3 (生产环境下)副本集群（复制集群/主从集群）安装配置详解</title>
+        <pubTime>2018-04-12T15:15:50.992Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>MongoDB</tag>
+         
+         
+           
+             
+              <breadCrumb title="MongoDB" url="http://yoursite.com/categories/MongoDB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/</loc>
-    <lastmod>2018-04-12T14:45:15.098Z</lastmod>
+    <lastmod>2018-04-12T14:45:16.000Z</lastmod>
     <data>
         <display>
         <title>MongoDB 3.x 生产环境下参数文件优化配置及核心参数说明详解</title>
@@ -26,30 +364,8 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/12/MongoDB/MongDB_Install/</loc>
-    <lastmod>2018-04-12T14:40:38.722Z</lastmod>
-    <data>
-        <display>
-        <title>MongoDB 3.6.3 （生产环境下）二进制安装与安全认证配置</title>
-        <pubTime>2018-04-12T01:27:45.992Z</pubTime>
-        
-        <tag>数据库</tag>
-         
-        <tag>MongoDB</tag>
-         
-         
-           
-             
-              <breadCrumb title="MongoDB" url="http://yoursite.com/categories/MongoDB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2018/04/02/SQL/DB_SQL/</loc>
-    <lastmod>2018-04-11T15:13:41.117Z</lastmod>
+    <lastmod>2018-04-11T15:13:42.000Z</lastmod>
     <data>
         <display>
         <title>MySQL SQL 技巧——通过存储过程对一个表生成大量测试数据</title>
@@ -68,30 +384,8 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
-    <lastmod>2018-04-11T14:20:19.811Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL SQL优化技巧——对隐式转换、not in子查询诊断和改写</title>
-        <pubTime>2017-11-11T14:30:31.518Z</pubTime>
-        
-        <tag>MySQL</tag>
-         
-        <tag>SQL 优化</tag>
-         
-         
-           
-             
-              <breadCrumb title="SQL" url="http://yoursite.com/categories/SQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2018/04/11/SQL/MySQL_SQL%20_3/</loc>
-    <lastmod>2018-04-11T04:11:41.150Z</lastmod>
+    <lastmod>2018-04-11T04:11:42.000Z</lastmod>
     <data>
         <display>
         <title>MySQL SQL 优化技巧——巧妙利用伪列实现SQL优化</title>
@@ -112,34 +406,8 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/</loc>
-    <lastmod>2018-04-11T03:04:01.533Z</lastmod>
-    <data>
-        <display>
-        <title>全面解析 MySQL、MongoDB 数据库监控工具 PMM</title>
-        <pubTime>2017-11-11T19:19:32.344Z</pubTime>
-        
-        <tag>MySQL</tag>
-         
-        <tag>Percona</tag>
-         
-        <tag>MongoDB</tag>
-         
-        <tag>数据库监控</tag>
-         
-         
-           
-             
-              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2018/04/10/DevOps/MySQL_inception_archer/</loc>
-    <lastmod>2018-04-11T03:03:56.507Z</lastmod>
+    <lastmod>2018-04-11T03:03:58.000Z</lastmod>
     <data>
         <display>
         <title>MySQL 自动化审核工具 Inception、Archer 的安装配置详解</title>
@@ -163,7 +431,7 @@
     
   <url>
     <loc>http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</loc>
-    <lastmod>2018-04-10T14:34:57.660Z</lastmod>
+    <lastmod>2018-04-10T14:34:58.000Z</lastmod>
     <data>
         <display>
         <title>索引设计原则、使用场景及失效场景</title>
@@ -182,28 +450,8 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Install/</loc>
-    <lastmod>2018-04-10T14:20:45.000Z</lastmod>
-    <data>
-        <display>
-        <title>生产环境中 MySQL(v5.7.21) for Linux 下二进制安装配置详解</title>
-        <pubTime>2018-04-10T12:18:13.634Z</pubTime>
-        
-        <tag>MySQL</tag>
-         
-         
-           
-             
-              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Tuning/</loc>
-    <lastmod>2018-04-10T13:45:21.343Z</lastmod>
+    <lastmod>2018-04-10T13:45:22.000Z</lastmod>
     <data>
         <display>
         <title>全面解析 MySQL 数据库性能调优</title>
@@ -223,7 +471,7 @@
     
   <url>
     <loc>http://yoursite.com/2018/04/10/SQL/DB_SQL_1/</loc>
-    <lastmod>2018-04-10T13:39:41.487Z</lastmod>
+    <lastmod>2018-04-10T13:39:42.000Z</lastmod>
     <data>
         <display>
         <title>SQL 调优技巧</title>
@@ -243,7 +491,7 @@
     
   <url>
     <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_explain/</loc>
-    <lastmod>2018-04-10T09:28:12.849Z</lastmod>
+    <lastmod>2018-04-10T09:28:14.000Z</lastmod>
     <data>
         <display>
         <title>MySQL 执行计划详细解读</title>
@@ -266,8 +514,8 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/10/12/MySQL/MySQL_design_specifications/</loc>
-    <lastmod>2018-04-10T09:23:01.905Z</lastmod>
+    <loc>http://yoursite.com/2017/10/12/MySQL/MySQL_Design_Specifications/</loc>
+    <lastmod>2018-04-10T09:23:02.000Z</lastmod>
     <data>
         <display>
         <title>MySQL 数据库开发与设计规范</title>
@@ -290,52 +538,8 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/06/Hadoop/Hadoop_Cluster/</loc>
-    <lastmod>2018-04-06T08:18:15.392Z</lastmod>
-    <data>
-        <display>
-        <title>Hadoop 3.0.1 完全分布式集群搭建</title>
-        <pubTime>2018-04-06T08:01:39.233Z</pubTime>
-        
-        <tag>Hadoop</tag>
-         
-        <tag>大数据</tag>
-         
-         
-           
-             
-              <breadCrumb title="Hadoop" url="http://yoursite.com/categories/Hadoop/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/04/04/SQL/MySQL_SQL_1/</loc>
-    <lastmod>2018-04-04T15:13:02.432Z</lastmod>
-    <data>
-        <display>
-        <title>由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思</title>
-        <pubTime>2018-04-04T14:26:55.089Z</pubTime>
-        
-        <tag>MySQL</tag>
-         
-        <tag>数据库优化</tag>
-         
-         
-           
-             
-              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_%20architecture/</loc>
-    <lastmod>2018-04-04T14:31:18.237Z</lastmod>
+    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_%20Architecture/</loc>
+    <lastmod>2018-04-04T14:31:20.000Z</lastmod>
     <data>
         <display>
         <title>MySQL 体系结构详解</title>
@@ -349,6 +553,28 @@
            
              
               <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/14/Hadoop/Hadoop_CDH/</loc>
+    <lastmod>2018-04-04T10:38:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hadoop 3.0.1 完全分布式集群搭建</title>
+        <pubTime>2018-04-14T13:37:32.651Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+        <tag>大数据</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hadoop" url="http://yoursite.com/categories/Hadoop/"/>
           
         </display>
     </data>
@@ -381,7 +607,7 @@
     
   <url>
     <loc>http://yoursite.com/2018/04/03/MySQL/MySQL_Backup/</loc>
-    <lastmod>2018-04-03T13:00:29.249Z</lastmod>
+    <lastmod>2018-04-03T13:00:30.000Z</lastmod>
     <data>
         <display>
         <title>MySQL mysqldump 和 innobackupex 物理备份脚本</title>
@@ -402,30 +628,8 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/10/15/MySQL/MySQL_my.conf/</loc>
-    <lastmod>2017-11-11T19:17:08.114Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL my.conf参数文件配置详解</title>
-        <pubTime>2017-10-15T02:18:17.846Z</pubTime>
-        
-        <tag>MySQL</tag>
-         
-        <tag>数据库</tag>
-         
-         
-           
-             
-              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2017/11/11/MySQL/MySQL_PXB/</loc>
-    <lastmod>2017-11-11T14:29:42.382Z</lastmod>
+    <lastmod>2017-11-11T14:29:44.000Z</lastmod>
     <data>
         <display>
         <title>MySQL Percona Xtrabackup 物理备份详解</title>
@@ -446,8 +650,8 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_Replication_delay/</loc>
-    <lastmod>2017-10-19T15:07:47.278Z</lastmod>
+    <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_Replication_Delay/</loc>
+    <lastmod>2017-10-19T15:07:48.000Z</lastmod>
     <data>
         <display>
         <title>MySQL 主从复制延时原理、诊断与解决方案</title>
@@ -468,32 +672,8 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_MHA/</loc>
-    <lastmod>2017-10-19T13:41:13.706Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL MHA 集群原理及搭建</title>
-        <pubTime>2017-10-19T13:37:37.596Z</pubTime>
-        
-        <tag>MySQL</tag>
-         
-        <tag>数据库</tag>
-         
-        <tag>MySQL 集群</tag>
-         
-         
-           
-             
-              <breadCrumb title="MySQL" url="http://yoursite.com/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/10/14/MySQL/MySQL_index/</loc>
-    <lastmod>2017-10-15T01:25:31.237Z</lastmod>
+    <loc>http://yoursite.com/2017/10/14/MySQL/MySQL_Index/</loc>
+    <lastmod>2017-10-15T01:25:32.000Z</lastmod>
     <data>
         <display>
         <title>MySQL 索引原理详解</title>

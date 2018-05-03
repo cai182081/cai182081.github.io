@@ -2,114 +2,184 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/</loc>
+    <loc>http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/</loc>
     
-    <lastmod>2018-04-12T14:45:15.098Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/12/MongoDB/MongDB_Install/</loc>
-    
-    <lastmod>2018-04-12T14:40:38.722Z</lastmod>
+    <lastmod>2018-04-22T10:29:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/04/02/SQL/DB_SQL/</loc>
+    <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_MHA/</loc>
     
-    <lastmod>2018-04-11T15:13:41.117Z</lastmod>
+    <lastmod>2018-04-21T23:11:54.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/15/MySQL/MySQL_my.conf/</loc>
+    
+    <lastmod>2018-04-21T10:15:10.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/22/MySQL/MySQL_Change_Definder/</loc>
+    
+    <lastmod>2018-04-21T04:50:40.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/11/11/SQL/MySQL_SQL/</loc>
     
-    <lastmod>2018-04-11T14:20:19.811Z</lastmod>
+    <lastmod>2018-04-20T20:00:46.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/04/11/SQL/MySQL_SQL%20_3/</loc>
+    <loc>http://yoursite.com/2018/04/16/SQL/MySQL_SQL_4/</loc>
     
-    <lastmod>2018-04-11T04:11:41.150Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/11/12/MySQL/MySQL_PMM/</loc>
-    
-    <lastmod>2018-04-11T03:04:01.533Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/10/DevOps/MySQL_inception_archer/</loc>
-    
-    <lastmod>2018-04-11T03:03:56.507Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</loc>
-    
-    <lastmod>2018-04-10T14:34:57.660Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Install/</loc>
-    
-    <lastmod>2018-04-10T14:20:45.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Tuning/</loc>
-    
-    <lastmod>2018-04-10T13:45:21.343Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/10/SQL/DB_SQL_1/</loc>
-    
-    <lastmod>2018-04-10T13:39:41.487Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_explain/</loc>
-    
-    <lastmod>2018-04-10T09:28:12.849Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/12/MySQL/MySQL_design_specifications/</loc>
-    
-    <lastmod>2018-04-10T09:23:01.905Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/06/Hadoop/Hadoop_Cluster/</loc>
-    
-    <lastmod>2018-04-06T08:18:15.392Z</lastmod>
+    <lastmod>2018-04-20T19:59:42.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2018/04/04/SQL/MySQL_SQL_1/</loc>
     
-    <lastmod>2018-04-04T15:13:02.432Z</lastmod>
+    <lastmod>2018-04-20T19:59:04.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_%20architecture/</loc>
+    <loc>http://yoursite.com/2018/04/21/SQL/DB_SQL_5/</loc>
     
-    <lastmod>2018-04-04T14:31:18.237Z</lastmod>
+    <lastmod>2018-04-20T18:43:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/18/MySQL/MySQL_PT_OSC/</loc>
+    
+    <lastmod>2018-04-19T05:50:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/12/MongoDB/MongDB_Install/</loc>
+    
+    <lastmod>2018-04-19T03:47:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/18/MySQL/MySQL_Partition/</loc>
+    
+    <lastmod>2018-04-18T21:15:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/15/Spark/Spark_Cluster/</loc>
+    
+    <lastmod>2018-04-15T14:44:46.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/06/Hadoop/Hadoop_Cluster/</loc>
+    
+    <lastmod>2018-04-15T13:44:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Install/</loc>
+    
+    <lastmod>2018-04-15T07:50:10.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/12/MongoDB/MongDB_Replication/</loc>
+    
+    <lastmod>2018-04-15T06:23:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/15/MongoDB/MongDB_mongod.conf/</loc>
+    
+    <lastmod>2018-04-12T14:45:16.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/02/SQL/DB_SQL/</loc>
+    
+    <lastmod>2018-04-11T15:13:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/11/SQL/MySQL_SQL%20_3/</loc>
+    
+    <lastmod>2018-04-11T04:11:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/10/DevOps/MySQL_inception_archer/</loc>
+    
+    <lastmod>2018-04-11T03:03:58.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</loc>
+    
+    <lastmod>2018-04-10T14:34:58.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/10/MySQL/MySQL_Tuning/</loc>
+    
+    <lastmod>2018-04-10T13:45:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/10/SQL/DB_SQL_1/</loc>
+    
+    <lastmod>2018-04-10T13:39:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_explain/</loc>
+    
+    <lastmod>2018-04-10T09:28:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/12/MySQL/MySQL_Design_Specifications/</loc>
+    
+    <lastmod>2018-04-10T09:23:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/13/MySQL/MySQL_%20Architecture/</loc>
+    
+    <lastmod>2018-04-04T14:31:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/14/Hadoop/Hadoop_CDH/</loc>
+    
+    <lastmod>2018-04-04T10:38:02.000Z</lastmod>
     
   </url>
   
@@ -123,56 +193,42 @@
   <url>
     <loc>http://yoursite.com/2018/04/03/MySQL/MySQL_Backup/</loc>
     
-    <lastmod>2018-04-03T13:00:29.249Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/15/MySQL/MySQL_my.conf/</loc>
-    
-    <lastmod>2017-11-11T19:17:08.114Z</lastmod>
+    <lastmod>2018-04-03T13:00:30.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/11/11/MySQL/MySQL_PXB/</loc>
     
-    <lastmod>2017-11-11T14:29:42.382Z</lastmod>
+    <lastmod>2017-11-11T14:29:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_Replication_delay/</loc>
+    <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_Replication_Delay/</loc>
     
-    <lastmod>2017-10-19T15:07:47.278Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/19/MySQL/MySQL_MHA/</loc>
-    
-    <lastmod>2017-10-19T13:41:13.706Z</lastmod>
+    <lastmod>2017-10-19T15:07:48.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/14/MySQL/MySQL_index/</loc>
+    <loc>http://yoursite.com/2017/10/14/MySQL/MySQL_Index/</loc>
     
-    <lastmod>2017-10-15T01:25:31.237Z</lastmod>
+    <lastmod>2017-10-15T01:25:32.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/categories/index.html</loc>
     
-    <lastmod>2017-10-13T04:13:47.971Z</lastmod>
+    <lastmod>2017-10-13T04:13:48.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/tags/index.html</loc>
     
-    <lastmod>2017-10-13T04:05:11.777Z</lastmod>
+    <lastmod>2017-10-13T04:05:12.000Z</lastmod>
     
   </url>
   

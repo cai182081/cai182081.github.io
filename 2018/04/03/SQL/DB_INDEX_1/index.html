@@ -2,15 +2,21 @@
 
 
 
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -38,54 +44,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -94,51 +52,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="SQL 优化," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Cailiang's Blog" type="application/atom+xml" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
 
 
 
 
 
 
-<meta name="description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
-<meta name="keywords" content="SQL 优化">
-<meta property="og:type" content="article">
-<meta property="og:title" content="索引设计原则、使用场景及失效场景">
-<meta property="og:url" content="http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/index.html">
-<meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/SQL/INDEX_invalid.png">
-<meta property="og:updated_time" content="2018-04-10T14:34:57.660Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="索引设计原则、使用场景及失效场景">
-<meta name="twitter:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
-<meta name="twitter:image" content="http://yoursite.com/images/SQL/INDEX_invalid.png">
 
 
 
@@ -147,15 +79,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '5.1.3',
+    version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -167,12 +97,40 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/"/>
-
+  
 
 
 
+
+  <meta name="description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
+<meta name="keywords" content="SQL 优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="索引设计原则、使用场景及失效场景">
+<meta property="og:url" content="http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/index.html">
+<meta property="og:site_name" content="Cailiang&#39;s Blog">
+<meta property="og:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/SQL/INDEX_invalid.png">
+<meta property="og:updated_time" content="2018-04-10T14:34:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="索引设计原则、使用场景及失效场景">
+<meta name="twitter:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询">
+<meta name="twitter:image" content="http://yoursite.com/images/SQL/INDEX_invalid.png">
+
+
+
+  <link rel="alternate" href="/atom2.xml" title="Cailiang's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>索引设计原则、使用场景及失效场景 | Cailiang's Blog</title>
   
@@ -184,9 +142,37 @@
 
 
 
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -195,26 +181,26 @@
 
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-
+	<a href="https://github.com/cai182081"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Cailiang's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">飞翔的菜鸟</p>
+        <h1 class="site-subtitle" itemprop="description">飞翔的菜鸟</h1>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -222,68 +208,106 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -294,6 +318,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -318,11 +344,19 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">索引设计原则、使用场景及失效场景</h1>
+          <h2 class="post-title" itemprop="name headline">索引设计原则、使用场景及失效场景
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -330,13 +364,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T21:28:41+08:00">
-                2018-04-03
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-03 21:28:41" itemprop="dateCreated datePublished" datetime="2018-04-03T21:28:41+08:00">2018-04-03</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-10 22:34:58" itemprop="dateModified" datetime="2018-04-10T22:34:58+08:00">2018-04-10</time>
+              
             
           </span>
 
@@ -352,11 +403,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SQL/" itemprop="url" rel="index">
-                    <span itemprop="name">SQL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a></span>
 
                 
                 
@@ -372,13 +419,24 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/04/03/SQL/DB_INDEX_1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/03/SQL/DB_INDEX_1/" itemprop="commentsCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/03/SQL/DB_INDEX_1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
           
 
           
+          
+             <span id="/2018/04/03/SQL/DB_INDEX_1/" class="leancloud_visitors" data-flag-title="索引设计原则、使用场景及失效场景">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -401,44 +459,70 @@
 
       
         <p>索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。首先需要明白为什么索引会增加检索效率，DB在执行一条SQL语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，数据库基于costs优化器，根据系统收集的统计信息，生成执行计划，查询时就会通过索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询的速度。</p>
-<h2 id="索引优点与缺点"><a href="#索引优点与缺点" class="headerlink" title="索引优点与缺点"></a>索引优点与缺点</h2><p>使用索引的优点<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1、加速表和表之间的关接，特别是在实现数据的参考完整性方面特别有意义。</div><div class="line">2、可以大大加快数据的检索速度，这也是创建索引的最主要的原因。</div><div class="line">3、通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。</div><div class="line">4、在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。</div><div class="line">5、通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</div></pre></td></tr></table></figure></p>
-<p>索引存在的缺陷<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1、数据内容的变更（增、删、改）都需要修订索引，索引存在而外的维护成本</div><div class="line">2、创建、维护索引要耗费时间和系统资源，维护时间随着数据量的增加而增加。</div><div class="line">3、查找翻阅索引系统需要消耗时间，索引存在而外的访问成本。</div><div class="line">4、索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。</div><div class="line">5、数据的备份和恢复时间，会因为过多的索引消耗系统更多的维护时间。</div></pre></td></tr></table></figure></p>
-<h2 id="如何建立理想的索引"><a href="#如何建立理想的索引" class="headerlink" title="如何建立理想的索引"></a>如何建立理想的索引</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SQL查询频率</div><div class="line">过滤谓词选择性（cardinality/selectivity）</div><div class="line">索引长度</div><div class="line">覆盖字段</div><div class="line">索引排序</div></pre></td></tr></table></figure>
-<h2 id="索引设计和使用原则"><a href="#索引设计和使用原则" class="headerlink" title="索引设计和使用原则"></a>索引设计和使用原则</h2><p>在进行索引设计和索引优化时，请参考如下的索引使用原则：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1、通过创建唯一性索引，保证数据库表中数据的唯一性。</div><div class="line">2、对任何将要用于连接表的谓词连接列(on)创建索引</div><div class="line">3、对预计会频繁运行的SQL中WHERE子句引用的谓词过滤列创建索引</div><div class="line">4、对用于分组、分组等操作（进行GROUP BY或ORDER BY操作）的谓词分组、排序列创建索引</div><div class="line">5、过滤效果（选择性要高）要好（索引列的基数要大），不宜对status、sex等低基数列，使用单列索引检索数据，而尽可能与其他过滤条件建立复合索引，增加数据选择性</div><div class="line">6、对于那些在查询中很少使用或频繁更新的列，不宜使用索引</div><div class="line">7、字段顺序要佳，字段顺序对复合索引的效率有至关重要的作用，选择性高的的字段需要更靠前</div><div class="line">8、索引长度尽量小，对于定义为text，blob数据类型的大字段列不宜创建索引，而尽可能考虑前缀索引</div><div class="line">9、不宜过度索引，建立多个SQL能同时使用的高效复合索引，而不是多个索引</div></pre></td></tr></table></figure></p>
+<h2 id="索引优点与缺点"><a href="#索引优点与缺点" class="headerlink" title="索引优点与缺点"></a>索引优点与缺点</h2><p>使用索引的优点<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1、加速表和表之间的关接，特别是在实现数据的参考完整性方面特别有意义。</span><br><span class="line">2、可以大大加快数据的检索速度，这也是创建索引的最主要的原因。</span><br><span class="line">3、通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。</span><br><span class="line">4、在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。</span><br><span class="line">5、通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</span><br></pre></td></tr></table></figure></p>
+<p>索引存在的缺陷<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1、数据内容的变更（增、删、改）都需要修订索引，索引存在而外的维护成本</span><br><span class="line">2、创建、维护索引要耗费时间和系统资源，维护时间随着数据量的增加而增加。</span><br><span class="line">3、查找翻阅索引系统需要消耗时间，索引存在而外的访问成本。</span><br><span class="line">4、索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。</span><br><span class="line">5、数据的备份和恢复时间，会因为过多的索引消耗系统更多的维护时间。</span><br></pre></td></tr></table></figure></p>
+<h2 id="如何建立理想的索引"><a href="#如何建立理想的索引" class="headerlink" title="如何建立理想的索引"></a>如何建立理想的索引</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SQL查询频率</span><br><span class="line">过滤谓词选择性（cardinality/selectivity）</span><br><span class="line">索引长度</span><br><span class="line">覆盖字段</span><br><span class="line">索引排序</span><br></pre></td></tr></table></figure>
+<h2 id="索引设计和使用原则"><a href="#索引设计和使用原则" class="headerlink" title="索引设计和使用原则"></a>索引设计和使用原则</h2><p>在进行索引设计和索引优化时，请参考如下的索引使用原则：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、通过创建唯一性索引，保证数据库表中数据的唯一性。</span><br><span class="line">2、对任何将要用于连接表的谓词连接列(on)创建索引</span><br><span class="line">3、对预计会频繁运行的SQL中WHERE子句引用的谓词过滤列创建索引</span><br><span class="line">4、对用于分组、分组等操作（进行GROUP BY或ORDER BY操作）的谓词分组、排序列创建索引</span><br><span class="line">5、过滤效果（选择性要高）要好（索引列的基数要大），不宜对status、sex等低基数列，使用单列索引检索数据，而尽可能与其他过滤条件建立复合索引，增加数据选择性</span><br><span class="line">6、对于那些在查询中很少使用或频繁更新的列，不宜使用索引</span><br><span class="line">7、字段顺序要佳，字段顺序对复合索引的效率有至关重要的作用，选择性高的的字段需要更靠前</span><br><span class="line">8、索引长度尽量小，对于定义为text，blob数据类型的大字段列不宜创建索引，而尽可能考虑前缀索引</span><br><span class="line">9、不宜过度索引，建立多个SQL能同时使用的高效复合索引，而不是多个索引</span><br></pre></td></tr></table></figure></p>
 <h2 id="索引失效场景"><a href="#索引失效场景" class="headerlink" title="索引失效场景"></a>索引失效场景</h2><p>以a,b 两列复合索引idx_a_b(a,b)为例说明</p>
 <h3 id="索引全失效场景"><a href="#索引全失效场景" class="headerlink" title="索引全失效场景"></a>索引全失效场景</h3><p>idx_a_b(a,b) 索引完全不被SQL使用</p>
-<h4 id="谓词列或关联谓词列使用了普通或函数运算"><a href="#谓词列或关联谓词列使用了普通或函数运算" class="headerlink" title="谓词列或关联谓词列使用了普通或函数运算"></a>谓词列或关联谓词列使用了普通或函数运算</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM t WHERE DATE_FORMAT(a,<span class="string">'%Y%m%d'</span>) = <span class="string">'20180408'</span>;</div><div class="line">SELECT * FROM t WHERE a + 2 = 10;</div></pre></td></tr></table></figure>
-<h4 id="谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）"><a href="#谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）" class="headerlink" title="谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）"></a>谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a、字符类型转换（int/varchar、varchar/datetime、varchar/varbinary等数据类型的转换）</div><div class="line">b、字符集转换（utf8与utf8mb4字符集等）</div><div class="line">c、同字符集排序规则不同（utf8_general_ci与utf8_bin等）</div></pre></td></tr></table></figure>
-<h4 id="谓词上使用了负向查询（not-not-in-not-like-lt-gt-gt-lt-）不会使用索引"><a href="#谓词上使用了负向查询（not-not-in-not-like-lt-gt-gt-lt-）不会使用索引" class="headerlink" title="谓词上使用了负向查询（not, not in, not like, &lt;&gt;, != , !&gt;, !&lt; ）不会使用索引"></a>谓词上使用了负向查询（not, not in, not like, &lt;&gt;, != , !&gt;, !&lt; ）不会使用索引</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM t WHERE a != 8;</div><div class="line">SELECT * FROM t WHERE a NOT IN (1,2,3);</div></pre></td></tr></table></figure>
-<h4 id="以-开头的like查询或者正则匹配的regexp模糊查询"><a href="#以-开头的like查询或者正则匹配的regexp模糊查询" class="headerlink" title="以%开头的like查询或者正则匹配的regexp模糊查询"></a>以%开头的like查询或者正则匹配的regexp模糊查询</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM t WHERE a LIKE <span class="string">'%c'</span>;</div><div class="line">SELECT * FROM t WHERE a REGEXP <span class="string">'...'</span>;</div></pre></td></tr></table></figure>
-<h4 id="谓词上的索引列上对null运算（is-null-is-not-null）"><a href="#谓词上的索引列上对null运算（is-null-is-not-null）" class="headerlink" title="谓词上的索引列上对null运算（is null,is not null）"></a>谓词上的索引列上对null运算（is null,is not null）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM WHERE a IS NULL;</div><div class="line">SELECT * FROM WHERE a IS NOT NULL;</div></pre></td></tr></table></figure>
-<h4 id="子查询使用了not-in导致关联谓词列索引失效"><a href="#子查询使用了not-in导致关联谓词列索引失效" class="headerlink" title="子查询使用了not in导致关联谓词列索引失效"></a>子查询使用了not in导致关联谓词列索引失效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM t WHERE a.id NOT IN (SELECT b.id FROM b);</div></pre></td></tr></table></figure>
+<h4 id="谓词列或关联谓词列使用了普通或函数运算"><a href="#谓词列或关联谓词列使用了普通或函数运算" class="headerlink" title="谓词列或关联谓词列使用了普通或函数运算"></a>谓词列或关联谓词列使用了普通或函数运算</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE DATE_FORMAT(a,<span class="string">'%Y%m%d'</span>) = <span class="string">'20180408'</span>;</span><br><span class="line">SELECT * FROM t WHERE a + 2 = 10;</span><br></pre></td></tr></table></figure>
+<h4 id="谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）"><a href="#谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）" class="headerlink" title="谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）"></a>谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a、字符类型转换（int/varchar、varchar/datetime、varchar/varbinary等数据类型的转换）</span><br><span class="line">b、字符集转换（utf8与utf8mb4字符集等）</span><br><span class="line">c、同字符集排序规则不同（utf8_general_ci与utf8_bin等）</span><br></pre></td></tr></table></figure>
+<h4 id="谓词上使用了负向查询（not-not-in-not-like-lt-gt-gt-lt-）不会使用索引"><a href="#谓词上使用了负向查询（not-not-in-not-like-lt-gt-gt-lt-）不会使用索引" class="headerlink" title="谓词上使用了负向查询（not, not in, not like, &lt;&gt;, != , !&gt;, !&lt; ）不会使用索引"></a>谓词上使用了负向查询（not, not in, not like, &lt;&gt;, != , !&gt;, !&lt; ）不会使用索引</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE a != 8;</span><br><span class="line">SELECT * FROM t WHERE a NOT IN (1,2,3);</span><br></pre></td></tr></table></figure>
+<h4 id="以-开头的like查询或者正则匹配的regexp模糊查询"><a href="#以-开头的like查询或者正则匹配的regexp模糊查询" class="headerlink" title="以%开头的like查询或者正则匹配的regexp模糊查询"></a>以%开头的like查询或者正则匹配的regexp模糊查询</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE a LIKE <span class="string">'%c'</span>;</span><br><span class="line">SELECT * FROM t WHERE a REGEXP <span class="string">'...'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="谓词上的索引列上对null运算（is-null-is-not-null）"><a href="#谓词上的索引列上对null运算（is-null-is-not-null）" class="headerlink" title="谓词上的索引列上对null运算（is null,is not null）"></a>谓词上的索引列上对null运算（is null,is not null）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM WHERE a IS NULL;</span><br><span class="line">SELECT * FROM WHERE a IS NOT NULL;</span><br></pre></td></tr></table></figure>
+<h4 id="子查询使用了not-in导致关联谓词列索引失效"><a href="#子查询使用了not-in导致关联谓词列索引失效" class="headerlink" title="子查询使用了not in导致关联谓词列索引失效"></a>子查询使用了not in导致关联谓词列索引失效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE a.id NOT IN (SELECT b.id FROM b);</span><br></pre></td></tr></table></figure>
 <h4 id="检索小表"><a href="#检索小表" class="headerlink" title="检索小表"></a>检索小表</h4><h4 id="高水位、表空间碎片过多、统计信息错误及优化器缺陷等，导致索引不可用或低效"><a href="#高水位、表空间碎片过多、统计信息错误及优化器缺陷等，导致索引不可用或低效" class="headerlink" title="高水位、表空间碎片过多、统计信息错误及优化器缺陷等，导致索引不可用或低效"></a>高水位、表空间碎片过多、统计信息错误及优化器缺陷等，导致索引不可用或低效</h4><h4 id="低基数的查询过滤列（基于CBO的优化器）数据检索或询的数量是大表的大部分，30-左右（值不确定、以计算代价为准），导致索引失效"><a href="#低基数的查询过滤列（基于CBO的优化器）数据检索或询的数量是大表的大部分，30-左右（值不确定、以计算代价为准），导致索引失效" class="headerlink" title="低基数的查询过滤列（基于CBO的优化器）数据检索或询的数量是大表的大部分，30%左右（值不确定、以计算代价为准），导致索引失效"></a>低基数的查询过滤列（基于CBO的优化器）数据检索或询的数量是大表的大部分，30%左右（值不确定、以计算代价为准），导致索引失效</h4><h3 id="索引部分失效场景"><a href="#索引部分失效场景" class="headerlink" title="索引部分失效场景"></a>索引部分失效场景</h3><p>复合索引idx_a_b_c，b字段或c字段索引失效的情况</p>
-<h4 id="复合索引中，以（-gt-、-lt-、-lt-）的范围查询导致索引低效（不含in-、between-and-、-gt-lt-、-gt-lt-）"><a href="#复合索引中，以（-gt-、-lt-、-lt-）的范围查询导致索引低效（不含in-、between-and-、-gt-lt-、-gt-lt-）" class="headerlink" title="复合索引中，以（&gt; 、&lt;、&lt;=）的范围查询导致索引低效（不含in 、between and 、&gt;= &lt;= 、&gt;= &lt;）"></a>复合索引中，以（&gt; 、&lt;、&lt;=）的范围查询导致索引低效（不含in 、between and 、&gt;= &lt;= 、&gt;= &lt;）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM t WHERE a &gt; 1 AND b &gt;= 1;</div><div class="line">SELECT * FROM t WHERE a &lt;= 1 AND b &gt;= 1;</div></pre></td></tr></table></figure>
-<h4 id="复合索引中，以or为关键词的范围查询导致索引失效"><a href="#复合索引中，以or为关键词的范围查询导致索引失效" class="headerlink" title="复合索引中，以or为关键词的范围查询导致索引失效"></a>复合索引中，以or为关键词的范围查询导致索引失效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM t WHERE a = 1 AND (b = 1 OR c = 1);</div></pre></td></tr></table></figure>
-<h4 id="复合索引中，范围检索导致之后的分组、排序-GROUP-BY-ORDER-BY-列索引失效"><a href="#复合索引中，范围检索导致之后的分组、排序-GROUP-BY-ORDER-BY-列索引失效" class="headerlink" title="复合索引中，范围检索导致之后的分组、排序 GROUP BY/ORDER BY 列索引失效"></a>复合索引中，范围检索导致之后的分组、排序 GROUP BY/ORDER BY 列索引失效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM t WHERE a &gt;= 1 GROUP BY b;</div><div class="line">SELECT * FROM t WHERE a &gt;= 1 ORDER BY b;</div></pre></td></tr></table></figure>
-<h4 id="在非连续的索引键部分上做-GROUP-BY-ORDER-BY-分组或排序，无法利用索引来实现GROUP-BY-ORDER-BY的优化"><a href="#在非连续的索引键部分上做-GROUP-BY-ORDER-BY-分组或排序，无法利用索引来实现GROUP-BY-ORDER-BY的优化" class="headerlink" title="在非连续的索引键部分上做 GROUP BY/ORDER BY 分组或排序，无法利用索引来实现GROUP BY/ORDER BY的优化"></a>在非连续的索引键部分上做 GROUP BY/ORDER BY 分组或排序，无法利用索引来实现GROUP BY/ORDER BY的优化</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM t WHERE a IN (1,2,3) GROUP BY b;</div><div class="line">SELECT * FROM t WHERE a IN (1,2,3) ORDER BY b;</div></pre></td></tr></table></figure>
-<h4 id="如果在-WHERE-和-ORDER-BY-的栏位上应用表达式-函数-时，则无法利用索引来实现GROUP-BY-ORDER-BY的优化"><a href="#如果在-WHERE-和-ORDER-BY-的栏位上应用表达式-函数-时，则无法利用索引来实现GROUP-BY-ORDER-BY的优化" class="headerlink" title="如果在 WHERE 和 ORDER BY 的栏位上应用表达式(函数)时，则无法利用索引来实现GROUP BY/ORDER BY的优化"></a>如果在 WHERE 和 ORDER BY 的栏位上应用表达式(函数)时，则无法利用索引来实现GROUP BY/ORDER BY的优化</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM WHERE a IN (1,2,3) GROUP BY DATE_FORMAT(b,<span class="string">'%Y%m%d'</span>);</div></pre></td></tr></table></figure>
-<h4 id="分组后，对不同字段排序，导致排序字段索引不可用"><a href="#分组后，对不同字段排序，导致排序字段索引不可用" class="headerlink" title="分组后，对不同字段排序，导致排序字段索引不可用"></a>分组后，对不同字段排序，导致排序字段索引不可用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM t GROUP BY a ORDER BY b;</div></pre></td></tr></table></figure>
+<h4 id="复合索引中，以（-gt-、-lt-、-lt-）的范围查询导致索引低效（不含in-、between-and-、-gt-lt-、-gt-lt-）"><a href="#复合索引中，以（-gt-、-lt-、-lt-）的范围查询导致索引低效（不含in-、between-and-、-gt-lt-、-gt-lt-）" class="headerlink" title="复合索引中，以（&gt; 、&lt;、&lt;=）的范围查询导致索引低效（不含in 、between and 、&gt;= &lt;= 、&gt;= &lt;）"></a>复合索引中，以（&gt; 、&lt;、&lt;=）的范围查询导致索引低效（不含in 、between and 、&gt;= &lt;= 、&gt;= &lt;）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE a &gt; 1 AND b &gt;= 1;</span><br><span class="line">SELECT * FROM t WHERE a &lt;= 1 AND b &gt;= 1;</span><br></pre></td></tr></table></figure>
+<h4 id="复合索引中，以or为关键词的范围查询导致索引失效"><a href="#复合索引中，以or为关键词的范围查询导致索引失效" class="headerlink" title="复合索引中，以or为关键词的范围查询导致索引失效"></a>复合索引中，以or为关键词的范围查询导致索引失效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE a = 1 AND (b = 1 OR c = 1);</span><br></pre></td></tr></table></figure>
+<h4 id="复合索引中，范围检索导致之后的分组、排序-GROUP-BY-ORDER-BY-列索引失效"><a href="#复合索引中，范围检索导致之后的分组、排序-GROUP-BY-ORDER-BY-列索引失效" class="headerlink" title="复合索引中，范围检索导致之后的分组、排序 GROUP BY/ORDER BY 列索引失效"></a>复合索引中，范围检索导致之后的分组、排序 GROUP BY/ORDER BY 列索引失效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE a &gt;= 1 GROUP BY b;</span><br><span class="line">SELECT * FROM t WHERE a &gt;= 1 ORDER BY b;</span><br></pre></td></tr></table></figure>
+<h4 id="在非连续的索引键部分上做-GROUP-BY-ORDER-BY-分组或排序，无法利用索引来实现GROUP-BY-ORDER-BY的优化"><a href="#在非连续的索引键部分上做-GROUP-BY-ORDER-BY-分组或排序，无法利用索引来实现GROUP-BY-ORDER-BY的优化" class="headerlink" title="在非连续的索引键部分上做 GROUP BY/ORDER BY 分组或排序，无法利用索引来实现GROUP BY/ORDER BY的优化"></a>在非连续的索引键部分上做 GROUP BY/ORDER BY 分组或排序，无法利用索引来实现GROUP BY/ORDER BY的优化</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE a IN (1,2,3) GROUP BY b;</span><br><span class="line">SELECT * FROM t WHERE a IN (1,2,3) ORDER BY b;</span><br></pre></td></tr></table></figure>
+<h4 id="如果在-WHERE-和-ORDER-BY-的栏位上应用表达式-函数-时，则无法利用索引来实现GROUP-BY-ORDER-BY的优化"><a href="#如果在-WHERE-和-ORDER-BY-的栏位上应用表达式-函数-时，则无法利用索引来实现GROUP-BY-ORDER-BY的优化" class="headerlink" title="如果在 WHERE 和 ORDER BY 的栏位上应用表达式(函数)时，则无法利用索引来实现GROUP BY/ORDER BY的优化"></a>如果在 WHERE 和 ORDER BY 的栏位上应用表达式(函数)时，则无法利用索引来实现GROUP BY/ORDER BY的优化</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM WHERE a IN (1,2,3) GROUP BY DATE_FORMAT(b,<span class="string">'%Y%m%d'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="分组后，对不同字段排序，导致排序字段索引不可用"><a href="#分组后，对不同字段排序，导致排序字段索引不可用" class="headerlink" title="分组后，对不同字段排序，导致排序字段索引不可用"></a>分组后，对不同字段排序，导致排序字段索引不可用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t GROUP BY a ORDER BY b;</span><br></pre></td></tr></table></figure>
 <p>更具体的索引失效场景请参考如下表格：<br><img src="/images/SQL/INDEX_invalid.png" alt="索引失效场景"></p>
 
       
     </div>
+
+    
+
     
     
+    
+     <div>
+		
+		<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+		
+      </div>
+	
     
 
     
 
     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>cai182081</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/" title="索引设计原则、使用场景及失效场景">http://yoursite.com/2018/04/03/SQL/DB_INDEX_1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
 
+      </div>
     
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/SQL-优化/" rel="tag"># SQL 优化</a>
+            <a href="/tags/SQL-优化/" rel="tag"> <i class="fa fa-tag"></i> SQL 优化</a>
           
         </div>
       
@@ -461,8 +545,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/04/SQL/MySQL_SQL_1/" rel="prev" title="由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思">
-                由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/04/SQL/MySQL_SQL_1/" rel="prev" title="SQL 优化之美：由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思">
+                SQL 优化之美：由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -489,9 +573,6 @@
           </div>
           
 
-
-          
-
   
     <div class="comments" id="comments">
       
@@ -501,7 +582,7 @@
 
   
 
-  
+
 
         </div>
         
@@ -540,62 +621,113 @@
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">23</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
+              <a href="/atom2.xml" rel="alternate">
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
             </div>
           
 
-          <div class="links-of-author motion-element">
+          
+
+          
+          
+
+          
+          
+
+          
             
-          </div>
-
           
-          
-
-          
-          
-
           
 
         </div>
@@ -611,7 +743,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#索引优点与缺点"><span class="nav-number">1.</span> <span class="nav-text">索引优点与缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何建立理想的索引"><span class="nav-number">2.</span> <span class="nav-text">如何建立理想的索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引设计和使用原则"><span class="nav-number">3.</span> <span class="nav-text">索引设计和使用原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引失效场景"><span class="nav-number">4.</span> <span class="nav-text">索引失效场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引全失效场景"><span class="nav-number">4.1.</span> <span class="nav-text">索引全失效场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#谓词列或关联谓词列使用了普通或函数运算"><span class="nav-number">4.1.1.</span> <span class="nav-text">谓词列或关联谓词列使用了普通或函数运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）"><span class="nav-number">4.1.2.</span> <span class="nav-text">谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#谓词上使用了负向查询（not-not-in-not-like-lt-gt-gt-lt-）不会使用索引"><span class="nav-number">4.1.3.</span> <span class="nav-text">谓词上使用了负向查询（not, not in, not like, <>, != , !>, !< ）不会使用索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以-开头的like查询或者正则匹配的regexp模糊查询"><span class="nav-number">4.1.4.</span> <span class="nav-text">以%开头的like查询或者正则匹配的regexp模糊查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#谓词上的索引列上对null运算（is-null-is-not-null）"><span class="nav-number">4.1.5.</span> <span class="nav-text">谓词上的索引列上对null运算（is null,is not null）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子查询使用了not-in导致关联谓词列索引失效"><span class="nav-number">4.1.6.</span> <span class="nav-text">子查询使用了not in导致关联谓词列索引失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检索小表"><span class="nav-number">4.1.7.</span> <span class="nav-text">检索小表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高水位、表空间碎片过多、统计信息错误及优化器缺陷等，导致索引不可用或低效"><span class="nav-number">4.1.8.</span> <span class="nav-text">高水位、表空间碎片过多、统计信息错误及优化器缺陷等，导致索引不可用或低效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#低基数的查询过滤列（基于CBO的优化器）数据检索或询的数量是大表的大部分，30-左右（值不确定、以计算代价为准），导致索引失效"><span class="nav-number">4.1.9.</span> <span class="nav-text">低基数的查询过滤列（基于CBO的优化器）数据检索或询的数量是大表的大部分，30%左右（值不确定、以计算代价为准），导致索引失效</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引部分失效场景"><span class="nav-number">4.2.</span> <span class="nav-text">索引部分失效场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复合索引中，以（-gt-、-lt-、-lt-）的范围查询导致索引低效（不含in-、between-and-、-gt-lt-、-gt-lt-）"><span class="nav-number">4.2.1.</span> <span class="nav-text">复合索引中，以（> 、<、<=）的范围查询导致索引低效（不含in 、between and 、>= <= 、>= <）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复合索引中，以or为关键词的范围查询导致索引失效"><span class="nav-number">4.2.2.</span> <span class="nav-text">复合索引中，以or为关键词的范围查询导致索引失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复合索引中，范围检索导致之后的分组、排序-GROUP-BY-ORDER-BY-列索引失效"><span class="nav-number">4.2.3.</span> <span class="nav-text">复合索引中，范围检索导致之后的分组、排序 GROUP BY/ORDER BY 列索引失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在非连续的索引键部分上做-GROUP-BY-ORDER-BY-分组或排序，无法利用索引来实现GROUP-BY-ORDER-BY的优化"><span class="nav-number">4.2.4.</span> <span class="nav-text">在非连续的索引键部分上做 GROUP BY/ORDER BY 分组或排序，无法利用索引来实现GROUP BY/ORDER BY的优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果在-WHERE-和-ORDER-BY-的栏位上应用表达式-函数-时，则无法利用索引来实现GROUP-BY-ORDER-BY的优化"><span class="nav-number">4.2.5.</span> <span class="nav-text">如果在 WHERE 和 ORDER BY 的栏位上应用表达式(函数)时，则无法利用索引来实现GROUP BY/ORDER BY的优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组后，对不同字段排序，导致排序字段索引不可用"><span class="nav-number">4.2.6.</span> <span class="nav-text">分组后，对不同字段排序，导致排序字段索引不可用</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#索引优点与缺点"><span class="nav-number">1.</span> <span class="nav-text">索引优点与缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何建立理想的索引"><span class="nav-number">2.</span> <span class="nav-text">如何建立理想的索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引设计和使用原则"><span class="nav-number">3.</span> <span class="nav-text">索引设计和使用原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引失效场景"><span class="nav-number">4.</span> <span class="nav-text">索引失效场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引全失效场景"><span class="nav-number">4.1.</span> <span class="nav-text">索引全失效场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#谓词列或关联谓词列使用了普通或函数运算"><span class="nav-number">4.1.1.</span> <span class="nav-text">谓词列或关联谓词列使用了普通或函数运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）"><span class="nav-number">4.1.2.</span> <span class="nav-text">谓词上的索引列或关联谓词列数据类型出现隐式转换（包括不同数据类型、字符集的转换等【字节长度不影响】）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#谓词上使用了负向查询（not-not-in-not-like-lt-gt-gt-lt-）不会使用索引"><span class="nav-number">4.1.3.</span> <span class="nav-text">谓词上使用了负向查询（not, not in, not like, &lt;&gt;, != , !&gt;, !&lt; ）不会使用索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以-开头的like查询或者正则匹配的regexp模糊查询"><span class="nav-number">4.1.4.</span> <span class="nav-text">以%开头的like查询或者正则匹配的regexp模糊查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#谓词上的索引列上对null运算（is-null-is-not-null）"><span class="nav-number">4.1.5.</span> <span class="nav-text">谓词上的索引列上对null运算（is null,is not null）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子查询使用了not-in导致关联谓词列索引失效"><span class="nav-number">4.1.6.</span> <span class="nav-text">子查询使用了not in导致关联谓词列索引失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检索小表"><span class="nav-number">4.1.7.</span> <span class="nav-text">检索小表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高水位、表空间碎片过多、统计信息错误及优化器缺陷等，导致索引不可用或低效"><span class="nav-number">4.1.8.</span> <span class="nav-text">高水位、表空间碎片过多、统计信息错误及优化器缺陷等，导致索引不可用或低效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#低基数的查询过滤列（基于CBO的优化器）数据检索或询的数量是大表的大部分，30-左右（值不确定、以计算代价为准），导致索引失效"><span class="nav-number">4.1.9.</span> <span class="nav-text">低基数的查询过滤列（基于CBO的优化器）数据检索或询的数量是大表的大部分，30%左右（值不确定、以计算代价为准），导致索引失效</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引部分失效场景"><span class="nav-number">4.2.</span> <span class="nav-text">索引部分失效场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复合索引中，以（-gt-、-lt-、-lt-）的范围查询导致索引低效（不含in-、between-and-、-gt-lt-、-gt-lt-）"><span class="nav-number">4.2.1.</span> <span class="nav-text">复合索引中，以（&gt; 、&lt;、&lt;=）的范围查询导致索引低效（不含in 、between and 、&gt;= &lt;= 、&gt;= &lt;）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复合索引中，以or为关键词的范围查询导致索引失效"><span class="nav-number">4.2.2.</span> <span class="nav-text">复合索引中，以or为关键词的范围查询导致索引失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复合索引中，范围检索导致之后的分组、排序-GROUP-BY-ORDER-BY-列索引失效"><span class="nav-number">4.2.3.</span> <span class="nav-text">复合索引中，范围检索导致之后的分组、排序 GROUP BY/ORDER BY 列索引失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在非连续的索引键部分上做-GROUP-BY-ORDER-BY-分组或排序，无法利用索引来实现GROUP-BY-ORDER-BY的优化"><span class="nav-number">4.2.4.</span> <span class="nav-text">在非连续的索引键部分上做 GROUP BY/ORDER BY 分组或排序，无法利用索引来实现GROUP BY/ORDER BY的优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果在-WHERE-和-ORDER-BY-的栏位上应用表达式-函数-时，则无法利用索引来实现GROUP-BY-ORDER-BY的优化"><span class="nav-number">4.2.5.</span> <span class="nav-text">如果在 WHERE 和 ORDER BY 的栏位上应用表达式(函数)时，则无法利用索引来实现GROUP BY/ORDER BY的优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组后，对不同字段排序，导致排序字段索引不可用"><span class="nav-number">4.2.6.</span> <span class="nav-text">分组后，对不同字段排序，导致排序字段索引不可用</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -632,16 +764,22 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cai182081</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -649,12 +787,13 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
 
         
+
 
 
 
@@ -693,12 +832,6 @@
 
 
 
-  
-
-
-
-
-
 
 
 
@@ -707,61 +840,77 @@
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+  
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
 
 
 
   
-
-
-  
-
 
 
 
@@ -784,7 +933,6 @@
 
 
 
-
 <!-- LOCAL: You can save these files to your site and update links -->
     
         
@@ -799,7 +947,7 @@
       <script type="text/javascript">
       function renderGitment(){
         var gitment = new Gitmint({
-            id: document.location.href, 
+            id: window.location.pathname,
             owner: 'cai182081',
             repo: 'cai182081.github.io',
             
@@ -826,10 +974,427 @@
 
 
 
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
 
   
 
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("LYl7tK129GkXmPxHi8ILtiuQ-gzGzoHsz", "fNvr4KMQd9tuE6hVX1hFBzlU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
 
 
 
@@ -838,11 +1403,15 @@
   
 
   
-  
 
   
   
 
+  
+
+  
+
+  
 
   
 
