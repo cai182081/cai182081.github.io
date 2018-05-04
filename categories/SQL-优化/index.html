@@ -102,18 +102,13 @@
 
 
 
-  <meta name="description" content="在 MySQL 数据库日常迁移过程中，由于操作的不规范性，常常因为函数、存储过程和视图定义者的缺失，导致存储过程、函数和视图失效，或者mysqldump逻辑备份无法备份和恢复。如果涉及的存储过程、函数和视图较多，一个一个的修改可能耗时和人为错误，所以特别设计函数批量修改存储过程、函数和视图的定义者，以减少运维维护量。这里默认将所有的定义者修改为‘root‘@’localhost’。12345678">
-<meta name="keywords" content="MySQL 日常维护">
-<meta property="og:type" content="article">
-<meta property="og:title" content="函数、存储过程和试图定义者变更脚本">
-<meta property="og:url" content="http://yoursite.com/2018/04/22/MySQL/MySQL_Change_Definder/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Cailiang&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/categories/SQL-优化/index.html">
 <meta property="og:site_name" content="Cailiang&#39;s Blog">
-<meta property="og:description" content="在 MySQL 数据库日常迁移过程中，由于操作的不规范性，常常因为函数、存储过程和视图定义者的缺失，导致存储过程、函数和视图失效，或者mysqldump逻辑备份无法备份和恢复。如果涉及的存储过程、函数和视图较多，一个一个的修改可能耗时和人为错误，所以特别设计函数批量修改存储过程、函数和视图的定义者，以减少运维维护量。这里默认将所有的定义者修改为‘root‘@’localhost’。12345678">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-21T04:50:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="函数、存储过程和试图定义者变更脚本">
-<meta name="twitter:description" content="在 MySQL 数据库日常迁移过程中，由于操作的不规范性，常常因为函数、存储过程和视图定义者的缺失，导致存储过程、函数和视图失效，或者mysqldump逻辑备份无法备份和恢复。如果涉及的存储过程、函数和视图较多，一个一个的修改可能耗时和人为错误，所以特别设计函数批量修改存储过程、函数和视图的定义者，以减少运维维护量。这里默认将所有的定义者修改为‘root‘@’localhost’。12345678">
+<meta name="twitter:title" content="Cailiang&#39;s Blog">
 
 
 
@@ -130,7 +125,7 @@
   };
 </script>
 
-  <title>函数、存储过程和试图定义者变更脚本 | Cailiang's Blog</title>
+  <title>分类: SQL 优化 | Cailiang's Blog</title>
   
 
 
@@ -177,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 	<a href="https://github.com/cai182081"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -233,7 +228,7 @@
         
         
           
-          <li class="menu-item menu-item-categories">
+          <li class="menu-item menu-item-categories menu-item-active">
     <a href="/categories/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
   </li>
@@ -305,263 +300,194 @@
           
             
 
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
           
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block category">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h2>SQL 优化<small>分类</small>
+        </h2>
+      </div>
 
-  
-  
-  
-
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/MySQL/MySQL_Change_Definder/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cai182081">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cailiang's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h3 class="post-title">
         
+            <a class="post-title-link" href="/2018/04/21/SQL/DB_SQL_5/" itemprop="url">
+              
+                <span itemprop="name">SQL 优化之美：对一条简单 SQL 优化的理解、分析</span>
+              
+            </a>
         
-          <h2 class="post-title" itemprop="name headline">函数、存储过程和试图定义者变更脚本
-              
-            
-          </h2>
-        
+      </h3>
 
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-04-22 07:08:30" itemprop="dateCreated datePublished" datetime="2018-04-22T07:08:30+08:00">2018-04-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-04-21 12:50:40" itemprop="dateModified" datetime="2018-04-21T12:50:40+08:00">2018-04-21</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/04/22/MySQL/MySQL_Change_Definder/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/22/MySQL/MySQL_Change_Definder/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/04/22/MySQL/MySQL_Change_Definder/" class="leancloud_visitors" data-flag-title="函数、存储过程和试图定义者变更脚本">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>在 MySQL 数据库日常迁移过程中，由于操作的不规范性，常常因为函数、存储过程和视图定义者的缺失，导致存储过程、函数和视图失效，或者mysqldump逻辑备份无法备份和恢复。如果涉及的存储过程、函数和视图较多，一个一个的修改可能耗时和人为错误，所以特别设计函数批量修改存储过程、函数和视图的定义者，以减少运维维护量。这里默认将所有的定义者修改为‘root‘@’localhost’。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER //  </span><br><span class="line">CREATE DEFINER = CURRENT_USER () PROCEDURE p_change_definer (</span><br><span class="line">	`pr_database_name` VARCHAR (500), -- 数据库名称</span><br><span class="line">	`pr_definer_name` VARCHAR (500), -- 定义者名称，默认 root</span><br><span class="line">	`pr_definer_ip_name` VARCHAR (500) -- 定义者绑定ip，默认为 localhost</span><br><span class="line">)</span><br><span class="line">BEGIN</span><br><span class="line"></span><br><span class="line">DECLARE drop_view_ varchar(500);</span><br><span class="line">DECLARE create_view_ varchar(15500);</span><br><span class="line">DECLARE DATABASE_NAME VARCHAR(500);</span><br><span class="line">DECLARE DEFINER_NAME VARCHAR(500) DEFAULT <span class="string">'root'</span>;</span><br><span class="line">DECLARE DEFINER_IP_NAME VARCHAR (500) DEFAULT <span class="string">'localhost'</span>;</span><br><span class="line">DECLARE flag boolean DEFAULT 1;</span><br><span class="line">DECLARE cur CURSOR FOR SELECT drop_view,create_view FROM sql_value;</span><br><span class="line">DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag = 0;</span><br><span class="line"></span><br><span class="line">DROP TEMPORARY TABLE IF EXISTS sql_value; </span><br><span class="line">CREATE TEMPORARY TABLE sql_value(drop_view varchar(500),create_view varchar(15500));</span><br><span class="line"></span><br><span class="line">SET DATABASE_NAME = TRIM(pr_database_name);</span><br><span class="line"></span><br><span class="line">IF pr_definer_name IS NOT NULL AND LENGTH(pr_definer_name) &gt; 0 THEN</span><br><span class="line">SET DEFINER_NAME = TRIM(pr_definer_name);</span><br><span class="line">END IF;</span><br><span class="line">IF pr_definer_ip_name IS NOT NULL AND LENGTH(pr_definer_ip_name) &gt; 0 THEN</span><br><span class="line">SET DEFINER_IP_NAME = pr_definer_ip_name;</span><br><span class="line">END IF;</span><br><span class="line"></span><br><span class="line">-- 组装修改视图定义者语句</span><br><span class="line">IF DATABASE_NAME IS NOT NULL AND LENGTH(DATABASE_NAME) &gt;0 THEN</span><br><span class="line"> INSERT INTO sql_value</span><br><span class="line">  (drop_view, create_view)</span><br><span class="line">  SELECT GROUP_CONCAT(<span class="string">'DROP VIEW IF EXISTS '</span>, TABLE_SCHEMA, <span class="string">'.'</span>, TABLE_NAME, <span class="string">';'</span>),</span><br><span class="line">         GROUP_CONCAT(<span class="string">'CREATE ALGORITHM = UNDEFINED DEFINER = `'</span>, DEFINER_NAME, <span class="string">'`@`'</span>, DEFINER_IP_NAME, <span class="string">'` SQL SECURITY DEFINER VIEW `'</span>,</span><br><span class="line">		 TABLE_SCHEMA, <span class="string">'`.`'</span>, TABLE_NAME, <span class="string">'` as '</span>, VIEW_DEFINITION, <span class="string">';'</span> SEPARATOR <span class="string">''</span>)</span><br><span class="line">    FROM information_schema.VIEWS</span><br><span class="line">   WHERE TABLE_SCHEMA = DATABASE_NAME</span><br><span class="line">   GROUP BY TABLE_NAME;</span><br><span class="line"></span><br><span class="line">-- 执行修改视图定义者</span><br><span class="line">OPEN cur;</span><br><span class="line"></span><br><span class="line">rep:LOOP</span><br><span class="line">  FETCH cur INTO drop_view_,create_view_;</span><br><span class="line">  <span class="built_in">set</span> @drop_view_ = drop_view_;</span><br><span class="line">  <span class="built_in">set</span> @create_view_ = create_view_;</span><br><span class="line">  IF flag = 0 THEN </span><br><span class="line">    LEAVE rep;</span><br><span class="line">  END IF;</span><br><span class="line"></span><br><span class="line">   PREPARE stmt FROM @drop_view_;</span><br><span class="line">   EXECUTE stmt;</span><br><span class="line">   DEALLOCATE PREPARE stmt;</span><br><span class="line">   PREPARE stmt FROM @create_view_;</span><br><span class="line">   EXECUTE stmt;</span><br><span class="line">   DEALLOCATE PREPARE stmt;</span><br><span class="line">END LOOP;</span><br><span class="line"></span><br><span class="line">CLOSE cur;</span><br><span class="line"></span><br><span class="line">-- 修改存储过程定义者</span><br><span class="line">UPDATE mysql.proc <span class="built_in">set</span> DEFINER = CONCAT(DEFINER_NAME,<span class="string">'@'</span>,DEFINER_IP_NAME) WHERE db = DATABASE_NAME;</span><br><span class="line"></span><br><span class="line">ELSE</span><br><span class="line">  SELECT <span class="string">'数据库名称不允许为空'</span>;</span><br><span class="line">END IF;</span><br><span class="line"></span><br><span class="line">END;</span><br><span class="line">//</span><br></pre></td></tr></table></figure></p>
-<p>修改执行命令为 ：<br>call p_change_definer(‘database’,’user’,’ip’);<br>database –需要修改的库名<br>user     –数据库的用户<br>IP       –数据库的绑定ip</p>
-
-      
-    </div>
-
-    
-
-    
-    
-    
-     <div>
-		
-		<div>
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-
-</div>
-		
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-04-21T01:21:02+08:00"
+              content="2018-04-21" >
+          04-21
+        </time>
       </div>
-	
-    
 
-    
-
-    
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>cai182081</li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/04/22/MySQL/MySQL_Change_Definder/" title="函数、存储过程和试图定义者变更脚本">http://yoursite.com/2018/04/22/MySQL/MySQL_Change_Definder/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
-</ul>
-
-      </div>
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/MySQL-日常维护/" rel="tag"> <i class="fa fa-tag"></i> MySQL 日常维护</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/04/21/SQL/DB_SQL_5/" rel="next" title="SQL 优化之美：对一条简单 SQL 优化的理解、分析">
-                <i class="fa fa-chevron-left"></i> SQL 优化之美：对一条简单 SQL 优化的理解、分析
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/03/MySQL/MySQL_Lock/" rel="prev" title="MySQL 事物与锁机制原理详解">
-                MySQL 事物与锁机制原理详解 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
+      
+        
 
-    <div class="post-spread">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+            <a class="post-title-link" href="/2018/04/16/SQL/MySQL_SQL_4/" itemprop="url">
+              
+                <span itemprop="name">SQL 优化之美：对一条简单 SQL 优化的理解、分析</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-04-16T03:12:42+08:00"
+              content="2018-04-16" >
+          04-16
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+            <a class="post-title-link" href="/2018/04/11/SQL/MySQL_SQL _3/" itemprop="url">
+              
+                <span itemprop="name">SQL优化之美：巧妙利用伪列实现SQL优化</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-04-11T11:04:38+08:00"
+              content="2018-04-11" >
+          04-11
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+            <a class="post-title-link" href="/2018/04/10/SQL/DB_SQL_1/" itemprop="url">
+              
+                <span itemprop="name">SQL 调优技巧</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-04-10T20:11:04+08:00"
+              content="2018-04-10" >
+          04-10
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+            <a class="post-title-link" href="/2018/04/04/SQL/MySQL_SQL_1/" itemprop="url">
+              
+                <span itemprop="name">SQL 优化之美：由一条MySQL SQL优化案例的引发索引调优、SQL等价改写及业务实现的反思</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-04-04T22:26:55+08:00"
+              content="2018-04-04" >
+          04-04
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
       
     </div>
+
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
           
-
-  
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
-
-  
-
-
 
         </div>
         
@@ -860,10 +786,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
-
-
 
   
 
@@ -905,30 +827,6 @@
 
     
 
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname,
-            owner: 'cai182081',
-            repo: 'cai182081.github.io',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '843030b4a3d8746e2debd7448a168be4115e713d',
-            
-                client_id: 'd7af101417fa775e9a0d'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
     
 
 
